@@ -1,0 +1,3454 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Eventtia 2.0 API</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen-a1ce949a.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-bccf8c07.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-c5541673.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;javascript&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/eventtia-logo-co-eba9f335.png" class="logo" alt="Eventtia logo co" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="javascript">javascript</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#authentication-via-username-and-password" class="toc-h2 toc-link" data-title="Authentication via Username and Password">Authentication via Username and Password</a>
+                  </li>
+                  <li>
+                    <a href="#authorization" class="toc-h2 toc-link" data-title="Authorization">Authorization</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#attendees" class="toc-h1 toc-link" data-title="Attendees">Attendees</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-attendees" class="toc-h2 toc-link" data-title="List Attendees">List Attendees</a>
+                  </li>
+                  <li>
+                    <a href="#get-attendee" class="toc-h2 toc-link" data-title="Get Attendee">Get Attendee</a>
+                  </li>
+                  <li>
+                    <a href="#create-attendee" class="toc-h2 toc-link" data-title="Create Attendee">Create Attendee</a>
+                  </li>
+                  <li>
+                    <a href="#update-attendee" class="toc-h2 toc-link" data-title="Update Attendee">Update Attendee</a>
+                  </li>
+                  <li>
+                    <a href="#destroy-attendee" class="toc-h2 toc-link" data-title="Destroy Attendee">Destroy Attendee</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#attendee-types" class="toc-h1 toc-link" data-title="Attendee Types">Attendee Types</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-attendee-types" class="toc-h2 toc-link" data-title="List Attendee Types">List Attendee Types</a>
+                  </li>
+                  <li>
+                    <a href="#get-attendee-type" class="toc-h2 toc-link" data-title="Get Attendee Type">Get Attendee Type</a>
+                  </li>
+                  <li>
+                    <a href="#create-attendee-type" class="toc-h2 toc-link" data-title="Create Attendee Type">Create Attendee Type</a>
+                  </li>
+                  <li>
+                    <a href="#update-attendee-type" class="toc-h2 toc-link" data-title="Update Attendee Type">Update Attendee Type</a>
+                  </li>
+                  <li>
+                    <a href="#destroy-attendee-type" class="toc-h2 toc-link" data-title="Destroy Attendee Type">Destroy Attendee Type</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#events" class="toc-h1 toc-link" data-title="Events">Events</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-events" class="toc-h2 toc-link" data-title="List Events">List Events</a>
+                  </li>
+                  <li>
+                    <a href="#get-event" class="toc-h2 toc-link" data-title="Get Event">Get Event</a>
+                  </li>
+                  <li>
+                    <a href="#create-event" class="toc-h2 toc-link" data-title="Create Event">Create Event</a>
+                  </li>
+                  <li>
+                    <a href="#update-event" class="toc-h2 toc-link" data-title="Update Event">Update Event</a>
+                  </li>
+                  <li>
+                    <a href="#destroy-event" class="toc-h2 toc-link" data-title="Destroy Event">Destroy Event</a>
+                  </li>
+                  <li>
+                    <a href="#settings" class="toc-h2 toc-link" data-title="Settings">Settings</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#input-fields" class="toc-h1 toc-link" data-title="Input fields">Input fields</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-field" class="toc-h2 toc-link" data-title="Create field">Create field</a>
+                  </li>
+                  <li>
+                    <a href="#update-field" class="toc-h2 toc-link" data-title="Update field">Update field</a>
+                  </li>
+                  <li>
+                    <a href="#destroy-field" class="toc-h2 toc-link" data-title="Destroy Field">Destroy Field</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#pricing-tier" class="toc-h1 toc-link" data-title="Pricing Tier">Pricing Tier</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-pricing-tiers" class="toc-h2 toc-link" data-title="List Pricing Tiers">List Pricing Tiers</a>
+                  </li>
+                  <li>
+                    <a href="#get-pricing-tier" class="toc-h2 toc-link" data-title="Get Pricing Tier">Get Pricing Tier</a>
+                  </li>
+                  <li>
+                    <a href="#create-pricing-tier" class="toc-h2 toc-link" data-title="Create Pricing Tier">Create Pricing Tier</a>
+                  </li>
+                  <li>
+                    <a href="#update-pricing-tier" class="toc-h2 toc-link" data-title="Update Pricing Tier">Update Pricing Tier</a>
+                  </li>
+                  <li>
+                    <a href="#destroy-pricing-tier" class="toc-h2 toc-link" data-title="Destroy Pricing Tier">Destroy Pricing Tier</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-new-user-and-account" class="toc-h2 toc-link" data-title="Create new user and account">Create new user and account</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://connect.eventtia.com/'>connect.eventtia.com</a></li>
+            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>This section contains basic concepts such as Authentication and Authorization.
+Eventtia 2.0 API is mostly compliant with the <a href="http://jsonapi.org/">JSON API v1.0 specification</a>.</p>
+<h2 id='authentication-via-username-and-password'>Authentication via Username and Password</h2>
+<blockquote>
+<p>To authenticate, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/sessions"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -X POST -d <span class="s1">'{"email":"email@example.org", "password":"myPassword"}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">// Get your token for further authorization</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://core.eventtia.com/v1/sessions"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">email</span><span class="p">:</span> <span class="s2">"email@example.org"</span><span class="p">,</span>
+    <span class="na">password</span><span class="p">:</span> <span class="s2">"myPassword"</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">{"token"</span><span class="p">:</span> <span class="s">"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGFzcyI6IlVzZXIiLCJhdXRoZW50aWNhdGlvbl9rZXkiOiJ0ZXN0QGV2ZW50dGlhLmNvbSVyaSI6InRlc3QtZXZlbnQiLCJleHAiOjE1MjAzNTY1MDB9.s0m351gn4tuRe4sdF_qw3rTleleWh4TTTt35f1n4lLy"}</span>
+</code></pre>
+<blockquote>
+<p>Example of a 404 response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
+<span class="na">{"message"</span><span class="p">:</span><span class="s">"Incorrect email or password."}</span>
+</code></pre>
+<p>You can get an authorization token for a User with this endpoint. Tokens issued by Eventtia are valid for 90 days.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST /v1/sessions</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>The User&#39;s email.</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>The User&#39;s password.</td>
+</tr>
+</tbody></table>
+<h2 id='authorization'>Authorization</h2>
+<blockquote>
+<p>When you make a request to any protected endpoint, add the token in the Authorization header</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># Send your token in the Authorization header</span>
+curl <span class="s2">"&lt;api endpoint&gt;"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: &lt;your token&gt;"</span> <span class="se">\</span>
+  ...
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">// Send your token in the Authorization header</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s2">"&lt;api endpoint&gt;"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="p">...</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <code>&lt;your token&gt;</code> with the JWT you get when you authenticate.</p>
+</blockquote>
+
+<p>Eventtia uses JSON Web Tokens for authorization. Tokens issued by Eventtia are valid for 90 days.</p>
+<h1 id='attendees'>Attendees</h1><h2 id='list-attendees'>List Attendees</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace <event uri> with the event uri for the event. </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": [</span>
+<span class="s">    {</span>
+<span class="s">      "id": "6264284",</span>
+<span class="s">      "type": "attendees",</span>
+<span class="s">      "attributes": {</span>
+<span class="s">        "first_name": "Rosa Maria",</span>
+<span class="s">        "last_name": "Rosales Rojas",</span>
+<span class="s">        "email": "rosales@email.com",</span>
+<span class="s">        "telephone": "+56912345678",</span>
+<span class="s">        "updated_by_id": "10461",</span>
+<span class="s">        "archived": "false",</span>
+<span class="s">        "fields_data": {</span>
+<span class="s">          "281": "george",</span>
+<span class="s">          "282": "downtown"</span>
+<span class="s">        },</span>
+<span class="s">        "photo_url": "url_Image_file"</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">  ]</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint list attendees belongs to event and return it</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /v1/events/event_uri/attendees/</code></p>
+<h3 id='path-parameters'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+</tbody></table>
+<h2 id='get-attendee'>Get Attendee</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace <event uri> with the event uri for the event.</p>
+
+<p>Make sure you replace <id> with the id for the attendee to obtain. </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": [</span>
+<span class="s">    {</span>
+<span class="s">      "id": "6264284",</span>
+<span class="s">      "type": "attendees",</span>
+<span class="s">      "attributes": {</span>
+<span class="s">        "first_name": "Rosa Maria",</span>
+<span class="s">        "last_name": "Rosales Rojas",</span>
+<span class="s">        "email": "rosales@email.com",</span>
+<span class="s">        "telephone": "+56912345678",</span>
+<span class="s">        "updated_by_id": "10461",</span>
+<span class="s">        "archived": "false",</span>
+<span class="s">        "fields_data": {</span>
+<span class="s">          "281": "george",</span>
+<span class="s">          "282": "downtown"</span>
+<span class="s">        },</span>
+<span class="s">        "photo_url": "url_Image_file"</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">  ]</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Not Found (404) response: </p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
+<span class="s">{</span>
+<span class="s">  {</span>
+<span class="s">    "message": "Couldn't find Attendee"</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint get an attendee and return it</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET /v1/events/event_uri/attendees/id</code></p>
+<h3 id='path-parameters-2'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired attendee</td>
+</tr>
+</tbody></table>
+<h2 id='create-attendee'>Create Attendee</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="s2">"attendees"</span><span class="p">,</span>
+      <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">attendee_type_id</span><span class="p">:</span> <span class="mi">34</span><span class="p">,</span>
+        <span class="na">first_name</span><span class="p">:</span> <span class="s2">"Mary"</span><span class="p">,</span>
+        <span class="na">last_name</span><span class="p">:</span> <span class="s2">"perez ossa"</span><span class="p">,</span>
+        <span class="na">email</span><span class="p">:</span> <span class="s2">"maryperez@email.com"</span><span class="p">,</span>
+        <span class="na">telephone</span><span class="p">:</span> <span class="s2">"+56912345678"</span><span class="p">,</span>
+        <span class="na">updated_by_id</span><span class="p">:</span> <span class="mi">192</span><span class="p">,</span>
+        <span class="na">archived</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">fields_data</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"281"</span><span class="p">:</span> <span class="s2">"george"</span><span class="p">,</span>
+          <span class="s2">"282"</span><span class="p">:</span> <span class="s2">"downtown"</span>
+        <span class="p">},</span>
+        <span class="na">photo_url</span><span class="p">:</span> <span class="s2">"url_Image_file"</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace <event uri> with the event uri for the event .  </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "6264284",</span>
+<span class="s">    "type": "attendees",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "first_name": "Rosa Maria",</span>
+<span class="s">      "last_name": "Rosales Rojas",</span>
+<span class="s">      "email": "rosales@email.com",</span>
+<span class="s">      "telephone": "+56912345678",</span>
+<span class="s">      "updated_by_id": "10461",</span>
+<span class="s">      "archived": "false",</span>
+<span class="s">      "fields_data": {</span>
+<span class="s">        "281": "george",</span>
+<span class="s">        "282": "downtown"</span>
+<span class="s">      },</span>
+<span class="s">      "photo_url": "url_Image_file"</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response: </p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "email": [</span>
+<span class="s">      "already taken"</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint create an attendee and return it</p>
+<h3 id='path-parameters-3'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>first_name</td>
+<td>string</td>
+<td>first name for attendee</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>last name for attendee</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>email for attendee</td>
+</tr>
+<tr>
+<td>telephone</td>
+<td>integer</td>
+<td>telephone for attendee</td>
+</tr>
+<tr>
+<td>attendee_typ_id</td>
+<td>integer</td>
+<td>attendee type id who created attendee belongs</td>
+</tr>
+<tr>
+<td>fields_data</td>
+<td>hash</td>
+<td>key-value for custom fields data for created attendee</td>
+</tr>
+<tr>
+<td>photo</td>
+<td>file</td>
+<td>photo for attendee</td>
+</tr>
+</tbody></table>
+<h2 id='update-attendee'>Update Attendee</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="s2">"attendees"</span><span class="p">,</span>
+      <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">attendee_type_id</span><span class="p">:</span> <span class="mi">34</span><span class="p">,</span>
+        <span class="na">first_name</span><span class="p">:</span> <span class="s2">"Mary"</span><span class="p">,</span>
+        <span class="na">last_name</span><span class="p">:</span> <span class="s2">"perez ossa"</span><span class="p">,</span>
+        <span class="na">email</span><span class="p">:</span> <span class="s2">"maryperez@email.com"</span><span class="p">,</span>
+        <span class="na">telephone</span><span class="p">:</span> <span class="s2">"+56912345678"</span><span class="p">,</span>
+        <span class="na">updated_by_id</span><span class="p">:</span> <span class="mi">192</span><span class="p">,</span>
+        <span class="na">archived</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">fields_data</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"281"</span><span class="p">:</span> <span class="s2">"george"</span><span class="p">,</span>
+          <span class="s2">"282"</span><span class="p">:</span> <span class="s2">"downtown"</span>
+        <span class="p">},</span>
+        <span class="na">photo_url</span><span class="p">:</span> <span class="s2">"url_Image_file"</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace <event uri> with the event uri for the event to update. </p>
+
+<p>Make sure you replace <id> with the id for the attendee to update. </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "62527",</span>
+<span class="s">    "type": "attendees",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">     "first_name": "Mary",</span>
+<span class="s">      "last_name": "perez ossa",</span>
+<span class="s">      "email": "maryperez@email.com",</span>
+<span class="s">      "telephone": "+56912345678",</span>
+<span class="s">      "updated_by_id": "192",</span>
+<span class="s">      "archived": "false",</span>
+<span class="s">      "fields_data": {</span>
+<span class="s">        "281": "george",</span>
+<span class="s">        "282": "downtown"</span>
+<span class="s">      },</span>
+<span class="s">      "photo_url": "url_Image_file"     </span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response: </p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "email": [</span>
+<span class="s">      "already taken"</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint update an attendee and return it</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>PUT /v1/events/event_uri/attendees/id</code></p>
+<h3 id='path-parameters-4'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>first_name</td>
+<td>string</td>
+<td>first name for attendee</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>last name for attendee</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>email for attendee</td>
+</tr>
+<tr>
+<td>telephone</td>
+<td>integer</td>
+<td>telephone for attendee</td>
+</tr>
+<tr>
+<td>attendee_typ_id</td>
+<td>integer</td>
+<td>attendee type id who created attendee belongs</td>
+</tr>
+<tr>
+<td>fields_data</td>
+<td>hash</td>
+<td>key-value for custom fields data for created attendee</td>
+</tr>
+<tr>
+<td>photo</td>
+<td>file</td>
+<td>photo for attendee</td>
+</tr>
+</tbody></table>
+<h2 id='destroy-attendee'>Destroy Attendee</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace <event uri> with the event uri for the event to destroy. </p>
+
+<p>Make sure you replace <id> with the id for the attendeeto update. </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "62527",</span>
+<span class="s">    "type": "attendees",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">     "first_name": "Mary",</span>
+<span class="s">      "last_name": "perez ossa",</span>
+<span class="s">      "email": "maryperez@email.com",</span>
+<span class="s">      "telephone": "+56912345678",</span>
+<span class="s">      "updated_by_id": "192",</span>
+<span class="s">      "archived": "true",</span>
+<span class="s">      "fields_data": {</span>
+<span class="s">        "281": "george",</span>
+<span class="s">        "282": "downtown"</span>
+<span class="s">      },</span>
+<span class="s">      "photo_url": "url_Image_file"     </span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint destroy an attendee and return it</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>DELETE /v1/events/event_uri/attendees/id</code></p>
+<h3 id='path-parameters-5'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired attendee</td>
+</tr>
+</tbody></table>
+<h1 id='attendee-types'>Attendee Types</h1><h2 id='list-attendee-types'>List Attendee Types</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace <event uri> with the event uri for the event. </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": [</span>
+<span class="s">    {</span>
+<span class="s">      "id": "62527",</span>
+<span class="s">      "type": "attendee_types",</span>
+<span class="s">      "attributes": {</span>
+<span class="s">        "name": "Attendee type name",</span>
+<span class="s">        "description": "attendee_type_description",</span>
+<span class="s">        "price": "34",</span>
+<span class="s">        "limit": 25,</span>
+<span class="s">        "confirmation_required": false,</span>
+<span class="s">        "allow_public_registration": false,</span>
+<span class="s">        "valid_if_no_payments": true,</span>
+<span class="s">        "updated_by_id": 192,</span>
+<span class="s">        "archived": false</span>
+<span class="s">      },</span>
+<span class="s">      "relationships": {</span>
+<span class="s">        "fields": {</span>
+<span class="s">          "data": [</span>
+<span class="s">            {</span>
+<span class="s">              "id": "331",</span>
+<span class="s">              "type": "field"</span>
+<span class="s">            }</span>
+<span class="s">          ]</span>
+<span class="s">        }</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">  ]</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint list attendee types belongs to event and return it</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /v1/events/event_uri/attendee_types/</code></p>
+<h3 id='path-parameters'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+</tbody></table>
+<h2 id='get-attendee-type'>Get Attendee Type</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace <event uri> with the event uri for the event.</p>
+
+<p>Make sure you replace <id> with the id for the attendee type to obtain. </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "62527",</span>
+<span class="s">    "type": "attendee_types",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "name": "Attendee type name",</span>
+<span class="s">      "description": "Attendee type description",</span>
+<span class="s">      "price": "34",</span>
+<span class="s">      "limit": 25,</span>
+<span class="s">      "confirmation_required": false,</span>
+<span class="s">      "allow_public_registration": false,</span>
+<span class="s">      "valid_if_no_payments": true,</span>
+<span class="s">      "updated_by_id": 192,</span>
+<span class="s">      "archived": false</span>
+<span class="s">    },</span>
+<span class="s">    "relationships": {</span>
+<span class="s">      "fields": {</span>
+<span class="s">        "data": [</span>
+<span class="s">          {</span>
+<span class="s">            "id": "331",</span>
+<span class="s">            "type": "field"</span>
+<span class="s">          }</span>
+<span class="s">        ]</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Not Found (404) response: </p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
+<span class="s">{</span>
+<span class="s">  {</span>
+<span class="s">    "message": "Couldn't find AttendeeType"</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint get an attendee type and return it</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET /v1/events/event_uri/attendee_types/id</code></p>
+<h3 id='path-parameters-2'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired attendee type</td>
+</tr>
+</tbody></table>
+<h3 id='http-request-for-optional-include-fields'>HTTP Request for optional include fields</h3>
+<p><code>GET /v1/events/event_uri/attendee_types/id/include=fields</code></p>
+<h3 id='path-parameters-3'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>include</td>
+<td>string</td>
+<td>this value gives informations for each relationships</td>
+</tr>
+</tbody></table>
+<h2 id='create-attendee-type'>Create Attendee Type</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">id</span><span class="p">:</span> <span class="mi">62527</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"attendee_type"</span><span class="p">,</span>
+    <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">name</span><span class="p">:</span> <span class="s2">"Attendee type name"</span><span class="p">,</span>
+      <span class="na">description</span><span class="p">:</span> <span class="s2">"Attendee type description"</span><span class="p">,</span>
+      <span class="na">price</span><span class="p">:</span> <span class="mi">34</span><span class="p">,</span>
+      <span class="na">limit</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+      <span class="na">confirmation_required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">allow_public_registration</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">valid_if_no_payments</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="na">archived</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace <event uri> with the event uri for the event .  </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "62527",</span>
+<span class="s">    "type": "attendee_types",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "name": "Attendee type name",</span>
+<span class="s">      "description": "Attendee type description",</span>
+<span class="s">      "price": "34",</span>
+<span class="s">      "limit": 25,</span>
+<span class="s">      "confirmation_required": false,</span>
+<span class="s">      "allow_public_registration": false,</span>
+<span class="s">      "valid_if_no_payments": true,</span>
+<span class="s">      "updated_by_id": 192,</span>
+<span class="s">      "archived": false</span>
+<span class="s">    },</span>
+<span class="s">    "relationships": {</span>
+<span class="s">      "fields": {</span>
+<span class="s">        "data": [</span>
+<span class="s">          {</span>
+<span class="s">            "id": "331",</span>
+<span class="s">            "type": "field"</span>
+<span class="s">          }</span>
+<span class="s">        ]</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response: </p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "price": [</span>
+<span class="s">      "must be an integer"</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint create an attendee type and return it</p>
+<h3 id='path-parameters-4'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>name for attendee type</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>description for attendee type</td>
+</tr>
+<tr>
+<td>price</td>
+<td>integer</td>
+<td>price for attendee type</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>integer</td>
+<td>attendees limit for this attendee type</td>
+</tr>
+<tr>
+<td>confirmation_required</td>
+<td>boolean</td>
+<td>confirmation required for attendee type</td>
+</tr>
+<tr>
+<td>allow_public_registration</td>
+<td>boolean</td>
+<td>allow public registration for this attendee type</td>
+</tr>
+<tr>
+<td>valid_if_no_payments</td>
+<td>boolean</td>
+<td>valid attendee type if no payments</td>
+</tr>
+</tbody></table>
+<h2 id='update-attendee-type'>Update Attendee Type</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"attendee_type"</span><span class="p">,</span>
+    <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">name</span><span class="p">:</span> <span class="s2">"Attendee type name"</span><span class="p">,</span>
+      <span class="na">description</span><span class="p">:</span> <span class="s2">"Attendee type description"</span><span class="p">,</span>
+      <span class="na">price</span><span class="p">:</span> <span class="mi">34</span><span class="p">,</span>
+      <span class="na">limit</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+      <span class="na">confirmation_required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">allow_public_registration</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">valid_if_no_payments</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="na">allow_printing_without_payment</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace <event uri> with the event uri for the event to update. </p>
+
+<p>Make sure you replace <id> with the id for the attendee type to update. </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "62527",</span>
+<span class="s">    "type": "attendee_types",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "name": "Attendee type name",</span>
+<span class="s">      "description": "Attendee type description",</span>
+<span class="s">      "price": "34",</span>
+<span class="s">      "limit": 25,</span>
+<span class="s">      "confirmation_required": false,</span>
+<span class="s">      "allow_public_registration": false,</span>
+<span class="s">      "valid_if_no_payments": true,</span>
+<span class="s">      "updated_by_id": 192,</span>
+<span class="s">      "archived": false</span>
+<span class="s">    },</span>
+<span class="s">    "relationships": {</span>
+<span class="s">      "fields": {</span>
+<span class="s">        "data": [</span>
+<span class="s">          {</span>
+<span class="s">            "id": "331",</span>
+<span class="s">            "type": "field"</span>
+<span class="s">          }</span>
+<span class="s">        ]</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response: </p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "price": [</span>
+<span class="s">      "must be an integer"</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint update an attendee type and return it</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>PUT /v1/events/event_uri/attendee_types/id</code></p>
+<h3 id='path-parameters-5'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>name for attendee type</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>description for attendee type</td>
+</tr>
+<tr>
+<td>price</td>
+<td>integer</td>
+<td>price for attendee type</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>integer</td>
+<td>attendees limit for this attendee type</td>
+</tr>
+<tr>
+<td>confirmation_required</td>
+<td>boolean</td>
+<td>confirmation required for attendee type</td>
+</tr>
+<tr>
+<td>allow_public_registration</td>
+<td>boolean</td>
+<td>allow public registration for this attendee type</td>
+</tr>
+<tr>
+<td>valid_if_no_payments</td>
+<td>boolean</td>
+<td>valid attendee type if no payments</td>
+</tr>
+</tbody></table>
+<h2 id='destroy-attendee-type'>Destroy Attendee Type</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace <event uri> with the event uri for the event to destroy. </p>
+
+<p>Make sure you replace <id> with the id for the attendee type to update. </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "62528",</span>
+<span class="s">    "type": "attendee_types",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "name": "Attendee type name",</span>
+<span class="s">      "description": "Attendee type description",</span>
+<span class="s">      "price": "545.0",</span>
+<span class="s">      "limit": 500,</span>
+<span class="s">      "confirmation_required": true,</span>
+<span class="s">      "allow_public_registration": true,</span>
+<span class="s">      "valid_if_no_payments": true,</span>
+<span class="s">      "archived": true</span>
+<span class="s">    },</span>
+<span class="s">    "relationships": {</span>
+<span class="s">      "fields": {</span>
+<span class="s">        "data": [</span>
+<span class="s">          {</span>
+<span class="s">            "id": "331",</span>
+<span class="s">            "type": "field"</span>
+<span class="s">          }</span>
+<span class="s">        ]</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint destroy an attendee type and return it</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>DELETE /v1/events/event_uri/attendee_types/id</code></p>
+<h3 id='path-parameters-6'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired attendee type</td>
+</tr>
+</tbody></table>
+<h1 id='events'>Events</h1><h2 id='list-events'>List Events</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">}})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": [</span>
+<span class="s">    {</span>
+<span class="s">      id: "21",</span>
+<span class="s">      "type": "events",</span>
+<span class="s">      "attributes": {</span>
+<span class="s">        "name": "Event name",</span>
+<span class="s">        "description": "description of an event",</span>
+<span class="s">        "start_date": "2020-04-13 15:54:37 -0500",</span>
+<span class="s">        "end_date": "2020-04-15 15:54:57 -0500",</span>
+<span class="s">        "active_modules": "[8]",</span>
+<span class="s">        "fields_data": "{}",</span>
+<span class="s">        "budget": 0.0,</span>
+<span class="s">        "event_type": "virtual",</span>
+<span class="s">        "is_template": false,</span>
+<span class="s">        "event_uri": "event_uri",</span>
+<span class="s">        "timezone": "America/Bogota",</span>
+<span class="s">        "location": {</span>
+<span class="s">          "coordinates": { "lat": 6.2518400, "lng": -75.5635900 },</span>
+<span class="s">          "address": "Event address",</span>
+<span class="s">          "country": "Colombia.",</span>
+<span class="s">          "city": "Medellín",</span>
+<span class="s">        },</span>
+<span class="s">        "default_language": "es",</span>
+<span class="s">        "virtual_timezone": "America/Bogota",</span>
+<span class="s">        "total_attendees": 0,</span>
+<span class="s">        "banner": {</span>
+<span class="s">          "filename": "file_name",</span>
+<span class="s">          "thumb": "url_image",</span>
+<span class="s">          "small":  "url_image",</span>
+<span class="s">          "medium": "url_image",</span>
+<span class="s">          "large": "url_image",</span>
+<span class="s">        },</span>
+<span class="s">        logo: {</span>
+<span class="s">        "filename": "file_name",</span>
+<span class="s">          "thumb": "url_image",</span>
+<span class="s">          "small":  "url_image",</span>
+<span class="s">          "medium": "url_image",</span>
+<span class="s">          "large": "url_image",</span>
+<span class="s">        } </span>
+<span class="s">      },</span>
+<span class="s">      "relationships": {</span>
+<span class="s">        "settings": {</span>
+<span class="s">          "data": {</span>
+<span class="s">            "id": "108",</span>
+<span class="s">            "type": "settings"</span>
+<span class="s">          }</span>
+<span class="s">        }</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">  ]</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint return a list of events</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /v1/events/</code></p>
+<h2 id='get-event'>Get Event</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">}})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace <event uri> with the event uri for the event to update. </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    id: "21",</span>
+<span class="s">    "type": "events",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "name": "Event name",</span>
+<span class="s">      "description": "description of an event",</span>
+<span class="s">      "start_date": "2020-04-13 15:54:37 -0500",</span>
+<span class="s">      "end_date": "2020-04-15 15:54:57 -0500",</span>
+<span class="s">      "active_modules": "[0, 1]",</span>
+<span class="s">      "fields_data": "{}",</span>
+<span class="s">      "budget": 0.0,</span>
+<span class="s">      "event_type": "virtual",</span>
+<span class="s">      "is_template": false,</span>
+<span class="s">      "event_uri": "event_uri",</span>
+<span class="s">      "timezone": "America/Bogota",</span>
+<span class="s">      "location": {</span>
+<span class="s">        "coordinates": { "lat": 6.2518400, "lng": -75.5635900 },</span>
+<span class="s">        "address": "Event address",</span>
+<span class="s">        "country": "Colombia.",</span>
+<span class="s">        "city": "Medellín",</span>
+<span class="s">      },</span>
+<span class="s">      "default_language": "es",</span>
+<span class="s">      "virtual_timezone": "America/Bogota",</span>
+<span class="s">      "total_attendees": 0,</span>
+<span class="s">      "cloned_from_id": "2",</span>
+<span class="s">      "banner": {</span>
+<span class="s">        "filename": "file_name",</span>
+<span class="s">        "thumb": "url_image",</span>
+<span class="s">        "small":  "url_image",</span>
+<span class="s">        "medium": "url_image",</span>
+<span class="s">        "large": "url_image",</span>
+<span class="s">      },</span>
+<span class="s">      logo: {</span>
+<span class="s">       "filename": "file_name",</span>
+<span class="s">        "thumb": "url_image",</span>
+<span class="s">        "small":  "url_image",</span>
+<span class="s">        "medium": "url_image",</span>
+<span class="s">        "large": "url_image",</span>
+<span class="s">      } </span>
+<span class="s">    },</span>
+<span class="s">    "relationships": {</span>
+<span class="s">      "settings": {</span>
+<span class="s">        "data": {</span>
+<span class="s">          "id": "108",</span>
+<span class="s">          "type": "settings"</span>
+<span class="s">        }</span>
+<span class="s">      }</span>
+<span class="s">    }    </span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Event Not Found (404) response: </p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
+<span class="s">{</span>
+<span class="s">  "message": "Couldn't find Event"</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint return an event</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET /v1/events/event_uri</code></p>
+<h3 id='path-parameters'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+</tbody></table>
+<h3 id='http-request-for-optional-include-settings'>HTTP Request for optional include settings</h3>
+<p><code>GET /v1/events/event_uri/include=settings</code></p>
+<h3 id='path-parameters-2'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>include</td>
+<td>string</td>
+<td>the value settings gives informations for each relationships (settings or attendees)</td>
+</tr>
+</tbody></table>
+<h2 id='create-event'>Create Event</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">id</span><span class="p">:</span> <span class="s2">"21"</span><span class="p">,</span> 
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"events"</span><span class="p">,</span>
+    <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">name</span><span class="p">:</span> <span class="s2">"Event name"</span><span class="p">,</span>
+      <span class="na">description</span><span class="p">:</span> <span class="s2">"description of an event"</span><span class="p">,</span>
+      <span class="na">start_date</span><span class="p">:</span> <span class="s2">"2020-04-13 15:54:37 -0500"</span><span class="p">,</span>
+      <span class="na">end_date</span><span class="p">:</span> <span class="s2">"2020-04-15 15:54:57 -0500"</span><span class="p">,</span>
+      <span class="na">active_modules</span><span class="p">:</span> <span class="s2">"[0, 1]"</span><span class="p">,</span>
+      <span class="na">fields_data</span><span class="p">:</span> <span class="s2">"{}"</span><span class="p">,</span>
+      <span class="na">budget</span><span class="p">:</span> <span class="mf">545.00</span><span class="p">,</span>
+      <span class="na">event_type</span><span class="p">:</span> <span class="s2">"virtual"</span><span class="p">,</span>
+      <span class="na">is_template</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">event_uri</span><span class="p">:</span> <span class="s2">"event_uri"</span><span class="p">,</span>
+      <span class="na">timezone</span><span class="p">:</span> <span class="s2">"America/Bogota"</span><span class="p">,</span>
+      <span class="na">location</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"coordinates"</span><span class="p">:</span> <span class="p">{</span> <span class="s2">"lat"</span><span class="p">:</span> <span class="mf">6.2518400</span><span class="p">,</span> <span class="s2">"lng"</span><span class="p">:</span> <span class="o">-</span><span class="mf">75.5635900</span> <span class="p">},</span>
+        <span class="s2">"address"</span><span class="p">:</span> <span class="s2">"Event address"</span><span class="p">,</span>
+        <span class="s2">"country"</span><span class="p">:</span> <span class="s2">"Colombia."</span><span class="p">,</span>
+        <span class="s2">"city"</span><span class="p">:</span> <span class="s2">"Medellín"</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="na">default_language</span><span class="p">:</span> <span class="s2">"es"</span><span class="p">,</span>
+      <span class="na">virtual_timezone</span><span class="p">:</span> <span class="s2">"America/Bogota"</span><span class="p">,</span>
+      <span class="na">total_attendees</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="na">banner</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">filename</span><span class="p">:</span> <span class="s2">"file_name"</span><span class="p">,</span>
+        <span class="na">thumb</span><span class="p">:</span> <span class="s2">"url_image"</span><span class="p">,</span>
+        <span class="na">small</span><span class="p">:</span>  <span class="s2">"url_image"</span><span class="p">,</span>
+        <span class="na">medium</span><span class="p">:</span> <span class="s2">"url_image"</span><span class="p">,</span>
+        <span class="na">large</span><span class="p">:</span> <span class="s2">"url_image"</span><span class="p">,</span>
+      <span class="p">}</span>
+      <span class="nl">logo</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nl">filename</span><span class="p">:</span> <span class="s2">"file_name"</span><span class="p">,</span>
+        <span class="na">thumb</span><span class="p">:</span> <span class="s2">"url_image"</span><span class="p">,</span>
+        <span class="na">small</span><span class="p">:</span> <span class="s2">"url_image"</span><span class="p">,</span>
+        <span class="na">medium</span><span class="p">:</span> <span class="s2">"url_image"</span><span class="p">,</span>
+        <span class="na">large</span><span class="p">:</span> <span class="s2">"url_image"</span><span class="p">,</span>
+      <span class="p">}</span>  
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    id: "21", </span>
+<span class="s">    "type": "events",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "name": "Event name",</span>
+<span class="s">      "description": "description of an event",</span>
+<span class="s">      "start_date": "2020-04-13 15:54:37 -0500",</span>
+<span class="s">      "end_date": "2020-04-15 15:54:57 -0500",</span>
+<span class="s">      "active_modules": "[0, 1]",</span>
+<span class="s">      "fields_data": "{}",</span>
+<span class="s">      "budget": 0.0,</span>
+<span class="s">      "event_type": "virtual",</span>
+<span class="s">      "is_template": false,</span>
+<span class="s">      "event_uri": "event_uri",</span>
+<span class="s">      "timezone": "America/Bogota",</span>
+<span class="s">      "location": {</span>
+<span class="s">        "coordinates": { "lat": 6.2518400, "lng": -75.5635900 },</span>
+<span class="s">        "address": "Event address",</span>
+<span class="s">        "country": "Colombia.",</span>
+<span class="s">        "city": "Medellín",</span>
+<span class="s">      },</span>
+<span class="s">      "default_language": "es",</span>
+<span class="s">      "virtual_timezone": "America/Bogota",</span>
+<span class="s">      "total_attendees": 0,</span>
+<span class="s">      "banner": {</span>
+<span class="s">        "filename": "file_name",</span>
+<span class="s">        "thumb": "url_image",</span>
+<span class="s">        "small":  "url_image",</span>
+<span class="s">        "medium": "url_image",</span>
+<span class="s">        "large": "url_image",</span>
+<span class="s">      },</span>
+<span class="s">      logo: {</span>
+<span class="s">       "filename": "file_name",</span>
+<span class="s">        "thumb": "url_image",</span>
+<span class="s">        "small":  "url_image",</span>
+<span class="s">        "medium": "url_image",</span>
+<span class="s">        "large": "url_image",</span>
+<span class="s">      } </span>
+<span class="s">    },</span>
+<span class="s">    "relationships": {</span>
+<span class="s">      "settings": {</span>
+<span class="s">        "data": {</span>
+<span class="s">          "id": "108",</span>
+<span class="s">          "type": "settings"</span>
+<span class="s">        }</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response: </p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "start_date": [</span>
+<span class="s">      "is beyond the end date."</span>
+<span class="s">    ],</span>
+<span class="s">    "name": [</span>
+<span class="s">      "is already in use"</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint create an event and return it</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST /v1/events/</code></p>
+<h3 id='available-settings'>Available settings</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>name of event.</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>description of event.</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>date</td>
+<td>starting date for event, must be before end date of event.</td>
+</tr>
+<tr>
+<td>budget</td>
+<td>float</td>
+<td>budget for event.</td>
+</tr>
+<tr>
+<td>is_template</td>
+<td>boolean</td>
+<td>this event is a template.</td>
+</tr>
+<tr>
+<td>cloned_from_id</td>
+<td>integer</td>
+<td>event id from this event was cloned</td>
+</tr>
+<tr>
+<td>event_type</td>
+<td>string</td>
+<td>event type [&#39;virtual&#39;, &#39;physical&#39;, &#39;hybrid&#39;].</td>
+</tr>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>event uri must be an unique name.</td>
+</tr>
+<tr>
+<td>logo</td>
+<td>file</td>
+<td>logo for this event.</td>
+</tr>
+<tr>
+<td>banner_image</td>
+<td>file</td>
+<td>banner image for this event.</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>your event currency for payments and invoices [&#39;COP&#39;, &#39;USD&#39;, &#39;EUR&#39;, &#39;ARS&#39;, &#39;BRL&#39;, &#39;CLP&#39;, &#39;MXN&#39;, &#39;PEN&#39;, &#39;GBP&#39;, &#39;JOD&#39;, &#39;UYU&#39;, &#39;PYG&#39;, &#39;AED&#39;, &#39;CAD&#39;, &#39;VND&#39;, &#39;PHP&#39;, &#39;AUD&#39;, &#39;BOB&#39;, &#39;TND&#39;, &#39;SGD&#39;, &#39;CHF&#39;, &#39;CFA&#39;, &#39;ZAR&#39;, &#39;INR&#39;]</td>
+</tr>
+<tr>
+<td>date_format</td>
+<td>string</td>
+<td>event date format [&#39;dd/mm/yyyy&#39;, &#39;mm/dd/yyyy&#39;].</td>
+</tr>
+<tr>
+<td>time_format</td>
+<td>string</td>
+<td>event time format [&#39;hours_24&#39;, &#39;am_pm&#39;].</td>
+</tr>
+</tbody></table>
+<h2 id='update-event'>Update Event</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"events"</span><span class="p">,</span>
+    <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">name</span><span class="p">:</span> <span class="s2">"Event name"</span><span class="p">,</span>
+      <span class="na">description</span><span class="p">:</span> <span class="s2">"description of an event"</span><span class="p">,</span>
+      <span class="na">start_date</span><span class="p">:</span> <span class="s2">"2020-04-13 15:54:37 -0500"</span><span class="p">,</span>
+      <span class="na">end_date</span><span class="p">:</span> <span class="s2">"2020-04-15 15:54:57 -0500"</span><span class="p">,</span>
+      <span class="na">active_modules</span><span class="p">:</span> <span class="s2">"[0, 1]"</span><span class="p">,</span>
+      <span class="na">fields_data</span><span class="p">:</span> <span class="s2">"{}"</span><span class="p">,</span>
+      <span class="na">budget</span><span class="p">:</span> <span class="mf">545.00</span><span class="p">,</span>
+      <span class="na">event_type</span><span class="p">:</span> <span class="s2">"virtual"</span><span class="p">,</span>
+      <span class="na">is_template</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">event_uri</span><span class="p">:</span> <span class="s2">"event_uri"</span><span class="p">,</span>
+      <span class="na">timezone</span><span class="p">:</span> <span class="s2">"America/Bogota"</span><span class="p">,</span>
+      <span class="na">location</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"coordinates"</span><span class="p">:</span> <span class="p">{</span> <span class="s2">"lat"</span><span class="p">:</span> <span class="mf">6.2518400</span><span class="p">,</span> <span class="s2">"lng"</span><span class="p">:</span> <span class="o">-</span><span class="mf">75.5635900</span> <span class="p">},</span>
+        <span class="s2">"address"</span><span class="p">:</span> <span class="s2">"Event address"</span><span class="p">,</span>
+        <span class="s2">"country"</span><span class="p">:</span> <span class="s2">"Colombia."</span><span class="p">,</span>
+        <span class="s2">"city"</span><span class="p">:</span> <span class="s2">"Medellín"</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="na">default_language</span><span class="p">:</span> <span class="s2">"es"</span><span class="p">,</span>
+      <span class="na">virtual_timezone</span><span class="p">:</span> <span class="s2">"America/Bogota"</span><span class="p">,</span>
+      <span class="na">total_attendees</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="na">cloned_from_id</span><span class="p">:</span> <span class="s2">"12"</span><span class="p">,</span>
+      <span class="na">banner</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">filename</span><span class="p">:</span> <span class="s2">"file_name"</span><span class="p">,</span>
+        <span class="na">thumb</span><span class="p">:</span> <span class="s2">"url_image"</span><span class="p">,</span>
+        <span class="na">small</span><span class="p">:</span>  <span class="s2">"url_image"</span><span class="p">,</span>
+        <span class="na">medium</span><span class="p">:</span> <span class="s2">"url_image"</span><span class="p">,</span>
+        <span class="na">large</span><span class="p">:</span> <span class="s2">"url_image"</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="na">logo</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">filename</span><span class="p">:</span> <span class="s2">"file_name"</span><span class="p">,</span>
+        <span class="na">thumb</span><span class="p">:</span> <span class="s2">"url_image"</span><span class="p">,</span>
+        <span class="na">small</span><span class="p">:</span> <span class="s2">"url_image"</span><span class="p">,</span>
+        <span class="na">medium</span><span class="p">:</span> <span class="s2">"url_image"</span><span class="p">,</span>
+        <span class="na">large</span><span class="p">:</span> <span class="s2">"url_image"</span><span class="p">,</span>
+      <span class="p">}</span>  
+    <span class="p">},</span> 
+    <span class="na">relationships</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">settings</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">id</span><span class="p">:</span> <span class="s2">"108"</span><span class="p">,</span>
+          <span class="na">type</span><span class="p">:</span> <span class="s2">"settings"</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>  
+  <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace <event uri> with the event uri for the event to update. </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "type": "events",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "name": "Event name",</span>
+<span class="s">      "description": "description of an event",</span>
+<span class="s">      "start_date": "2020-04-13 15:54:37 -0500",</span>
+<span class="s">      "end_date": "2020-04-15 15:54:57 -0500",</span>
+<span class="s">      "active_modules": "[0, 1]",</span>
+<span class="s">      "fields_data": "{}",</span>
+<span class="s">      "budget": 0.0,</span>
+<span class="s">      "event_type": "virtual",</span>
+<span class="s">      "is_template": "false",</span>
+<span class="s">      "event_uri": "event_uri",</span>
+<span class="s">      "timezone": "America/Bogota",</span>
+<span class="s">      "location": {</span>
+<span class="s">        "coordinates": { "lat": 6.2518400, "lng": -75.5635900 },</span>
+<span class="s">        "address": "Event address",</span>
+<span class="s">        "country": "Colombia.",</span>
+<span class="s">        "city": "Medellín",</span>
+<span class="s">      },</span>
+<span class="s">      "default_language": "es",</span>
+<span class="s">      "virtual_timezone": "America/Bogota",</span>
+<span class="s">      "total_attendees": 0,</span>
+<span class="s">      "cloned_from_id": "1",</span>
+<span class="s">      "banner": {</span>
+<span class="s">        "filename": "file_name",</span>
+<span class="s">        "thumb": "url_image",</span>
+<span class="s">        "small":  "url_image",</span>
+<span class="s">        "medium": "url_image",</span>
+<span class="s">        "large": "url_image",</span>
+<span class="s">      },</span>
+<span class="s">      logo: {</span>
+<span class="s">       "filename": "file_name",</span>
+<span class="s">        "thumb": "url_image",</span>
+<span class="s">        "small":  "url_image",</span>
+<span class="s">        "medium": "url_image",</span>
+<span class="s">        "large": "url_image",</span>
+<span class="s">      } </span>
+<span class="s">    },</span>
+<span class="s">    "relationships": {</span>
+<span class="s">      "settings": {</span>
+<span class="s">        "data": {</span>
+<span class="s">          "id": "108",</span>
+<span class="s">          "type": "settings"</span>
+<span class="s">        }</span>
+<span class="s">      }</span>
+<span class="s">    } </span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response: </p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "start_date": [</span>
+<span class="s">      "is beyond the end date."</span>
+<span class="s">      ],</span>
+<span class="s">    "name": [</span>
+<span class="s">      "is already in use" </span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint update an event and return it</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT /v1/events/event_uri</code></p>
+<h3 id='path-parameters-3'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+</tbody></table>
+<h3 id='available-settings-2'>Available settings</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>name of event.</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>description of event.</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>date</td>
+<td>starting date for event, must be before end date of event.</td>
+</tr>
+<tr>
+<td>budget</td>
+<td>float</td>
+<td>budget for event.</td>
+</tr>
+<tr>
+<td>is_template</td>
+<td>boolean</td>
+<td>this event is a template.</td>
+</tr>
+<tr>
+<td>cloned_from_id</td>
+<td>integer</td>
+<td>event id from this event was cloned</td>
+</tr>
+<tr>
+<td>event_type</td>
+<td>string</td>
+<td>event type [&#39;virtual&#39;, &#39;physical&#39;, &#39;hybrid&#39;].</td>
+</tr>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>event uri must be an unique name.</td>
+</tr>
+<tr>
+<td>logo</td>
+<td>file</td>
+<td>logo for this event.</td>
+</tr>
+<tr>
+<td>banner_image</td>
+<td>file</td>
+<td>banner image for this event.</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>your event currency for payments and invoices [&#39;COP&#39;, &#39;USD&#39;, &#39;EUR&#39;, &#39;ARS&#39;, &#39;BRL&#39;, &#39;CLP&#39;, &#39;MXN&#39;, &#39;PEN&#39;, &#39;GBP&#39;, &#39;JOD&#39;, &#39;UYU&#39;, &#39;PYG&#39;, &#39;AED&#39;, &#39;CAD&#39;, &#39;VND&#39;, &#39;PHP&#39;, &#39;AUD&#39;, &#39;BOB&#39;, &#39;TND&#39;, &#39;SGD&#39;, &#39;CHF&#39;, &#39;CFA&#39;, &#39;ZAR&#39;, &#39;INR&#39;]</td>
+</tr>
+<tr>
+<td>date_format</td>
+<td>string</td>
+<td>event date format [&#39;dd/mm/yyyy&#39;, &#39;mm/dd/yyyy&#39;].</td>
+</tr>
+<tr>
+<td>time_format</td>
+<td>string</td>
+<td>event time format [&#39;hours_24&#39;, &#39;am_pm&#39;].</td>
+</tr>
+</tbody></table>
+<h2 id='destroy-event'>Destroy Event</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace <event uri> with the event uri for the event to destroy. </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    id: "21",</span>
+<span class="s">    "type": "events",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "name": "Event name",</span>
+<span class="s">      "description": "description of an event",</span>
+<span class="s">      "start_date": "2020-04-13 15:54:37 -0500",</span>
+<span class="s">      "end_date": "2020-04-15 15:54:57 -0500",</span>
+<span class="s">      "active_modules": "[8]",</span>
+<span class="s">      "fields_data": "{}",</span>
+<span class="s">      "budget": 0.0,</span>
+<span class="s">      "event_type": "virtual",</span>
+<span class="s">      "is_template": false,</span>
+<span class="s">      "event_uri": "event_uri",</span>
+<span class="s">      "timezone": "America/Bogota",</span>
+<span class="s">      "location": {</span>
+<span class="s">        "coordinates": { "lat": 6.2518400, "lng": -75.5635900 },</span>
+<span class="s">        "address": "Event address",</span>
+<span class="s">        "country": "Colombia.",</span>
+<span class="s">        "city": "Medellín",</span>
+<span class="s">      },</span>
+<span class="s">      "default_language": "es",</span>
+<span class="s">      "virtual_timezone": "America/Bogota",</span>
+<span class="s">      "total_attendees": 0,</span>
+<span class="s">      "banner": {</span>
+<span class="s">        "filename": "file_name",</span>
+<span class="s">        "thumb": "url_image",</span>
+<span class="s">        "small":  "url_image",</span>
+<span class="s">        "medium": "url_image",</span>
+<span class="s">        "large": "url_image",</span>
+<span class="s">      },</span>
+<span class="s">      logo: {</span>
+<span class="s">       "filename": "file_name",</span>
+<span class="s">        "thumb": "url_image",</span>
+<span class="s">        "small":  "url_image",</span>
+<span class="s">        "medium": "url_image",</span>
+<span class="s">        "large": "url_image",</span>
+<span class="s">      } </span>
+<span class="s">    },</span>
+<span class="s">    "relationships": {</span>
+<span class="s">      "settings": {</span>
+<span class="s">        "data": {</span>
+<span class="s">          "id": "108",</span>
+<span class="s">          "type": "settings"</span>
+<span class="s">        }</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint destroy a event and return it</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE /v1/events/event_uri</code></p>
+<h3 id='path-parameters-4'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+</tbody></table>
+<h2 id='settings'>Settings</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/settings'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'PATCH'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="s2">"event_settings"</span><span class="p">,</span>
+      <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">payment_method</span><span class="p">:</span> <span class="s2">"credit card"</span><span class="p">,</span>
+        <span class="na">paypal_production_key</span><span class="p">:</span> <span class="s2">"12345ABCDE"</span><span class="p">,</span>
+        <span class="na">paypal_sandbox_key</span><span class="p">:</span> <span class="s2">"ABCDEHGIKN"</span><span class="p">,</span>
+        <span class="na">paypal_test_mode</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">stripe_secret_api_key</span><span class="p">:</span> <span class="s2">"1A2G3R4FTT"</span><span class="p">,</span>
+        <span class="na">stripe_publishable_api_key</span><span class="p">:</span> <span class="s2">"LA778GHGD6"</span><span class="p">,</span>
+        <span class="na">pay_u_api_key</span><span class="p">:</span> <span class="s2">"99IIOYNTRE"</span><span class="p">,</span>
+        <span class="na">pay_u_merchant_id</span><span class="p">:</span> <span class="s2">"12"</span><span class="p">,</span>
+        <span class="na">pay_u_account_id</span><span class="p">:</span> <span class="s2">"13"</span><span class="p">,</span>
+        <span class="na">pay_u_api_login</span><span class="p">:</span> <span class="s2">"33445ABCDE"</span><span class="p">,</span>
+        <span class="na">pay_u_test_mode</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">currency</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="na">vat_alias</span><span class="p">:</span> <span class="s2">"Recaudo"</span><span class="p">,</span>
+        <span class="na">vat_value</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span>
+        <span class="na">date_format</span><span class="p">:</span> <span class="s2">"dd/mm/yyyy"</span><span class="p">,</span>
+        <span class="na">time_format</span><span class="p">:</span> <span class="s2">"am_pm"</span><span class="p">,</span>
+        <span class="na">google_analytics_tracking_code</span><span class="p">:</span> <span class="s2">"A78Y55ABCD"</span><span class="p">,</span>
+        <span class="na">google_tag_manager_code</span><span class="p">:</span> <span class="s2">"11223ABCDE"</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "3",</span>
+<span class="s">    "type": "event_settings",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "payment_method": "credit card",</span>
+<span class="s">      "paypal_production_key": "12345ABCDE",</span>
+<span class="s">      "paypal_sandbox_key": "12345ABCDE",</span>
+<span class="s">      "paypal_test_mode": false,</span>
+<span class="s">      "stripe_secret_api_key": "12345ABCDE",</span>
+<span class="s">      "stripe_publishable_api_key": "12345ABCDE",</span>
+<span class="s">      "pay_u_api_key": "12345ABCDE",</span>
+<span class="s">      "pay_u_merchant_id": "12",</span>
+<span class="s">      "pay_u_account_id": "13",</span>
+<span class="s">      "pay_u_api_login": "33445ABCDE",</span>
+<span class="s">      "pay_u_test_mode": false,</span>
+<span class="s">      "currency": 4,</span>
+<span class="s">      "vat_alias": "Recaudo",</span>
+<span class="s">      "vat_value": 19,</span>
+<span class="s">      "date_format": "dd/mm/yyyy",</span>
+<span class="s">      "time_format": "am_pm",</span>
+<span class="s">      "google_analytics_tracking_code": "33445ABCDE",</span>
+<span class="s">      "google_tag_manager_code": "11223ABCDE"</span>
+<span class="s">    },</span>
+<span class="s">    "relationships": {</span>
+<span class="s">      "event": {</span>
+<span class="s">        "data": {</span>
+<span class="s">          "id": "2195",</span>
+<span class="s">          "type": "event"</span>
+<span class="s">        }</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of a 500 response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="err">HTTP/1.1 500
+{
+  "message": {
+    "payment_method": [
+      "must be one of these: stripe, payu, and paypal"
+    ]
+  }
+}
+</span></code></pre>
+<p>This endpoint allows you modify your event settings</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>PATCH /v1/events/&lt;event_uri&gt;/settings</code></p>
+<h3 id='path-parameters-5'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+</tbody></table>
+<h3 id='available-settings-3'>Available settings</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payment_method</td>
+<td>string</td>
+<td>payment platform to collect money online [&#39;stripe&#39;, &#39;payu&#39;, &#39;paypal&#39;].</td>
+</tr>
+<tr>
+<td>paypal_production_key</td>
+<td>string</td>
+<td>paypal production key obtained from paypal dashboard.</td>
+</tr>
+<tr>
+<td>paypal_sandbox_key</td>
+<td>string</td>
+<td>paypal sandbox key obtained from paypal dashboard</td>
+</tr>
+<tr>
+<td>paypal_test_mode</td>
+<td>boolean</td>
+<td>when testing your payments won&#39;t be any charge to your cards</td>
+</tr>
+<tr>
+<td>stripe_secret_api_key</td>
+<td>string</td>
+<td>stripe secret api key obtained from stripe dashboard</td>
+</tr>
+<tr>
+<td>stripe_publishable_api_key</td>
+<td>string</td>
+<td>stripe secret publishable api key obtained from stripe dashboard</td>
+</tr>
+<tr>
+<td>pay_u_api_key</td>
+<td>string</td>
+<td>pay u api key obtained from pay u dashboard</td>
+</tr>
+<tr>
+<td>pay_u_merchant_id</td>
+<td>string</td>
+<td>pay u merchand id obtained from pay u dashboard</td>
+</tr>
+<tr>
+<td>pay_u_account_id</td>
+<td>string</td>
+<td>pay u account id obtained from pay u dashboard</td>
+</tr>
+<tr>
+<td>pay_u_api_login</td>
+<td>string</td>
+<td>pay u api login obtained from pay u dashboard</td>
+</tr>
+<tr>
+<td>pay_u_test_mode</td>
+<td>boolean</td>
+<td>when testing your payments won&#39;t be any charge to your cards</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>your event currency for payments and invoices [&#39;COP&#39;, &#39;USD&#39;, &#39;EUR&#39;, &#39;ARS&#39;, &#39;BRL&#39;, &#39;CLP&#39;, &#39;MXN&#39;, &#39;PEN&#39;, &#39;GBP&#39;, &#39;JOD&#39;, &#39;UYU&#39;, &#39;PYG&#39;, &#39;AED&#39;, &#39;CAD&#39;, &#39;VND&#39;, &#39;PHP&#39;, &#39;AUD&#39;, &#39;BOB&#39;, &#39;TND&#39;, &#39;SGD&#39;, &#39;CHF&#39;, &#39;CFA&#39;, &#39;ZAR&#39;, &#39;INR&#39;]</td>
+</tr>
+<tr>
+<td>vat_alias</td>
+<td>string</td>
+<td>how do you want to call your vat value</td>
+</tr>
+<tr>
+<td>vat_value</td>
+<td>integer/float</td>
+<td>Your event vat value</td>
+</tr>
+</tbody></table>
+<h1 id='input-fields'>Input fields</h1><h2 id='create-field'>Create field</h2>
+<blockquote>
+<p>To create a new field, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/fields"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -X POST -d <span class="s1">'{
+  "data": {
+    "type": "field",
+    "attributes": {
+      "name": {"es": "Nombre", "en": "Name"},
+      "entity_type": "AttendeeType",
+      "entity_id": 1,
+      "required": true,
+      "order": 0,
+      "available_public_listings": true,
+      "display": true,
+      "filterable": true,
+      "submitted_type": "Attendee",
+      "type": "Fields::SingleSelectionField"
+    }
+  }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">// Get your token for further authorization</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://core.eventtia.com/v1/fields"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"field"</span><span class="p">,</span>
+    <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">name</span><span class="p">:</span> <span class="p">{</span><span class="na">es</span><span class="p">:</span> <span class="s2">"Nombre"</span><span class="p">,</span> <span class="na">en</span><span class="p">:</span> <span class="s2">"Name"</span><span class="p">},</span>
+      <span class="na">entity_type</span><span class="p">:</span> <span class="s2">"AttendeeType"</span><span class="p">,</span>
+      <span class="na">entity_id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="na">order</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="na">available_public_listings</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="na">display</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="na">filterable</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="na">submitted_type</span><span class="p">:</span> <span class="s2">"Attendee"</span><span class="p">,</span>
+      <span class="na">type</span><span class="p">:</span> <span class="s2">"Fields::TextField"</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="p">}</span>
+
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": [</span>
+<span class="s">    {</span>
+<span class="s">      "id": "331",</span>
+<span class="s">      "type": "fields",</span>
+<span class="s">      "attributes": {</span>
+<span class="s">        "name": {</span>
+<span class="s">          "en": "326 name, locale: en",</span>
+<span class="s">          "es": "326 name, locale: es",</span>
+<span class="s">          "fr": "326 name, locale: fr"</span>
+<span class="s">        },</span>
+<span class="s">        "values": null,</span>
+<span class="s">        "settings": {</span>
+<span class="s">          "available_public_listings": true</span>
+<span class="s">        },</span>
+<span class="s">        "type": "Fields::TextField",</span>
+<span class="s">        "validations": {</span>
+<span class="s">          "letters": true</span>
+<span class="s">        },</span>
+<span class="s">        "order": 1,</span>
+<span class="s">        "entity_id": 62374,</span>
+<span class="s">        "maximum_characters": "10",</span>
+<span class="s">        "validation_type": "numbers",</span>
+<span class="s">        "repeat_value": "10",</span>
+<span class="s">        "allowed_values": ["one","one"],</span>
+<span class="s">        "terms_file": null</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">  ]</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of a 422 response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">    "message": {</span>
+<span class="s">        "name": [</span>
+<span class="s">            "Language en required"</span>
+<span class="s">        ]</span>
+<span class="s">    }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint allows you create a new input field. 
+You may provide field names and options in multiple languages. Currently, English, Spanish and French are supported. </p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST /v1/fields</code></p>
+<h3 id='query-parameters-for-text-field'>Query Parameters for Text Field</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Hash</td>
+<td>Field name e.g  {en: &#39;name&#39;, &#39;es&#39;: &#39;nombre&#39;}.</td>
+</tr>
+<tr>
+<td>entity_type</td>
+<td>string</td>
+<td>Field entity type &#39;AttendeeType&#39;</td>
+</tr>
+<tr>
+<td>entity_id</td>
+<td>integer</td>
+<td>Id of AttendeeType.</td>
+</tr>
+<tr>
+<td>required</td>
+<td>boolean</td>
+<td>Specify if the field is required.</td>
+</tr>
+<tr>
+<td>order</td>
+<td>integer</td>
+<td>Field order in the form.</td>
+</tr>
+<tr>
+<td>available_public_listings</td>
+<td>boolean</td>
+<td>Field info visible on public sections.</td>
+</tr>
+<tr>
+<td>display</td>
+<td>boolean</td>
+<td>Show field on public form´s.</td>
+</tr>
+<tr>
+<td>filterable</td>
+<td>boolean</td>
+<td>Allow users search records by this field</td>
+</tr>
+<tr>
+<td>submitted_type</td>
+<td>string</td>
+<td>&#39;Attendee&#39; entity that will be answering this field.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Fields::TextField</td>
+</tr>
+<tr>
+<td>validation_type</td>
+<td>string</td>
+<td>allowed options empty, numbers, letters, telephone</td>
+</tr>
+<tr>
+<td>maximum_characters</td>
+<td>integer</td>
+<td>Maximum of allowed characters for this field</td>
+</tr>
+<tr>
+<td>allowed_values</td>
+<td>Array</td>
+<td>You may provide allowed values for this field if you want.</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-for-text-area-field'>Query Parameters for Text Area Field</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Hash</td>
+<td>Field name e.g  {en: &#39;name&#39;, &#39;es&#39;: &#39;nombre&#39;}.</td>
+</tr>
+<tr>
+<td>entity_type</td>
+<td>string</td>
+<td>Field entity type &#39;AttendeeType&#39;</td>
+</tr>
+<tr>
+<td>entity_id</td>
+<td>integer</td>
+<td>Id of AttendeeType.</td>
+</tr>
+<tr>
+<td>order</td>
+<td>integer</td>
+<td>Field order in the form.</td>
+</tr>
+<tr>
+<td>display</td>
+<td>boolean</td>
+<td>Show field on public form´s.</td>
+</tr>
+<tr>
+<td>submitted_type</td>
+<td>string</td>
+<td>&#39;Attendee&#39; entity that will be answering this field.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Fields::TextAreaField</td>
+</tr>
+<tr>
+<td>maximum_characters</td>
+<td>integer</td>
+<td>Maximum of allowed characters for this field</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-for-label-field'>Query Parameters for Label Field</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Hash</td>
+<td>Field name e.g  {en: &#39;name&#39;, &#39;es&#39;: &#39;nombre&#39;}.</td>
+</tr>
+<tr>
+<td>entity_type</td>
+<td>string</td>
+<td>Field entity type &#39;AttendeeType&#39;</td>
+</tr>
+<tr>
+<td>entity_id</td>
+<td>integer</td>
+<td>Id of AttendeeType.</td>
+</tr>
+<tr>
+<td>order</td>
+<td>integer</td>
+<td>Field order in the form.</td>
+</tr>
+<tr>
+<td>display</td>
+<td>boolean</td>
+<td>Show field on public form´s.</td>
+</tr>
+<tr>
+<td>submitted_type</td>
+<td>string</td>
+<td>&#39;Attendee&#39; entity that will be answering this field.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Fields::LabelField</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-for-single-selection-field'>Query Parameters for Single Selection Field</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Hash</td>
+<td>Field name e.g  {en: &#39;Favorite sport&#39;, &#39;es&#39;: &#39;Deporte favorito&#39;}.</td>
+</tr>
+<tr>
+<td>values</td>
+<td>Array of Obejcts</td>
+<td>options for this field eg [{en: &#39;Automotive&#39;, es: &#39;Automotores&#39;, uuid: &#39;uuide&#39;}, {en: &#39;Computers&#39;, es: &#39;Computadores&#39;, uuid: &#39;uuidop&#39;}]. You must provide an unique uuid for each option.</td>
+</tr>
+<tr>
+<td>entity_type</td>
+<td>string</td>
+<td>Field entity type &#39;AttendeeType&#39;</td>
+</tr>
+<tr>
+<td>entity_id</td>
+<td>integer</td>
+<td>Id of AttendeeType.</td>
+</tr>
+<tr>
+<td>order</td>
+<td>integer</td>
+<td>Field order in the form.</td>
+</tr>
+<tr>
+<td>display</td>
+<td>boolean</td>
+<td>Show field on public form´s.</td>
+</tr>
+<tr>
+<td>submitted_type</td>
+<td>string</td>
+<td>&#39;Attendee&#39; entity that will be answering this field.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Fields::SingleSelectionField</td>
+</tr>
+<tr>
+<td>control_type</td>
+<td>string</td>
+<td>radio or dropdown_list</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-for-multiple-selection-field'>Query Parameters for Multiple Selection Field</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Hash</td>
+<td>Field name e.g  {en: &#39;Products and services&#39;, &#39;es&#39;: &#39;Productos y servicios&#39;}.</td>
+</tr>
+<tr>
+<td>values</td>
+<td>Array of Obejcts</td>
+<td>options for this field eg [{en: &#39;&#39;, es: &#39;Futbol&#39;, uuid: &#39;uuide&#39;}, {en: &#39;Golf&#39;, es: &#39;Golf&#39;, uuid: &#39;uuidop&#39;}]. You must provide an unique uuid for each option.</td>
+</tr>
+<tr>
+<td>entity_type</td>
+<td>string</td>
+<td>Field entity type &#39;AttendeeType&#39;</td>
+</tr>
+<tr>
+<td>entity_id</td>
+<td>integer</td>
+<td>Id of AttendeeType.</td>
+</tr>
+<tr>
+<td>order</td>
+<td>integer</td>
+<td>Field order in the form.</td>
+</tr>
+<tr>
+<td>display</td>
+<td>boolean</td>
+<td>Show field on public form´s.</td>
+</tr>
+<tr>
+<td>submitted_type</td>
+<td>string</td>
+<td>&#39;Attendee&#39; entity that will be answering this field.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Fields::MultipleSelectionField</td>
+</tr>
+<tr>
+<td>control_type</td>
+<td>string</td>
+<td>check_boxes or dropdown_list</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-for-date-time-field'>Query Parameters for Date Time Field</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Hash</td>
+<td>Field name e.g  {en: &#39;date&#39;, &#39;es&#39;: &#39;fecha&#39;}.</td>
+</tr>
+<tr>
+<td>entity_type</td>
+<td>string</td>
+<td>Field entity type &#39;AttendeeType&#39;</td>
+</tr>
+<tr>
+<td>entity_id</td>
+<td>integer</td>
+<td>Id of AttendeeType.</td>
+</tr>
+<tr>
+<td>order</td>
+<td>integer</td>
+<td>Field order in the form.</td>
+</tr>
+<tr>
+<td>display</td>
+<td>boolean</td>
+<td>Show field on public form´s.</td>
+</tr>
+<tr>
+<td>submitted_type</td>
+<td>string</td>
+<td>&#39;Attendee&#39; entity that will be answering this field.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Fields::DateTimeField</td>
+</tr>
+<tr>
+<td>include_time</td>
+<td>boolean</td>
+<td>Include time picker element</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-for-city-field'>Query Parameters for City Field</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Hash</td>
+<td>Field name e.g  {en: &#39;city&#39;, &#39;es&#39;: &#39;ciudad&#39;}.</td>
+</tr>
+<tr>
+<td>entity_type</td>
+<td>string</td>
+<td>Field entity type &#39;AttendeeType&#39;</td>
+</tr>
+<tr>
+<td>entity_id</td>
+<td>integer</td>
+<td>Id of AttendeeType.</td>
+</tr>
+<tr>
+<td>order</td>
+<td>integer</td>
+<td>Field order in the form.</td>
+</tr>
+<tr>
+<td>display</td>
+<td>boolean</td>
+<td>Show field on public form´s.</td>
+</tr>
+<tr>
+<td>submitted_type</td>
+<td>string</td>
+<td>&#39;Attendee&#39; entity that will be answering this field.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Fields::CityField</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-for-image-field'>Query Parameters for Image Field</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Hash</td>
+<td>Field name e.g  {en: &#39;Image&#39;, &#39;es&#39;: &#39;imagen&#39;}.</td>
+</tr>
+<tr>
+<td>entity_type</td>
+<td>string</td>
+<td>Field entity type &#39;AttendeeType&#39;</td>
+</tr>
+<tr>
+<td>entity_id</td>
+<td>integer</td>
+<td>Id of AttendeeType.</td>
+</tr>
+<tr>
+<td>order</td>
+<td>integer</td>
+<td>Field order in the form.</td>
+</tr>
+<tr>
+<td>display</td>
+<td>boolean</td>
+<td>Show field on public form´s.</td>
+</tr>
+<tr>
+<td>submitted_type</td>
+<td>string</td>
+<td>&#39;Attendee&#39; entity that will be answering this field.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Fields::ImageField</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-for-file-field'>Query Parameters for File Field</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Hash</td>
+<td>Field name e.g  {en: &#39;File&#39;, &#39;es&#39;: &#39;Archivo&#39;}.</td>
+</tr>
+<tr>
+<td>entity_type</td>
+<td>string</td>
+<td>Field entity type &#39;AttendeeType&#39;</td>
+</tr>
+<tr>
+<td>entity_id</td>
+<td>integer</td>
+<td>Id of AttendeeType.</td>
+</tr>
+<tr>
+<td>order</td>
+<td>integer</td>
+<td>Field order in the form.</td>
+</tr>
+<tr>
+<td>display</td>
+<td>boolean</td>
+<td>Show field on public form´s.</td>
+</tr>
+<tr>
+<td>submitted_type</td>
+<td>string</td>
+<td>&#39;Attendee&#39; entity that will be answering this field.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Fields::FileField</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-for-terms-field'>Query Parameters for Terms Field</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Hash</td>
+<td>Field name e.g  {en: &#39;Terms and conditions&#39;, &#39;es&#39;: &#39;Terminos y condiciones&#39;}.</td>
+</tr>
+<tr>
+<td>entity_type</td>
+<td>string</td>
+<td>Field entity type &#39;AttendeeType&#39;</td>
+</tr>
+<tr>
+<td>entity_id</td>
+<td>integer</td>
+<td>Id of AttendeeType.</td>
+</tr>
+<tr>
+<td>order</td>
+<td>integer</td>
+<td>Field order in the form.</td>
+</tr>
+<tr>
+<td>display</td>
+<td>boolean</td>
+<td>Show field on public form´s.</td>
+</tr>
+<tr>
+<td>submitted_type</td>
+<td>string</td>
+<td>&#39;Attendee&#39; entity that will be answering this field.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Fields::TermsField</td>
+</tr>
+<tr>
+<td>terms_mode</td>
+<td>string</td>
+<td>url or file</td>
+</tr>
+<tr>
+<td>terms_url</td>
+<td>string</td>
+<td>you must provide an url if terms_mode is url</td>
+</tr>
+<tr>
+<td>terms_file</td>
+<td>file</td>
+<td>you must attach a file terms_mode is file</td>
+</tr>
+</tbody></table>
+<h2 id='update-field'>Update field</h2>
+<blockquote>
+<p>To update field info, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -X PUT -d <span class="s1">'{
+  "data": {
+    "type": "field",
+    "attributes": {
+      "name": {"es": "Nombre", "en": "Name"},
+      "entity_type": "AttendeeType",
+      "entity_id": 1,
+      "required": true,
+      "order": 0,
+      "available_public_listings": true,
+      "display": true,
+      "filterable": true,
+      "submitted_type": "Attendee",
+      "type": "Fields::SingleSelectionField"
+    }
+  }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">// Get your token for further authorization</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"field"</span><span class="p">,</span>
+    <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">name</span><span class="p">:</span> <span class="p">{</span><span class="na">es</span><span class="p">:</span> <span class="s2">"Nuevo nombre"</span><span class="p">,</span> <span class="na">en</span><span class="p">:</span> <span class="s2">"New name"</span><span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="p">}</span>
+
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">     "data": {</span>
+<span class="s">        "id": "1",</span>
+<span class="s">        "type": "fields",</span>
+<span class="s">        "attributes": {</span>
+<span class="s">            "name": {</span>
+<span class="s">                "es": "Nuevo nombre",</span>
+<span class="s">                "en": "New name"</span>
+<span class="s">            },</span>
+<span class="s">            "type": "Fields::TextField",</span>
+<span class="s">            "required": true,</span>
+<span class="s">            "display": true,</span>
+<span class="s">            "filterable": true,</span>
+<span class="s">            "available_public_listings": true,</span>
+<span class="s">        }</span>
+<span class="s">    }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of a 422 response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">    "message": {</span>
+<span class="s">        "name": [</span>
+<span class="s">            "Language en required"</span>
+<span class="s">        ]</span>
+<span class="s">    }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint allows you update a field info.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>PUT /v1/fields/id</code></p>
+<h3 id='path-parameters'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired field</td>
+</tr>
+</tbody></table>
+<h2 id='destroy-field'>Destroy Field</h2>
+<blockquote>
+<p>To update destroy, use this code:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span>
+  <span class="p">},</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">     "data": {</span>
+<span class="s">        "id": "1",</span>
+<span class="s">        "type": "fields",</span>
+<span class="s">        "attributes": {</span>
+<span class="s">            "name": {</span>
+<span class="s">                "es": "Nuevo nombre",</span>
+<span class="s">                "en": "New name"</span>
+<span class="s">            },</span>
+<span class="s">            "type": "Fields::TextField",</span>
+<span class="s">            "required": true,</span>
+<span class="s">            "display": true,</span>
+<span class="s">            "filterable": true,</span>
+<span class="s">            "available_public_listings": true,</span>
+<span class="s">        }</span>
+<span class="s">    }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint allows you destroy a field info.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>DELETE /v1/fields/id</code></p>
+<h3 id='path-parameters-2'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired field</td>
+</tr>
+</tbody></table>
+<h1 id='pricing-tier'>Pricing Tier</h1><h2 id='list-pricing-tiers'>List Pricing Tiers</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/pricing_tiers/'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"pricing_tier"</span><span class="p">,</span>
+    <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">entity_id</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">entity</span> <span class="nx">id</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="na">entity_type</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">entity</span> <span class="nx">type</span><span class="o">&gt;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace <event uri> with the event uri for the event . </p>
+
+<p>Make sure you replace <entity id> with the id for the entity associated to pricing tier to list. </p>
+
+<p>Make sure you replace <entity type> as integer with the nunmber for the entity associated to pricing tier to list.</p>
+</blockquote>
+
+<p>-- 1 : Attendee type</p>
+
+<blockquote>
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "36457",</span>
+<span class="s">    "type": "pricing_tiers",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "price": "99.0",</span>
+<span class="s">      "start_date": "2013-03-02T19:00:00.000-05:00",</span>
+<span class="s">      "end_date": "2013-03-22T19:00:00.000-05:00",</span>
+<span class="s">      "entity_id": 62523,</span>
+<span class="s">      "entity_type": "AttendeeType",</span>
+<span class="s">      "archived": false</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response: </p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "price": [</span>
+<span class="s">      "must be an integer"</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint list pricing tiers and return it</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /v1/events/event_uri/pricing_tiers/</code></p>
+<h3 id='path-parameters'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired pricing tier</td>
+</tr>
+</tbody></table>
+<h2 id='get-pricing-tier'>Get Pricing Tier</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/pricing_tiers/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"pricing_tier"</span><span class="p">,</span>
+    <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">entity_id</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">entity</span> <span class="nx">id</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="na">entity_type</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">entity</span> <span class="nx">type</span><span class="o">&gt;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace <event uri> with the event uri for the event. </p>
+
+<p>Make sure you replace <id> with the id for the pricing tier to get. </p>
+
+<p>Make sure you replace <entity id> with the id for the entity associated to pricing tier. </p>
+
+<p>Make sure you replace <entity type> as integer with the number for the entity associated to pricing tier.</p>
+</blockquote>
+
+<p>-- 1 : Attendee type</p>
+
+<blockquote>
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "36457",</span>
+<span class="s">    "type": "pricing_tiers",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "price": "99.0",</span>
+<span class="s">      "start_date": "2013-03-02T19:00:00.000-05:00",</span>
+<span class="s">      "end_date": "2013-03-22T19:00:00.000-05:00",</span>
+<span class="s">      "entity_id": 62523,</span>
+<span class="s">      "entity_type": "AttendeeType",</span>
+<span class="s">      "archived": false</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response: </p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "price": [</span>
+<span class="s">      "must be an integer"</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint get a pricing tier and return it</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET /v1/events/event_uri/pricing_tiers/id</code></p>
+<h3 id='path-parameters-2'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired pricing tier</td>
+</tr>
+</tbody></table>
+<h2 id='create-pricing-tier'>Create Pricing Tier</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/pricing_tiers/'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"pricing_tier"</span><span class="p">,</span>
+    <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">entity_id</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">entity</span> <span class="nx">id</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="na">entity_type</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">entity</span> <span class="nx">type</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="na">start_date</span><span class="p">:</span> <span class="s2">"2013-03-03"</span><span class="p">,</span> 
+      <span class="na">end_date</span><span class="p">:</span> <span class="s2">"2013-03-23"</span><span class="p">,</span> 
+      <span class="na">price</span><span class="p">:</span> <span class="mi">99</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace <event uri> with the event uri for the event . </p>
+
+<p>Make sure you replace <id> with the id for the pricing tier to create. </p>
+
+<p>Make sure you replace <entity id> with the id for the entity associated to pricing tier to create. </p>
+
+<p>Make sure you replace <entity type> as integer with the number for the entity associated to pricing tier to create.</p>
+</blockquote>
+
+<p>-- 1 : Attendee type</p>
+
+<blockquote>
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "36457",</span>
+<span class="s">    "type": "pricing_tiers",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "price": "99.0",</span>
+<span class="s">      "start_date": "2013-03-02T19:00:00.000-05:00",</span>
+<span class="s">      "end_date": "2013-03-22T19:00:00.000-05:00",</span>
+<span class="s">      "entity_id": 62523,</span>
+<span class="s">      "entity_type": "AttendeeType",</span>
+<span class="s">      "archived": false</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response: </p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "price": [</span>
+<span class="s">      "must be an integer"</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint create a pricing tier and return it, , Entities supported : AttendeeType.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST /v1/events/event_uri/pricing_tiers/</code></p>
+<h3 id='path-parameters-3'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>entity_id</td>
+<td>integer</td>
+<td>entity id to which pricing tier belongs</td>
+</tr>
+<tr>
+<td>entity_type</td>
+<td>string</td>
+<td>entity type to which pricing tier belongs</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>date</td>
+<td>start date for pricing tier</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>date</td>
+<td>end date for pricing tier</td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>price for pricing tier</td>
+</tr>
+</tbody></table>
+<h2 id='update-pricing-tier'>Update Pricing Tier</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/pricing_tiers/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"pricing_tier"</span><span class="p">,</span>
+    <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">entity_id</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">entity</span> <span class="nx">id</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="na">entity_type</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">entity</span> <span class="nx">type</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="na">start_date</span><span class="p">:</span> <span class="s2">"2013-03-03"</span><span class="p">,</span> 
+      <span class="na">end_date</span><span class="p">:</span> <span class="s2">"2013-03-23"</span><span class="p">,</span> 
+      <span class="na">price</span><span class="p">:</span> <span class="mi">99</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace <event uri> with the event uri for the event to update. </p>
+
+<p>Make sure you replace <id> with the id for the pricing tier to update. </p>
+
+<p>Make sure you replace <entity id> with the id for the entity associated to pricing tier to update. </p>
+
+<p>Make sure you replace <entity type> as integer with the nunmber for the entity associated to pricing tier to update.</p>
+</blockquote>
+
+<p>-- 1 : Attendee type</p>
+
+<blockquote>
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "36457",</span>
+<span class="s">    "type": "pricing_tiers",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "price": "99.0",</span>
+<span class="s">      "start_date": "2013-03-02T19:00:00.000-05:00",</span>
+<span class="s">      "end_date": "2013-03-22T19:00:00.000-05:00",</span>
+<span class="s">      "entity_id": 62523,</span>
+<span class="s">      "entity_type": "AttendeeType",</span>
+<span class="s">      "archived": false</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response: </p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "price": [</span>
+<span class="s">      "must be an integer"</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint update a pricing tier and return it, Entities supported : AttendeeType.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT /v1/events/event_uri/pricing_tiers/id</code></p>
+<h3 id='path-parameters-4'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>entity_id</td>
+<td>integer</td>
+<td>entity id to which pricing tier belongs</td>
+</tr>
+<tr>
+<td>entity_type</td>
+<td>string</td>
+<td>entity type to which pricing tier belongs</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>date</td>
+<td>start date for pricing tier</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>date</td>
+<td>end date for pricing tier</td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>price for pricing tier</td>
+</tr>
+</tbody></table>
+<h2 id='destroy-pricing-tier'>Destroy Pricing Tier</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/pricing_tiers/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace <event uri> with the event uri for the event to destroy. </p>
+
+<p>Make sure you replace <id> with the id for the pricing tier to update. </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "36453",</span>
+<span class="s">    "type": "pricing_tiers",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "price": "24.0",</span>
+<span class="s">      "start_date": "2013-02-08T19:00:00.000-05:00",</span>
+<span class="s">      "end_date": "2013-02-11T19:00:00.000-05:00",</span>
+<span class="s">      "entity_id": 62523,</span>
+<span class="s">      "entity_type": "AttendeeType",</span>
+<span class="s">      "archived": true</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint destroy a pricing tier and return it</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE /v1/events/event_uri/pricing_tiers/id</code></p>
+<h3 id='path-parameters-5'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired pricing tier</td>
+</tr>
+</tbody></table>
+<h1 id='users'>Users</h1><h2 id='create-new-user-and-account'>Create new user and account</h2>
+<blockquote>
+<p>To create a new user, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -X POST -d <span class="s1">'{"user": {"name": "Your name", "email": "companyemail@mycompany.com", "phone": "your phone number", "password": "your password", "password_confirmation": "your password confirmation"}, "account": {"name": "Your company name", "website": "www.yourcompany.com"}}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">// Get your token for further authorization</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://core.eventtia.com/v1/registrations"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">user</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">name</span><span class="p">:</span> <span class="s2">"Your name"</span><span class="p">,</span> 
+      <span class="na">email</span><span class="p">:</span> <span class="s2">"companyemail@mycompany.com"</span><span class="p">,</span> 
+      <span class="na">phone</span><span class="p">:</span> <span class="s2">"your phone number"</span><span class="p">,</span> 
+      <span class="na">password</span><span class="p">:</span> <span class="s2">"your password"</span><span class="p">,</span> 
+      <span class="na">password_confirmation</span><span class="p">:</span> <span class="s2">"your password confirmation"</span>
+    <span class="p">},</span> 
+    <span class="na">account</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">name</span><span class="p">:</span> <span class="s2">"Your company name"</span><span class="p">,</span> 
+      <span class="na">website</span><span class="p">:</span> <span class="s2">"www.yourcompany.com"</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">    "data": {</span>
+<span class="s">        "id": "1",</span>
+<span class="s">        "type": "users",</span>
+<span class="s">        "attributes": {</span>
+<span class="s">            "name": "Your name",</span>
+<span class="s">            "email": "companyemail@mycompany.com",</span>
+<span class="s">            "account_name": "Your company name"</span>
+<span class="s">        },</span>
+<span class="s">        "relationships": {</span>
+<span class="s">            "account": {</span>
+<span class="s">                "data": {</span>
+<span class="s">                    "id": "1",</span>
+<span class="s">                    "type": "account"</span>
+<span class="s">                }</span>
+<span class="s">            }</span>
+<span class="s">        }</span>
+<span class="s">    },</span>
+<span class="s">    "meta": {</span>
+<span class="s">        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGFzcyI6IlVzZXIiLCJhdXRoZW50aWNhdGlvbl9rZXkiOiJwb2VmZWNvbSIsImV4cCI6MTU5MzcwMTYwMX0.sHJrSzZYxnYxyWDRIjgK-BqHnRXgFdQBq0c0WjI_kfI"</span>
+<span class="s">    }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of a 422 response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">    "message": {</span>
+<span class="s">        "name": [</span>
+<span class="s">            "can't be empty"</span>
+<span class="s">        ]</span>
+<span class="s">    }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint allows you create a new user and account</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST /v1/registrations</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user[name]</td>
+<td>string</td>
+<td>The User&#39;s name.</td>
+</tr>
+<tr>
+<td>user[email]</td>
+<td>string</td>
+<td>The User&#39;s corporate email.</td>
+</tr>
+<tr>
+<td>user[phone]</td>
+<td>string</td>
+<td>The User&#39;s phone.</td>
+</tr>
+<tr>
+<td>user[password]</td>
+<td>string</td>
+<td>The User&#39;s password.</td>
+</tr>
+<tr>
+<td>account[name]</td>
+<td>string</td>
+<td>The Uers&#39;s company name.</td>
+</tr>
+<tr>
+<td>account[website]</td>
+<td>string</td>
+<td>The User&#39;s company website.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="javascript">javascript</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
