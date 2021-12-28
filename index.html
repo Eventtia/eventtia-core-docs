@@ -328,6 +328,26 @@
               </ul>
           </li>
           <li>
+            <a href="#speakers" class="toc-h1 toc-link" data-title="Speakers">Speakers</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-speaker" class="toc-h2 toc-link" data-title="List Speaker">List Speaker</a>
+                  </li>
+                  <li>
+                    <a href="#get-speaker" class="toc-h2 toc-link" data-title="Get Speaker">Get Speaker</a>
+                  </li>
+                  <li>
+                    <a href="#create-speaker" class="toc-h2 toc-link" data-title="Create Speaker">Create Speaker</a>
+                  </li>
+                  <li>
+                    <a href="#update-speaker" class="toc-h2 toc-link" data-title="Update Speaker">Update Speaker</a>
+                  </li>
+                  <li>
+                    <a href="#destroy-speaker" class="toc-h2 toc-link" data-title="Destroy Speaker">Destroy Speaker</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
               <ul class="toc-list-h2">
                   <li>
@@ -357,7 +377,7 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='https://connect.eventtia.com/'>connect.eventtia.com</a></li>
+            <li><a href='https://core.eventtia.com/'>core.eventtia.com</a></li>
             <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
@@ -3347,6 +3367,424 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span> <s
 <td>id</td>
 <td>integer</td>
 <td>The id for the desired pricing tier</td>
+</tr>
+</tbody></table>
+<h1 id='speakers'>Speakers</h1><h2 id='list-speaker'>List Speaker</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/speakers/'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace <event uri> with the event uri for the event. </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">  "id": "14",</span>
+<span class="s">  "type": "speakers",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "name": "Mary",</span>
+<span class="s">      "last_name": "Perez Ossa",</span>
+<span class="s">      "email": "mary@email.com",</span>
+<span class="s">      "biography": "biography Mary",</span>
+<span class="s">      "twitter": "Twitter Mary",</span>
+<span class="s">      "website": "Website Mary",</span>
+<span class="s">      "photo": "url_img_file"</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint list speakers belongs to event and return it</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /v1/events/event_uri/speakers/</code></p>
+<h3 id='path-parameters'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Filters results by the speaker name.</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>Filters results by the speaker last_name.</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Filters results by the speaker email.</td>
+</tr>
+<tr>
+<td>fullname</td>
+<td>string</td>
+<td>Filters results by the speaker concat name and last_name.</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>string</td>
+<td>Filters results by the speaker match name ,last_name and email.</td>
+</tr>
+</tbody></table>
+<h2 id='get-speaker'>Get Speaker</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/speakers/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace <event uri> with the event uri for the event.</p>
+
+<p>Make sure you replace <id> with the id for the speaker to obtain. </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">  "id": "14",</span>
+<span class="s">  "type": "speakers",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "name": "Mary",</span>
+<span class="s">      "last_name": "Perez Ossa",</span>
+<span class="s">      "email": "mary@email.com",</span>
+<span class="s">      "biography": "biography Mary",</span>
+<span class="s">      "twitter": "Twitter Mary",</span>
+<span class="s">      "website": "Website Mary",</span>
+<span class="s">      "photo": "url_image_file"</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Not Found (404) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
+<span class="s">{</span>
+<span class="s">  {</span>
+<span class="s">    "message": "Couldn't find Speaker"</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint get a speaker and return it</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET /v1/events/event_uri/speaker/id</code></p>
+<h3 id='path-parameters-2'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired speaker</td>
+</tr>
+</tbody></table>
+<h2 id='create-speaker'>Create Speaker</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/speakers/'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="s2">"speakers"</span><span class="p">,</span>
+        <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">name</span><span class="p">:</span> <span class="s2">"Mary"</span><span class="p">,</span>
+          <span class="na">last_name</span><span class="p">:</span> <span class="s2">"Perez Ossa"</span><span class="p">,</span>
+          <span class="na">email</span><span class="p">:</span> <span class="s2">"mary@email.com"</span><span class="p">,</span>
+          <span class="na">biography</span><span class="p">:</span> <span class="s2">"biography Mary"</span><span class="p">,</span>
+          <span class="na">twitter</span><span class="p">:</span> <span class="s2">"Twitter Mary"</span><span class="p">,</span>
+          <span class="na">website</span><span class="p">:</span> <span class="s2">"Website Mary"</span><span class="p">,</span>
+          <span class="na">photo</span><span class="p">:</span> <span class="s2">"url_image_file"</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace <event uri> with the event uri for the event .  </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "14",</span>
+<span class="s">    "type": "speakers",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "name": "Mary",</span>
+<span class="s">      "last_name": "Perez Ossa",</span>
+<span class="s">      "email": "mary@email.com",</span>
+<span class="s">      "biography": "biography Mary",</span>
+<span class="s">      "twitter": "Twitter Mary",</span>
+<span class="s">      "website": "Website Mary",</span>
+<span class="s">      "photo": "url_image_file"</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response: </p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "name": [</span>
+<span class="s">      "can't be blank"</span>
+<span class="s">    ],</span>
+<span class="s">    "email": [</span>
+<span class="s">      "can't be blank"</span>
+<span class="s">    ]</span>
+<span class="s">    }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint create a speaker and return it</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST /v1/events/event_uri/speakers</code></p>
+<h3 id='path-parameters-3'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>name of speaker.</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>last name of speaker.</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>email of speaker.</td>
+</tr>
+<tr>
+<td>biography</td>
+<td>text</td>
+<td>biography of speaker.</td>
+</tr>
+<tr>
+<td>twitter</td>
+<td>string</td>
+<td>speaker twitter account.</td>
+</tr>
+<tr>
+<td>website</td>
+<td>string</td>
+<td>speaker website.</td>
+</tr>
+<tr>
+<td>photo</td>
+<td>file</td>
+<td>image for this speaker.</td>
+</tr>
+</tbody></table>
+<h2 id='update-speaker'>Update Speaker</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/speakers/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="s2">"speakers"</span><span class="p">,</span>
+        <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">name</span><span class="p">:</span> <span class="s2">"Mary"</span><span class="p">,</span>
+          <span class="na">last_name</span><span class="p">:</span> <span class="s2">"Perez Ossa"</span><span class="p">,</span>
+          <span class="na">email</span><span class="p">:</span> <span class="s2">"mary@email.com"</span><span class="p">,</span>
+          <span class="na">biography</span><span class="p">:</span> <span class="s2">"biography Mary"</span><span class="p">,</span>
+          <span class="na">twitter</span><span class="p">:</span> <span class="s2">"Twitter Mary"</span><span class="p">,</span>
+          <span class="na">website</span><span class="p">:</span> <span class="s2">"Website Mary"</span><span class="p">,</span>
+          <span class="na">photo</span><span class="p">:</span> <span class="s2">"url_image_file"</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate.</p>
+
+<p>Make sure you replace <event uri> with the event uri for the event to update.</p>
+
+<p>Make sure you replace <id> with the id for the speaker to update.</p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  {</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "14",</span>
+<span class="s">    "type": "speakers",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "name": "Mary",</span>
+<span class="s">      "last_name": "Perez Ossa",</span>
+<span class="s">      "email": "mary@email.com",</span>
+<span class="s">      "biography": "biography Mary",</span>
+<span class="s">      "twitter": "Twitter Mary",</span>
+<span class="s">      "website": "Website Mary",</span>
+<span class="s">      "photo": "url_image_file"</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "email": [</span>
+<span class="s">      "invalid email format"</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint update a speaker and return it</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT /v1/events/event_uri/speakers/id</code></p>
+<h3 id='path-parameters-4'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>name of speaker.</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>last name of speaker.</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>email of speaker.</td>
+</tr>
+<tr>
+<td>biography</td>
+<td>text</td>
+<td>biography of speaker.</td>
+</tr>
+<tr>
+<td>twitter</td>
+<td>string</td>
+<td>speaker twitter account.</td>
+</tr>
+<tr>
+<td>website</td>
+<td>string</td>
+<td>speaker website.</td>
+</tr>
+<tr>
+<td>photo</td>
+<td>file</td>
+<td>image for this speaker.</td>
+</tr>
+</tbody></table>
+<h2 id='destroy-speaker'>Destroy Speaker</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/speakers/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate.</p>
+
+<p>Make sure you replace <event uri> with the event uri for the event to destroy.</p>
+
+<p>Make sure you replace <id> with the id for the speaker to update.</p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "14",</span>
+<span class="s">    "type": "speakers",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "name": "Mary",</span>
+<span class="s">      "last_name": "Perez Ossa",</span>
+<span class="s">      "email": "mary@email.com",</span>
+<span class="s">      "biography": "biography Mary",</span>
+<span class="s">      "twitter": "Twitter Mary",</span>
+<span class="s">      "website": "Website Mary",</span>
+<span class="s">      "photo": "url_image_file"</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint destroy a speaker and return it</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE /v1/events/event_uri/speakers/id</code></p>
+<h3 id='path-parameters-5'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired speaker</td>
 </tr>
 </tbody></table>
 <h1 id='users'>Users</h1><h2 id='create-new-user-and-account'>Create new user and account</h2>
