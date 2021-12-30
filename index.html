@@ -501,7 +501,7 @@ curl <span class="s2">"&lt;api endpoint&gt;"</span> <span class="se">\</span>
 </code></pre>
 <p>This endpoint list attendees belongs to event and return it</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET /v1/events/event_uri/attendees/</code></p>
+<p><code>GET /v1/events/:event_uri/attendees/</code></p>
 <h3 id='path-parameters'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -524,11 +524,11 @@ curl <span class="s2">"&lt;api endpoint&gt;"</span> <span class="se">\</span>
 <span class="p">})</span>
 </code></pre>
 <blockquote>
-<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate.</p>
 
 <p>Make sure you replace <event uri> with the event uri for the event.</p>
 
-<p>Make sure you replace <id> with the id for the attendee to obtain. </p>
+<p>Make sure you replace <id> with the id for the attendee to obtain.</p>
 
 <p>Example of a successful (200) response:</p>
 </blockquote>
@@ -567,7 +567,7 @@ curl <span class="s2">"&lt;api endpoint&gt;"</span> <span class="se">\</span>
 </code></pre>
 <p>This endpoint get an attendee and return it</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET /v1/events/event_uri/attendees/id</code></p>
+<p><code>GET /v1/events/:event_uri/attendees/:id</code></p>
 <h3 id='path-parameters-2'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -614,9 +614,9 @@ curl <span class="s2">"&lt;api endpoint&gt;"</span> <span class="se">\</span>
 <span class="p">})</span>
 </code></pre>
 <blockquote>
-<p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
+<p>Make sure you replace <your token> with the JWT you get when you authenticate.</p>
 
-<p>Make sure you replace <event uri> with the event uri for the event .  </p>
+<p>Make sure you replace <event uri> with the event uri for the event .</p>
 
 <p>Example of a successful (200) response:</p>
 </blockquote>
@@ -654,7 +654,23 @@ curl <span class="s2">"&lt;api endpoint&gt;"</span> <span class="se">\</span>
 <span class="s">}</span>
 </code></pre>
 <p>This endpoint create an attendee and return it</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST /v1/events/:event_uri/attendees/</code></p>
 <h3 id='path-parameters-3'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -750,7 +766,7 @@ curl <span class="s2">"&lt;api endpoint&gt;"</span> <span class="se">\</span>
 <span class="s">        "281": "george",</span>
 <span class="s">        "282": "downtown"</span>
 <span class="s">      },</span>
-<span class="s">      "photo_url": "url_Image_file"     </span>
+<span class="s">      "photo_url": "url_Image_file"</span>
 <span class="s">    }</span>
 <span class="s">  }</span>
 <span class="s">}</span>
@@ -768,9 +784,28 @@ curl <span class="s2">"&lt;api endpoint&gt;"</span> <span class="se">\</span>
 <span class="s">}</span>
 </code></pre>
 <p>This endpoint update an attendee and return it</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>PUT /v1/events/event_uri/attendees/id</code></p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT /v1/events/:event_uri/attendees/:id</code></p>
 <h3 id='path-parameters-4'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired attendee</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters-2'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -852,8 +887,8 @@ curl <span class="s2">"&lt;api endpoint&gt;"</span> <span class="se">\</span>
 <span class="s">}</span>
 </code></pre>
 <p>This endpoint destroy an attendee and return it</p>
-<h3 id='http-request-4'>HTTP Request</h3>
-<p><code>DELETE /v1/events/event_uri/attendees/id</code></p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE /v1/events/:event_uri/attendees/:id</code></p>
 <h3 id='path-parameters-5'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -1013,7 +1048,7 @@ curl <span class="s2">"&lt;api endpoint&gt;"</span> <span class="se">\</span>
 </tr>
 </tbody></table>
 <h3 id='http-request-for-optional-include-fields'>HTTP Request for optional include fields</h3>
-<p><code>GET /v1/events/event_uri/attendee_types/id/include=fields</code></p>
+<p><code>GET /v1/events/:event_uri/attendee_types/:id/include=fields</code></p>
 <h3 id='path-parameters-3'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -1100,7 +1135,9 @@ curl <span class="s2">"&lt;api endpoint&gt;"</span> <span class="se">\</span>
 <span class="s">}</span>
 </code></pre>
 <p>This endpoint create an attendee type and return it</p>
-<h3 id='path-parameters-4'>Path Parameters</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST /v1/events/:event_uri/attendee_types/</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1217,9 +1254,28 @@ curl <span class="s2">"&lt;api endpoint&gt;"</span> <span class="se">\</span>
 <span class="s">}</span>
 </code></pre>
 <p>This endpoint update an attendee type and return it</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>PUT /v1/events/event_uri/attendee_types/id</code></p>
-<h3 id='path-parameters-5'>Path Parameters</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT /v1/events/:event_uri/attendee_types/:id</code></p>
+<h3 id='path-parameters-4'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired attendee type</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters-2'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1308,9 +1364,9 @@ curl <span class="s2">"&lt;api endpoint&gt;"</span> <span class="se">\</span>
 <span class="s">}</span>
 </code></pre>
 <p>This endpoint destroy an attendee type and return it</p>
-<h3 id='http-request-4'>HTTP Request</h3>
-<p><code>DELETE /v1/events/event_uri/attendee_types/id</code></p>
-<h3 id='path-parameters-6'>Path Parameters</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE /v1/events/:event_uri/attendee_types/:id</code></p>
+<h3 id='path-parameters-5'>Path Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1459,7 +1515,7 @@ curl <span class="s2">"&lt;api endpoint&gt;"</span> <span class="se">\</span>
 <span class="s">          "type": "settings"</span>
 <span class="s">        }</span>
 <span class="s">      }</span>
-<span class="s">    }    </span>
+<span class="s">    }</span>
 <span class="s">  }</span>
 <span class="s">}</span>
 </code></pre>
@@ -1473,7 +1529,7 @@ curl <span class="s2">"&lt;api endpoint&gt;"</span> <span class="se">\</span>
 </code></pre>
 <p>This endpoint return an event</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET /v1/events/event_uri</code></p>
+<p><code>GET /v1/events/:event_uri</code></p>
 <h3 id='path-parameters'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -1489,7 +1545,7 @@ curl <span class="s2">"&lt;api endpoint&gt;"</span> <span class="se">\</span>
 </tr>
 </tbody></table>
 <h3 id='http-request-for-optional-include-settings'>HTTP Request for optional include settings</h3>
-<p><code>GET /v1/events/event_uri/include=settings</code></p>
+<p><code>GET /v1/events/:event_uri/include=settings</code></p>
 <h3 id='path-parameters-2'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -1835,7 +1891,7 @@ curl <span class="s2">"&lt;api endpoint&gt;"</span> <span class="se">\</span>
 </code></pre>
 <p>This endpoint update an event and return it</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>PUT /v1/events/event_uri</code></p>
+<p><code>PUT /v1/events/:event_uri</code></p>
 <h3 id='path-parameters-3'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -1992,7 +2048,7 @@ curl <span class="s2">"&lt;api endpoint&gt;"</span> <span class="se">\</span>
 </code></pre>
 <p>This endpoint destroy a event and return it</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>DELETE /v1/events/event_uri</code></p>
+<p><code>DELETE /v1/events/:event_uri</code></p>
 <h3 id='path-parameters-4'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -2094,7 +2150,7 @@ curl <span class="s2">"&lt;api endpoint&gt;"</span> <span class="se">\</span>
 </span></code></pre>
 <p>This endpoint allows you modify your event settings</p>
 <h3 id='http-request-6'>HTTP Request</h3>
-<p><code>PATCH /v1/events/&lt;event_uri&gt;/settings</code></p>
+<p><code>PATCH /v1/events/:event_uri/settings</code></p>
 <h3 id='path-parameters-5'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -2883,7 +2939,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span> <s
 </code></pre>
 <p>This endpoint allows you update a field info.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>PUT /v1/fields/id</code></p>
+<p><code>PUT /v1/fields/:id</code></p>
 <h3 id='path-parameters'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -2934,7 +2990,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span> <s
 </code></pre>
 <p>This endpoint allows you destroy a field info.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE /v1/fields/id</code></p>
+<p><code>DELETE /v1/fields/:id</code></p>
 <h3 id='path-parameters-2'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -3010,7 +3066,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span> <s
 </code></pre>
 <p>This endpoint list pricing tiers and return it</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET /v1/events/event_uri/pricing_tiers/</code></p>
+<p><code>GET /v1/events/:event_uri/pricing_tiers/</code></p>
 <h3 id='path-parameters'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -3024,14 +3080,28 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span> <s
 <td>string</td>
 <td>The event_uri for the desired event</td>
 </tr>
+</tbody></table>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
 <tr>
-<td>id</td>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>entity_id</td>
 <td>integer</td>
-<td>The id for the desired pricing tier</td>
+<td>entity id to which pricing tier belongs</td>
+</tr>
+<tr>
+<td>entity_type</td>
+<td>string</td>
+<td>entity type to which pricing tier belongs</td>
 </tr>
 </tbody></table>
 <h2 id='get-pricing-tier'>Get Pricing Tier</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/pricing_tiers/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
     <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
@@ -3093,7 +3163,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span> <s
 </code></pre>
 <p>This endpoint get a pricing tier and return it</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET /v1/events/event_uri/pricing_tiers/id</code></p>
+<p><code>GET /v1/events/:event_uri/pricing_tiers/:id</code></p>
 <h3 id='path-parameters-2'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -3111,6 +3181,25 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span> <s
 <td>id</td>
 <td>integer</td>
 <td>The id for the desired pricing tier</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters-2'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>entity_id</td>
+<td>integer</td>
+<td>entity id to which pricing tier belongs</td>
+</tr>
+<tr>
+<td>entity_type</td>
+<td>string</td>
+<td>entity type to which pricing tier belongs</td>
 </tr>
 </tbody></table>
 <h2 id='create-pricing-tier'>Create Pricing Tier</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/pricing_tiers/'</span><span class="p">,</span> <span class="p">{</span>
@@ -3136,8 +3225,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span> <s
 <p>Make sure you replace <your token> with the JWT you get when you authenticate. </p>
 
 <p>Make sure you replace <event uri> with the event uri for the event . </p>
-
-<p>Make sure you replace <id> with the id for the pricing tier to create. </p>
 
 <p>Make sure you replace <entity id> with the id for the entity associated to pricing tier to create. </p>
 
@@ -3179,8 +3266,8 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span> <s
 </code></pre>
 <p>This endpoint create a pricing tier and return it, , Entities supported : AttendeeType.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>POST /v1/events/event_uri/pricing_tiers/</code></p>
-<h3 id='path-parameters-3'>Path Parameters</h3>
+<p><code>POST /v1/events/:event_uri/pricing_tiers/</code></p>
+<h3 id='body-parameters-3'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3280,8 +3367,27 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span> <s
 </code></pre>
 <p>This endpoint update a pricing tier and return it, Entities supported : AttendeeType.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>PUT /v1/events/event_uri/pricing_tiers/id</code></p>
-<h3 id='path-parameters-4'>Path Parameters</h3>
+<p><code>PUT /v1/events/:event_uri/pricing_tiers/:id</code></p>
+<h3 id='path-parameters-3'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired pricing tier</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters-4'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3349,8 +3455,8 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span> <s
 </code></pre>
 <p>This endpoint destroy a pricing tier and return it</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>DELETE /v1/events/event_uri/pricing_tiers/id</code></p>
-<h3 id='path-parameters-5'>Path Parameters</h3>
+<p><code>DELETE /v1/events/:event_uri/pricing_tiers/:id</code></p>
+<h3 id='path-parameters-4'>Path Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3402,7 +3508,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span> <s
 </code></pre>
 <p>This endpoint list speakers belongs to event and return it</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET /v1/events/event_uri/speakers/</code></p>
+<p><code>GET /v1/events/:event_uri/speakers/</code></p>
 <h3 id='path-parameters'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -3417,7 +3523,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span> <s
 <td>The event_uri for the desired event</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters'>Query Parameters</h3>
+<h3 id='body-parameters'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3496,7 +3602,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span> <s
 </code></pre>
 <p>This endpoint get a speaker and return it</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET /v1/events/event_uri/speaker/id</code></p>
+<p><code>GET /v1/events/:event_uri/speaker/:id</code></p>
 <h3 id='path-parameters-2'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -3578,8 +3684,22 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span> <s
 </code></pre>
 <p>This endpoint create a speaker and return it</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>POST /v1/events/event_uri/speakers</code></p>
+<p><code>POST /v1/events/:event_uri/speakers</code></p>
 <h3 id='path-parameters-3'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters-2'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3687,8 +3807,27 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span> <s
 </code></pre>
 <p>This endpoint update a speaker and return it</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>PUT /v1/events/event_uri/speakers/id</code></p>
+<p><code>PUT /v1/events/:event_uri/speakers/:id</code></p>
 <h3 id='path-parameters-4'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired speaker</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters-3'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3767,7 +3906,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span> <s
 </code></pre>
 <p>This endpoint destroy a speaker and return it</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>DELETE /v1/events/event_uri/speakers/id</code></p>
+<p><code>DELETE /v1/events/:event_uri/speakers/:id</code></p>
 <h3 id='path-parameters-5'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -3930,7 +4069,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <span class="s">      },</span>
 <span class="s">      "archived": false,</span>
 <span class="s">      "show_on_register": false,</span>
-<span class="s">      "allow_blocking_workshops": false     </span>
+<span class="s">      "allow_blocking_workshops": false</span>
 <span class="s">    },</span>
 <span class="s">    "relationships": {</span>
 <span class="s">      "speakers": {</span>
@@ -3947,7 +4086,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 </code></pre>
 <p>This endpoint list workshops belongs to event and return it</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET /v1/events/event_uri/workshops/</code></p>
+<p><code>GET /v1/events/:event_uri/workshops/</code></p>
 <h3 id='path-parameters'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -4029,7 +4168,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <span class="s">      },</span>
 <span class="s">      "archived": false,</span>
 <span class="s">      "show_on_register": false,</span>
-<span class="s">      "allow_blocking_workshops": false     </span>
+<span class="s">      "allow_blocking_workshops": false</span>
 <span class="s">    },</span>
 <span class="s">    "relationships": {</span>
 <span class="s">      "speakers": {</span>
@@ -4056,7 +4195,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 </code></pre>
 <p>This endpoint get an workshop and return it</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET /v1/events/event_uri/workshops/id</code></p>
+<p><code>GET /v1/events/:event_uri/workshops/:id</code></p>
 <h3 id='path-parameters-2'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -4090,9 +4229,9 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
         <span class="na">end_date</span><span class="p">:</span> <span class="s2">"2021-12-20"</span><span class="p">,</span>
         <span class="na">limit</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
         <span class="na">location</span><span class="p">:</span> <span class="s2">"hotel"</span><span class="p">,</span>
-        <span class="na">description</span><span class="p">:</span> <span class="s2">"business workshop"</span>
+        <span class="na">description</span><span class="p">:</span> <span class="s2">"business workshop"</span><span class="p">,</span>
         <span class="na">show_on_register</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nx">allow_blocking_workshops</span><span class="p">,:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">allow_blocking_workshops</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="na">price</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">"1"</span><span class="p">:</span> <span class="s2">"300"</span>
         <span class="p">}</span>
@@ -4134,7 +4273,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <span class="s">      "1": "300"},</span>
 <span class="s">     "archived": false,</span>
 <span class="s">     "show_on_register": false,</span>
-<span class="s">     "allow_blocking_workshops": false     </span>
+<span class="s">     "allow_blocking_workshops": false</span>
 <span class="s">    },</span>
 <span class="s">    "relationships": {</span>
 <span class="s">      "speakers": {</span>
@@ -4162,7 +4301,23 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <span class="s">}</span>
 </code></pre>
 <p>This endpoint create an workshop and return it</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET /v1/events/:event_uri/workshops/</code></p>
 <h3 id='path-parameters-3'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4230,9 +4385,9 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
         <span class="na">end_date</span><span class="p">:</span> <span class="s2">"2021-12-20"</span><span class="p">,</span>
         <span class="na">limit</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
         <span class="na">location</span><span class="p">:</span> <span class="s2">"hotel"</span><span class="p">,</span>
-        <span class="na">description</span><span class="p">:</span> <span class="s2">"business workshop"</span>
+        <span class="na">description</span><span class="p">:</span> <span class="s2">"business workshop"</span><span class="p">,</span>
         <span class="na">show_on_register</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nx">allow_blocking_workshops</span><span class="p">,:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">allow_blocking_workshops</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="na">price</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">"1"</span><span class="p">:</span> <span class="s2">"300"</span>
         <span class="p">}</span>
@@ -4277,7 +4432,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <span class="s">      },</span>
 <span class="s">      "archived": false,</span>
 <span class="s">      "show_on_register": false,</span>
-<span class="s">      "allow_blocking_workshops": false     </span>
+<span class="s">      "allow_blocking_workshops": false</span>
 <span class="s">    },</span>
 <span class="s">    "relationships": {</span>
 <span class="s">      "speakers": {</span>
@@ -4305,9 +4460,28 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <span class="s">}</span>
 </code></pre>
 <p>This endpoint update an workshop and return it</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>PUT /v1/events/event_uri/workshops/id</code></p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT /v1/events/:event_uri/workshops/:id</code></p>
 <h3 id='path-parameters-4'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired workshop</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters-2'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4394,7 +4568,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <span class="s">      },</span>
 <span class="s">      "archived": false,</span>
 <span class="s">      "show_on_register": false,</span>
-<span class="s">      "allow_blocking_workshops": false     </span>
+<span class="s">      "allow_blocking_workshops": false</span>
 <span class="s">    },</span>
 <span class="s">    "relationships": {</span>
 <span class="s">      "speakers": {</span>
@@ -4420,8 +4594,8 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <span class="s">}</span>
 </code></pre>
 <p>This endpoint destroy an workshop and return it</p>
-<h3 id='http-request-4'>HTTP Request</h3>
-<p><code>DELETE /v1/events/event_uri/workshops/id</code></p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE /v1/events/:event_uri/workshops/:id</code></p>
 <h3 id='path-parameters-5'>Path Parameters</h3>
 <table><thead>
 <tr>
