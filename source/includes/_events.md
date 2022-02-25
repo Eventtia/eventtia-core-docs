@@ -3,14 +3,15 @@
 ## List Events
 
 ```javascript
-fetch('https://core.eventtia.com/v1/events/', {
-  method: 'GET',
+fetch("https://core.eventtia.com/v1/events/", {
+  method: "GET",
   headers: {
-    'Authorization': '<your token>',
-  }})
+    Authorization: "<your token>",
+  },
+});
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate.
 
 > Example of a successful (200) response:
 
@@ -55,7 +56,7 @@ HTTP/1.1 200 OK
           "small":  "url_image",
           "medium": "url_image",
           "large": "url_image",
-        } 
+        }
       },
       "relationships": {
         "settings": {
@@ -79,16 +80,17 @@ This endpoint return a list of events
 ## Get Event
 
 ```javascript
-fetch('https://core.eventtia.com/v1/events/<event_uri>', {
-  method: 'GET',
+fetch("https://core.eventtia.com/v1/events/<event_uri>", {
+  method: "GET",
   headers: {
-    'Authorization': '<your token>',
-  }})
+    Authorization: "<your token>",
+  },
+});
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate.
 
-> Make sure you replace <event uri> with the event uri for the event to update. 
+> Make sure you replace &lt;event uri&gt; with the event uri for the event to update.
 
 > Example of a successful (200) response:
 
@@ -133,7 +135,7 @@ HTTP/1.1 200 OK
         "small":  "url_image",
         "medium": "url_image",
         "large": "url_image",
-      } 
+      }
     },
     "relationships": {
       "settings": {
@@ -147,7 +149,7 @@ HTTP/1.1 200 OK
 }
 ```
 
->Example of Event Not Found (404) response: 
+> Example of Event Not Found (404) response:
 
 ```http
 HTTP/1.1 404 Not Found
@@ -164,10 +166,9 @@ This endpoint return an event
 
 ### Path Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
-event_uri | string | The event_uri for the desired event
-
+| Parameter | Type   | Description                         |
+| --------- | ------ | ----------------------------------- |
+| event_uri | string | The event_uri for the desired event |
 
 ### HTTP Request for optional include settings
 
@@ -175,10 +176,9 @@ event_uri | string | The event_uri for the desired event
 
 ### Path Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
-include   | string | the value settings gives informations for each relationships (settings or attendees)
- 
+| Parameter | Type   | Description                                                                          |
+| --------- | ------ | ------------------------------------------------------------------------------------ |
+| include   | string | the value settings gives informations for each relationships (settings or attendees) |
 
 ## Create Event
 
@@ -190,7 +190,7 @@ fetch('https://core.eventtia.com/v1/events/', {
   },
   body: {
   data: {
-    id: "21", 
+    id: "21",
     type: "events",
     attributes: {
       name: "Event name",
@@ -226,14 +226,14 @@ fetch('https://core.eventtia.com/v1/events/', {
         small: "url_image",
         medium: "url_image",
         large: "url_image",
-      }  
+      }
     }
   }
   }
 })
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate.
 
 > Example of a successful (200) response:
 
@@ -241,7 +241,7 @@ fetch('https://core.eventtia.com/v1/events/', {
 HTTP/1.1 200 OK
 {
   "data": {
-    id: "21", 
+    id: "21",
     "type": "events",
     "attributes": {
       "name": "Event name",
@@ -277,7 +277,7 @@ HTTP/1.1 200 OK
         "small":  "url_image",
         "medium": "url_image",
         "large": "url_image",
-      } 
+      }
     },
     "relationships": {
       "settings": {
@@ -291,7 +291,7 @@ HTTP/1.1 200 OK
 }
 ```
 
->Example of Unprocessable Entity (422) response: 
+> Example of Unprocessable Entity (422) response:
 
 ```http
 HTTP/1.1 422 Unprocessable Entity
@@ -315,86 +315,86 @@ This endpoint create an event and return it
 
 ### Available settings
 
-Parameter | Type | Description
---------- | ---- | -----------
-name | string | name of event. 
-description | string | description of event.
-start_date | date | starting date for event, must be before end date of event.
-budget | float | budget for event.
-is_template | boolean | this event is a template.
-cloned_from_id | integer | event id from this event was cloned
-attendance_mode | string | event attendance mode ['offline', 'mixed', 'online']. 
-event_uri| string | event uri must be an unique name.
-logo | file | logo for this event.
-banner_image | file | banner image for this event.
-currency | string | your event currency for payments and invoices ['COP', 'USD', 'EUR', 'ARS', 'BRL', 'CLP', 'MXN', 'PEN', 'GBP', 'JOD', 'UYU', 'PYG', 'AED', 'CAD', 'VND', 'PHP', 'AUD', 'BOB', 'TND', 'SGD', 'CHF', 'CFA', 'ZAR', 'INR']
-date_format | string | event date format ['dd/mm/yyyy', 'mm/dd/yyyy']. 
-time_format | string | event time format ['hours_24', 'am_pm']. 
+| Parameter       | Type    | Description                                                                                                                                                                                                            |
+| --------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| name            | string  | name of event.                                                                                                                                                                                                         |
+| description     | string  | description of event.                                                                                                                                                                                                  |
+| start_date      | date    | starting date for event, must be before end date of event.                                                                                                                                                             |
+| budget          | float   | budget for event.                                                                                                                                                                                                      |
+| is_template     | boolean | this event is a template.                                                                                                                                                                                              |
+| cloned_from_id  | integer | event id from this event was cloned                                                                                                                                                                                    |
+| attendance_mode | string  | event attendance mode ['offline', 'mixed', 'online'].                                                                                                                                                                  |
+| event_uri       | string  | event uri must be an unique name.                                                                                                                                                                                      |
+| logo            | file    | logo for this event.                                                                                                                                                                                                   |
+| banner_image    | file    | banner image for this event.                                                                                                                                                                                           |
+| currency        | string  | your event currency for payments and invoices ['COP', 'USD', 'EUR', 'ARS', 'BRL', 'CLP', 'MXN', 'PEN', 'GBP', 'JOD', 'UYU', 'PYG', 'AED', 'CAD', 'VND', 'PHP', 'AUD', 'BOB', 'TND', 'SGD', 'CHF', 'CFA', 'ZAR', 'INR'] |
+| date_format     | string  | event date format ['dd/mm/yyyy', 'mm/dd/yyyy'].                                                                                                                                                                        |
+| time_format     | string  | event time format ['hours_24', 'am_pm'].                                                                                                                                                                               |
 
 ## Update Event
 
 ```javascript
-fetch('https://core.eventtia.com/v1/events/<event_uri>', {
-  method: 'PUT',
+fetch("https://core.eventtia.com/v1/events/<event_uri>", {
+  method: "PUT",
   headers: {
-    'Authorization': '<your token>',
+    Authorization: "<your token>",
   },
   body: {
-  data: {
-    type: "events",
-    attributes: {
-      name: "Event name",
-      description: "description of an event",
-      start_date: "2020-04-13 15:54:37 -0500",
-      end_date: "2020-04-15 15:54:57 -0500",
-      active_modules: "[0, 1]",
-      fields_data: "{}",
-      budget: 545.00,
-      attendance_mode: "online",
-      is_template: false,
-      event_uri: "event_uri",
-      timezone: "America/Bogota",
-      location: {
-        "coordinates": { "lat": 6.2518400, "lng": -75.5635900 },
-        "address": "Event address",
-        "country": "Colombia.",
-        "city": "Medellín",
+    data: {
+      type: "events",
+      attributes: {
+        name: "Event name",
+        description: "description of an event",
+        start_date: "2020-04-13 15:54:37 -0500",
+        end_date: "2020-04-15 15:54:57 -0500",
+        active_modules: "[0, 1]",
+        fields_data: "{}",
+        budget: 545.0,
+        attendance_mode: "online",
+        is_template: false,
+        event_uri: "event_uri",
+        timezone: "America/Bogota",
+        location: {
+          coordinates: { lat: 6.25184, lng: -75.56359 },
+          address: "Event address",
+          country: "Colombia.",
+          city: "Medellín",
+        },
+        default_language: "es",
+        virtual_timezone: "America/Bogota",
+        total_attendees: 0,
+        cloned_from_id: "12",
+        banner: {
+          filename: "file_name",
+          thumb: "url_image",
+          small: "url_image",
+          medium: "url_image",
+          large: "url_image",
+        },
+        logo: {
+          filename: "file_name",
+          thumb: "url_image",
+          small: "url_image",
+          medium: "url_image",
+          large: "url_image",
+        },
       },
-      default_language: "es",
-      virtual_timezone: "America/Bogota",
-      total_attendees: 0,
-      cloned_from_id: "12",
-      banner: {
-        filename: "file_name",
-        thumb: "url_image",
-        small:  "url_image",
-        medium: "url_image",
-        large: "url_image",
+      relationships: {
+        settings: {
+          data: {
+            id: "108",
+            type: "settings",
+          },
+        },
       },
-      logo: {
-        filename: "file_name",
-        thumb: "url_image",
-        small: "url_image",
-        medium: "url_image",
-        large: "url_image",
-      }  
-    }, 
-    relationships: {
-      settings: {
-        data: {
-          id: "108",
-          type: "settings"
-        }
-      }
-    }  
-  }
-  }
-})
+    },
+  },
+});
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate.
 
-> Make sure you replace <event uri> with the event uri for the event to update. 
+> Make sure you replace &lt;event uri&gt; with the event uri for the event to update.
 
 > Example of a successful (200) response:
 
@@ -438,7 +438,7 @@ HTTP/1.1 200 OK
         "small":  "url_image",
         "medium": "url_image",
         "large": "url_image",
-      } 
+      }
     },
     "relationships": {
       "settings": {
@@ -447,12 +447,12 @@ HTTP/1.1 200 OK
           "type": "settings"
         }
       }
-    } 
+    }
   }
 }
 ```
 
->Example of Unprocessable Entity (422) response: 
+> Example of Unprocessable Entity (422) response:
 
 ```http
 HTTP/1.1 422 Unprocessable Entity
@@ -462,7 +462,7 @@ HTTP/1.1 422 Unprocessable Entity
       "is beyond the end date."
       ],
     "name": [
-      "is already in use" 
+      "is already in use"
     ]
   }
 }
@@ -476,43 +476,44 @@ This endpoint update an event and return it
 
 ### Path Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
-event_uri | string | The event_uri for the desired event
+| Parameter | Type   | Description                         |
+| --------- | ------ | ----------------------------------- |
+| event_uri | string | The event_uri for the desired event |
 
 ### Available settings
 
-Parameter | Type | Description
---------- | ---- | -----------
-name | string | name of event. 
-description | string | description of event.
-start_date | date | starting date for event, must be before end date of event.
-budget | float | budget for event.
-is_template | boolean | this event is a template.
-cloned_from_id | integer | event id from this event was cloned
-attendance_mode | string | event type ['offline', 'mixed', 'online']. 
-event_uri| string | event uri must be an unique name.
-logo | file | logo for this event.
-banner_image | file | banner image for this event.
-currency | string | your event currency for payments and invoices ['COP', 'USD', 'EUR', 'ARS', 'BRL', 'CLP', 'MXN', 'PEN', 'GBP', 'JOD', 'UYU', 'PYG', 'AED', 'CAD', 'VND', 'PHP', 'AUD', 'BOB', 'TND', 'SGD', 'CHF', 'CFA', 'ZAR', 'INR']
-date_format | string | event date format ['dd/mm/yyyy', 'mm/dd/yyyy']. 
-time_format | string | event time format ['hours_24', 'am_pm']. 
+| Parameter       | Type    | Description                                                                                                                                                                                                            |
+| --------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| name            | string  | name of event.                                                                                                                                                                                                         |
+| description     | string  | description of event.                                                                                                                                                                                                  |
+| start_date      | date    | starting date for event, must be before end date of event.                                                                                                                                                             |
+| budget          | float   | budget for event.                                                                                                                                                                                                      |
+| is_template     | boolean | this event is a template.                                                                                                                                                                                              |
+| cloned_from_id  | integer | event id from this event was cloned                                                                                                                                                                                    |
+| attendance_mode | string  | event type ['offline', 'mixed', 'online'].                                                                                                                                                                             |
+| event_uri       | string  | event uri must be an unique name.                                                                                                                                                                                      |
+| logo            | file    | logo for this event.                                                                                                                                                                                                   |
+| banner_image    | file    | banner image for this event.                                                                                                                                                                                           |
+| currency        | string  | your event currency for payments and invoices ['COP', 'USD', 'EUR', 'ARS', 'BRL', 'CLP', 'MXN', 'PEN', 'GBP', 'JOD', 'UYU', 'PYG', 'AED', 'CAD', 'VND', 'PHP', 'AUD', 'BOB', 'TND', 'SGD', 'CHF', 'CFA', 'ZAR', 'INR'] |
+| date_format     | string  | event date format ['dd/mm/yyyy', 'mm/dd/yyyy'].                                                                                                                                                                        |
+| time_format     | string  | event time format ['hours_24', 'am_pm'].                                                                                                                                                                               |
 
 ## Destroy Event
+
 ```javascript
-fetch('https://core.eventtia.com/v1/events/<event_uri>', {
-  method: 'DELETE',
+fetch("https://core.eventtia.com/v1/events/<event_uri>", {
+  method: "DELETE",
   headers: {
-    'Authorization': '<your token>',
+    Authorization: "<your token>",
   },
-})
+});
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate.
 
-> Make sure you replace <event uri> with the event uri for the event to destroy. 
+> Make sure you replace &lt;event uri&gt; with the event uri for the event to destroy.
 
->Example of a successful (200) response:
+> Example of a successful (200) response:
 
 ```http
 HTTP/1.1 200 OK
@@ -554,7 +555,7 @@ HTTP/1.1 200 OK
         "small":  "url_image",
         "medium": "url_image",
         "large": "url_image",
-      } 
+      }
     },
     "relationships": {
       "settings": {
@@ -576,18 +577,17 @@ This endpoint destroy a event and return it
 
 ### Path Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
-event_uri | string | The event_uri for the desired event
-
+| Parameter | Type   | Description                         |
+| --------- | ------ | ----------------------------------- |
+| event_uri | string | The event_uri for the desired event |
 
 ## Settings
 
 ```javascript
-fetch('https://core.eventtia.com/v1/events/<event_uri>/settings', {
-  method: 'PATCH',
+fetch("https://core.eventtia.com/v1/events/<event_uri>/settings", {
+  method: "PATCH",
   headers: {
-    'Authorization': '<your token>',
+    Authorization: "<your token>",
   },
   body: {
     data: {
@@ -610,16 +610,16 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/settings', {
         date_format: "dd/mm/yyyy",
         time_format: "am_pm",
         google_analytics_tracking_code: "A78Y55ABCD",
-        google_tag_manager_code: "11223ABCDE"
-      }
-    }
-  }
-})
+        google_tag_manager_code: "11223ABCDE",
+      },
+    },
+  },
+});
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate.
 
->Example of a successful (200) response:
+> Example of a successful (200) response:
 
 ```http
 HTTP/1.1 200 OK
@@ -671,36 +671,34 @@ HTTP/1.1 500
   }
 }
 ```
+
 This endpoint allows you modify your event settings
 
 ### HTTP Request
 
 `PATCH /v1/events/:event_uri/settings`
 
-
 ### Path Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
-event_uri | string | The event_uri for the desired event
+| Parameter | Type   | Description                         |
+| --------- | ------ | ----------------------------------- |
+| event_uri | string | The event_uri for the desired event |
 
 ### Available settings
 
-Parameter | Type | Description
---------- | ---- | -----------
-payment_method | string | payment platform to collect money online ['stripe', 'payu', 'paypal']. 
-paypal_production_key | string | paypal production key obtained from paypal dashboard.
-paypal_sandbox_key | string | paypal sandbox key obtained from paypal dashboard
-paypal_test_mode | boolean | when testing your payments won't be any charge to your cards
-stripe_secret_api_key | string | stripe secret api key obtained from stripe dashboard
-stripe_publishable_api_key | string | stripe secret publishable api key obtained from stripe dashboard
-pay_u_api_key | string | pay u api key obtained from pay u dashboard
-pay_u_merchant_id | string | pay u merchand id obtained from pay u dashboard
-pay_u_account_id | string | pay u account id obtained from pay u dashboard
-pay_u_api_login | string | pay u api login obtained from pay u dashboard
-pay_u_test_mode | boolean | when testing your payments won't be any charge to your cards
-currency | string | your event currency for payments and invoices ['COP', 'USD', 'EUR', 'ARS', 'BRL', 'CLP', 'MXN', 'PEN', 'GBP', 'JOD', 'UYU', 'PYG', 'AED', 'CAD', 'VND', 'PHP', 'AUD', 'BOB', 'TND', 'SGD', 'CHF', 'CFA', 'ZAR', 'INR']
-vat_alias | string | how do you want to call your vat value
-vat_value | integer/float | Your event vat value
-
-
+| Parameter                  | Type          | Description                                                                                                                                                                                                            |
+| -------------------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| payment_method             | string        | payment platform to collect money online ['stripe', 'payu', 'paypal'].                                                                                                                                                 |
+| paypal_production_key      | string        | paypal production key obtained from paypal dashboard.                                                                                                                                                                  |
+| paypal_sandbox_key         | string        | paypal sandbox key obtained from paypal dashboard                                                                                                                                                                      |
+| paypal_test_mode           | boolean       | when testing your payments won't be any charge to your cards                                                                                                                                                           |
+| stripe_secret_api_key      | string        | stripe secret api key obtained from stripe dashboard                                                                                                                                                                   |
+| stripe_publishable_api_key | string        | stripe secret publishable api key obtained from stripe dashboard                                                                                                                                                       |
+| pay_u_api_key              | string        | pay u api key obtained from pay u dashboard                                                                                                                                                                            |
+| pay_u_merchant_id          | string        | pay u merchand id obtained from pay u dashboard                                                                                                                                                                        |
+| pay_u_account_id           | string        | pay u account id obtained from pay u dashboard                                                                                                                                                                         |
+| pay_u_api_login            | string        | pay u api login obtained from pay u dashboard                                                                                                                                                                          |
+| pay_u_test_mode            | boolean       | when testing your payments won't be any charge to your cards                                                                                                                                                           |
+| currency                   | string        | your event currency for payments and invoices ['COP', 'USD', 'EUR', 'ARS', 'BRL', 'CLP', 'MXN', 'PEN', 'GBP', 'JOD', 'UYU', 'PYG', 'AED', 'CAD', 'VND', 'PHP', 'AUD', 'BOB', 'TND', 'SGD', 'CHF', 'CFA', 'ZAR', 'INR'] |
+| vat_alias                  | string        | how do you want to call your vat value                                                                                                                                                                                 |
+| vat_value                  | integer/float | Your event vat value                                                                                                                                                                                                   |

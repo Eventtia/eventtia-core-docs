@@ -3,17 +3,17 @@
 ## List Workshops
 
 ```javascript
-fetch('https://core.eventtia.com/v1/events/<event_uri>/workshops/', {
-  method: 'GET',
+fetch("https://core.eventtia.com/v1/events/<event_uri>/workshops/", {
+  method: "GET",
   headers: {
-    'Authorization': '<your token>',
-  }
-})
+    Authorization: "<your token>",
+  },
+});
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate.
 
-> Make sure you replace <event uri> with the event uri for the event. 
+> Make sure you replace &lt;event uri&gt; with the event uri for the event.
 
 > Example of a successful (200) response:
 
@@ -59,36 +59,36 @@ This endpoint list workshops belongs to event and return it
 
 ### Path Parameters
 
-Parameter |  Type   | Description
---------- | ------- | -----------
-event_uri | string  | The event_uri for the desired event
+| Parameter | Type   | Description                         |
+| --------- | ------ | ----------------------------------- |
+| event_uri | string | The event_uri for the desired event |
 
 ### Query Parameters
 
-Parameter |  Type   | Description
---------- | ------- | -----------
-  name    | string  | Workshop name
- speaker  | integer | speaker id
-  day     |  date   | A datetime in the following format "14/08/2021"
-start_date|  date   | A datetime in the following format "14/08/2021"
-updated_at|  date   | A datetime in the following format "14/08/2021"
+| Parameter  | Type    | Description                                     |
+| ---------- | ------- | ----------------------------------------------- |
+| name       | string  | Workshop name                                   |
+| speaker    | integer | speaker id                                      |
+| day        | date    | A datetime in the following format "14/08/2021" |
+| start_date | date    | A datetime in the following format "14/08/2021" |
+| updated_at | date    | A datetime in the following format "14/08/2021" |
 
 ## Get Workshop
 
 ```javascript
-fetch('https://core.eventtia.com/v1/events/<event_uri>/Workshops/<id>', {
-  method: 'GET',
+fetch("https://core.eventtia.com/v1/events/<event_uri>/Workshops/<id>", {
+  method: "GET",
   headers: {
-    'Authorization': '<your token>',
-  }
-})
+    Authorization: "<your token>",
+  },
+});
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate.
 
-> Make sure you replace <event uri> with the event uri for the event.
+> Make sure you replace &lt;event uri&gt; with the event uri for the event.
 
-> Make sure you replace <id> with the id for the workshop to obtain. 
+> Make sure you replace &lt;id&gt; with the id for the workshop to obtain.
 
 > Example of a successful (200) response:
 
@@ -126,7 +126,7 @@ HTTP/1.1 200 OK
 }
 ```
 
->Example of Not Found (404) response: 
+> Example of Not Found (404) response:
 
 ```http
 HTTP/1.1 404 Not Found
@@ -145,10 +145,10 @@ This endpoint get an workshop and return it
 
 ### Path Parameters
 
-Parameter |  Type   | Description
---------- | ------- | -----------
-event_uri | string  | The event_uri for the desired event
-   id     | integer | The id for the desired workshop
+| Parameter | Type    | Description                         |
+| --------- | ------- | ----------------------------------- |
+| event_uri | string  | The event_uri for the desired event |
+| id        | integer | The id for the desired workshop     |
 
 ## Create Workshop
 
@@ -183,15 +183,15 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/workshops/', {
           ]
         }
       }
-    }  
+    }
   }
 }
 })
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate.
 
-> Make sure you replace <event uri> with the event uri for the event .  
+> Make sure you replace &lt;event uri&gt; with the event uri for the event .
 
 > Example of a successful (200) response:
 
@@ -228,7 +228,7 @@ HTTP/1.1 200 OK
 }
 ```
 
->Example of Unprocessable Entity (422) response: 
+> Example of Unprocessable Entity (422) response:
 
 ```http
 HTTP/1.1 422 Unprocessable Entity
@@ -249,23 +249,23 @@ This endpoint create an workshop and return it
 
 ### Path Parameters
 
-Parameter |  Type   | Description
---------- | ------- | -----------
-event_uri | string  | The event_uri for the desired event
+| Parameter | Type   | Description                         |
+| --------- | ------ | ----------------------------------- |
+| event_uri | string | The event_uri for the desired event |
 
 ### Body Parameters
 
-Parameter  |  Type  | Description
----------  | -------| -----------
-name       | string | name for workshop
-start_date |  date  | start date for workshop
-end_date   |  date  | end date for workshop
-limit      | integer| attendees limit for workshop
-location   | string | location for workshop
-description| string | description for workshop
-price      |  hash  | key-value object setting a price for each attendee type id
-show_on_register | boolean | show this workshop on registration page
-allow_blocking_workshops | boolean | allow block hours for this workshop
+| Parameter                | Type    | Description                                                |
+| ------------------------ | ------- | ---------------------------------------------------------- |
+| name                     | string  | name for workshop                                          |
+| start_date               | date    | start date for workshop                                    |
+| end_date                 | date    | end date for workshop                                      |
+| limit                    | integer | attendees limit for workshop                               |
+| location                 | string  | location for workshop                                      |
+| description              | string  | description for workshop                                   |
+| price                    | hash    | key-value object setting a price for each attendee type id |
+| show_on_register         | boolean | show this workshop on registration page                    |
+| allow_blocking_workshops | boolean | allow block hours for this workshop                        |
 
 ## Update Workshop
 
@@ -300,17 +300,17 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/workshops/<id>', {
           ]
         }
       }
-    }  
+    }
   }
 }
 })
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate.
 
-> Make sure you replace <event uri> with the event uri for the event to update. 
+> Make sure you replace &lt;event uri&gt; with the event uri for the event to update.
 
-> Make sure you replace <id> with the id for the workshop to update. 
+> Make sure you replace &lt;id&gt; with the id for the workshop to update.
 
 > Example of a successful (200) response:
 
@@ -348,7 +348,7 @@ HTTP/1.1 200 OK
 }
 ```
 
->Example of Unprocessable Entity (422) response: 
+> Example of Unprocessable Entity (422) response:
 
 ```http
 HTTP/1.1 422 Unprocessable Entity
@@ -369,42 +369,43 @@ This endpoint update an workshop and return it
 
 ### Path Parameters
 
-Parameter |  Type   | Description
---------- | ------- | -----------
-event_uri | string  | The event_uri for the desired event
-   id     | integer | The id for the desired workshop
+| Parameter | Type    | Description                         |
+| --------- | ------- | ----------------------------------- |
+| event_uri | string  | The event_uri for the desired event |
+| id        | integer | The id for the desired workshop     |
 
 ### Body Parameters
 
-Parameter  |  Type  | Description
----------  | -------| -----------
-name       | string | name for workshop
-start_date |  date  | start date for workshop
-end_date   |  date  | end date for workshop
-limit      | integer| attendees limit for workshop
-location   | string | location for workshop
-description| string | description for workshop
-price      |  hash  | key-value object setting a price for each attendee type id
-show_on_register | boolean | show this workshop on registration page
-allow_blocking_workshops | boolean | allow block hours for this workshop
+| Parameter                | Type    | Description                                                |
+| ------------------------ | ------- | ---------------------------------------------------------- |
+| name                     | string  | name for workshop                                          |
+| start_date               | date    | start date for workshop                                    |
+| end_date                 | date    | end date for workshop                                      |
+| limit                    | integer | attendees limit for workshop                               |
+| location                 | string  | location for workshop                                      |
+| description              | string  | description for workshop                                   |
+| price                    | hash    | key-value object setting a price for each attendee type id |
+| show_on_register         | boolean | show this workshop on registration page                    |
+| allow_blocking_workshops | boolean | allow block hours for this workshop                        |
 
 ## Destroy Workshop
+
 ```javascript
-fetch('https://core.eventtia.com/v1/events/<event_uri>/workshops/<id>', {
-  method: 'DELETE',
+fetch("https://core.eventtia.com/v1/events/<event_uri>/workshops/<id>", {
+  method: "DELETE",
   headers: {
-    'Authorization': '<your token>',
+    Authorization: "<your token>",
   },
-})
+});
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate.
 
-> Make sure you replace <event uri> with the event uri for the event to destroy. 
+> Make sure you replace &lt;event uri&gt; with the event uri for the event to destroy.
 
-> Make sure you replace <id> with the id for the workshop to update. 
+> Make sure you replace &lt;id&gt; with the id for the workshop to update.
 
->Example of a successful (200) response:
+> Example of a successful (200) response:
 
 ```http
 HTTP/1.1 200 OK
@@ -440,7 +441,7 @@ HTTP/1.1 200 OK
 }
 ```
 
->Example of Not Found (404) response: 
+> Example of Not Found (404) response:
 
 ```http
 HTTP/1.1 404 Not Found
@@ -459,8 +460,7 @@ This endpoint destroy an workshop and return it
 
 ### Path Parameters
 
-Parameter |  Type   | Description
---------- | ------- | -----------
-event_uri | string  | The event_uri for the desired event
-   id     | integer | The id for the desired workshop
-
+| Parameter | Type    | Description                         |
+| --------- | ------- | ----------------------------------- |
+| event_uri | string  | The event_uri for the desired event |
+| id        | integer | The id for the desired workshop     |
