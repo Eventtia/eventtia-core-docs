@@ -19,7 +19,13 @@ includes:
   - speakers
   - users
   - workshops
-  - export_processes
+  - exports/exports
+  - exports/events/events
+  - exports/events/events_create
+  - exports/events/events_download
+  - exports/attendees/attendees
+  - exports/attendees/attendees_create
+  - exports/attendees/attendees_download
 
 search: true
 ---
