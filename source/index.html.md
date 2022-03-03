@@ -19,6 +19,7 @@ includes:
   - speakers
   - users
   - workshops
+  - export_processes
 
 search: true
 ---
