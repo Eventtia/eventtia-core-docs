@@ -45,11 +45,11 @@ HTTP/1.1 404 Not Found
 
 You can get an authorization token for a User with this endpoint. Tokens issued by Eventtia are valid for 90 days.
 
-### HTTP Request
+**HTTP Request**
 
 `POST /v1/sessions`
 
-### Query Parameters
+**Query Parameters**
 
 Parameter | Type | Description
 --------- | ---- | -----------

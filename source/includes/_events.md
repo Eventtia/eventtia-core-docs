@@ -10,7 +10,7 @@ fetch('https://core.eventtia.com/v1/events/', {
   }})
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
 
 > Example of a successful (200) response:
 
@@ -72,7 +72,7 @@ HTTP/1.1 200 OK
 
 This endpoint return a list of events
 
-### HTTP Request
+**HTTP Request**
 
 `GET /v1/events/`
 
@@ -86,9 +86,9 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>', {
   }})
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
 
-> Make sure you replace <event uri> with the event uri for the event to update. 
+> Make sure you replace &lt;event uri&gt; with the event uri for the event to update. 
 
 > Example of a successful (200) response:
 
@@ -158,22 +158,21 @@ HTTP/1.1 404 Not Found
 
 This endpoint return an event
 
-### HTTP Request
+**HTTP Request**
 
 `GET /v1/events/:event_uri`
 
-### Path Parameters
+**Path Parameters**
 
 Parameter | Type | Description
 --------- | ---- | -----------
 event_uri | string | The event_uri for the desired event
 
-
-### HTTP Request for optional include settings
+**HTTP Request for optional include settings**
 
 `GET /v1/events/:event_uri/include=settings`
 
-### Path Parameters
+**Path Parameters**
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -233,7 +232,7 @@ fetch('https://core.eventtia.com/v1/events/', {
 })
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
 
 > Example of a successful (200) response:
 
@@ -309,11 +308,11 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint create an event and return it
 
-### HTTP Request
+**HTTP Request**
 
 `POST /v1/events/`
 
-### Available settings
+**Available settings**
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -392,9 +391,9 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>', {
 })
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
 
-> Make sure you replace <event uri> with the event uri for the event to update. 
+> Make sure you replace &lt;event uri&gt; with the event uri for the event to update. 
 
 > Example of a successful (200) response:
 
@@ -470,17 +469,17 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint update an event and return it
 
-### HTTP Request
+**HTTP Request**
 
 `PUT /v1/events/:event_uri`
 
-### Path Parameters
+**Path Parameters**
 
 Parameter | Type | Description
 --------- | ---- | -----------
 event_uri | string | The event_uri for the desired event
 
-### Available settings
+**Available settings**
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -508,9 +507,9 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>', {
 })
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
 
-> Make sure you replace <event uri> with the event uri for the event to destroy. 
+> Make sure you replace &lt;event uri&gt; with the event uri for the event to destroy. 
 
 >Example of a successful (200) response:
 
@@ -570,11 +569,11 @@ HTTP/1.1 200 OK
 
 This endpoint destroy a event and return it
 
-### HTTP Request
+**HTTP Request**
 
 `DELETE /v1/events/:event_uri`
 
-### Path Parameters
+**Path Parameters**
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -617,7 +616,7 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/settings', {
 })
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
 
 >Example of a successful (200) response:
 
@@ -673,18 +672,17 @@ HTTP/1.1 500
 ```
 This endpoint allows you modify your event settings
 
-### HTTP Request
+**HTTP Request**
 
 `PATCH /v1/events/:event_uri/settings`
 
-
-### Path Parameters
+**Path Parameters**
 
 Parameter | Type | Description
 --------- | ---- | -----------
 event_uri | string | The event_uri for the desired event
 
-### Available settings
+**Available settings**
 
 Parameter | Type | Description
 --------- | ---- | -----------

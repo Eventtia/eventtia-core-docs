@@ -11,9 +11,9 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/', {
 })
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
 
-> Make sure you replace <event uri> with the event uri for the event. 
+> Make sure you replace &lt;event uri&gt; with the event uri for the event. 
 
 > Example of a successful (200) response:
 
@@ -52,11 +52,11 @@ HTTP/1.1 200 OK
 
 This endpoint list attendee types belongs to event and return it
 
-### HTTP Request
+**HTTP Request**
 
 `GET /v1/events/event_uri/attendee_types/`
 
-### Path Parameters
+**Path Parameters**
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -74,11 +74,11 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>', {
 })
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
 
-> Make sure you replace <event uri> with the event uri for the event.
+> Make sure you replace &lt;event uri&gt; with the event uri for the event.
 
-> Make sure you replace <id> with the id for the attendee type to obtain. 
+> Make sure you replace &lt;id&gt; with the id for the attendee type to obtain. 
 
 > Example of a successful (200) response:
 
@@ -126,22 +126,22 @@ HTTP/1.1 404 Not Found
 
 This endpoint get an attendee type and return it
 
-### HTTP Request
+**HTTP Request**
 
 `GET /v1/events/event_uri/attendee_types/id`
 
-### Path Parameters
+**Path Parameters**
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
    id     | integer | The id for the desired attendee type
 
-### HTTP Request for optional include fields
+**HTTP Request for optional include fields**
 
 `GET /v1/events/:event_uri/attendee_types/:id/include=fields`
 
-### Path Parameters
+**Path Parameters**
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -175,9 +175,9 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/', {
 })
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
 
-> Make sure you replace <event uri> with the event uri for the event .  
+> Make sure you replace &lt;event uri&gt; with the event uri for the event .  
 
 > Example of a successful (200) response:
 
@@ -227,11 +227,11 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint create an attendee type and return it
 
-### HTTP Request
+**HTTP Request**
 
 `POST /v1/events/:event_uri/attendee_types/`
 
-### Body Parameters
+**Body Parameters**
 
 Parameter  |  Type   | Description
 ---------  | ------- | -----------
@@ -269,11 +269,11 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>', {
 })
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
 
-> Make sure you replace <event uri> with the event uri for the event to update. 
+> Make sure you replace &lt;event uri&gt; with the event uri for the event to update. 
 
-> Make sure you replace <id> with the id for the attendee type to update. 
+> Make sure you replace &lt;id&gt; with the id for the attendee type to update. 
 
 > Example of a successful (200) response:
 
@@ -323,18 +323,18 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint update an attendee type and return it
 
-### HTTP Request
+**HTTP Request**
 
 `PUT /v1/events/:event_uri/attendee_types/:id`
 
-### Path Parameters
+**Path Parameters**
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
    id     | integer | The id for the desired attendee type
 
-### Body Parameters
+**Body Parameters**
 
 Parameter  |  Type   | Description
 ---------  | ------- | -----------
@@ -356,11 +356,11 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>', {
 })
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
 
-> Make sure you replace <event uri> with the event uri for the event to destroy. 
+> Make sure you replace &lt;event uri&gt; with the event uri for the event to destroy. 
 
-> Make sure you replace <id> with the id for the attendee type to update. 
+> Make sure you replace &lt;id&gt; with the id for the attendee type to update. 
 
 >Example of a successful (200) response:
 
@@ -396,11 +396,11 @@ HTTP/1.1 200 OK
 
 This endpoint destroy an attendee type and return it
 
-### HTTP Request
+**HTTP Request**
 
 `DELETE /v1/events/:event_uri/attendee_types/:id`
 
-### Path Parameters
+**Path Parameters**
 
 Parameter |  Type   | Description
 --------- | ------- | -----------

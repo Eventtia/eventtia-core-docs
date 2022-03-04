@@ -109,11 +109,11 @@ HTTP/1.1 422 Unprocessable Entity
 This endpoint allows you create a new input field. 
 You may provide field names and options in multiple languages. Currently, English, Spanish and French are supported. 
 
-### HTTP Request
+**HTTP Request**
 
 `POST /v1/fields`
 
-### Query Parameters for Text Field
+**Query Parameters for Text Field**
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -131,7 +131,7 @@ validation_type | string | allowed options empty, numbers, letters, telephone
 maximum_characters | integer | Maximum of allowed characters for this field
 allowed_values | Array | You may provide allowed values for this field if you want.
 
-### Query Parameters for Text Area Field
+**Query Parameters for Text Area Field**
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -144,7 +144,7 @@ submitted_type | string | 'Attendee' entity that will be answering this field.
 type | string | Fields::TextAreaField
 maximum_characters | integer | Maximum of allowed characters for this field
 
-### Query Parameters for Label Field
+**Query Parameters for Label Field**
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -156,7 +156,7 @@ display | boolean | Show field on public form´s.
 submitted_type | string | 'Attendee' entity that will be answering this field.
 type | string | Fields::LabelField
 
-### Query Parameters for Single Selection Field
+**Query Parameters for Single Selection Field**
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -170,7 +170,7 @@ submitted_type | string | 'Attendee' entity that will be answering this field.
 type | string | Fields::SingleSelectionField
 control_type | string | radio or dropdown_list
 
-### Query Parameters for Multiple Selection Field
+**Query Parameters for Multiple Selection Field**
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -184,7 +184,7 @@ submitted_type | string | 'Attendee' entity that will be answering this field.
 type | string | Fields::MultipleSelectionField
 control_type | string | check_boxes or dropdown_list
 
-### Query Parameters for Date Time Field
+**Query Parameters for Date Time Field**
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -197,7 +197,7 @@ submitted_type | string | 'Attendee' entity that will be answering this field.
 type | string | Fields::DateTimeField
 include_time | boolean | Include time picker element
 
-### Query Parameters for City Field
+**Query Parameters for City Field**
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -209,7 +209,7 @@ display | boolean | Show field on public form´s.
 submitted_type | string | 'Attendee' entity that will be answering this field.
 type | string | Fields::CityField
 
-### Query Parameters for Image Field
+**Query Parameters for Image Field**
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -221,7 +221,7 @@ display | boolean | Show field on public form´s.
 submitted_type | string | 'Attendee' entity that will be answering this field.
 type | string | Fields::ImageField
 
-### Query Parameters for File Field
+**Query Parameters for File Field**
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -233,7 +233,7 @@ display | boolean | Show field on public form´s.
 submitted_type | string | 'Attendee' entity that will be answering this field.
 type | string | Fields::FileField
 
-### Query Parameters for Terms Field
+**Query Parameters for Terms Field**
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -333,11 +333,11 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint allows you update a field info.
 
-### HTTP Request
+**HTTP Request**
 
 `PUT /v1/fields/:id`
 
-### Path Parameters
+**Path Parameters**
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -383,11 +383,11 @@ HTTP/1.1 200 OK
 
 This endpoint allows you destroy a field info.
 
-### HTTP Request
+**HTTP Request**
 
 `DELETE /v1/fields/:id`
 
-### Path Parameters
+**Path Parameters**
 
 Parameter | Type | Description
 --------- | ---- | -----------

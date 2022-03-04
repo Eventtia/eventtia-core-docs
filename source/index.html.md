@@ -19,6 +19,8 @@ includes:
   - speakers
   - users
   - workshops
+  - exports/attendees/attendees_export
+  - exports/events/events_export
 
 search: true
 ---
