@@ -19,13 +19,8 @@ includes:
   - speakers
   - users
   - workshops
-  - exports/exports
-  - exports/events/events
-  - exports/events/events_create
-  - exports/events/events_download
-  - exports/attendees/attendees
-  - exports/attendees/attendees_create
-  - exports/attendees/attendees_download
+  - exports/attendees/attendees_export
+  - exports/events/events_export
 
 search: true
 ---

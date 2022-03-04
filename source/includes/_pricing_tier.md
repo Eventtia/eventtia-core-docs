@@ -20,15 +20,13 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/pricing_tiers/', {
 })
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
 
-> Make sure you replace <event uri> with the event uri for the event . 
+> Make sure you replace &lt;event uri&gt; with the event uri for the event . 
 
-> Make sure you replace <entity id> with the id for the entity associated to pricing tier to list. 
+> Make sure you replace &lt;entity id&gt; with the id for the entity associated to pricing tier to list. 
 
-> Make sure you replace <entity type> as integer with the nunmber for the entity associated to pricing tier to list.
-
-  -- 1 : Attendee type
+> Make sure you replace &lt;entity type> as integer with the nunmber for the entity associated to pricing tier to list.
 
 > Example of a successful (200) response:
 
@@ -65,17 +63,17 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint list pricing tiers and return it
 
-### HTTP Request
+**HTTP Request**
 
 `GET /v1/events/:event_uri/pricing_tiers/`
 
-### Path Parameters
+**Path Parameters**
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
 
-### Body Parameters
+**Body Parameters**
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -102,17 +100,15 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/pricing_tiers/<id>', {
 })
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
 
-> Make sure you replace <event uri> with the event uri for the event. 
+> Make sure you replace &lt;event uri&gt; with the event uri for the event. 
 
-> Make sure you replace <id> with the id for the pricing tier to get. 
+> Make sure you replace &lt;id&gt; with the id for the pricing tier to get. 
 
-> Make sure you replace <entity id> with the id for the entity associated to pricing tier. 
+> Make sure you replace &lt;entity id&gt; with the id for the entity associated to pricing tier. 
 
-> Make sure you replace <entity type> as integer with the number for the entity associated to pricing tier.
-
-  -- 1 : Attendee type
+> Make sure you replace &lt;entity type> as integer with the number for the entity associated to pricing tier.
 
 > Example of a successful (200) response:
 
@@ -149,18 +145,18 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint get a pricing tier and return it
 
-### HTTP Request
+**HTTP Request**
 
 `GET /v1/events/:event_uri/pricing_tiers/:id`
 
-### Path Parameters
+**Path Parameters**
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
    id     | integer | The id for the desired pricing tier
 
-### Body Parameters
+**Body Parameters**
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -190,15 +186,13 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/pricing_tiers/', {
 })
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
 
-> Make sure you replace <event uri> with the event uri for the event . 
+> Make sure you replace &lt;event uri&gt; with the event uri for the event . 
 
-> Make sure you replace <entity id> with the id for the entity associated to pricing tier to create. 
+> Make sure you replace &lt;entity id&gt; with the id for the entity associated to pricing tier to create. 
 
-> Make sure you replace <entity type> as integer with the number for the entity associated to pricing tier to create.
-
-  -- 1 : Attendee type
+> Make sure you replace &lt;entity type> as integer with the number for the entity associated to pricing tier to create.
 
 > Example of a successful (200) response:
 
@@ -235,11 +229,11 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint create a pricing tier and return it, , Entities supported : AttendeeType.
 
-### HTTP Request
+**HTTP Request**
 
 `POST /v1/events/:event_uri/pricing_tiers/`
 
-### Body Parameters
+**Body Parameters**
 
 Parameter  |  Type   | Description
 ---------  | ------- | -----------
@@ -272,17 +266,15 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/pricing_tiers/<id>', {
 })
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
 
-> Make sure you replace <event uri> with the event uri for the event to update. 
+> Make sure you replace &lt;event uri&gt; with the event uri for the event to update. 
 
-> Make sure you replace <id> with the id for the pricing tier to update. 
+> Make sure you replace &lt;id&gt; with the id for the pricing tier to update. 
 
-> Make sure you replace <entity id> with the id for the entity associated to pricing tier to update. 
+> Make sure you replace &lt;entity id&gt; with the id for the entity associated to pricing tier to update. 
 
-> Make sure you replace <entity type> as integer with the nunmber for the entity associated to pricing tier to update.
-
-  -- 1 : Attendee type
+> Make sure you replace &lt;entity type> as integer with the nunmber for the entity associated to pricing tier to update.
 
 > Example of a successful (200) response:
 
@@ -319,17 +311,18 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint update a pricing tier and return it, Entities supported : AttendeeType.
 
-### HTTP Request
+**HTTP Request**
 
 `PUT /v1/events/:event_uri/pricing_tiers/:id`
 
-### Path Parameters
+**Path Parameters**
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
    id     | integer | The id for the desired pricing tier
-### Body Parameters
+
+**Body Parameters**
 
 Parameter  |  Type   | Description
 ---------  | ------- | -----------
@@ -349,11 +342,11 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/pricing_tiers/<id>', {
 })
 ```
 
-> Make sure you replace <your token> with the JWT you get when you authenticate. 
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
 
-> Make sure you replace <event uri> with the event uri for the event to destroy. 
+> Make sure you replace &lt;event uri&gt; with the event uri for the event to destroy. 
 
-> Make sure you replace <id> with the id for the pricing tier to update. 
+> Make sure you replace &lt;id&gt; with the id for the pricing tier to update. 
 
 >Example of a successful (200) response:
 
@@ -377,11 +370,11 @@ HTTP/1.1 200 OK
 
 This endpoint destroy a pricing tier and return it
 
-### HTTP Request
+**HTTP Request**
 
 `DELETE /v1/events/:event_uri/pricing_tiers/:id`
 
-### Path Parameters
+**Path Parameters**
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
