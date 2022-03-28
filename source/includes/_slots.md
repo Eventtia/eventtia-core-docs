@@ -144,7 +144,91 @@ entity_id  | integer | entity id to which slots belongs
 entity_type| string  | entity type to which slots belongs
 start_date | date    | start date for slot
 end_date   | date    | end date for slot
-limit      | integer  | price for slot
+limit      | integer  | limit for slot
+
+## Create Mass Slots
+
+```javascript
+fetch('https://core.eventtia.com/v1/events/<event_uri>/mass-slots/', {
+  method: 'POST',
+  headers: {
+    'Authorization': '<your token>',
+  },
+  body: {
+  data: {
+    type: "slot",
+    attributes: {
+      entity_id: <entity id>,
+      entity_type: <entity type>,
+      start_date_time: "2013-03-03T19:00:00.000-05:00",
+      duration: 30, 
+      amount_slots: 10,
+      break_duration: 20,
+      limit: 99
+    }
+  }
+}
+})
+```
+
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
+
+> Make sure you replace &lt;event uri&gt; with the event uri for the event . 
+
+> Make sure you replace &lt;entity id&gt; with the id for the entity associated to slots to create. 
+
+> Make sure you replace &lt;entity type> as integer with the number for the entity associated to slots to create.
+
+> Example of a successful (200) response:
+
+```http
+HTTP/1.1 200 OK
+{
+  "data": {
+    "id": "1",
+    "type": "slots",
+    "attributes": {
+      "entity_id": 62523,
+      "entity_type": "Workshop",
+      "start_date": "2013-03-02T19:00:00.000-05:00",
+      "end_date": "2013-03-22T19:00:00.000-05:00",
+      "limit": 20,
+      "archived": false
+    }
+  }
+}
+```
+
+>Example of Unprocessable Entity (422) response: 
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+{
+  "message": {
+    "limit": [
+      "must be an integer"
+    ]
+  }
+}
+```
+
+This endpoint create a slots and return it, , Entities supported : Workshop.
+
+### HTTP Request
+
+`POST /v1/events/:event_uri/mass-slots/`
+
+### Body Parameters
+
+Parameter  |  Type   | Description
+---------  | ------- | -----------
+entity_id  | integer | entity id to which slots belongs
+entity_type| string  | entity type to which slots belongs
+start_date_time | date    | start date for mass slots
+duration   | integer    | duration for slots
+amount_slots   | integer    | number of slots to be created
+break_duration   | integer    | gap time between slots (optional)
+limit      | integer  | limit for slots
 
 ## Update Slots
 
