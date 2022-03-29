@@ -63,8 +63,8 @@ This endpoint list pricing tiers and return it
 Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
-entity_id  | integer | entity id to which slots belongs
-entity_type| string  | entity type to which slots belongs
+entity_id  | integer | entity id to which slot belongs
+entity_type| string  | entity type to which slot belongs
 
 ## Create Slots
 
@@ -95,7 +95,7 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/slots/', {
 
 > Make sure you replace &lt;entity id&gt; with the id for the entity associated to slots to create. 
 
-> Make sure you replace &lt;entity type> as integer with the number for the entity associated to slots to create.
+> Make sure you replace &lt;entity type> as integer with the number for the entity associated to slot to create.
 
 > Example of a successful (200) response:
 
@@ -140,8 +140,8 @@ This endpoint create a slots and return it, , Entities supported : Workshop.
 
 Parameter  |  Type   | Description
 ---------  | ------- | -----------
-entity_id  | integer | entity id to which slots belongs
-entity_type| string  | entity type to which slots belongs
+entity_id  | integer | entity id to which slot belongs
+entity_type| string  | entity type to which slot belongs
 start_date | date    | start date for slot
 end_date   | date    | end date for slot
 limit      | integer  | limit for slot
@@ -175,9 +175,9 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/mass-slots/', {
 
 > Make sure you replace &lt;event uri&gt; with the event uri for the event . 
 
-> Make sure you replace &lt;entity id&gt; with the id for the entity associated to slots to create. 
+> Make sure you replace &lt;entity id&gt; with the id for the entity associated to slot to create. 
 
-> Make sure you replace &lt;entity type> as integer with the number for the entity associated to slots to create.
+> Make sure you replace &lt;entity type> as integer with the number for the entity associated to slot to create.
 
 > Example of a successful (200) response:
 
@@ -222,13 +222,13 @@ This endpoint create a slots and return it, , Entities supported : Workshop.
 
 Parameter  |  Type   | Description
 ---------  | ------- | -----------
-entity_id  | integer | entity id to which slots belongs
-entity_type| string  | entity type to which slots belongs
-start_date_time | date    | start date for mass slots
-duration   | integer    | duration for slots
-amount_slots   | integer    | number of slots to be created
-break_duration   | integer    | gap time between slots (optional)
-limit      | integer  | limit for slots
+entity_id  | integer | entity id to which slot belongs
+entity_type| string  | entity type to which slot belongs
+start_date_time | date    | start date for mass slot
+duration   | integer    | duration for slot
+amount_slots   | integer    | number of slot to be created
+break_duration   | integer    | gap time between slots(optional)
+limit      | integer  | limit for slot
 
 ## Update Slots
 
@@ -257,11 +257,11 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/slots/<id>', {
 
 > Make sure you replace &lt;event uri&gt; with the event uri for the event to update. 
 
-> Make sure you replace &lt;id&gt; with the id for the slots to update. 
+> Make sure you replace &lt;id&gt; with the id for the slot to update. 
 
 > Make sure you replace &lt;entity id&gt; with the id for the entity associated to slot to update. 
 
-> Make sure you replace &lt;entity type> as integer with the nunmber for the entity associated to slot to update.
+> Make sure you replace &lt;entity type> as integer with the number for the entity associated to slot to update.
 
 > Example of a successful (200) response:
 
@@ -296,7 +296,7 @@ HTTP/1.1 422 Unprocessable Entity
 }
 ```
 
-This endpoint update a slots and return it, Entities supported : Workshop.
+This endpoint update a slot and return it, Entities supported : Workshop.
 
 ### HTTP Request
 
@@ -307,16 +307,16 @@ This endpoint update a slots and return it, Entities supported : Workshop.
 Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
-   id     | integer | The id for the desired slots
+   id     | integer | The id for the desired slot
 ### Body Parameters
 
 Parameter  |  Type   | Description
 ---------  | ------- | -----------
-entity_id  | integer | entity id to which slots belongs
-entity_type| string  | entity type to which slots belongs
-start_date | date    | start date for slots
-end_date   | date    | end date for slots
-limit      | integer   | limit for slots
+entity_id  | integer | entity id to which slot belongs
+entity_type| string  | entity type to which slot belongs
+start_date | date    | start date for slot
+end_date   | date    | end date for slot
+limit      | integer   | limit for slot
 
 ## Destroy Slots
 ```javascript
@@ -332,7 +332,7 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/slots/<id>', {
 
 > Make sure you replace &lt;event uri&gt; with the event uri for the event to destroy. 
 
-> Make sure you replace &lt;id&gt; with the id for the slots to update. 
+> Make sure you replace &lt;id&gt; with the id for the slot to update. 
 
 >Example of a successful (200) response:
 
@@ -354,7 +354,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-This endpoint destroy a slots and return it
+This endpoint destroy a slot and return it
 
 ### HTTP Request
 
@@ -365,5 +365,5 @@ This endpoint destroy a slots and return it
 Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
-   id     | integer | The id for the desired slots
+   id     | integer | The id for the desired slot
 
