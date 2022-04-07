@@ -228,6 +228,9 @@
                   <li>
                     <a href="#authorization" class="toc-h2 toc-link" data-title="Authorization">Authorization</a>
                   </li>
+                  <li>
+                    <a href="#pagination" class="toc-h2 toc-link" data-title="Pagination">Pagination</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -524,7 +527,27 @@ curl <span class="s2">"&lt;api endpoint&gt;"</span> <span class="se">\</span>
 </blockquote>
 
 <p>Eventtia uses JSON Web Tokens for authorization. Tokens issued by Eventtia are valid for 90 days.</p>
-<h1 id='attendees'>Attendees</h1><h2 id='list-attendees'>List Attendees</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='pagination'>Pagination</h2>
+<p>All list endpoints are paginated by default. The default page size is 24, and the default page number is 1. The response contains links to the first, previous (prev), current (self) and next.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can request a specific page size and number by sending the page param in the request query params:</span>
+curl <span class="s1">'&lt;api endpoint&gt;?page[size]=12&amp;page[number]=1'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">// You can request a specific page size and number by sending the page param in the request query params:</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'&lt;api endpoint&gt;?page[size]=12&amp;page[number]=1'</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "data": [...],
+  "links": {
+    "first": "&lt;api endpoint&gt;?page[number]=1&amp;page[size]=12",
+    "last": "&lt;api endpoint&gt;?page[number]=1&amp;page[size]=12",
+    "prev": null,
+    "next": null
+  }
+}
+</code></pre><h1 id='attendees'>Attendees</h1><h2 id='list-attendees'>List Attendees</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
     <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
@@ -576,6 +599,46 @@ curl <span class="s2">"&lt;api endpoint&gt;"</span> <span class="se">\</span>
 <td>event_uri</td>
 <td>string</td>
 <td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>page</td>
+<td>json</td>
+<td>A page object as described <a href="#pagination">here</a></td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>string</td>
+<td>Filters results by the attendee&#39;s first name.</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>Filters results by the attendee&#39;s last name.</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Filters results by the attendee&#39;s email.</td>
+</tr>
+<tr>
+<td>telephone</td>
+<td>string</td>
+<td>Filters results by the attendee&#39;s telephone.</td>
+</tr>
+<tr>
+<td>attendee_type_id</td>
+<td>integer</td>
+<td>Filters results by attendee type.</td>
+</tr>
+<tr>
+<td>event_id</td>
+<td>integer</td>
+<td>Filters results by event</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>integer</td>
+<td>Filters results by user</td>
 </tr>
 </tbody></table>
 <h2 id='get-attendee'>Get Attendee</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
