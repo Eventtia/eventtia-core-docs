@@ -61,6 +61,8 @@ telephone | string | Filters results by the attendee's telephone.
 attendee_type_id | integer | Filters results by attendee type.
 event_id | integer | Filters results by event
 user_id | integer | Filters results by user
+created_at_upper_bound | datetime | Filters results by attendee's created_at before this bound date. Example: 2020-07-16.
+created_at_lower_bound | datetime | Filters results by attendee's created_At after this bound date. Example: 2020-07-16.
 
 
 ## Get Attendee
