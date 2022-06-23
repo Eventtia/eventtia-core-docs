@@ -651,6 +651,16 @@ curl <span class="s1">'&lt;api endpoint&gt;?page[size]=12&amp;page[number]=1'</s
 <td>integer</td>
 <td>Filters results by user</td>
 </tr>
+<tr>
+<td>created_at_upper_bound</td>
+<td>datetime</td>
+<td>Filters results by attendee&#39;s created_at before this bound date. Example: 2020-07-16.</td>
+</tr>
+<tr>
+<td>created_at_lower_bound</td>
+<td>datetime</td>
+<td>Filters results by attendee&#39;s created_At after this bound date. Example: 2020-07-16.</td>
+</tr>
 </tbody></table>
 <h2 id='get-attendee'>Get Attendee</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
@@ -5728,7 +5738,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>The id for the desired account subscription.</td>
 </tr>
 </tbody></table>
-<h1 id='password-recovery'>Password Recovery</h1><h2 id='request-recovery-password'>Request Recovery Password</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/password'</span><span class="p">,</span> <span class="p">{</span>
+<h1 id='password-recovery'>Password Recovery</h1><h2 id='request-recovery-password'>Request Recovery Password</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/passwords'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -5756,7 +5766,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 </code></pre>
 <p>This endpoint request the reset password token and return it</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST /v1/password</code></p>
+<p><code>POST /v1/passwords</code></p>
 <h3 id='body-parameters'>Body Parameters</h3>
 <table><thead>
 <tr>
@@ -5776,7 +5786,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>desired language e.g. &quot;en&quot;, &quot;es&quot; or &quot;fr&quot;</td>
 </tr>
 </tbody></table>
-<h2 id='update-password'>Update Password</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/password'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='update-password'>Update Password</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/passwords'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -5816,7 +5826,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 </code></pre>
 <p>This endpoint updates the password of the user</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>PUT /v1/password</code></p>
+<p><code>PUT /v1/passwords</code></p>
 <h3 id='body-parameters-2'>Body Parameters</h3>
 <table><thead>
 <tr>
