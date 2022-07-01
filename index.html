@@ -651,16 +651,6 @@ curl <span class="s1">'&lt;api endpoint&gt;?page[size]=12&amp;page[number]=1'</s
 <td>integer</td>
 <td>Filters results by user</td>
 </tr>
-<tr>
-<td>created_at_upper_bound</td>
-<td>datetime</td>
-<td>Filters results by attendee&#39;s created_at before this bound date. Example: 2020-07-16.</td>
-</tr>
-<tr>
-<td>created_at_lower_bound</td>
-<td>datetime</td>
-<td>Filters results by attendee&#39;s created_At after this bound date. Example: 2020-07-16.</td>
-</tr>
 </tbody></table>
 <h2 id='get-attendee'>Get Attendee</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
@@ -1699,7 +1689,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">        "end_date": "2020-04-15 15:54:57 -0500",</span>
 <span class="s">        "active_modules": "[8]",</span>
 <span class="s">        "fields_data": "{}",</span>
-<span class="s">        "budget": 0.0,</span>
 <span class="s">        "attendance_mode": "online",</span>
 <span class="s">        "is_template": false,</span>
 <span class="s">        "event_uri": "event_uri",</span>
@@ -1710,7 +1699,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">          "country": "Colombia.",</span>
 <span class="s">          "city": "Medellín",</span>
 <span class="s">        },</span>
-<span class="s">        "default_language": "es",</span>
 <span class="s">        "virtual_timezone": "America/Bogota",</span>
 <span class="s">        "total_attendees": 0,</span>
 <span class="s">        "banner": {</span>
@@ -1827,7 +1815,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">      "end_date": "2020-04-15 15:54:57 -0500",</span>
 <span class="s">      "active_modules": "[0, 1]",</span>
 <span class="s">      "fields_data": "{}",</span>
-<span class="s">      "budget": 0.0,</span>
 <span class="s">      "attendance_mode": "online",</span>
 <span class="s">      "is_template": false,</span>
 <span class="s">      "event_uri": "event_uri",</span>
@@ -1838,7 +1825,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">        "country": "Colombia.",</span>
 <span class="s">        "city": "Medellín",</span>
 <span class="s">      },</span>
-<span class="s">      "default_language": "es",</span>
 <span class="s">      "virtual_timezone": "America/Bogota",</span>
 <span class="s">      "total_attendees": 0,</span>
 <span class="s">      "cloned_from_id": "2",</span>
@@ -1916,7 +1902,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
   <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">id</span><span class="p">:</span> <span class="s2">"21"</span><span class="p">,</span> 
+    <span class="na">id</span><span class="p">:</span> <span class="s2">"21"</span><span class="p">,</span>
     <span class="na">type</span><span class="p">:</span> <span class="s2">"events"</span><span class="p">,</span>
     <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
       <span class="na">name</span><span class="p">:</span> <span class="s2">"Event name"</span><span class="p">,</span>
@@ -1925,23 +1911,24 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
       <span class="na">end_date</span><span class="p">:</span> <span class="s2">"2020-04-15 15:54:57 -0500"</span><span class="p">,</span>
       <span class="na">active_modules</span><span class="p">:</span> <span class="s2">"[0, 1]"</span><span class="p">,</span>
       <span class="na">fields_data</span><span class="p">:</span> <span class="s2">"{}"</span><span class="p">,</span>
-      <span class="na">budget</span><span class="p">:</span> <span class="mf">545.00</span><span class="p">,</span>
       <span class="na">attendance_mode</span><span class="p">:</span> <span class="s2">"online"</span><span class="p">,</span>
       <span class="na">is_template</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
       <span class="na">event_uri</span><span class="p">:</span> <span class="s2">"event_uri"</span><span class="p">,</span>
       <span class="na">timezone</span><span class="p">:</span> <span class="s2">"America/Bogota"</span><span class="p">,</span>
-      <span class="na">available_languages</span><span class="p">:</span> <span class="p">{</span>
-                              <span class="s2">"available"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"en"</span><span class="p">,</span> <span class="s2">"es"</span><span class="p">],</span>
-                              <span class="s2">"default"</span><span class="p">:</span> <span class="s2">"en"</span><span class="p">},</span>
+      <span class="na">settings</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"time_format"</span><span class="p">:</span> <span class="s2">"hours_24"</span><span class="p">,</span>
+        <span class="s2">"date_format"</span><span class="p">:</span> <span class="s2">"mm/dd/yyyy"</span><span class="p">,</span>
+        <span class="s2">"available_languages"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"available"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"en"</span><span class="p">,</span> <span class="s2">"es"</span><span class="p">],</span>
+            <span class="s2">"default"</span><span class="p">:</span> <span class="s2">"en"</span>
+        <span class="p">}</span>        <span class="p">},</span>
       <span class="na">location</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">"coordinates"</span><span class="p">:</span> <span class="p">{</span> <span class="s2">"lat"</span><span class="p">:</span> <span class="mf">6.2518400</span><span class="p">,</span> <span class="s2">"lng"</span><span class="p">:</span> <span class="o">-</span><span class="mf">75.5635900</span> <span class="p">},</span>
         <span class="s2">"address"</span><span class="p">:</span> <span class="s2">"Event address"</span><span class="p">,</span>
         <span class="s2">"country"</span><span class="p">:</span> <span class="s2">"Colombia."</span><span class="p">,</span>
         <span class="s2">"city"</span><span class="p">:</span> <span class="s2">"Medellín"</span><span class="p">,</span>
       <span class="p">},</span>
-      <span class="na">default_language</span><span class="p">:</span> <span class="s2">"es"</span><span class="p">,</span>
       <span class="na">virtual_timezone</span><span class="p">:</span> <span class="s2">"America/Bogota"</span><span class="p">,</span>
-      <span class="na">total_attendees</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
       <span class="na">banner</span><span class="p">:</span> <span class="p">{</span>
         <span class="na">filename</span><span class="p">:</span> <span class="s2">"file_name"</span><span class="p">,</span>
         <span class="na">thumb</span><span class="p">:</span> <span class="s2">"url_image"</span><span class="p">,</span>
@@ -1978,7 +1965,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">      "end_date": "2020-04-15 15:54:57 -0500",</span>
 <span class="s">      "active_modules": "[0, 1]",</span>
 <span class="s">      "fields_data": "{}",</span>
-<span class="s">      "budget": 0.0,</span>
 <span class="s">      "attendance_mode": "online",</span>
 <span class="s">      "is_template": false,</span>
 <span class="s">      "event_uri": "event_uri",</span>
@@ -1989,7 +1975,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">        "country": "Colombia.",</span>
 <span class="s">        "city": "Medellín",</span>
 <span class="s">      },</span>
-<span class="s">      "default_language": "es",</span>
 <span class="s">      "virtual_timezone": "America/Bogota",</span>
 <span class="s">      "total_attendees": 0,</span>
 <span class="s">      "banner": {</span>
@@ -2060,11 +2045,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <td>starting date for event, must be before end date of event.</td>
 </tr>
 <tr>
-<td>budget</td>
-<td>float</td>
-<td>budget for event.</td>
-</tr>
-<tr>
 <td>is_template</td>
 <td>boolean</td>
 <td>this event is a template.</td>
@@ -2130,23 +2110,24 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
       <span class="na">end_date</span><span class="p">:</span> <span class="s2">"2020-04-15 15:54:57 -0500"</span><span class="p">,</span>
       <span class="na">active_modules</span><span class="p">:</span> <span class="s2">"[0, 1]"</span><span class="p">,</span>
       <span class="na">fields_data</span><span class="p">:</span> <span class="s2">"{}"</span><span class="p">,</span>
-      <span class="na">budget</span><span class="p">:</span> <span class="mf">545.00</span><span class="p">,</span>
       <span class="na">attendance_mode</span><span class="p">:</span> <span class="s2">"online"</span><span class="p">,</span>
       <span class="na">is_template</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
       <span class="na">event_uri</span><span class="p">:</span> <span class="s2">"event_uri"</span><span class="p">,</span>
       <span class="na">timezone</span><span class="p">:</span> <span class="s2">"America/Bogota"</span><span class="p">,</span>
-      <span class="na">available_languages</span><span class="p">:</span> <span class="p">{</span>
-                              <span class="s2">"available"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"en"</span><span class="p">,</span> <span class="s2">"es"</span><span class="p">],</span>
-                              <span class="s2">"default"</span><span class="p">:</span> <span class="s2">"en"</span><span class="p">},</span>
+      <span class="na">settings</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"time_format"</span><span class="p">:</span> <span class="s2">"hours_24"</span><span class="p">,</span>
+        <span class="s2">"date_format"</span><span class="p">:</span> <span class="s2">"mm/dd/yyyy"</span><span class="p">,</span>
+        <span class="s2">"available_languages"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"available"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"en"</span><span class="p">,</span> <span class="s2">"es"</span><span class="p">],</span>
+            <span class="s2">"default"</span><span class="p">:</span> <span class="s2">"en"</span><span class="p">}</span>
+             <span class="p">},</span>
       <span class="na">location</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">"coordinates"</span><span class="p">:</span> <span class="p">{</span> <span class="s2">"lat"</span><span class="p">:</span> <span class="mf">6.2518400</span><span class="p">,</span> <span class="s2">"lng"</span><span class="p">:</span> <span class="o">-</span><span class="mf">75.5635900</span> <span class="p">},</span>
         <span class="s2">"address"</span><span class="p">:</span> <span class="s2">"Event address"</span><span class="p">,</span>
         <span class="s2">"country"</span><span class="p">:</span> <span class="s2">"Colombia."</span><span class="p">,</span>
         <span class="s2">"city"</span><span class="p">:</span> <span class="s2">"Medellín"</span><span class="p">,</span>
       <span class="p">},</span>
-      <span class="na">default_language</span><span class="p">:</span> <span class="s2">"es"</span><span class="p">,</span>
       <span class="na">virtual_timezone</span><span class="p">:</span> <span class="s2">"America/Bogota"</span><span class="p">,</span>
-      <span class="na">total_attendees</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
       <span class="na">cloned_from_id</span><span class="p">:</span> <span class="s2">"12"</span><span class="p">,</span>
       <span class="na">banner</span><span class="p">:</span> <span class="p">{</span>
         <span class="na">filename</span><span class="p">:</span> <span class="s2">"file_name"</span><span class="p">,</span>
@@ -2161,8 +2142,8 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
         <span class="na">small</span><span class="p">:</span> <span class="s2">"url_image"</span><span class="p">,</span>
         <span class="na">medium</span><span class="p">:</span> <span class="s2">"url_image"</span><span class="p">,</span>
         <span class="na">large</span><span class="p">:</span> <span class="s2">"url_image"</span><span class="p">,</span>
-      <span class="p">}</span>  
-    <span class="p">},</span> 
+      <span class="p">}</span>
+    <span class="p">},</span>
     <span class="na">relationships</span><span class="p">:</span> <span class="p">{</span>
       <span class="na">settings</span><span class="p">:</span> <span class="p">{</span>
         <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -2193,7 +2174,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">      "end_date": "2020-04-15 15:54:57 -0500",</span>
 <span class="s">      "active_modules": "[0, 1]",</span>
 <span class="s">      "fields_data": "{}",</span>
-<span class="s">      "budget": 0.0,</span>
 <span class="s">      "attendance_mode": "virtual",</span>
 <span class="s">      "is_template": "false",</span>
 <span class="s">      "event_uri": "event_uri",</span>
@@ -2204,7 +2184,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">        "country": "Colombia.",</span>
 <span class="s">        "city": "Medellín",</span>
 <span class="s">      },</span>
-<span class="s">      "default_language": "es",</span>
 <span class="s">      "virtual_timezone": "America/Bogota",</span>
 <span class="s">      "total_attendees": 0,</span>
 <span class="s">      "cloned_from_id": "1",</span>
@@ -2290,11 +2269,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <td>starting date for event, must be before end date of event.</td>
 </tr>
 <tr>
-<td>budget</td>
-<td>float</td>
-<td>budget for event.</td>
-</tr>
-<tr>
 <td>is_template</td>
 <td>boolean</td>
 <td>this event is a template.</td>
@@ -2371,7 +2345,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">      "end_date": "2020-04-15 15:54:57 -0500",</span>
 <span class="s">      "active_modules": "[8]",</span>
 <span class="s">      "fields_data": "{}",</span>
-<span class="s">      "budget": 0.0,</span>
 <span class="s">      "attendance_mode": "virtual",</span>
 <span class="s">      "is_template": false,</span>
 <span class="s">      "event_uri": "event_uri",</span>
@@ -2382,7 +2355,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">        "country": "Colombia.",</span>
 <span class="s">        "city": "Medellín",</span>
 <span class="s">      },</span>
-<span class="s">      "default_language": "es",</span>
 <span class="s">      "virtual_timezone": "America/Bogota",</span>
 <span class="s">      "total_attendees": 0,</span>
 <span class="s">      "banner": {</span>
@@ -5738,7 +5710,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>The id for the desired account subscription.</td>
 </tr>
 </tbody></table>
-<h1 id='password-recovery'>Password Recovery</h1><h2 id='request-recovery-password'>Request Recovery Password</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/passwords'</span><span class="p">,</span> <span class="p">{</span>
+<h1 id='password-recovery'>Password Recovery</h1><h2 id='request-recovery-password'>Request Recovery Password</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/en/v1/passwords'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -5766,7 +5738,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 </code></pre>
 <p>This endpoint request the reset password token and return it</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST /v1/passwords</code></p>
+<p><code>POST en/v1/passwords</code></p>
 <h3 id='body-parameters'>Body Parameters</h3>
 <table><thead>
 <tr>
@@ -5786,7 +5758,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>desired language e.g. &quot;en&quot;, &quot;es&quot; or &quot;fr&quot;</td>
 </tr>
 </tbody></table>
-<h2 id='update-password'>Update Password</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/passwords'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='update-password'>Update Password</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/en/v1/passwords'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -5826,7 +5798,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 </code></pre>
 <p>This endpoint updates the password of the user</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>PUT /v1/passwords</code></p>
+<p><code>PUT en/v1/passwords</code></p>
 <h3 id='body-parameters-2'>Body Parameters</h3>
 <table><thead>
 <tr>
