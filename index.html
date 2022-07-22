@@ -285,6 +285,18 @@
                   <li>
                     <a href="#available-seats" class="toc-h2 toc-link" data-title="Available Seats">Available Seats</a>
                   </li>
+                  <li>
+                    <a href="#form-fields" class="toc-h2 toc-link" data-title="Form Fields">Form Fields</a>
+                  </li>
+                  <li>
+                    <a href="#add-form-field" class="toc-h2 toc-link" data-title="Add form field">Add form field</a>
+                  </li>
+                  <li>
+                    <a href="#delete-form-field" class="toc-h2 toc-link" data-title="Delete form field">Delete form field</a>
+                  </li>
+                  <li>
+                    <a href="#change-form-field-order" class="toc-h2 toc-link" data-title="Change form field order">Change form field order</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -322,6 +334,9 @@
             <a href="#input-fields" class="toc-h1 toc-link" data-title="Input fields">Input fields</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#list-fields" class="toc-h2 toc-link" data-title="List fields">List fields</a>
+                  </li>
+                  <li>
                     <a href="#create-field" class="toc-h2 toc-link" data-title="Create field">Create field</a>
                   </li>
                   <li>
@@ -329,6 +344,9 @@
                   </li>
                   <li>
                     <a href="#destroy-field" class="toc-h2 toc-link" data-title="Destroy Field">Destroy Field</a>
+                  </li>
+                  <li>
+                    <a href="#change-order" class="toc-h2 toc-link" data-title="Change Order">Change Order</a>
                   </li>
               </ul>
           </li>
@@ -1597,7 +1615,7 @@ curl <span class="s1">'&lt;api endpoint&gt;?page[size]=12&amp;page[number]=1'</s
 </code></pre></div>
 <p>This endpoint get an attendee type and return his available seats</p>
 <h3 id='http-request-6'>HTTP Request</h3>
-<p><code>GET /v1/events/event_uri/attendee_types/id/available_seats</code></p>
+<p><code>GET /v1/events/:event_uri/attendee_types/id/available_seats</code></p>
 <h3 id='path-parameters-6'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -1617,7 +1635,389 @@ curl <span class="s1">'&lt;api endpoint&gt;?page[size]=12&amp;page[number]=1'</s
 <td>The id for the desired attendee type</td>
 </tr>
 </tbody></table>
-<h1 id='activation'>Activation</h1><h2 id='activate-account'>Activate Account</h2>
+<h2 id='form-fields'>Form Fields</h2><h3 id='index-form-fields'>Index form fields</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://core.eventtia.com/v1/events/:event_uri/:entity_type/:entity_id/fields</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">&lt;your token&gt;</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div>
+<blockquote>
+<p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event. </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>
+
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">    "data": [</span>
+<span class="s">        {</span>
+<span class="s">            "id": "31",</span>
+<span class="s">            "type": "fields",</span>
+<span class="s">            "attributes": {</span>
+<span class="s">                "name": {</span>
+<span class="s">                    "en": "326 name, locale: en",</span>
+<span class="s">                    "es": "326 name, locale: es"</span>
+<span class="s">                },</span>
+<span class="s">                "values": null,</span>
+<span class="s">                "settings": {</span>
+<span class="s">                    "available_public_listings": true</span>
+<span class="s">                },</span>
+<span class="s">                "validations": {</span>
+<span class="s">                    "validation_type": "letters"</span>
+<span class="s">                },</span>
+<span class="s">                "type": "Fields::TextField",</span>
+<span class="s">                "order": 1,</span>
+<span class="s">                "entity_id": 4,</span>
+<span class="s">                "default": true,</span>
+<span class="s">                "validation_type": "letters",</span>
+<span class="s">                "repeat_value": null,</span>
+<span class="s">                "allowed_values": null,</span>
+<span class="s">                "file": null</span>
+<span class="s">            }</span>
+<span class="s">        },</span>
+<span class="s">        {</span>
+<span class="s">            "id": "32",</span>
+<span class="s">            "type": "fields",</span>
+<span class="s">            "attributes": {</span>
+<span class="s">                "name": {</span>
+<span class="s">                    "en": "326 last_name, locale: en",</span>
+<span class="s">                    "es": "326 last_name, locale: es"</span>
+<span class="s">                },</span>
+<span class="s">                "values": null,</span>
+<span class="s">                "settings": {</span>
+<span class="s">                    "available_public_listings": true</span>
+<span class="s">                },</span>
+<span class="s">                "validations": {</span>
+<span class="s">                    "validation_type": "letters"</span>
+<span class="s">                },</span>
+<span class="s">                "type": "Fields::TextField",</span>
+<span class="s">                "order": 2,</span>
+<span class="s">                "entity_id": 4,</span>
+<span class="s">                "default": true,</span>
+<span class="s">                "validation_type": "letters",</span>
+<span class="s">                "repeat_value": null,</span>
+<span class="s">                "allowed_values": null,</span>
+<span class="s">                "file": null</span>
+<span class="s">            }</span>
+<span class="s">        },</span>
+<span class="s">        {</span>
+<span class="s">            "id": "33",</span>
+<span class="s">            "type": "fields",</span>
+<span class="s">            "attributes": {</span>
+<span class="s">                "name": {</span>
+<span class="s">                    "en": "326 email, locale: en",</span>
+<span class="s">                    "es": "326 email, locale: es"</span>
+<span class="s">                },</span>
+<span class="s">                "values": null,</span>
+<span class="s">                "settings": {</span>
+<span class="s">                    "available_public_listings": true</span>
+<span class="s">                },</span>
+<span class="s">                "validations": {</span>
+<span class="s">                    "validation_type": "letters"</span>
+<span class="s">                },</span>
+<span class="s">                "type": "Fields::TextField",</span>
+<span class="s">                "order": 3,</span>
+<span class="s">                "entity_id": 4,</span>
+<span class="s">                "default": true,</span>
+<span class="s">                "validation_type": "letters",</span>
+<span class="s">                "repeat_value": null,</span>
+<span class="s">                "allowed_values": null,</span>
+<span class="s">                "file": null</span>
+<span class="s">            }</span>
+<span class="s">        },</span>
+<span class="s">        {</span>
+<span class="s">            "id": "34",</span>
+<span class="s">            "type": "fields",</span>
+<span class="s">            "attributes": {</span>
+<span class="s">                "name": {</span>
+<span class="s">                    "en": "326 company, locale: en",</span>
+<span class="s">                    "es": "326 company, locale: es"</span>
+<span class="s">                },</span>
+<span class="s">                "values": null,</span>
+<span class="s">                "settings": {</span>
+<span class="s">                    "available_public_listings": true</span>
+<span class="s">                },</span>
+<span class="s">                "validations": {</span>
+<span class="s">                    "validation_type": "letters"</span>
+<span class="s">                },</span>
+<span class="s">                "type": "Fields::TextField",</span>
+<span class="s">                "order": 4,</span>
+<span class="s">                "entity_id": 4,</span>
+<span class="s">                "default": true,</span>
+<span class="s">                "validation_type": "letters",</span>
+<span class="s">                "repeat_value": null,</span>
+<span class="s">                "allowed_values": null,</span>
+<span class="s">                "file": null</span>
+<span class="s">            }</span>
+<span class="s">        },</span>
+<span class="s">        {</span>
+<span class="s">            "id": "35",</span>
+<span class="s">            "type": "fields",</span>
+<span class="s">            "attributes": {</span>
+<span class="s">                "name": {</span>
+<span class="s">                    "en": "326 phone, locale: en",</span>
+<span class="s">                    "es": "326 phone, locale: es"</span>
+<span class="s">                },</span>
+<span class="s">                "values": null,</span>
+<span class="s">                "settings": {</span>
+<span class="s">                    "available_public_listings": true</span>
+<span class="s">                },</span>
+<span class="s">                "validations": {</span>
+<span class="s">                    "validation_type": "telephone"</span>
+<span class="s">                },</span>
+<span class="s">                "type": "Fields::TextField",</span>
+<span class="s">                "order": 5,</span>
+<span class="s">                "entity_id": 4,</span>
+<span class="s">                "default": true,</span>
+<span class="s">                "validation_type": "telephone",</span>
+<span class="s">                "repeat_value": null,</span>
+<span class="s">                "allowed_values": null,</span>
+<span class="s">                "file": null</span>
+<span class="s">            }</span>
+<span class="s">        },</span>
+<span class="s">        {</span>
+<span class="s">            "id": "36",</span>
+<span class="s">            "type": "fields",</span>
+<span class="s">            "attributes": {</span>
+<span class="s">                "name": {</span>
+<span class="s">                    "en": "326 jobtitle, locale: en",</span>
+<span class="s">                    "es": "326 jobtitle, locale: es"</span>
+<span class="s">                },</span>
+<span class="s">                "values": null,</span>
+<span class="s">                "settings": {</span>
+<span class="s">                    "available_public_listings": true</span>
+<span class="s">                },</span>
+<span class="s">                "validations": {</span>
+<span class="s">                    "validation_type": "letters"</span>
+<span class="s">                },</span>
+<span class="s">                "type": "Fields::TextField",</span>
+<span class="s">                "order": 7,</span>
+<span class="s">                "entity_id": 4,</span>
+<span class="s">                "default": true,</span>
+<span class="s">                "validation_type": "letters",</span>
+<span class="s">                "repeat_value": null,</span>
+<span class="s">                "allowed_values": null,</span>
+<span class="s">                "file": null</span>
+<span class="s">            }</span>
+<span class="s">        },</span>
+<span class="s">        {</span>
+<span class="s">            "id": "37",</span>
+<span class="s">            "type": "fields",</span>
+<span class="s">            "attributes": {</span>
+<span class="s">                "name": {</span>
+<span class="s">                    "en": "326 alternative_email, locale: en",</span>
+<span class="s">                    "es": "326 alternative_email, locale: es"</span>
+<span class="s">                },</span>
+<span class="s">                "values": null,</span>
+<span class="s">                "settings": {</span>
+<span class="s">                    "available_public_listings": true</span>
+<span class="s">                },</span>
+<span class="s">                "validations": {</span>
+<span class="s">                    "validation_type": "letters"</span>
+<span class="s">                },</span>
+<span class="s">                "type": "Fields::TextField",</span>
+<span class="s">                "order": 9,</span>
+<span class="s">                "entity_id": 4,</span>
+<span class="s">                "default": true,</span>
+<span class="s">                "validation_type": "letters",</span>
+<span class="s">                "repeat_value": null,</span>
+<span class="s">                "allowed_values": null,</span>
+<span class="s">                "file": null</span>
+<span class="s">            }</span>
+<span class="s">        },</span>
+<span class="s">        {</span>
+<span class="s">            "id": "38",</span>
+<span class="s">            "type": "fields",</span>
+<span class="s">            "attributes": {</span>
+<span class="s">                "name": {</span>
+<span class="s">                    "en": "326 city, locale: en",</span>
+<span class="s">                    "es": "326 city, locale: es"</span>
+<span class="s">                },</span>
+<span class="s">                "values": null,</span>
+<span class="s">                "settings": {</span>
+<span class="s">                    "available_public_listings": true</span>
+<span class="s">                },</span>
+<span class="s">                "validations": {</span>
+<span class="s">                    "validation_type": null</span>
+<span class="s">                },</span>
+<span class="s">                "type": "Fields::CityField",</span>
+<span class="s">                "order": 6,</span>
+<span class="s">                "entity_id": 4,</span>
+<span class="s">                "default": true,</span>
+<span class="s">                "file": null</span>
+<span class="s">            }</span>
+<span class="s">        },</span>
+<span class="s">        {</span>
+<span class="s">            "id": "39",</span>
+<span class="s">            "type": "fields",</span>
+<span class="s">            "attributes": {</span>
+<span class="s">                "name": {</span>
+<span class="s">                    "en": "326 birthdate, locale: en",</span>
+<span class="s">                    "es": "326 birthdate, locale: es"</span>
+<span class="s">                },</span>
+<span class="s">                "values": null,</span>
+<span class="s">                "settings": {</span>
+<span class="s">                    "available_public_listings": true</span>
+<span class="s">                },</span>
+<span class="s">                "validations": {</span>
+<span class="s">                    "validation_type": null</span>
+<span class="s">                },</span>
+<span class="s">                "type": "Fields::DateTimeField",</span>
+<span class="s">                "order": 8,</span>
+<span class="s">                "entity_id": 4,</span>
+<span class="s">                "default": true,</span>
+<span class="s">                "include_time": null,</span>
+<span class="s">                "upper_bound": null,</span>
+<span class="s">                "lower_bound": null,</span>
+<span class="s">                "file": null</span>
+<span class="s">            }</span>
+<span class="s">        },</span>
+<span class="s">        {</span>
+<span class="s">            "id": "40",</span>
+<span class="s">            "type": "fields",</span>
+<span class="s">            "attributes": {</span>
+<span class="s">                "name": {</span>
+<span class="s">                    "en": "326 photo, locale: en",</span>
+<span class="s">                    "es": "326 photo, locale: es"</span>
+<span class="s">                },</span>
+<span class="s">                "values": null,</span>
+<span class="s">                "settings": {</span>
+<span class="s">                    "available_public_listings": true</span>
+<span class="s">                },</span>
+<span class="s">                "validations": {</span>
+<span class="s">                    "validation_type": null</span>
+<span class="s">                },</span>
+<span class="s">                "type": "Fields::ImageField",</span>
+<span class="s">                "order": 11,</span>
+<span class="s">                "entity_id": 4,</span>
+<span class="s">                "default": true,</span>
+<span class="s">                "file": null</span>
+<span class="s">            }</span>
+<span class="s">        }</span>
+<span class="s">    ],</span>
+<span class="s">    "meta": {</span>
+<span class="s">        "fields_order": {</span>
+<span class="s">            "31": 10,</span>
+<span class="s">            "32": 9,</span>
+<span class="s">            "33": 4,</span>
+<span class="s">            "34": 5,</span>
+<span class="s">            "35": 7,</span>
+<span class="s">            "36": 8,</span>
+<span class="s">            "37": 1,</span>
+<span class="s">            "38": 2,</span>
+<span class="s">            "39": 3,</span>
+<span class="s">            "40": 6</span>
+<span class="s">        }</span>
+<span class="s">    }</span>
+<span class="s">}</span>
+</code></pre></div>
+<blockquote>
+<p>Example of a 404 response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
+<span class="s">{</span>
+
+    "message": "Couldn't find Event"
+
+}
+</code></pre></div>
+<p>This endpoint allows a list field info.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET v1/events/:event_uri/:entity_type/:entity_id/fields</code></p>
+<h3 id='get-parameters'>Get Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>event uri must be an unique name.</td>
+</tr>
+<tr>
+<td>entity_type</td>
+<td>string</td>
+<td>entity type to which the attendy_types level belongs</td>
+</tr>
+</tbody></table>
+<h2 id='add-form-field'>Add form field</h2><h3 id='create-form-fields'>Create form fields</h3>
+<blockquote>
+<p>To create a new field, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/:entity_type/:entity_id/fields"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="s1">'{
+  "data": {
+    "type": "form_fields",
+    "attributes": {
+      "order": 1,
+      "entity_type": "AttendeeType"
+    },
+    "relationships":{
+      "field": {
+        "data": {"id": 52, "type": "field"}
+      },
+      "entity": {
+        "data": {"id": 6, "type": "attendee_type"}
+      }
+    }
+  }
+}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="c1">// Get your token for further authorization</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://core.eventtia.com/v1/events/:event_uri/:entity_type/:entity_id/fields</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">&lt;your token&gt;</span><span class="dl">'</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">form_fields</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">order</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="na">entity_type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">AttendeeType</span><span class="dl">"</span>
+    <span class="p">},</span>
+    <span class="na">relationships</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">field</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">data</span><span class="p">:</span> <span class="p">{</span><span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="mi">52</span><span class="p">,</span> <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">field</span><span class="dl">"</span><span class="p">}</span>
+      <span class="p">},</span>
+      <span class="na">entity</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">data</span><span class="p">:</span> <span class="p">{</span><span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">attendee_type</span><span class="dl">"</span><span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="p">}</span>
+
+<span class="p">})</span>
+</code></pre></div>
+<blockquote>
+<p>Example of a successful (200) response:</p>
+<h3 id='http-request-8'>HTTP Request</h3></blockquote>
+
+<p><code>PUT /v1/events/:event_uri/fields/:id</code></p>
+<h3 id='path-parameters-7'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired field</td>
+</tr>
+</tbody></table>
+<h2 id='delete-form-field'>Delete form field</h2><h3 id='destroy-form-fields'>Destroy form fields</h3><h2 id='change-form-field-order'>Change form field order</h2><h3 id='change-order-form-fields'>change order form fields</h3><h1 id='activation'>Activation</h1><h2 id='activate-account'>Activate Account</h2>
 <blockquote>
 <p>To create a new user, use this code:</p>
 </blockquote>
@@ -2603,20 +3003,344 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <td>includes available key ( array with availables languages for event ) and default key ( a string with a single required language, included in available languages array)</td>
 </tr>
 </tbody></table>
-<h1 id='input-fields'>Input fields</h1><h2 id='create-field'>Create field</h2>
+<h1 id='input-fields'>Input fields</h1><h2 id='list-fields'>List fields</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://core.eventtia.com/v1/events/event_uri/fields/</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">&lt;your token&gt;</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div>
+<blockquote>
+<p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event. </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>
+
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">    "data": [</span>
+<span class="s">        {</span>
+<span class="s">            "id": "31",</span>
+<span class="s">            "type": "fields",</span>
+<span class="s">            "attributes": {</span>
+<span class="s">                "name": {</span>
+<span class="s">                    "en": "326 name, locale: en",</span>
+<span class="s">                    "es": "326 name, locale: es"</span>
+<span class="s">                },</span>
+<span class="s">                "values": null,</span>
+<span class="s">                "settings": {</span>
+<span class="s">                    "available_public_listings": true</span>
+<span class="s">                },</span>
+<span class="s">                "validations": {</span>
+<span class="s">                    "validation_type": "letters"</span>
+<span class="s">                },</span>
+<span class="s">                "type": "Fields::TextField",</span>
+<span class="s">                "order": 1,</span>
+<span class="s">                "entity_id": 4,</span>
+<span class="s">                "default": true,</span>
+<span class="s">                "validation_type": "letters",</span>
+<span class="s">                "repeat_value": null,</span>
+<span class="s">                "allowed_values": null,</span>
+<span class="s">                "file": null</span>
+<span class="s">            }</span>
+<span class="s">        },</span>
+<span class="s">        {</span>
+<span class="s">            "id": "32",</span>
+<span class="s">            "type": "fields",</span>
+<span class="s">            "attributes": {</span>
+<span class="s">                "name": {</span>
+<span class="s">                    "en": "326 last_name, locale: en",</span>
+<span class="s">                    "es": "326 last_name, locale: es"</span>
+<span class="s">                },</span>
+<span class="s">                "values": null,</span>
+<span class="s">                "settings": {</span>
+<span class="s">                    "available_public_listings": true</span>
+<span class="s">                },</span>
+<span class="s">                "validations": {</span>
+<span class="s">                    "validation_type": "letters"</span>
+<span class="s">                },</span>
+<span class="s">                "type": "Fields::TextField",</span>
+<span class="s">                "order": 2,</span>
+<span class="s">                "entity_id": 4,</span>
+<span class="s">                "default": true,</span>
+<span class="s">                "validation_type": "letters",</span>
+<span class="s">                "repeat_value": null,</span>
+<span class="s">                "allowed_values": null,</span>
+<span class="s">                "file": null</span>
+<span class="s">            }</span>
+<span class="s">        },</span>
+<span class="s">        {</span>
+<span class="s">            "id": "33",</span>
+<span class="s">            "type": "fields",</span>
+<span class="s">            "attributes": {</span>
+<span class="s">                "name": {</span>
+<span class="s">                    "en": "326 email, locale: en",</span>
+<span class="s">                    "es": "326 email, locale: es"</span>
+<span class="s">                },</span>
+<span class="s">                "values": null,</span>
+<span class="s">                "settings": {</span>
+<span class="s">                    "available_public_listings": true</span>
+<span class="s">                },</span>
+<span class="s">                "validations": {</span>
+<span class="s">                    "validation_type": "letters"</span>
+<span class="s">                },</span>
+<span class="s">                "type": "Fields::TextField",</span>
+<span class="s">                "order": 3,</span>
+<span class="s">                "entity_id": 4,</span>
+<span class="s">                "default": true,</span>
+<span class="s">                "validation_type": "letters",</span>
+<span class="s">                "repeat_value": null,</span>
+<span class="s">                "allowed_values": null,</span>
+<span class="s">                "file": null</span>
+<span class="s">            }</span>
+<span class="s">        },</span>
+<span class="s">        {</span>
+<span class="s">            "id": "34",</span>
+<span class="s">            "type": "fields",</span>
+<span class="s">            "attributes": {</span>
+<span class="s">                "name": {</span>
+<span class="s">                    "en": "326 company, locale: en",</span>
+<span class="s">                    "es": "326 company, locale: es"</span>
+<span class="s">                },</span>
+<span class="s">                "values": null,</span>
+<span class="s">                "settings": {</span>
+<span class="s">                    "available_public_listings": true</span>
+<span class="s">                },</span>
+<span class="s">                "validations": {</span>
+<span class="s">                    "validation_type": "letters"</span>
+<span class="s">                },</span>
+<span class="s">                "type": "Fields::TextField",</span>
+<span class="s">                "order": 4,</span>
+<span class="s">                "entity_id": 4,</span>
+<span class="s">                "default": true,</span>
+<span class="s">                "validation_type": "letters",</span>
+<span class="s">                "repeat_value": null,</span>
+<span class="s">                "allowed_values": null,</span>
+<span class="s">                "file": null</span>
+<span class="s">            }</span>
+<span class="s">        },</span>
+<span class="s">        {</span>
+<span class="s">            "id": "35",</span>
+<span class="s">            "type": "fields",</span>
+<span class="s">            "attributes": {</span>
+<span class="s">                "name": {</span>
+<span class="s">                    "en": "326 phone, locale: en",</span>
+<span class="s">                    "es": "326 phone, locale: es"</span>
+<span class="s">                },</span>
+<span class="s">                "values": null,</span>
+<span class="s">                "settings": {</span>
+<span class="s">                    "available_public_listings": true</span>
+<span class="s">                },</span>
+<span class="s">                "validations": {</span>
+<span class="s">                    "validation_type": "telephone"</span>
+<span class="s">                },</span>
+<span class="s">                "type": "Fields::TextField",</span>
+<span class="s">                "order": 5,</span>
+<span class="s">                "entity_id": 4,</span>
+<span class="s">                "default": true,</span>
+<span class="s">                "validation_type": "telephone",</span>
+<span class="s">                "repeat_value": null,</span>
+<span class="s">                "allowed_values": null,</span>
+<span class="s">                "file": null</span>
+<span class="s">            }</span>
+<span class="s">        },</span>
+<span class="s">        {</span>
+<span class="s">            "id": "36",</span>
+<span class="s">            "type": "fields",</span>
+<span class="s">            "attributes": {</span>
+<span class="s">                "name": {</span>
+<span class="s">                    "en": "326 jobtitle, locale: en",</span>
+<span class="s">                    "es": "326 jobtitle, locale: es"</span>
+<span class="s">                },</span>
+<span class="s">                "values": null,</span>
+<span class="s">                "settings": {</span>
+<span class="s">                    "available_public_listings": true</span>
+<span class="s">                },</span>
+<span class="s">                "validations": {</span>
+<span class="s">                    "validation_type": "letters"</span>
+<span class="s">                },</span>
+<span class="s">                "type": "Fields::TextField",</span>
+<span class="s">                "order": 7,</span>
+<span class="s">                "entity_id": 4,</span>
+<span class="s">                "default": true,</span>
+<span class="s">                "validation_type": "letters",</span>
+<span class="s">                "repeat_value": null,</span>
+<span class="s">                "allowed_values": null,</span>
+<span class="s">                "file": null</span>
+<span class="s">            }</span>
+<span class="s">        },</span>
+<span class="s">        {</span>
+<span class="s">            "id": "37",</span>
+<span class="s">            "type": "fields",</span>
+<span class="s">            "attributes": {</span>
+<span class="s">                "name": {</span>
+<span class="s">                    "en": "326 alternative_email, locale: en",</span>
+<span class="s">                    "es": "326 alternative_email, locale: es"</span>
+<span class="s">                },</span>
+<span class="s">                "values": null,</span>
+<span class="s">                "settings": {</span>
+<span class="s">                    "available_public_listings": true</span>
+<span class="s">                },</span>
+<span class="s">                "validations": {</span>
+<span class="s">                    "validation_type": "letters"</span>
+<span class="s">                },</span>
+<span class="s">                "type": "Fields::TextField",</span>
+<span class="s">                "order": 9,</span>
+<span class="s">                "entity_id": 4,</span>
+<span class="s">                "default": true,</span>
+<span class="s">                "validation_type": "letters",</span>
+<span class="s">                "repeat_value": null,</span>
+<span class="s">                "allowed_values": null,</span>
+<span class="s">                "file": null</span>
+<span class="s">            }</span>
+<span class="s">        },</span>
+<span class="s">        {</span>
+<span class="s">            "id": "38",</span>
+<span class="s">            "type": "fields",</span>
+<span class="s">            "attributes": {</span>
+<span class="s">                "name": {</span>
+<span class="s">                    "en": "326 city, locale: en",</span>
+<span class="s">                    "es": "326 city, locale: es"</span>
+<span class="s">                },</span>
+<span class="s">                "values": null,</span>
+<span class="s">                "settings": {</span>
+<span class="s">                    "available_public_listings": true</span>
+<span class="s">                },</span>
+<span class="s">                "validations": {</span>
+<span class="s">                    "validation_type": null</span>
+<span class="s">                },</span>
+<span class="s">                "type": "Fields::CityField",</span>
+<span class="s">                "order": 6,</span>
+<span class="s">                "entity_id": 4,</span>
+<span class="s">                "default": true,</span>
+<span class="s">                "file": null</span>
+<span class="s">            }</span>
+<span class="s">        },</span>
+<span class="s">        {</span>
+<span class="s">            "id": "39",</span>
+<span class="s">            "type": "fields",</span>
+<span class="s">            "attributes": {</span>
+<span class="s">                "name": {</span>
+<span class="s">                    "en": "326 birthdate, locale: en",</span>
+<span class="s">                    "es": "326 birthdate, locale: es"</span>
+<span class="s">                },</span>
+<span class="s">                "values": null,</span>
+<span class="s">                "settings": {</span>
+<span class="s">                    "available_public_listings": true</span>
+<span class="s">                },</span>
+<span class="s">                "validations": {</span>
+<span class="s">                    "validation_type": null</span>
+<span class="s">                },</span>
+<span class="s">                "type": "Fields::DateTimeField",</span>
+<span class="s">                "order": 8,</span>
+<span class="s">                "entity_id": 4,</span>
+<span class="s">                "default": true,</span>
+<span class="s">                "include_time": null,</span>
+<span class="s">                "upper_bound": null,</span>
+<span class="s">                "lower_bound": null,</span>
+<span class="s">                "file": null</span>
+<span class="s">            }</span>
+<span class="s">        },</span>
+<span class="s">        {</span>
+<span class="s">            "id": "40",</span>
+<span class="s">            "type": "fields",</span>
+<span class="s">            "attributes": {</span>
+<span class="s">                "name": {</span>
+<span class="s">                    "en": "326 photo, locale: en",</span>
+<span class="s">                    "es": "326 photo, locale: es"</span>
+<span class="s">                },</span>
+<span class="s">                "values": null,</span>
+<span class="s">                "settings": {</span>
+<span class="s">                    "available_public_listings": true</span>
+<span class="s">                },</span>
+<span class="s">                "validations": {</span>
+<span class="s">                    "validation_type": null</span>
+<span class="s">                },</span>
+<span class="s">                "type": "Fields::ImageField",</span>
+<span class="s">                "order": 11,</span>
+<span class="s">                "entity_id": 4,</span>
+<span class="s">                "default": true,</span>
+<span class="s">                "file": null</span>
+<span class="s">            }</span>
+<span class="s">        },</span>
+<span class="s">        {</span>
+<span class="s">            "id": "41",</span>
+<span class="s">            "type": "fields",</span>
+<span class="s">            "attributes": {</span>
+<span class="s">                "name": {</span>
+<span class="s">                    "en": "Alergic",</span>
+<span class="s">                    "es": "Es alergico"</span>
+<span class="s">                },</span>
+<span class="s">                "values": null,</span>
+<span class="s">                "settings": {</span>
+<span class="s">                    "display": true,</span>
+<span class="s">                    "filterable": true,</span>
+<span class="s">                    "available_public_listings": true</span>
+<span class="s">                },</span>
+<span class="s">                "validations": {</span>
+<span class="s">                    "required": true</span>
+<span class="s">                },</span>
+<span class="s">                "type": "Fields::TextField",</span>
+<span class="s">                "order": 99,</span>
+<span class="s">                "entity_id": 4,</span>
+<span class="s">                "default": false,</span>
+<span class="s">                "validation_type": null,</span>
+<span class="s">                "repeat_value": null,</span>
+<span class="s">                "allowed_values": null,</span>
+<span class="s">                "file": null</span>
+<span class="s">            }</span>
+<span class="s">        }</span>
+<span class="s">    ],</span>
+<span class="s">    "links": {</span>
+<span class="s">        "first": "https://dev-api.eventtia.com/api/v1/en/v1/events/a07243b1ff/fields?page[number]=1",</span>
+<span class="s">        "last": "https://dev-api.eventtia.com/api/v1/en/v1/events/a07243b1ff/fields?page[number]=1",</span>
+<span class="s">        "prev": null,</span>
+<span class="s">        "next": null</span>
+<span class="s">    }</span>
+<span class="s">}</span>
+</code></pre></div>
+<blockquote>
+<p>Example of a 404 response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
+<span class="s">{</span>
+
+    "message": "Couldn't find Event"
+
+}
+</code></pre></div>
+<p>This endpoint allows you a list field info.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /v1/events/:event_uri/fields</code></p>
+<h3 id='get-parameters'>Get Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>event uri must be an unique name.</td>
+</tr>
+</tbody></table>
+<h2 id='create-field'>Create field</h2>
 <blockquote>
 <p>To create a new field, use this code:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
-curl <span class="s2">"https://core.eventtia.com/v1/fields"</span> <span class="se">\</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/fields"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="s1">'{
   "data": {
-    "type": "field",
+    "type": "fields",
     "attributes": {
       "name": {"es": "Nombre", "en": "Name"},
-      "entity_type": "AttendeeType",
-      "entity_id": 1,
       "required": true,
       "order": 0,
       "available_public_listings": true,
@@ -2628,7 +3352,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields"</span> <span class="
   }
 }'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="c1">// Get your token for further authorization</span>
-<span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://core.eventtia.com/v1/fields</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://core.eventtia.com/v1/events/:event_uri/fields</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
     <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
@@ -2636,11 +3360,9 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields"</span> <span class="
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">field</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">fields</span><span class="dl">"</span><span class="p">,</span>
     <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
       <span class="na">name</span><span class="p">:</span> <span class="p">{</span><span class="na">es</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Nombre</span><span class="dl">"</span><span class="p">,</span> <span class="na">en</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Name</span><span class="dl">"</span><span class="p">},</span>
-      <span class="na">entity_type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">AttendeeType</span><span class="dl">"</span><span class="p">,</span>
-      <span class="na">entity_id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
       <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
       <span class="na">order</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
       <span class="na">available_public_listings</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -2703,8 +3425,8 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields"</span> <span class="
 </code></pre></div>
 <p>This endpoint allows you create a new input field. 
 You may provide field names and options in multiple languages. Currently, English, Spanish and French are supported. </p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>POST /v1/fields</code></p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST /v1/events/:event_uri/fields</code></p>
 <h3 id='query-parameters-for-text-field'>Query Parameters for Text Field</h3>
 <table><thead>
 <tr>
@@ -2717,16 +3439,6 @@ You may provide field names and options in multiple languages. Currently, Englis
 <td>name</td>
 <td>Hash</td>
 <td>Field name e.g  {en: &#39;name&#39;, &#39;es&#39;: &#39;nombre&#39;}.</td>
-</tr>
-<tr>
-<td>entity_type</td>
-<td>string</td>
-<td>Field entity type &#39;AttendeeType&#39;</td>
-</tr>
-<tr>
-<td>entity_id</td>
-<td>integer</td>
-<td>Id of AttendeeType.</td>
 </tr>
 <tr>
 <td>required</td>
@@ -2793,16 +3505,6 @@ You may provide field names and options in multiple languages. Currently, Englis
 <td>Field name e.g  {en: &#39;name&#39;, &#39;es&#39;: &#39;nombre&#39;}.</td>
 </tr>
 <tr>
-<td>entity_type</td>
-<td>string</td>
-<td>Field entity type &#39;AttendeeType&#39;</td>
-</tr>
-<tr>
-<td>entity_id</td>
-<td>integer</td>
-<td>Id of AttendeeType.</td>
-</tr>
-<tr>
 <td>order</td>
 <td>integer</td>
 <td>Field order in the form.</td>
@@ -2842,16 +3544,6 @@ You may provide field names and options in multiple languages. Currently, Englis
 <td>Field name e.g  {en: &#39;name&#39;, &#39;es&#39;: &#39;nombre&#39;}.</td>
 </tr>
 <tr>
-<td>entity_type</td>
-<td>string</td>
-<td>Field entity type &#39;AttendeeType&#39;</td>
-</tr>
-<tr>
-<td>entity_id</td>
-<td>integer</td>
-<td>Id of AttendeeType.</td>
-</tr>
-<tr>
 <td>order</td>
 <td>integer</td>
 <td>Field order in the form.</td>
@@ -2889,16 +3581,6 @@ You may provide field names and options in multiple languages. Currently, Englis
 <td>values</td>
 <td>Array of Obejcts</td>
 <td>options for this field eg [{en: &#39;Automotive&#39;, es: &#39;Automotores&#39;, uuid: &#39;uuide&#39;}, {en: &#39;Computers&#39;, es: &#39;Computadores&#39;, uuid: &#39;uuidop&#39;}]. You must provide an unique uuid for each option.</td>
-</tr>
-<tr>
-<td>entity_type</td>
-<td>string</td>
-<td>Field entity type &#39;AttendeeType&#39;</td>
-</tr>
-<tr>
-<td>entity_id</td>
-<td>integer</td>
-<td>Id of AttendeeType.</td>
 </tr>
 <tr>
 <td>order</td>
@@ -2945,16 +3627,6 @@ You may provide field names and options in multiple languages. Currently, Englis
 <td>options for this field eg [{en: &#39;&#39;, es: &#39;Futbol&#39;, uuid: &#39;uuide&#39;}, {en: &#39;Golf&#39;, es: &#39;Golf&#39;, uuid: &#39;uuidop&#39;}]. You must provide an unique uuid for each option.</td>
 </tr>
 <tr>
-<td>entity_type</td>
-<td>string</td>
-<td>Field entity type &#39;AttendeeType&#39;</td>
-</tr>
-<tr>
-<td>entity_id</td>
-<td>integer</td>
-<td>Id of AttendeeType.</td>
-</tr>
-<tr>
 <td>order</td>
 <td>integer</td>
 <td>Field order in the form.</td>
@@ -2992,16 +3664,6 @@ You may provide field names and options in multiple languages. Currently, Englis
 <td>name</td>
 <td>Hash</td>
 <td>Field name e.g  {en: &#39;date&#39;, &#39;es&#39;: &#39;fecha&#39;}.</td>
-</tr>
-<tr>
-<td>entity_type</td>
-<td>string</td>
-<td>Field entity type &#39;AttendeeType&#39;</td>
-</tr>
-<tr>
-<td>entity_id</td>
-<td>integer</td>
-<td>Id of AttendeeType.</td>
 </tr>
 <tr>
 <td>order</td>
@@ -3043,16 +3705,6 @@ You may provide field names and options in multiple languages. Currently, Englis
 <td>Field name e.g  {en: &#39;city&#39;, &#39;es&#39;: &#39;ciudad&#39;}.</td>
 </tr>
 <tr>
-<td>entity_type</td>
-<td>string</td>
-<td>Field entity type &#39;AttendeeType&#39;</td>
-</tr>
-<tr>
-<td>entity_id</td>
-<td>integer</td>
-<td>Id of AttendeeType.</td>
-</tr>
-<tr>
 <td>order</td>
 <td>integer</td>
 <td>Field order in the form.</td>
@@ -3085,16 +3737,6 @@ You may provide field names and options in multiple languages. Currently, Englis
 <td>name</td>
 <td>Hash</td>
 <td>Field name e.g  {en: &#39;Image&#39;, &#39;es&#39;: &#39;imagen&#39;}.</td>
-</tr>
-<tr>
-<td>entity_type</td>
-<td>string</td>
-<td>Field entity type &#39;AttendeeType&#39;</td>
-</tr>
-<tr>
-<td>entity_id</td>
-<td>integer</td>
-<td>Id of AttendeeType.</td>
 </tr>
 <tr>
 <td>order</td>
@@ -3131,16 +3773,6 @@ You may provide field names and options in multiple languages. Currently, Englis
 <td>Field name e.g  {en: &#39;File&#39;, &#39;es&#39;: &#39;Archivo&#39;}.</td>
 </tr>
 <tr>
-<td>entity_type</td>
-<td>string</td>
-<td>Field entity type &#39;AttendeeType&#39;</td>
-</tr>
-<tr>
-<td>entity_id</td>
-<td>integer</td>
-<td>Id of AttendeeType.</td>
-</tr>
-<tr>
 <td>order</td>
 <td>integer</td>
 <td>Field order in the form.</td>
@@ -3173,16 +3805,6 @@ You may provide field names and options in multiple languages. Currently, Englis
 <td>name</td>
 <td>Hash</td>
 <td>Field name e.g  {en: &#39;Terms and conditions&#39;, &#39;es&#39;: &#39;Terminos y condiciones&#39;}.</td>
-</tr>
-<tr>
-<td>entity_type</td>
-<td>string</td>
-<td>Field entity type &#39;AttendeeType&#39;</td>
-</tr>
-<tr>
-<td>entity_id</td>
-<td>integer</td>
-<td>Id of AttendeeType.</td>
 </tr>
 <tr>
 <td>order</td>
@@ -3225,15 +3847,13 @@ You may provide field names and options in multiple languages. Currently, Englis
 <p>To update field info, use this code:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
-curl <span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span> <span class="se">\</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/fields/:id/&lt;id&gt;"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">-X</span> PUT <span class="nt">-d</span> <span class="s1">'{
   "data": {
     "type": "field",
     "attributes": {
       "name": {"es": "Nombre", "en": "Name"},
-      "entity_type": "AttendeeType",
-      "entity_id": 1,
       "required": true,
       "order": 0,
       "available_public_listings": true,
@@ -3245,7 +3865,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span> <s
   }
 }'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="c1">// Get your token for further authorization</span>
-<span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://core.eventtia.com/v1/fields/&lt;id&gt;</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://core.eventtia.com/v1/events/:event_uri/fields/:id/&lt;id&gt;</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">PUT</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
     <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
@@ -3297,8 +3917,8 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span> <s
 <span class="s">}</span>
 </code></pre></div>
 <p>This endpoint allows you update a field info.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>PUT /v1/fields/:id</code></p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>PUT /v1/events/:event_uri/fields/:id</code></p>
 <h3 id='path-parameters'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -3317,7 +3937,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span> <s
 <blockquote>
 <p>To update destroy, use this code:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://core.eventtia.com/v1/fields/&lt;id&gt;</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://core.eventtia.com/v1/fields/:id&lt;id&gt;</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">DELETE</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
     <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
@@ -3348,7 +3968,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span> <s
 <span class="s">}</span>
 </code></pre></div>
 <p>This endpoint allows you destroy a field info.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>DELETE /v1/fields/:id</code></p>
 <h3 id='path-parameters-2'>Path Parameters</h3>
 <table><thead>
@@ -3362,6 +3982,63 @@ curl <span class="s2">"https://core.eventtia.com/v1/fields/&lt;id&gt;"</span> <s
 <td>id</td>
 <td>integer</td>
 <td>The id for the desired field</td>
+</tr>
+</tbody></table>
+<h2 id='change-order'>Change Order</h2>
+<blockquote>
+<p>To change order info, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/change-order/&lt;id&gt;"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-X</span> PUT <span class="nt">-d</span> <span class="s1">'{
+    "order_ids": {"20":3,"44":2}
+}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="c1">// Get your token for further authorization</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://core.eventtia.com/v1/events/:event_uri/fields/:id/&lt;id&gt;</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">PUT</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">&lt;your token&gt;</span><span class="dl">'</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">order_ids</span><span class="p">:</span> <span class="dl">'</span><span class="s1">&lt;{"20":3,"44":2}&gt;</span><span class="dl">'</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div>
+<blockquote>
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">    "status": 200</span>
+<span class="s">}</span>
+</code></pre></div>
+<blockquote>
+<p>Example of a 422 response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+
+    "message": "ExceptionHandler::RecordInvalid"
+
+}
+</code></pre></div>
+<p>This endpoint allows you update a Change Order info.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>PUT /v1/events/:event_uri/fields/change-order</code></p>
+<h3 id='path-parameters-3'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>event uri must be an unique name.</td>
 </tr>
 </tbody></table>
 <h1 id='pricing-tier'>Pricing Tier</h1><h2 id='list-pricing-tiers'>List Pricing Tiers</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://core.eventtia.com/v1/events/&lt;event_uri&gt;/pricing_tiers/?entity_id=&lt;entity_id&gt;&amp;entity_type=&lt;entity_type&gt;</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
