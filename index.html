@@ -468,6 +468,9 @@
                     <a href="#update-password" class="toc-h2 toc-link" data-title="Update Password">Update Password</a>
                   </li>
                   <li>
+                    <a href="#activate-password" class="toc-h2 toc-link" data-title="Activate Password">Activate Password</a>
+                  </li>
+                  <li>
                     <a href="#change-password" class="toc-h2 toc-link" data-title="Change Password">Change Password</a>
                   </li>
               </ul>
@@ -4809,8 +4812,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
         <span class="na">first_name</span><span class="p">:</span> <span class="s2">"first Name"</span><span class="p">,</span>
         <span class="na">last_name</span><span class="p">:</span> <span class="s2">"last Name"</span><span class="p">,</span>
         <span class="na">phone</span><span class="p">:</span> <span class="mi">788965455</span><span class="p">,</span>
-        <span class="na">password</span><span class="p">:</span> <span class="s2">"SecurePassword"</span><span class="p">,</span>
-        <span class="na">password_confirmation</span><span class="p">:</span> <span class="s2">"SecurePassword"</span><span class="p">,</span>
         <span class="na">email</span><span class="p">:</span> <span class="s2">"user@eventtia.com"</span>
                              <span class="p">}</span>
     <span class="p">}</span>
@@ -4874,11 +4875,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>phone</td>
 <td>string</td>
 <td>The User&#39;s phone.</td>
-</tr>
-<tr>
-<td>password</td>
-<td>string</td>
-<td>The User&#39;s password.</td>
 </tr>
 </tbody></table>
 <h2 id='update-user'>Update User</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/users/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
@@ -6196,6 +6192,71 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>your new password</td>
 </tr>
 </tbody></table>
+<h2 id='activate-password'>Activate Password</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/en/v1/passwords/activate'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="s1">'users'</span><span class="p">,</span>
+      <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">reset_password_token</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+        <span class="na">password</span><span class="p">:</span> <span class="s1">'&lt;your new password&gt;'</span><span class="p">,</span>
+        <span class="na">password_confirmation</span><span class="p">:</span> <span class="s1">'&lt;your new password&gt;'</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace &lt;your token&gt; with the given reset password token.</p>
+
+<p>Make sure you replace &lt;your new password&gt; with your new password.</p>
+
+<p>Example of successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">    "message": 301</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "reset_password_token": [</span>
+<span class="s">      106</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint updates the password of the user</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>PUT en/v1/passwords</code></p>
+<h3 id='body-parameters-3'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>reset_password_token</td>
+<td>string</td>
+<td>recover password token</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>your new password</td>
+</tr>
+<tr>
+<td>confirmation_password</td>
+<td>string</td>
+<td>your new password</td>
+</tr>
+</tbody></table>
 <h2 id='change-password'>Change Password</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/en/v1/passwords/change'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
@@ -6235,9 +6296,9 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <span class="s">}</span>
 </code></pre>
 <p>This endpoint changes the password of the user</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>PUT en/v1/passwords/change</code></p>
-<h3 id='body-parameters-3'>Body Parameters</h3>
+<h3 id='body-parameters-4'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
