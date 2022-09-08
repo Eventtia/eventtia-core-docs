@@ -152,7 +152,7 @@ This endpoint updates the password of the user
 
 ### HTTP Request
 
-`PUT en/v1/passwords`
+`PUT en/v1/passwords/activate`
 
 ### Body Parameters
 

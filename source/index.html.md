@@ -11,23 +11,23 @@ toc_footers:
 
 includes:
   - introduction
+  - activation
+  - account_subscriptions
   - attendees
   - attendee_type
-  - activation
+  - commercial_plans
   - events
   - fields
-  - pricing_tier
-  - speakers
-  - registrations
-  - users
-  - workshops
-  - commercial_plans
-  - account_subscriptions
   - passwords
   - permissions
+  - pricing_tier
+  - registrations
   - roles
   - role_permissions
   - role_categories
+  - speakers
+  - users
+  - workshops
 
 search: true
 ---
