@@ -17,21 +17,34 @@ fetch('https://core.eventtia.com/v1/users/', {
 ```http
 HTTP/1.1 200 OK
 {
-  "data": [
+"data": [
     {
       "id": 1,
       "type": "users",
-      "attributes":{
-        "first_name": "first Name",
-        "last_name": "last Name",
-        "phone": "788965455",
-        "password": "securepassword",
-        "password_confirmation": "securepassword",
-        "email": "user@eventtia.com"
+      "attributes": {
+          "first_name": "first Name",
+          "last_name": "last Name",
+          "email": "user@eventtia.com",
+          "account_name": "account"
+      },
+      "relationships": {
+          "account": {
+              "data": {
+                  "id": "1",
+                  "type": "users"
+              }
+          },
+          "role": {
+              "data": {
+                  "id": "1",
+                  "type": "roles"
+              }
+            }
         }
     }
   ]
 }
+
 ```
 
 This endpoint return a list of users
@@ -65,24 +78,30 @@ fetch('https://core.eventtia.com/v1/users/<id>', {
 ```http
 HTTP/1.1 200 OK
 {
-    "data": {
-        "id": "1",
-        "type": "users",
-        "attributes": {
-            "first_name": "first Name",
-            "last_name": "last Name",
-            "email": "email@eventtia.com",
-            "account_name": "eventtia"
+  "data": {
+    "id": "1",
+    "type": "users",
+    "attributes": {
+        "first_name": "first Name",
+        "last_name": "last Name",
+        "email": "email@eventtia.com",
+        "account_name": "eventtia"
+    },
+    "relationships": {
+        "account": {
+            "data": {
+                "id": "1",
+                "type": "users"
+            }
         },
-        "relationships": {
-            "account": {
-                "data": {
-                    "id": "1",
-                    "type": "users"
-                }
+        "role": {
+            "data": {
+                "id": "1",
+                "type": "roles"
             }
         }
     }
+  }
 }
 ```
 
@@ -122,9 +141,20 @@ fetch('https://core.eventtia.com/v1/users/', {
         first_name: "first Name",
         last_name: "last Name",
         phone: 788965455,
-        email: "user@eventtia.com"
-          		             }
-	}
+        password: "SecurePassword",
+        email: "user@eventtia.com",
+        is_admin: "false",
+        role_category_ids: [1, 2]
+      },
+        relationships: {
+        role: {
+            data: {
+                id: "1",
+                type: "roles"
+          }
+        }
+      }
+	}}
 }
 }
 ```
@@ -152,8 +182,14 @@ HTTP/1.1 200 OK
                     "type": "users"
                 }
             }
-        }
-    }
+        },
+            "role": {
+              "data": {
+                  "id": "1",
+                  "type": "roles"
+                }
+            }
+      }
 }
 ```
 
@@ -173,9 +209,13 @@ This endpoint create an user and return it
 
 Parameter | Type | Description
 --------- | ---- | -----------
-name | string | The User's name.
+first_name | string | The User's first name.
+last_name | string | The User's last name.
 email | string | The User's corporate email.
 phone | string | The User's phone.
+password | string | The User's password.
+is_admin | bolean | Specifies whether the user you are creating is an administrator or not.
+role_category_ids | array | Specifies the categories the user is associated with. This is required in case your user isn't an administrator.
 
 ## Update User
 
@@ -194,8 +234,18 @@ fetch('https://core.eventtia.com/v1/users/<id>', {
         phone: 788965455,
         password: "SecurePassword",
         password_confirmation: "SecurePassword",
-        email: "user@eventtia.com"
-          		             }
+        email: "user@eventtia.com",
+        is_admin: "false",
+        role_category_ids: [1, 2]
+      },
+        relationships: {
+        role: {
+          data: {
+              id: "2",
+              type: "roles"
+          }
+        }
+      }
 	}
 }
 })
@@ -224,6 +274,12 @@ HTTP/1.1 200 OK
                 "data": {
                     "id": "1",
                     "type": "users"
+                }
+            },
+            "role": {
+                "data": {
+                    "id": "2",
+                    "type": "roles"
                 }
             }
         }
@@ -257,6 +313,8 @@ name | string | The User's name.
 email | string | The User's corporate email.
 phone | string | The User's phone.
 password | string | The User's password.
+is_admin | bolean | Specifies whether the user you are creating is an administrator or not.
+role_category_ids | array | Specifies the categories the user is associated with. This is required in case your user isn't an administrator.
 
 ## Destroy User
 ```javascript
