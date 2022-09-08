@@ -36,13 +36,11 @@ HTTP/1.1 200 OK
         "archived": false
       },
       "relationships": {
-        "fields": {
-          "data": [
-            {
-              "id": "331",
-              "type": "field"
-            }
-          ]
+        "current_price": {
+          "data": {
+              "id": "6",
+              "type": "pricing_tiers"
+          }
         }
       }
     }
@@ -102,12 +100,16 @@ HTTP/1.1 200 OK
       "archived": false
     },
     "relationships": {
-      "fields": {
+      "form_fields": {
         "data": [
-          {
-            "id": "331",
-            "type": "field"
-          }
+            {
+                "id": "24",
+                "type": "form_fields"
+            },
+            {
+                "id": "25",
+                "type": "form_fields"
+            }
         ]
       }
     }
@@ -207,13 +209,12 @@ HTTP/1.1 200 OK
       "archived": false
     },
     "relationships": {
-      "fields": {
-        "data": [
-          {
-            "id": "331",
-            "type": "field"
+      "current_price": {
+        "data": {
+            "id": "12",
+            "type": "pricing_tiers"
           }
-        ]
+        }
       }
     }
   }
@@ -303,11 +304,10 @@ HTTP/1.1 200 OK
       "archived": false
     },
     "relationships": {
-      "fields": {
-        "data": [
-          {
-            "id": "331",
-            "type": "field"
+      "current_price": {
+        "data": {
+            "id": "12",
+            "type": "pricing_tiers"
           }
         ]
       }
@@ -389,11 +389,11 @@ HTTP/1.1 200 OK
       "archived": true
     },
     "relationships": {
-      "fields": {
-        "data": [
-          {
-            "id": "331",
-            "type": "field"
+    "relationships": {
+      "current_price": {
+          "data": {
+              "id": "6",
+              "type": "pricing_tiers"
           }
         ]
       }
@@ -495,37 +495,28 @@ fetch('https://core.eventtia.com/v1/events/:event_uri/attendee_type/:entity_id/f
 HTTP/1.1 200 OK
 {
     "data": [
-        {
-            "id": "1",
-            "type": "fields",
-            "attributes": {
-                "name": {
-                    "en": "326 name, locale: en",
-                    "es": "326 name, locale: es"
-                },
-                "values": null,
-                "settings": {
-                    "available_public_listings": true
-                },
-                "validations": {
-                    "validation_type": "letters"
-                },
-                "type": "Fields::TextField",
-                "order": 1,
-                "entity_id": 1,
-                "default": true,
-                "validation_type": "letters",
-                "repeat_value": null,
-                "allowed_values": null,
-                "file": null
-            }
-        }
-    ],
-    "meta": {
-        "fields_order": {
-            "1": 1
-        }
-    }
+    {
+      "id": "24",
+      "type": "form_fields",
+      "attributes": {
+          "id": 24,
+          "order": 1
+      },
+      "relationships": {
+        "field": {
+            "data": {
+              "id": "52",
+              "type": "fields"
+              }
+          },
+          "entity": {
+            "data": {
+              "id": "6",
+              "type": "attendee_types"
+          }
+       }
+      }
+    ]
 }
 ```
 
