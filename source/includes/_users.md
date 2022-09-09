@@ -25,6 +25,8 @@ HTTP/1.1 200 OK
           "first_name": "first Name",
           "last_name": "last Name",
           "email": "user@eventtia.com",
+          "phone": "777777777",
+          "active": true,
           "account_name": "account"
       },
       "relationships": {
@@ -85,6 +87,8 @@ HTTP/1.1 200 OK
         "first_name": "first Name",
         "last_name": "last Name",
         "email": "email@eventtia.com",
+        "phone": "777777777",
+        "active": true,
         "account_name": "eventtia"
     },
     "relationships": {
@@ -173,6 +177,8 @@ HTTP/1.1 200 OK
             "first_name": "first Name",
             "last_name": "last Name",
             "email": "email@eventtia.com",
+            "phone": "777777777",
+            "active": false,
             "account_name": "eventtia"
         },
         "relationships": {
@@ -267,6 +273,8 @@ HTTP/1.1 200 OK
             "first_name": "first Name",
             "last_name": "last Name",
             "email": "email@eventtia.com",
+            "phone": "777777777",
+            "active": true,
             "account_name": "eventtia"
         },
         "relationships": {
@@ -342,6 +350,8 @@ HTTP/1.1 200 OK
             "first_name": "first Name",
             "last_name": "last Name",
             "email": "email@eventtia.com",
+            "phone": "777777777",
+            "active": true,
             "account_name": "eventtia"
         },
         "relationships": {
