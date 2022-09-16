@@ -618,4 +618,4 @@ Parameter | Type | Description
 --------- | ---- | -----------
 event_uri | string | The event_uri for the desired event.
 notification_id | integer | The id for the desired notification
-id | integer | The id for the notification langauge
+id | integer | The id for the notification language
