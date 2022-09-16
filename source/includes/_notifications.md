@@ -181,10 +181,10 @@ This endpoint create an notification and return it
 
 Parameter  |  Type   | Description
 ---------  | ------- | -----------
-name       | string  | name for notification
-entity_type| string  | entity type for notification
-action     | string | notification action [account_created, recover_password, attendee_created, attendee_rejected, attendee_confirmed, welcome_email]
-conditions  | json | conditions for notifications
+name       | string  | Name for notification
+entity_type| string  | Entity type for notification
+action     | string | Notification action [account_created, recover_password, attendee_created, attendee_rejected, attendee_confirmed, welcome_email]
+conditions  | json | Conditions for notifications
 
 ## Update Notification
 
@@ -263,10 +263,10 @@ event_uri | string  | The event_uri for the desired event
 
 Parameter  |  Type   | Description
 ---------  | ------- | -----------
-name       | string  | name for notification
-entity_type| string  | entity type for notification
-action      | string | notification action [account_created, recover_password, attendee_created, attendee_rejected, attendee_confirmed, welcome_email]
-conditions  | json | conditions for notifications
+name       | string  | Name for notification
+entity_type| string  | Entity type for notification
+action      | string | Notification action [account_created, recover_password, attendee_created, attendee_rejected, attendee_confirmed, welcome_email]
+conditions  | json | Conditions for notifications
 
 ## Destroy Notification
 ```javascript
@@ -501,9 +501,9 @@ notification_id | integer | The id for the desired notification
 ### Body Parameters
 Parameter | Type | Description
 --------- | ---- | -----------
-locale | string | supported locales ['es', 'en', 'fr', 'it', 'de', 'ru']
-subject | string | subject for notification.
-body    | string | body for notification.
+locale | string | Supported locales ['es', 'en', 'fr', 'it', 'de', 'ru']
+subject | string | Subject for notification.
+body    | string | Body for notification.
 
 ## Update Notification Language
 This endpoint allows you to update a new notification language to the given notification.
@@ -562,9 +562,9 @@ id | integer  | The id for the desired notification language
 ### Body Parameters
 Parameter | Type | Description
 --------- | ---- | -----------
-locale | string | supported locales ['es', 'en', 'fr', 'it', 'de', 'ru']
-subject | string | subject for notification.
-body    | string | body for notification.
+locale | string | Supported locales ['es', 'en', 'fr', 'it', 'de', 'ru']
+subject | string | Subject for notification.
+body    | string | Body for notification.
 
 
 ## Delete Notification Language
