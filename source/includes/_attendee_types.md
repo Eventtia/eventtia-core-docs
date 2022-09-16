@@ -470,7 +470,7 @@ event_uri | string  | The event_uri for the desired event
 ## Form Fields
 ### Index form fields
 ```javascript
-fetch('https://core.eventtia.com/v1/events/:event_uri/attendee_type/:entity_id/fields', {
+fetch('https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields', {
   method: 'GET',
   headers: {
     'Authorization': '<your token>',
@@ -532,7 +532,7 @@ HTTP/1.1 404 Not Found
 This endpoint list all the available fields associated with the given attendee type.
 ### HTTP Request
 
-`GET v1/events/:event_uri/attendee_type/:entity_id/fields`
+`GET v1/events/:event_uri/attendee_types/:entity_id/fields`
 
 ### Path Parameters
 
@@ -548,7 +548,7 @@ This endpoint allows you to associate a new field to the given attendee type for
 
 ```shell
 # Get your token for further authorization
-curl "https://core.eventtia.com/v1/events/:event_uri/attendee_type/:entity_id/fields" \
+curl "https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields" \
   -H 'Content-Type: application/json' \
   -X POST -d '{
   "data": {
@@ -571,7 +571,7 @@ curl "https://core.eventtia.com/v1/events/:event_uri/attendee_type/:entity_id/fi
 
 ```javascript
 // Get your token for further authorization
-fetch("https://core.eventtia.com/v1/events/:event_uri/attendee_type/:entity_id/fields", {
+fetch("https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields", {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -622,7 +622,7 @@ entity_type | string | AttendeeType.
 
 
 ```javascript
-fetch("https://core.eventtia.com/v1/events/:event_uri/attendee_type/:entity_id/fields/:id<id>", {
+fetch("https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields/:id<id>", {
   method: 'DELETE',
   headers: {
     'Content-Type': 'application/json',
@@ -693,7 +693,7 @@ This endpoint allows you to change the order in which the fields are displayed i
 
 ### HTTP Request
 
-`PUT /v1/events/:event_uri/attendee_type/:entity_id/fields/change-order`
+`PUT /v1/events/:event_uri/attendee_types/:entity_id/fields/change-order`
 
 ### Path Parameters
 
