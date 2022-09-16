@@ -309,7 +309,6 @@ HTTP/1.1 200 OK
             "id": "12",
             "type": "pricing_tiers"
           }
-        ]
       }
     }
   }
@@ -389,13 +388,11 @@ HTTP/1.1 200 OK
       "archived": true
     },
     "relationships": {
-    "relationships": {
       "current_price": {
           "data": {
               "id": "6",
               "type": "pricing_tiers"
           }
-        ]
       }
     }
   }
@@ -484,6 +481,8 @@ fetch('https://core.eventtia.com/v1/events/:event_uri/attendee_type/:entity_id/f
 > Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
 
 > Make sure you replace &lt;event uri&gt; with the event uri for the event. 
+
+> Make sure you replace &lt;entity_id&gt; with the id for the entity. 
 
 > Example of a successful (200) response:
 
@@ -601,7 +600,7 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/attendee_type/:entity_id/f
 > Example of a successful (200) response:
 ### HTTP Request
 
-`POST /v1/events/:event_uri/attendee_type/:entity_id/fields`
+`POST /v1/events/:event_uri/attendee_types/:entity_id/fields`
 
 ### Path Parameters
 
@@ -635,7 +634,7 @@ This endpoint allows you to unassociated a field to the given attendee type form
 
 ### HTTP Request
 
-`DELETE v1/events/:event_uri/attendee_type/:entity_id/fields/:id`
+`DELETE v1/events/:event_uri/attendee_types/:entity_id/fields/:id`
 
 ### Path Parameters
 

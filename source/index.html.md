@@ -14,10 +14,11 @@ includes:
   - activation
   - account_subscriptions
   - attendees
-  - attendee_type
+  - attendee_types
   - commercial_plans
   - events
   - fields
+  - notifications
   - passwords
   - permissions
   - pricing_tier
