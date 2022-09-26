@@ -78,14 +78,14 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/orders/', {
           },
       "order_items": [
           {
-              "description": "descrition for first item",
+              "description": "description for first item",
               "quantity": 1,
               "entity_type": "AttendeeType",
               "entity_id": 94,
               "unit_amount": 10.0
           },
           {
-              "description": "descrition for second item",
+              "description": "description for second item",
               "quantity": 1,
               "entity_type": "AttendeeType",
               "entity_id": 57,
