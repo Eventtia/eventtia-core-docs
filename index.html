@@ -371,6 +371,44 @@
               </ul>
           </li>
           <li>
+            <a href="#notifications" class="toc-h1 toc-link" data-title="Notifications">Notifications</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-notifications" class="toc-h2 toc-link" data-title="List Notifications">List Notifications</a>
+                  </li>
+                  <li>
+                    <a href="#get-notification" class="toc-h2 toc-link" data-title="Get Notification">Get Notification</a>
+                  </li>
+                  <li>
+                    <a href="#create-notification" class="toc-h2 toc-link" data-title="Create Notification">Create Notification</a>
+                  </li>
+                  <li>
+                    <a href="#update-notification" class="toc-h2 toc-link" data-title="Update Notification">Update Notification</a>
+                  </li>
+                  <li>
+                    <a href="#destroy-notification" class="toc-h2 toc-link" data-title="Destroy Notification">Destroy Notification</a>
+                  </li>
+                  <li>
+                    <a href="#notification-languages" class="toc-h2 toc-link" data-title="Notification Languages">Notification Languages</a>
+                  </li>
+                  <li>
+                    <a href="#index-notification-languages" class="toc-h2 toc-link" data-title="Index Notification Languages">Index Notification Languages</a>
+                  </li>
+                  <li>
+                    <a href="#get-notification-languages" class="toc-h2 toc-link" data-title="Get Notification Languages">Get Notification Languages</a>
+                  </li>
+                  <li>
+                    <a href="#create-notification-language" class="toc-h2 toc-link" data-title="Create Notification Language">Create Notification Language</a>
+                  </li>
+                  <li>
+                    <a href="#update-notification-language" class="toc-h2 toc-link" data-title="Update Notification Language">Update Notification Language</a>
+                  </li>
+                  <li>
+                    <a href="#delete-notification-language" class="toc-h2 toc-link" data-title="Delete Notification Language">Delete Notification Language</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#passwords" class="toc-h1 toc-link" data-title="Passwords">Passwords</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1893,7 +1931,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">            "id": "12",</span>
 <span class="s">            "type": "pricing_tiers"</span>
 <span class="s">          }</span>
-<span class="s">        ]</span>
 <span class="s">      }</span>
 <span class="s">    }</span>
 <span class="s">  }</span>
@@ -2009,13 +2046,11 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">      "archived": true</span>
 <span class="s">    },</span>
 <span class="s">    "relationships": {</span>
-<span class="s">    "relationships": {</span>
 <span class="s">      "current_price": {</span>
 <span class="s">          "data": {</span>
 <span class="s">              "id": "6",</span>
 <span class="s">              "type": "pricing_tiers"</span>
 <span class="s">          }</span>
-<span class="s">        ]</span>
 <span class="s">      }</span>
 <span class="s">    }</span>
 <span class="s">  }</span>
@@ -2099,7 +2134,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <td>The id for the desired attendee type</td>
 </tr>
 </tbody></table>
-<h2 id='form-fields'>Form Fields</h2><h3 id='index-form-fields'>Index form fields</h3><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/:event_uri/attendee_type/:entity_id/fields'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='form-fields'>Form Fields</h2><h3 id='index-form-fields'>Index form fields</h3><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
     <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
@@ -2110,6 +2145,8 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. </p>
 
 <p>Make sure you replace &lt;event uri&gt; with the event uri for the event. </p>
+
+<p>Make sure you replace &lt;entity_id&gt; with the id for the entity. </p>
 
 <p>Example of a successful (200) response:</p>
 </blockquote>
@@ -2154,7 +2191,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 </code></pre>
 <p>This endpoint list all the available fields associated with the given attendee type.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
-<p><code>GET v1/events/:event_uri/attendee_type/:entity_id/fields</code></p>
+<p><code>GET v1/events/:event_uri/attendee_types/:entity_id/fields</code></p>
 <h3 id='path-parameters-7'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -2181,7 +2218,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <p>To relate a new field to an entity, use this code:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
-curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/attendee_type/:entity_id/fields"</span> <span class="se">\</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields"</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -X POST -d <span class="s1">'{
   "data": {
@@ -2201,7 +2238,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/attendee_t
   }
 }'</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">// Get your token for further authorization</span>
-<span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://core.eventtia.com/v1/events/:event_uri/attendee_type/:entity_id/fields"</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields"</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
     <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
@@ -2231,7 +2268,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/attendee_t
 <p>Example of a successful (200) response:</p>
 <h3 id='http-request-8'>HTTP Request</h3></blockquote>
 
-<p><code>POST /v1/events/:event_uri/attendee_type/:entity_id/fields</code></p>
+<p><code>POST /v1/events/:event_uri/attendee_types/:entity_id/fields</code></p>
 <h3 id='path-parameters-8'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -2274,7 +2311,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/attendee_t
 <blockquote>
 <p>To update destroy, use this code:</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://core.eventtia.com/v1/events/:event_uri/attendee_type/:entity_id/fields/:id&lt;id&gt;"</span><span class="p">,</span> <span class="p">{</span>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields/:id&lt;id&gt;"</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
     <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
@@ -2284,7 +2321,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/attendee_t
 </code></pre>
 <p>This endpoint allows you to unassociated a field to the given attendee type form.</p>
 <h3 id='http-request-9'>HTTP Request</h3>
-<p><code>DELETE v1/events/:event_uri/attendee_type/:entity_id/fields/:id</code></p>
+<p><code>DELETE v1/events/:event_uri/attendee_types/:entity_id/fields/:id</code></p>
 <h3 id='path-parameters-9'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -2350,7 +2387,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/:entity_ty
 </code></pre>
 <p>This endpoint allows you to change the order in which the fields are displayed in the registration form.</p>
 <h3 id='http-request-10'>HTTP Request</h3>
-<p><code>PUT /v1/events/:event_uri/attendee_type/:entity_id/fields/change-order</code></p>
+<p><code>PUT /v1/events/:event_uri/attendee_types/:entity_id/fields/change-order</code></p>
 <h3 id='path-parameters-10'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -4232,6 +4269,744 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/change-ord
 <td>ordered_ids</td>
 <td>json</td>
 <td>Send of key (field_id) and value (order), example {&quot;31&quot;:10, &quot;32&quot;:9}</td>
+</tr>
+</tbody></table>
+<h1 id='notifications'>Notifications</h1><h2 id='list-notifications'>List Notifications</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event. </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": [</span>
+<span class="s">    {</span>
+<span class="s">      "id": "62527",</span>
+<span class="s">      "type": "notifications",</span>
+<span class="s">      "attributes": {</span>
+<span class="s">        "name": "Welcome to Ticketing",</span>
+<span class="s">        "model": null,</span>
+<span class="s">        "entity_type": "User",</span>
+<span class="s">        "action": "account_created",</span>
+<span class="s">        "event_id": 54,</span>
+<span class="s">        "conditions": null</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">  ]</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint list notifications belongs to event and return it</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /v1/events/event_uri/notifications/</code></p>
+<h3 id='path-parameters'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>page</td>
+<td>json</td>
+<td>A page object as described <a href="#pagination">here</a></td>
+</tr>
+</tbody></table>
+<h2 id='get-notification'>Get Notification</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event.</p>
+
+<p>Make sure you replace &lt;id&gt; with the id for the notification to obtain. </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "62527",</span>
+<span class="s">    "type": "notifications",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "name": "Welcome to Ticketing",</span>
+<span class="s">      "model": null,</span>
+<span class="s">      "entity_type": "User",</span>
+<span class="s">      "action": "account_created",</span>
+<span class="s">      "event_id": 54,</span>
+<span class="s">      "conditions": null</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Not Found (404) response: </p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
+<span class="s">{</span>
+<span class="s">  {</span>
+<span class="s">    "message": "Couldn't find Notification"</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint get an notification and return it</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET /v1/events/event_uri/notifications/id</code></p>
+<h3 id='path-parameters-2'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired notification</td>
+</tr>
+</tbody></table>
+<h2 id='create-notification'>Create Notification</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"notification"</span><span class="p">,</span>
+    <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">name</span><span class="p">:</span> <span class="s2">"Welcome to Ticketing"</span><span class="p">,</span>
+      <span class="na">entity_type</span><span class="p">:</span> <span class="s2">"User"</span><span class="p">,</span>
+      <span class="na">action</span><span class="p">:</span> <span class="s2">"account_created"</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event .  </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "62527",</span>
+<span class="s">    "type": "notifications",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "name": "Welcome to Ticketing",</span>
+<span class="s">      "model": null,</span>
+<span class="s">      "entity_type": "User",</span>
+<span class="s">      "action": "account_created",</span>
+<span class="s">      "event_id": 54,</span>
+<span class="s">      "conditions": null</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response: </p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "name": [</span>
+<span class="s">      "must be a string"</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint create an notification and return it</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST /v1/events/:event_uri/notifications/</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Name for notification</td>
+</tr>
+<tr>
+<td>entity_type</td>
+<td>string</td>
+<td>Entity type for notification</td>
+</tr>
+<tr>
+<td>action</td>
+<td>string</td>
+<td>Notification action [account_created, recover_password, attendee_created, attendee_rejected, attendee_confirmed, welcome_email]</td>
+</tr>
+<tr>
+<td>conditions</td>
+<td>json</td>
+<td>Conditions for notifications</td>
+</tr>
+</tbody></table>
+<h2 id='update-notification'>Update Notification</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"notification"</span><span class="p">,</span>
+    <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">name</span><span class="p">:</span> <span class="s2">"Welcome to Ticketing"</span><span class="p">,</span>
+      <span class="na">entity_type</span><span class="p">:</span> <span class="s2">"User"</span><span class="p">,</span>
+      <span class="na">action</span><span class="p">:</span> <span class="s2">"account_created"</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate.</p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event to update.</p>
+
+<p>Make sure you replace &lt;id&gt; with the id for the notification to update.</p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "62527",</span>
+<span class="s">    "type": "notifications",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "name": "Welcome to Ticketing",</span>
+<span class="s">      "model": null,</span>
+<span class="s">      "entity_type": "User",</span>
+<span class="s">      "action": "account_created",</span>
+<span class="s">      "event_id": 54,</span>
+<span class="s">      "conditions": null</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "name": [</span>
+<span class="s">      "must be a string"</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint update an notification and return it</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT /v1/events/:event_uri/notifications/:id</code></p>
+<h3 id='path-parameters-3'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired notification</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters-2'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Name for notification</td>
+</tr>
+<tr>
+<td>entity_type</td>
+<td>string</td>
+<td>Entity type for notification</td>
+</tr>
+<tr>
+<td>action</td>
+<td>string</td>
+<td>Notification action [account_created, recover_password, attendee_created, attendee_rejected, attendee_confirmed, welcome_email]</td>
+</tr>
+<tr>
+<td>conditions</td>
+<td>json</td>
+<td>Conditions for notifications</td>
+</tr>
+</tbody></table>
+<h2 id='destroy-notification'>Destroy Notification</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate.</p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event to destroy.</p>
+
+<p>Make sure you replace &lt;id&gt; with the id for the notification to update.</p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "62528",</span>
+<span class="s">    "type": "notifications",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "name": "Welcome to Ticketing",</span>
+<span class="s">      "model": null,</span>
+<span class="s">      "entity_type": "User",</span>
+<span class="s">      "action": "account_created",</span>
+<span class="s">      "event_id": 54,</span>
+<span class="s">      "conditions": null</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint destroy an notification and return it</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE /v1/events/:event_uri/notifications/:id</code></p>
+<h3 id='path-parameters-4'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired notification</td>
+</tr>
+</tbody></table>
+<h2 id='notification-languages'>Notification Languages</h2><h2 id='index-notification-languages'>Index Notification Languages</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_languages'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event. </p>
+
+<p>Make sure you replace &lt;notification_id&gt; with the id for the notification. </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>
+
+</code></pre><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">    "data": [</span>
+<span class="s">    {</span>
+<span class="s">            "id": "1",</span>
+<span class="s">            "type": "notification_languages",</span>
+<span class="s">            "attributes": {</span>
+<span class="s">                "locale": "en",</span>
+<span class="s">                "subject": "Email created",</span>
+<span class="s">                "body": "&lt;div class= 'body'&gt; Hello${name}&lt;/div&gt;"</span>
+<span class="s">            }</span>
+<span class="s">        }</span>
+<span class="s">    ]</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of a 404 response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
+<span class="s">{</span>
+
+  "message": "Couldn't find notification language"
+
+}
+</code></pre>
+<p>This endpoint list all the available notification language associated with the given notification.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET v1/events/:event_uri/notifications/:notification_id/notification_languages</code></p>
+<h3 id='path-parameters-5'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event.</td>
+</tr>
+<tr>
+<td>notification_id</td>
+<td>integer</td>
+<td>The id for the desired notification</td>
+</tr>
+</tbody></table>
+<h2 id='get-notification-languages'>Get Notification Languages</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_language/:id'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event. </p>
+
+<p>Make sure you replace &lt;notification_id&gt; with the id for the notification. </p>
+
+<p>Make sure you replace &lt;id&gt; with the id for the notification language. </p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>
+
+</code></pre><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">    "data":</span>
+<span class="s">    {</span>
+<span class="s">            "id": "1",</span>
+<span class="s">            "type": "notification_languages",</span>
+<span class="s">            "attributes": {</span>
+<span class="s">                "locale": "en",</span>
+<span class="s">                "subject": "Email created",</span>
+<span class="s">                "body": "&lt;div class= 'body'&gt; Hello${name}&lt;/div&gt;"</span>
+<span class="s">            }</span>
+<span class="s">        }</span>
+
+}
+</code></pre>
+<blockquote>
+<p>Example of a 404 response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
+<span class="s">{</span>
+
+  "message": "Couldn't find notification language"
+
+}
+</code></pre>
+<p>This endpoint get the available notification language associated with the given notification.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET v1/events/:event_uri/notifications/:notification_id/notification_language/:id</code></p>
+<h3 id='path-parameters-6'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event.</td>
+</tr>
+<tr>
+<td>notification_id</td>
+<td>integer</td>
+<td>The id for the desired notification</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired notification language</td>
+</tr>
+</tbody></table>
+<h2 id='create-notification-language'>Create Notification Language</h2>
+<p>This endpoint allows you to create a new notification language to the given notification.</p>
+
+<blockquote>
+<p>To create a new notification language to a notification, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_languages"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -X POST -d <span class="s1">'{
+  "data": {
+    "type": "notifications",
+    "attributes": {
+          "locale": "en",
+          "subject": "Email created",
+          "body": "&lt;div class='</span>body<span class="s1">'&gt; Hello ${name}&lt;/div&gt;"
+        }
+  }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">// Get your token for further authorization</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_languages"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"notifications"</span><span class="p">,</span>
+    <span class="s2">"attributes"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"locale"</span><span class="p">:</span> <span class="s2">"en"</span><span class="p">,</span>
+          <span class="s2">"subject"</span><span class="p">:</span> <span class="s2">"Email created"</span><span class="p">,</span>
+          <span class="s2">"body"</span><span class="p">:</span> <span class="s2">"&lt;div class='body'&gt; Hello ${name}&lt;/div&gt;"</span>
+        <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Example of a successful (200) response:</p>
+<h3 id='http-request-8'>HTTP Request</h3></blockquote>
+
+<p><code>POST /v1/events/:event_uri/notifications/:notification_id/notification_languages</code></p>
+<h3 id='path-parameters-7'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event.</td>
+</tr>
+<tr>
+<td>notification_id</td>
+<td>integer</td>
+<td>The id for the desired notification</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters-3'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>Supported locales [&#39;es&#39;, &#39;en&#39;, &#39;fr&#39;, &#39;it&#39;, &#39;de&#39;, &#39;ru&#39;]</td>
+</tr>
+<tr>
+<td>subject</td>
+<td>string</td>
+<td>Subject for notification.</td>
+</tr>
+<tr>
+<td>body</td>
+<td>string</td>
+<td>Body for notification.</td>
+</tr>
+</tbody></table>
+<h2 id='update-notification-language'>Update Notification Language</h2>
+<p>This endpoint allows you to update a new notification language to the given notification.</p>
+
+<blockquote>
+<p>To updatea new notification language to a notification, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_languages/:id"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -X PUT -d <span class="s1">'{
+  "data": {
+    "type": "notifications",
+    "attributes": {
+          "locale": "en",
+          "subject": "Email created",
+          "body": "&lt;div class='</span>body<span class="s1">'&gt; Hello ${name}&lt;/div&gt;"
+        }
+  }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">// Get your token for further authorization</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_languages/:id"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"notifications"</span><span class="p">,</span>
+    <span class="s2">"attributes"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"locale"</span><span class="p">:</span> <span class="s2">"en"</span><span class="p">,</span>
+          <span class="s2">"subject"</span><span class="p">:</span> <span class="s2">"Email created"</span><span class="p">,</span>
+          <span class="s2">"body"</span><span class="p">:</span> <span class="s2">"&lt;div class='body'&gt; Hello ${name}&lt;/div&gt;"</span>
+        <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Example of a successful (200) response:</p>
+<h3 id='http-request-9'>HTTP Request</h3></blockquote>
+
+<p><code>PUT /v1/events/:event_uri/notifications/:notification_id/notification_languages/:id</code></p>
+<h3 id='path-parameters-8'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event.</td>
+</tr>
+<tr>
+<td>notification_id</td>
+<td>integer</td>
+<td>The id for the desired notification</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired notification language</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters-4'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>Supported locales [&#39;es&#39;, &#39;en&#39;, &#39;fr&#39;, &#39;it&#39;, &#39;de&#39;, &#39;ru&#39;]</td>
+</tr>
+<tr>
+<td>subject</td>
+<td>string</td>
+<td>Subject for notification.</td>
+</tr>
+<tr>
+<td>body</td>
+<td>string</td>
+<td>Body for notification.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-notification-language'>Delete Notification Language</h2>
+<blockquote>
+<p>To destroy notification language, use this code:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_languages/:id"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span>
+  <span class="p">},</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate.</p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event to destroy.</p>
+
+<p>Make sure you replace &lt;notification_id&gt; with the id for the notification.</p>
+
+<p>Make sure you replace &lt;id&gt; with the id for the  language to update.</p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">   {</span>
+<span class="s">    "id": "1",</span>
+<span class="s">    "type": "notification_languages",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">        "locale": "en",</span>
+<span class="s">        "subject": "Email created",</span>
+<span class="s">        "body": "&lt;div class= 'body'&gt; Hello${name}&lt;/div&gt;"</span>
+<span class="s">    }</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre><h3 id='http-request-10'>HTTP Request</h3>
+<p><code>DELETE v1/events/:event_uri/notifications/:notification_id/notification_languages/:id</code></p>
+<h3 id='path-parameters-9'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event.</td>
+</tr>
+<tr>
+<td>notification_id</td>
+<td>integer</td>
+<td>The id for the desired notification</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the notification language</td>
 </tr>
 </tbody></table>
 <h1 id='passwords'>Passwords</h1><h2 id='request-recovery-password'>Request Recovery Password</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/en/v1/passwords'</span><span class="p">,</span> <span class="p">{</span>
