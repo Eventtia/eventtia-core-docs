@@ -87,7 +87,7 @@ event_uri | string | The event_uri for the desired event
 
 Parameter | Type | Description
 --------- | ---- | -----------
-include   | string | the value settings gives informations for each relationships (settings or attendees)
+include   | string | The value settings gives informations for each relationships (settings or attendees)
 
 
 ## List Public Attendee Types
@@ -111,7 +111,7 @@ HTTP/1.1 200 OK
       "attributes": {
         "name": {"en": "Attendee type name"},
         "description": {"en": "attendee_type_description"},
-        "price": "34.2",
+        "price": 34.2,
         "limit": 25,
         "allow_public_registration": false,
       }
@@ -132,4 +132,4 @@ Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
 page | json | A page object as described <a href="#pagination">here</a>
-available_seats | boolean | activate an optional attribute (seats availability)
+available_seats | boolean | Activate an optional attribute (seats availability)
