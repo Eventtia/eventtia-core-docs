@@ -32,8 +32,8 @@ HTTP/1.1 200 OK
         "updated_by_id": "10461",
         "archived": "false",
         "fields_data": {
-          "281": "george",
-          "282": "downtown"
+          "f281": "george",
+          "f282": "downtown"
         },
         "photo_url": "url_Image_file"
       }
@@ -97,8 +97,8 @@ HTTP/1.1 200 OK
         "updated_by_id": "10461",
         "archived": "false",
         "fields_data": {
-          "281": "george",
-          "282": "downtown"
+          "f281": "george",
+          "f282": "downtown"
         },
         "photo_url": "url_Image_file"
       }
@@ -151,8 +151,8 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/', {
         updated_by_id: 192,
         archived: false,
         fields_data: {
-          "281": "george",
-          "282": "downtown"
+          "f281": "george",
+          "f282": "downtown"
         },
         photo_url: "url_Image_file"
       }
@@ -181,8 +181,8 @@ HTTP/1.1 200 OK
       "updated_by_id": "10461",
       "archived": "false",
       "fields_data": {
-        "281": "george",
-        "282": "downtown"
+        "f281": "george",
+        "f282": "downtown"
       },
       "photo_url": "url_Image_file"
     }
@@ -246,8 +246,8 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>', {
         updated_by_id: 192,
         archived: false,
         fields_data: {
-          "281": "george",
-          "282": "downtown"
+          "f281": "george",
+          "f282": "downtown"
         },
         photo_url: "url_Image_file"
       }
@@ -279,8 +279,8 @@ HTTP/1.1 200 OK
       "updated_by_id": "192",
       "archived": "false",
       "fields_data": {
-        "281": "george",
-        "282": "downtown"
+        "f281": "george",
+        "f282": "downtown"
       },
       "photo_url": "url_Image_file"
     }
@@ -358,10 +358,10 @@ HTTP/1.1 200 OK
       "updated_by_id": "192",
       "archived": "true",
       "fields_data": {
-        "281": "george",
-        "282": "downtown"
+        "f281": "george",
+        "f282": "downtown"
       },
-      "photo_url": "url_Image_file"     
+      "photo_url": "url_Image_file"
     }
   }
 }
