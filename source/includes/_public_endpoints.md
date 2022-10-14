@@ -1,6 +1,6 @@
 # Public Endpoints
 
-## Get Event
+## Get Public Event
 
 ```javascript
 fetch('https://core.eventtia.com/v1/public/events/<event_uri>', {
@@ -90,7 +90,7 @@ Parameter | Type | Description
 include   | string | the value settings gives informations for each relationships (settings or attendees)
 
 
-## List Attendee Types
+## List Public Attendee Types
 
 ```javascript
 fetch('https://core.eventtia.com/v1/public/events/<event_uri>/attendee_types/', {

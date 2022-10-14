@@ -29,9 +29,16 @@ HTTP/1.1 200 OK
         "model": null,
         "entity_type": "User",
         "action": "account_created",
-        "event_id": 54,
         "conditions": null
+      },
+    "relationships": {
+      "events": {
+        "data": {
+            "id": "54",
+            "type": "events"
+          }
       }
+    }
     }
   ]
 }
@@ -81,8 +88,15 @@ HTTP/1.1 200 OK
       "model": null,
       "entity_type": "User",
       "action": "account_created",
-      "event_id": 54,
       "conditions": null
+    },
+    "relationships": {
+      "events": {
+        "data": {
+            "id": "54",
+            "type": "events"
+          }
+      }
     }
   }
 }
@@ -151,8 +165,15 @@ HTTP/1.1 200 OK
       "model": null,
       "entity_type": "User",
       "action": "account_created",
-      "event_id": 54,
       "conditions": null
+    },
+    "relationships": {
+      "events": {
+        "data": {
+            "id": "54",
+            "type": "events"
+          }
+      }
     }
   }
 }
@@ -226,8 +247,15 @@ HTTP/1.1 200 OK
       "model": null,
       "entity_type": "User",
       "action": "account_created",
-      "event_id": 54,
       "conditions": null
+    },
+    "relationships": {
+      "events": {
+        "data": {
+            "id": "54",
+            "type": "events"
+          }
+      }
     }
   }
 }
@@ -297,8 +325,15 @@ HTTP/1.1 200 OK
       "model": null,
       "entity_type": "User",
       "action": "account_created",
-      "event_id": 54,
       "conditions": null
+    },
+    "relationships": {
+      "events": {
+        "data": {
+            "id": "54",
+            "type": "events"
+          }
+      }
     }
   }
 }
