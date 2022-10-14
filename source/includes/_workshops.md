@@ -6,7 +6,7 @@
 fetch('https://core.eventtia.com/v1/events/<event_uri>/workshops/', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -80,7 +80,7 @@ updated_at|  date   | A datetime in the following format "14/08/2021"
 fetch('https://core.eventtia.com/v1/events/<event_uri>/Workshops/<id>', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -157,7 +157,7 @@ event_uri | string  | The event_uri for the desired event
 fetch('https://core.eventtia.com/v1/events/<event_uri>/workshops/', {
   method: 'POST',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
     data: {
@@ -274,7 +274,7 @@ allow_blocking_workshops | boolean | allow block hours for this workshop
 fetch('https://core.eventtia.com/v1/events/<event_uri>/workshops/<id>', {
   method: 'PUT',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
     data: {
@@ -394,7 +394,7 @@ allow_blocking_workshops | boolean | allow block hours for this workshop
 fetch('https://core.eventtia.com/v1/events/<event_uri>/workshops/<id>', {
   method: 'DELETE',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
 })
 ```

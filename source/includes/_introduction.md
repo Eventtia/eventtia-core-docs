@@ -72,7 +72,7 @@ curl "<api endpoint>" \
 // Send your token in the Authorization header
 fetch("<api endpoint>", {
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   ...
 })

@@ -6,7 +6,7 @@
 fetch('https://core.eventtia.com/v1/users/', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }})
 ```
 
@@ -67,7 +67,7 @@ page | json | A page object as described <a href="#pagination">here</a>
 fetch('https://core.eventtia.com/v1/users/<id>', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }})
 ```
 
@@ -135,7 +135,7 @@ id | integer | id for the desired user
 fetch('https://core.eventtia.com/v1/users/', {
   method: 'POST',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
     {
@@ -229,7 +229,7 @@ role_category_ids | array | Specifies the categories the user is associated with
 fetch('https://core.eventtia.com/v1/users/<id>', {
   method: 'PUT',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
     data: {
@@ -329,7 +329,7 @@ role_category_ids | array | Specifies the categories the user is associated with
 fetch('https://core.eventtia.com/v1/users/<id>', {
   method: 'DELETE',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
 })
 ```

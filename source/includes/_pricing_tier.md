@@ -6,7 +6,7 @@
 fetch('https://core.eventtia.com/v1/events/<event_uri>/pricing_tiers/?entity_id=<entity_id>&entity_type=<entity_type>', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -72,7 +72,7 @@ entity_type| string  | entity type to which pricing tier belongs
 fetch('https://core.eventtia.com/v1/events/<event_uri>/pricing_tiers/<id>', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -135,7 +135,7 @@ event_uri | string  | The event_uri for the desired event
 fetch('https://core.eventtia.com/v1/events/<event_uri>/pricing_tiers/', {
   method: 'POST',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
   data: {
@@ -215,7 +215,7 @@ price      | float   | price for pricing tier
 fetch('https://core.eventtia.com/v1/events/<event_uri>/pricing_tiers/<id>', {
   method: 'PUT',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
   data: {
@@ -302,7 +302,7 @@ price      | float   | price for pricing tier
 fetch('https://core.eventtia.com/v1/events/<event_uri>/pricing_tiers/<id>', {
   method: 'DELETE',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
 })
 ```

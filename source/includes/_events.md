@@ -6,7 +6,7 @@
 fetch('https://core.eventtia.com/v1/events/', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }})
 ```
 
@@ -95,7 +95,7 @@ active_status | boolean | Send true if you want to get only active events.
 fetch('https://core.eventtia.com/v1/events/<event_uri>', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }})
 ```
 
@@ -197,7 +197,7 @@ include   | string | the value settings gives informations for each relationship
 fetch('https://core.eventtia.com/v1/events/', {
   method: 'POST',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
   data: {
@@ -351,7 +351,7 @@ available_languages | json | includes available key ( array with availables lang
 fetch('https://core.eventtia.com/v1/events/<event_uri>', {
   method: 'PUT',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
   data: {
@@ -519,7 +519,7 @@ available_languages | json | includes available key ( array with availables lang
 fetch('https://core.eventtia.com/v1/events/<event_uri>', {
   method: 'DELETE',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
 })
 ```
@@ -601,7 +601,7 @@ event_uri | string | The event_uri for the desired event
 fetch('https://core.eventtia.com/v1/events/<event_uri>/settings', {
   method: 'PATCH',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
     data: {

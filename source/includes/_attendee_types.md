@@ -6,7 +6,7 @@
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -69,7 +69,7 @@ available_seats | boolean | activate an optional attribute (seats availability)
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -164,7 +164,7 @@ current_price | string | include current price
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/', {
   method: 'POST',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
   data: {
@@ -258,7 +258,7 @@ valid_if_no_payments | boolean | valid attendee type if no payments
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>', {
   method: 'PUT',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
   data: {
@@ -358,7 +358,7 @@ valid_if_no_payments | boolean | valid attendee type if no payments
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>', {
   method: 'DELETE',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
 })
 ```
@@ -419,7 +419,7 @@ event_uri | string  | The event_uri for the desired event
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>/available-seats', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -473,7 +473,7 @@ event_uri | string  | The event_uri for the desired event
 fetch('https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -575,7 +575,7 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': '<your token>'
+    'Authorization': 'Bearer <your token>'
   },
   body: {
     data: {
@@ -626,7 +626,7 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/
   method: 'DELETE',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': '<your token>'
+    'Authorization': 'Bearer <your token>'
   },
 })
 ```
@@ -662,7 +662,7 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/attendee_type/:entity_id/f
   method: 'PUT',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': '<your token>'
+    'Authorization': 'Bearer <your token>'
   },
   {
     ordered_ids: '<{"20":3,"44":2}>'

@@ -18,7 +18,7 @@ fetch("https://core.eventtia.com/v1/registrations", {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': '<your token>'
+    'Authorization': 'Bearer <your token>'
   },
   body: {
     user: {

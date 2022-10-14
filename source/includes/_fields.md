@@ -7,7 +7,7 @@
 fetch('https://core.eventtia.com/v1/events/event_uri/fields/', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -116,7 +116,7 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/fields", {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': '<your token>'
+    'Authorization': 'Bearer <your token>'
   },
   body: {
     data: {
@@ -339,7 +339,7 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/fields/:id/<id>", {
   method: 'PUT',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': '<your token>'
+    'Authorization': 'Bearer <your token>'
   },
   body: {
     data: {
@@ -413,7 +413,7 @@ fetch("https://core.eventtia.com/v1/fields/:id<id>", {
   method: 'DELETE',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': '<your token>'
+    'Authorization': 'Bearer <your token>'
   },
 })
 ```
@@ -473,7 +473,7 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/fields/:id/<id>", {
   method: 'PUT',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': '<your token>'
+    'Authorization': 'Bearer <your token>'
   },
   {
     ordered_ids: '<{"20":3,"44":2}>'

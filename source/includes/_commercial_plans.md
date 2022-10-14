@@ -6,7 +6,7 @@
 fetch('https://core.eventtia.com/v1/commercial_plans/', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -63,7 +63,7 @@ This endpoint return a list of commercial plans
 fetch('https://core.eventtia.com/v1/commercial_plans/<id>', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```

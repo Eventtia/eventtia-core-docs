@@ -6,7 +6,7 @@
 fetch('https://core.eventtia.com/v1/events/<event_uri>/speakers/', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -65,7 +65,7 @@ keywords | string  | Filters results by the speaker match name ,last_name and em
 fetch('https://core.eventtia.com/v1/events/<event_uri>/speakers/<id>', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -129,7 +129,7 @@ event_uri | string  | The event_uri for the desired event
 fetch('https://core.eventtia.com/v1/events/<event_uri>/speakers/', {
   method: 'POST',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
     data: {
@@ -219,7 +219,7 @@ photo     | file | image for this speaker.
 fetch('https://core.eventtia.com/v1/events/<event_uri>/speakers/<id>', {
   method: 'PUT',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
   body: {
@@ -311,7 +311,7 @@ photo     | file | image for this speaker.
 fetch('https://core.eventtia.com/v1/events/<event_uri>/speakers/<id>', {
   method: 'DELETE',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
 })
 ```

@@ -6,7 +6,7 @@
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -69,7 +69,7 @@ user_id | integer | Filters results by user
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -137,7 +137,7 @@ event_uri | string  | The event_uri for the desired event
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/', {
   method: 'POST',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
     data: {
@@ -232,7 +232,7 @@ photo      |  file   | photo for attendee
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>', {
   method: 'PUT',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
     data: {
@@ -331,7 +331,7 @@ photo      |  file   | photo for attendee
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>', {
   method: 'DELETE',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
 })
 ```

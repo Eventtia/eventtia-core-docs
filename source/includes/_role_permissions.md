@@ -5,7 +5,7 @@
 fetch('https://core.eventtia.com/v1/roles/<id>/role_permissions/', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```

@@ -6,7 +6,7 @@
 fetch('https://core.eventtia.com/v1/account_subscriptions/', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -74,7 +74,7 @@ This endpoint return a list of account subscriptions
 fetch('https://core.eventtia.com/v1/account_subscriptions/<id>', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -140,7 +140,7 @@ id | integer | The id for the desired account subscription
 fetch('https://core.eventtia.com/v1/account_subscriptions/', {
   method: 'POST',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
     data: {
@@ -220,7 +220,7 @@ price_id | string | price id for this account subscription.
 fetch('https://core.eventtia.com/v1/account_subscriptions/<id>', {
   method: 'PUT',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
     data: {
@@ -306,7 +306,7 @@ price_id | string | price id for this account subscription.
 fetch('https://core.eventtia.com/v1/account_subscriptions/<id>', {
   method: 'DELETE',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```

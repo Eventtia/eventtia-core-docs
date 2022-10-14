@@ -6,7 +6,7 @@
 fetch('https://core.eventtia.com/v1/events/<event_uri>/notifications/', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -57,7 +57,7 @@ page | json | A page object as described <a href="#pagination">here</a>
 fetch('https://core.eventtia.com/v1/events/<event_uri>/notifications/<id>', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -119,7 +119,7 @@ event_uri | string  | The event_uri for the desired event
 fetch('https://core.eventtia.com/v1/events/<event_uri>/notifications/', {
   method: 'POST',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
   data: {
@@ -192,7 +192,7 @@ conditions  | json | Conditions for notifications
 fetch('https://core.eventtia.com/v1/events/<event_uri>/notifications/<id>', {
   method: 'PUT',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
   data: {
@@ -273,7 +273,7 @@ conditions  | json | Conditions for notifications
 fetch('https://core.eventtia.com/v1/events/<event_uri>/notifications/<id>', {
   method: 'DELETE',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
 })
 ```
@@ -325,7 +325,7 @@ event_uri | string  | The event_uri for the desired event
 fetch('https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_languages', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -386,7 +386,7 @@ notification_id | integer  | The id for the desired notification
 fetch('https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_language/:id', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -472,7 +472,7 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/notifications/:notificatio
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': '<your token>'
+    'Authorization': 'Bearer <your token>'
   },
   body: {
     "data": {
@@ -532,7 +532,7 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/notifications/:notificatio
   method: 'PUT',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': '<your token>'
+    'Authorization': 'Bearer <your token>'
   },
   body: {
     "data": {
@@ -576,7 +576,7 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/notifications/:notificatio
   method: 'DELETE',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': '<your token>'
+    'Authorization': 'Bearer <your token>'
   },
 })
 ```

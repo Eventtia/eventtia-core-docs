@@ -5,7 +5,7 @@
 fetch('https://core.eventtia.com/v1/roles/', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -48,7 +48,7 @@ page | json | A page object as described <a href="#pagination">here</a>
 fetch('https://core.eventtia.com/v1/roles/<id>', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }})
 ```
 
@@ -100,7 +100,7 @@ id | integer | Id for the desired role
 fetch('https://core.eventtia.com/v1/roles/', {
   method: 'POST',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
     {
@@ -155,7 +155,7 @@ name | string | Role's name.
 fetch('https://core.eventtia.com/v1/roles/<id>', {
   method: 'PUT',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
     data: {
@@ -226,7 +226,7 @@ permission | string | Permission
 fetch('https://core.eventtia.com/v1/roles/<id>', {
   method: 'DELETE',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
 })
 ```
