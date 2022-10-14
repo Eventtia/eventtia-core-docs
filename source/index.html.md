@@ -22,6 +22,7 @@ includes:
   - passwords
   - permissions
   - pricing_tier
+  - public_endpoints
   - registrations
   - roles
   - role_permissions
