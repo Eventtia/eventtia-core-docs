@@ -15,16 +15,13 @@ HTTP/1.1 200 OK
 {
   "data": {
     id: "21",
-    "type": "events",
+    "type": "public/events",
     "attributes": {
       "name": "Event name",
       "description": "description of an event",
       "start_date": "2020-04-13 15:54:37 -0500",
       "end_date": "2020-04-15 15:54:57 -0500",
-      "active_modules": "[0, 1]",
-      "fields_data": "{}",
       "attendance_mode": "online",
-      "is_template": false,
       "event_uri": "event_uri",
       "timezone": "America/Bogota",
       "location": {
@@ -33,9 +30,6 @@ HTTP/1.1 200 OK
         "country": "Colombia.",
         "city": "Medellín",
       },
-      "virtual_timezone": "America/Bogota",
-      "total_attendees": 0,
-      "cloned_from_id": "2",
       "banner": {
         "filename": "file_name",
         "thumb": "url_image",
@@ -49,7 +43,7 @@ HTTP/1.1 200 OK
         "small":  "url_image",
         "medium": "url_image",
         "large": "url_image",
-      } 
+      }
     },
     "relationships": {
       "settings": {
@@ -63,7 +57,7 @@ HTTP/1.1 200 OK
 }
 ```
 
->Example of Event Not Found (404) response: 
+>Example of Event Not Found (404) response:
 
 ```http
 HTTP/1.1 404 Not Found
@@ -76,7 +70,7 @@ This endpoint return an event
 
 ### HTTP Request
 
-`GET /v1/events/:event_uri`
+`GET /v1/public/events/:event_uri`
 
 ### Path Parameters
 
@@ -94,4 +88,48 @@ event_uri | string | The event_uri for the desired event
 Parameter | Type | Description
 --------- | ---- | -----------
 include   | string | the value settings gives informations for each relationships (settings or attendees)
- 
+
+
+## List Attendee Types
+
+```javascript
+fetch('https://core.eventtia.com/v1/public/events/<event_uri>/attendee_types/', {
+  method: 'GET',
+})
+```
+> Make sure you replace &lt;event uri&gt; with the event uri for the event.
+
+> Example of a successful (200) response:
+
+```http
+HTTP/1.1 200 OK
+{
+  "data": [
+    {
+      "id": "62527",
+      "type": "public/attendee_types",
+      "attributes": {
+        "name": {"en": "Attendee type name"},
+        "description": {"en": "attendee_type_description"},
+        "price": "34.2",
+        "limit": 25,
+        "allow_public_registration": false,
+      }
+    }
+  ]
+}
+```
+
+This endpoint list attendee types belongs to event and available for public registration.
+
+### HTTP Request
+
+`GET /v1/public/events/event_uri/attendee_types/`
+
+### Path Parameters
+
+Parameter |  Type   | Description
+--------- | ------- | -----------
+event_uri | string  | The event_uri for the desired event
+page | json | A page object as described <a href="#pagination">here</a>
+available_seats | boolean | activate an optional attribute (seats availability)
