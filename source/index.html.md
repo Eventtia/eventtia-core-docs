@@ -19,6 +19,7 @@ includes:
   - events
   - fields
   - notifications
+  - orders
   - passwords
   - permissions
   - pricing_tier
