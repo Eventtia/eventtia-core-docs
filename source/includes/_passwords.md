@@ -2,6 +2,22 @@
 
 ## Request Recovery Password
 
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/en/v1/passwords" \
+  -H 'Content-Type: application/json'\
+   -X POST -d '{
+    "recaptcha_token": "",
+    "data": {
+      "type": "users",
+      "attributes": {
+        "email": '<your email>'
+        "locale": '<locale>'
+      }
+    }
+}'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/en/v1/passwords', {
   method: 'POST',
@@ -47,6 +63,22 @@ email  | string | your email
 locale  | string | desired language e.g. "en", "es" or "fr"
 
 ## Update Password
+
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/en/v1/passwords" \
+  -H 'Content-Type: application/json'\
+   -X PUT -d '{
+    "data": {
+      "type": 'users',
+      "attributes": {
+        "reset_password_token": '<your token>',
+        "password": '<your new password>',
+        "password_confirmation": '<your new password>'
+      }
+    }
+}'
+```
 
 ```javascript
 fetch('https://core.eventtia.com/en/v1/passwords', {
@@ -106,6 +138,22 @@ confirmation_password | string | your new password
 
 ## Activate Password
 
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/en/v1/passwords/activate" \
+  -H 'Content-Type: application/json'\
+   -X PUT -d '{
+    "data": {
+      "type": 'users',
+      "attributes": {
+        "reset_password_token": '<your token>',
+        "password": '<your new password>',
+        "password_confirmation": '<your new password>'
+      }
+    }
+}'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/en/v1/passwords/activate', {
   method: 'PUT',
@@ -164,6 +212,22 @@ confirmation_password | string | your new password
 
 
 ## Change Password
+
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/en/v1/passwords/change" \
+  -H 'Content-Type: application/json'\
+   -X PUT -d '{
+    "data": {
+      "type": 'users',
+      "attributes": {
+        "current_password": '<your token>',
+        "new_password": '<your new password>',
+        "new_password_confirmation": '<your new password>'
+      }
+    }
+}'
+```
 
 ```javascript
 fetch('https://core.eventtia.com/en/v1/passwords/change', {

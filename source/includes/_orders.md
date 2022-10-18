@@ -2,6 +2,12 @@
 
 ## List Orders by events or Entity
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/orders/" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/orders/', {
   method: 'GET',
@@ -60,6 +66,41 @@ entity_id | string | entity id from order, include this parameter if you prefer 
 
 ## Create Order
 
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/events/<event_uri>/orders/" \
+  -H 'Content-Type: application/json'\
+   -X POST -d '{
+  "data": {
+    "type": "orders",
+    "attributes": {
+      "member": {
+          "first_name": "Nombre",
+          "last_name": "Name",
+          "phone": 55898989,
+          "email": "email@eventtia.com"
+          },
+      "order_items": [
+          {
+              "description": "description for first item",
+              "quantity": 1,
+              "entity_type": "AttendeeType",
+              "entity_id": 94,
+              "unit_amount": 10.0
+          },
+          {
+              "description": "description for second item",
+              "quantity": 1,
+              "entity_type": "AttendeeType",
+              "entity_id": 57,
+              "unit_amount": 20.0
+          }
+      ]
+    }
+    }
+}'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/orders/', {
   method: 'POST',
@@ -96,7 +137,7 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/orders/', {
     }
   }
 }
-})
+)
 ```
 
 > Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
@@ -133,8 +174,7 @@ HTTP/1.1 200 OK
 
 Example of a successful (200) response if your order requires a payment:
 
-https://checkout.stripe.com/c/pay/9TjB9VUx0NTVtZjNfTUJiRicpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWpp
-
+https://checkout.stripe.com/c/pay/9TjB9VUx0NTVtZjNfTUJiRicpJ2N3amhWYHdzY
 >Example of Unprocessable Entity (400) response:
 
 ```http

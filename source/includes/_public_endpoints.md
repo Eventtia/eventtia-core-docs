@@ -2,6 +2,12 @@
 
 ## Get Public Event
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/public/events/<event_uri>" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/public/events/<event_uri>', {
   method: 'GET'})
@@ -15,7 +21,7 @@ HTTP/1.1 200 OK
 {
   "data": {
     id: "21",
-    "type": "public/events",
+    "type": "events",
     "attributes": {
       "name": "Event name",
       "description": "description of an event",
@@ -92,6 +98,12 @@ include   | string | The value settings gives informations for each relationship
 
 ## List Public Attendee Types
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/public/events/<event_uri>/attendee_types/" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/public/events/<event_uri>/attendee_types/', {
   method: 'GET',
@@ -107,7 +119,7 @@ HTTP/1.1 200 OK
   "data": [
     {
       "id": "62527",
-      "type": "public/attendee_types",
+      "type": "attendee_types",
       "attributes": {
         "name": {"en": "Attendee type name"},
         "description": {"en": "attendee_type_description"},

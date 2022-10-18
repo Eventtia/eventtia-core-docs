@@ -2,6 +2,12 @@
 
 ## List Speaker
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/speakers/" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/speakers/', {
   method: 'GET',
@@ -60,6 +66,12 @@ fullname | string  | Filters results by the speaker concat name and last_name.
 keywords | string  | Filters results by the speaker match name ,last_name and email.
 
 ## Get Speaker
+
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/speakers/<id>" \
+  -H 'Content-Type: application/json'
+```
 
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/speakers/<id>', {
@@ -125,6 +137,26 @@ event_uri | string  | The event_uri for the desired event
 
 ## Create Speaker
 
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/events/<event_uri>/speakers/" \
+  -H 'Content-Type: application/json'\
+   -X POST -d '{
+   "data": {
+        "type": "speakers",
+        "attributes": {
+          "name": "Mary",
+          "last_name": "Perez Ossa",
+          "email": "mary@email.com",
+          "biography": "biography Mary",
+          "twitter": "Twitter Mary",
+          "website": "Website Mary",
+          "photo": "url_image_file"
+        }
+    }
+}'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/speakers/', {
   method: 'POST',
@@ -173,7 +205,7 @@ HTTP/1.1 200 OK
 }
 ```
 
->Example of Unprocessable Entity (422) response: 
+>Example of Unprocessable Entity (422) response:
 
 ```http
 HTTP/1.1 422 Unprocessable Entity
@@ -214,6 +246,26 @@ website   | string| speaker website.
 photo     | file | image for this speaker.
 
 ## Update Speaker
+
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/events/<event_uri>/speakers/<id>" \
+  -H 'Content-Type: application/json'\
+   -X PUT -d '{
+   "data": {
+        "type": "speakers",
+        "attributes": {
+          "name": "Mary",
+          "last_name": "Perez Ossa",
+          "email": "mary@email.com",
+          "biography": "biography Mary",
+          "twitter": "Twitter Mary",
+          "website": "Website Mary",
+          "photo": "url_image_file"
+        }
+    }
+}'
+```
 
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/speakers/<id>', {
@@ -307,6 +359,13 @@ website   | string| speaker website.
 photo     | file | image for this speaker.
 
 ## Destroy Speaker
+
+```shell
+# Get your token for further authorization
+curl -X DELETE "https://core.eventtia.com/v1/events/<event_uri>/speakers/<id>" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/speakers/<id>', {
   method: 'DELETE',
