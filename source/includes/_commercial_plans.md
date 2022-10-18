@@ -2,6 +2,12 @@
 
 ## List Commercial Plans
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/commercial_plans/" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/commercial_plans/', {
   method: 'GET',
@@ -58,6 +64,12 @@ This endpoint return a list of commercial plans
 `GET /v1/commercial_plans/`
 
 ## Get Commercial Plan
+
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/commercial_plans/<id>" \
+  -H 'Content-Type: application/json'
+```
 
 ```javascript
 fetch('https://core.eventtia.com/v1/commercial_plans/<id>', {

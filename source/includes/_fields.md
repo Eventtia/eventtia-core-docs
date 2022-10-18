@@ -3,6 +3,12 @@
 
 ## List fields
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/event_uri/fields/" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/event_uri/fields/', {
   method: 'GET',
@@ -67,9 +73,9 @@ HTTP/1.1 200 OK
 ```http
 HTTP/1.1 404 Not Found
 {
-    
+
     "message": "Couldn't find Event"
-        
+
 }
 ```
 
@@ -133,7 +139,6 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/fields", {
     }
   }
   }
-  
 })
 ```
 
@@ -407,6 +412,11 @@ id | integer | The id for the field
 
 > To update destroy, use this code:
 
+```shell
+# Get your token for further authorization
+curl -X DELETE "https://core.eventtia.com/v1/fields/:id<id>" \
+  -H 'Content-Type: application/json'
+```
 
 ```javascript
 fetch("https://core.eventtia.com/v1/fields/:id<id>", {
@@ -495,9 +505,9 @@ HTTP/1.1 200 OK
 ```http
 HTTP/1.1 422 Unprocessable Entity
 {
-    
+
     "message": "ExceptionHandler::RecordInvalid"
-        
+
 }
 ```
 

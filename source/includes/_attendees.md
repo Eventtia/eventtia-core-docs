@@ -2,6 +2,12 @@
 
 ## List Attendees
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/attendees/" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/', {
   method: 'GET',
@@ -64,6 +70,12 @@ user_id | integer | Filters results by user
 
 
 ## Get Attendee
+
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>" \
+  -H 'Content-Type: application/json'
+```
 
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>', {
@@ -132,6 +144,31 @@ event_uri | string  | The event_uri for the desired event
    id     | integer | The id for the desired attendee
 
 ## Create Attendee
+
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/events/<event_uri>/attendees/" \
+  -H 'Content-Type: application/json'\
+   -X POST -d '{
+    "data": {
+      "type": "attendees",
+      "attributes": {
+        "attendee_type_id": 34,
+        "first_name": "Mary",
+        "last_name": "perez ossa",
+        "email": "maryperez@email.com",
+        telephone": "+56912345678",
+        "updated_by_id": 192,
+        "archived": false,
+        "fields_data": {
+          "f281": "george",
+          "f282": "downtown"
+        },
+        "photo_url": "url_Image_file"
+      }
+    }
+}'
+```
 
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/', {
@@ -227,6 +264,30 @@ fields_data | hash | key-value for custom fields data for created attendee
 photo      |  file   | photo for attendee
 
 ## Update Attendee
+
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>" \
+  -H 'Content-Type: application/json'\
+   -X PUT -d '{
+    "data": {
+      "type": "attendees",
+      "attributes": {
+        "attendee_type_id": 34,
+        "first_name": "Mary",
+        "last_name": "perez ossa",
+        "email": "maryperez@email.com",
+        telephone": "+56912345678",
+        "updated_by_id": 192,
+        "archived": false,
+        "fields_data": {
+          "f281": "george",
+          "f282": "downtown"
+        },
+        "photo_url": "url_Image_file"
+      }
+    }
+}'
 
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>', {
@@ -327,6 +388,14 @@ fields_data | hash | key-value for custom fields data for created attendee
 photo      |  file   | photo for attendee
 
 ## Destroy Attendee
+
+```shell
+# Get your token for further authorization
+curl -X DELETE "https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>" \
+  -H 'Content-Type: application/json'
+```
+
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>', {
   method: 'DELETE',

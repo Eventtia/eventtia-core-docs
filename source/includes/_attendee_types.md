@@ -2,6 +2,12 @@
 
 ## List Attendee Types
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/attendee_types/" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/', {
   method: 'GET',
@@ -65,6 +71,12 @@ available_seats | boolean | Activate an optional attribute (seats availability)
 
 ## Get Attendee Type
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>', {
   method: 'GET',
@@ -117,7 +129,7 @@ HTTP/1.1 200 OK
 }
 ```
 
->Example of Not Found (404) response: 
+>Example of Not Found (404) response:
 
 ```http
 HTTP/1.1 404 Not Found
@@ -159,6 +171,28 @@ fields | string | Include fields relationships
 current_price | string | Include current price
 
 ## Create Attendee Type
+
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/events/<event_uri>/attendee_types/" \
+  -H 'Content-Type: application/json'\
+   -X POST -d '{
+    "data": {
+      "id": 62527
+      "type": "attendee_type",
+      "attributes": {
+        "name": { es:"Attendee type name", en: "Attendee type name"},
+        "description": { es:"Attendee type description", en: "Attendee type description"},
+        "price": 34.2,
+        "limit": 25,
+        "confirmation_required": false,
+        "allow_public_registration": false,
+        "valid_if_no_payments": true,
+        "archived": false
+    }
+  }
+}'
+```
 
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/', {
@@ -218,7 +252,6 @@ HTTP/1.1 200 OK
       }
     }
   }
-}
 ```
 
 >Example of Unprocessable Entity (422) response: 
@@ -253,6 +286,28 @@ allow_public_registration | boolean | Allow public registration for this attende
 valid_if_no_payments | boolean | Valid attendee type if no payments
 
 ## Update Attendee Type
+
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>" \
+  -H 'Content-Type: application/json'\
+   -X PUT -d '{
+    "data": {
+      "id": 62527
+      "type": "attendee_type",
+      "attributes": {
+        "name": { es:"Attendee type name", en: "Attendee type name"},
+        "description": { es:"Attendee type description", en: "Attendee type description"},
+        "price": 34.2,
+        "limit": 25,
+        "confirmation_required": false,
+        "allow_public_registration": false,
+        "valid_if_no_payments": true,
+        "archived": false
+    }
+  }
+}'
+```
 
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>', {
@@ -354,6 +409,13 @@ allow_public_registration | boolean | Allow public registration for this attende
 valid_if_no_payments | boolean | Valid attendee type if no payments
 
 ## Destroy Attendee Type
+
+```shell
+# Get your token for further authorization
+curl -X DELETE "https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>', {
   method: 'DELETE',
@@ -415,6 +477,12 @@ event_uri | string  | The event_uri for the desired event
 
 ## Available Seats
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>/available-seats" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>/available-seats', {
   method: 'GET',
@@ -469,6 +537,13 @@ event_uri | string  | The event_uri for the desired event
 
 ## Form Fields
 ### Index form fields
+
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields', {
   method: 'GET',
@@ -594,7 +669,7 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/
     }
   }
   }
-  
+
 })
 ```
 > Example of a successful (200) response:
@@ -620,6 +695,11 @@ entity_type | string | AttendeeType.
 
 > To update destroy, use this code:
 
+```shell
+# Get your token for further authorization
+curl -X DELETE "https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields/:id<id>" \
+  -H 'Content-Type: application/json'
+```
 
 ```javascript
 fetch("https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields/:id<id>", {
