@@ -409,6 +409,17 @@
               </ul>
           </li>
           <li>
+            <a href="#orders" class="toc-h1 toc-link" data-title="Orders">Orders</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-orders-by-events-or-entity" class="toc-h2 toc-link" data-title="List Orders by events or Entity">List Orders by events or Entity</a>
+                  </li>
+                  <li>
+                    <a href="#create-order" class="toc-h2 toc-link" data-title="Create Order">Create Order</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#passwords" class="toc-h1 toc-link" data-title="Passwords">Passwords</a>
               <ul class="toc-list-h2">
                   <li>
@@ -450,6 +461,17 @@
                   </li>
                   <li>
                     <a href="#destroy-pricing-tier" class="toc-h2 toc-link" data-title="Destroy Pricing Tier">Destroy Pricing Tier</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#public-endpoints" class="toc-h1 toc-link" data-title="Public Endpoints">Public Endpoints</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-public-event" class="toc-h2 toc-link" data-title="Get Public Event">Get Public Event</a>
+                  </li>
+                  <li>
+                    <a href="#list-public-attendee-types" class="toc-h2 toc-link" data-title="List Public Attendee Types">List Public Attendee Types</a>
                   </li>
               </ul>
           </li>
@@ -646,7 +668,7 @@ curl <span class="s2">"&lt;api endpoint&gt;"</span> <span class="se">\</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">// Send your token in the Authorization header</span>
 <span class="nx">fetch</span><span class="p">(</span><span class="s2">"&lt;api endpoint&gt;"</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="p">...</span>
 <span class="p">})</span>
@@ -689,7 +711,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
     <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">activation_code</span><span class="p">:</span> <span class="s2">"abcdefghijk"</span>
@@ -735,10 +757,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <td>Account&#39;s activation code.</td>
 </tr>
 </tbody></table>
-<h1 id='account-subscriptions'>Account Subscriptions</h1><h2 id='list-account-subscriptions'>List Account Subscriptions</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/account_subscriptions/'</span><span class="p">,</span> <span class="p">{</span>
+<h1 id='account-subscriptions'>Account Subscriptions</h1><h2 id='list-account-subscriptions'>List Account Subscriptions</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/account_subscriptions/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/account_subscriptions/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -794,10 +819,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <p>This endpoint return a list of account subscriptions</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET /v1/account_subscriptions/</code></p>
-<h2 id='get-account-subscription'>Get Account Subscription</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/account_subscriptions/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='get-account-subscription'>Get Account Subscription</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/account_subscriptions/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/account_subscriptions/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -859,10 +887,29 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <td>The id for the desired account subscription</td>
 </tr>
 </tbody></table>
-<h2 id='create-account-subscription'>Create Account Subscription</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/account_subscriptions/'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='create-account-subscription'>Create Account Subscription</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/account_subscriptions/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X POST -d <span class="s1">'{
+  "data": {
+      "type": "account_subscriptions",
+      "attributes": {
+        "price_id": "&lt;price_id&gt;"
+      }
+      "relationships": {
+        "plan": {
+          "data": {
+            "id": '</span>&lt;plan_id&gt;<span class="s1">',
+            "type": '</span>commercial_plans<span class="s1">'
+          }
+        }
+      }
+    }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/account_subscriptions/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -942,10 +989,29 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <td>price id for this account subscription.</td>
 </tr>
 </tbody></table>
-<h2 id='update-account-subscription'>Update Account Subscription</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/account_subscriptions/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='update-account-subscription'>Update Account Subscription</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/account_subscriptions/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X PUT -d <span class="s1">'{
+  "data": {
+      "type": "account_subscriptions",
+      "attributes": {
+        "price_id": "&lt;price_id&gt;"
+      }
+      "relationships": {
+        "plan": {
+          "data": {
+            "id": '</span>&lt;plan_id&gt;<span class="s1">',
+            "type": '</span>commercial_plans<span class="s1">'
+          }
+        }
+      }
+    }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/account_subscriptions/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -1039,10 +1105,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <td>price id for this account subscription.</td>
 </tr>
 </tbody></table>
-<h2 id='destroy-account-subscriptions'>Destroy Account Subscriptions</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/account_subscriptions/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='destroy-account-subscriptions'>Destroy Account Subscriptions</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X DELETE <span class="s2">"https://core.eventtia.com/v1/account_subscriptions/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/account_subscriptions/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -1089,10 +1158,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <td>The id for the desired account subscription.</td>
 </tr>
 </tbody></table>
-<h1 id='attendees'>Attendees</h1><h2 id='list-attendees'>List Attendees</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/'</span><span class="p">,</span> <span class="p">{</span>
+<h1 id='attendees'>Attendees</h1><h2 id='list-attendees'>List Attendees</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -1117,8 +1189,8 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">        "updated_by_id": "10461",</span>
 <span class="s">        "archived": "false",</span>
 <span class="s">        "fields_data": {</span>
-<span class="s">          "281": "george",</span>
-<span class="s">          "282": "downtown"</span>
+<span class="s">          "f281": "george",</span>
+<span class="s">          "f282": "downtown"</span>
 <span class="s">        },</span>
 <span class="s">        "photo_url": "url_Image_file"</span>
 <span class="s">      }</span>
@@ -1183,10 +1255,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <td>Filters results by user</td>
 </tr>
 </tbody></table>
-<h2 id='get-attendee'>Get Attendee</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='get-attendee'>Get Attendee</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -1213,8 +1288,8 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">        "updated_by_id": "10461",</span>
 <span class="s">        "archived": "false",</span>
 <span class="s">        "fields_data": {</span>
-<span class="s">          "281": "george",</span>
-<span class="s">          "282": "downtown"</span>
+<span class="s">          "f281": "george",</span>
+<span class="s">          "f282": "downtown"</span>
 <span class="s">        },</span>
 <span class="s">        "photo_url": "url_Image_file"</span>
 <span class="s">      }</span>
@@ -1254,10 +1329,32 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <td>The id for the desired attendee</td>
 </tr>
 </tbody></table>
-<h2 id='create-attendee'>Create Attendee</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='create-attendee'>Create Attendee</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X POST -d <span class="s1">'{
+    "data": {
+      "type": "attendees",
+      "attributes": {
+        "attendee_type_id": 34,
+        "first_name": "Mary",
+        "last_name": "perez ossa",
+        "email": "maryperez@email.com",
+        telephone": "+56912345678",
+        "updated_by_id": 192,
+        "archived": false,
+        "fields_data": {
+          "f281": "george",
+          "f282": "downtown"
+        },
+        "photo_url": "url_Image_file"
+      }
+    }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -1271,8 +1368,8 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
         <span class="na">updated_by_id</span><span class="p">:</span> <span class="mi">192</span><span class="p">,</span>
         <span class="na">archived</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="na">fields_data</span><span class="p">:</span> <span class="p">{</span>
-          <span class="s2">"281"</span><span class="p">:</span> <span class="s2">"george"</span><span class="p">,</span>
-          <span class="s2">"282"</span><span class="p">:</span> <span class="s2">"downtown"</span>
+          <span class="s2">"f281"</span><span class="p">:</span> <span class="s2">"george"</span><span class="p">,</span>
+          <span class="s2">"f282"</span><span class="p">:</span> <span class="s2">"downtown"</span>
         <span class="p">},</span>
         <span class="na">photo_url</span><span class="p">:</span> <span class="s2">"url_Image_file"</span>
       <span class="p">}</span>
@@ -1300,8 +1397,8 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">      "updated_by_id": "10461",</span>
 <span class="s">      "archived": "false",</span>
 <span class="s">      "fields_data": {</span>
-<span class="s">        "281": "george",</span>
-<span class="s">        "282": "downtown"</span>
+<span class="s">        "f281": "george",</span>
+<span class="s">        "f282": "downtown"</span>
 <span class="s">      },</span>
 <span class="s">      "photo_url": "url_Image_file"</span>
 <span class="s">    }</span>
@@ -1381,32 +1478,56 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <td>photo for attendee</td>
 </tr>
 </tbody></table>
-<h2 id='update-attendee'>Update Attendee</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">type</span><span class="p">:</span> <span class="s2">"attendees"</span><span class="p">,</span>
-      <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">attendee_type_id</span><span class="p">:</span> <span class="mi">34</span><span class="p">,</span>
-        <span class="na">first_name</span><span class="p">:</span> <span class="s2">"Mary"</span><span class="p">,</span>
-        <span class="na">last_name</span><span class="p">:</span> <span class="s2">"perez ossa"</span><span class="p">,</span>
-        <span class="na">email</span><span class="p">:</span> <span class="s2">"maryperez@email.com"</span><span class="p">,</span>
-        <span class="na">telephone</span><span class="p">:</span> <span class="s2">"+56912345678"</span><span class="p">,</span>
-        <span class="na">updated_by_id</span><span class="p">:</span> <span class="mi">192</span><span class="p">,</span>
-        <span class="na">archived</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="na">fields_data</span><span class="p">:</span> <span class="p">{</span>
-          <span class="s2">"281"</span><span class="p">:</span> <span class="s2">"george"</span><span class="p">,</span>
-          <span class="s2">"282"</span><span class="p">:</span> <span class="s2">"downtown"</span>
-        <span class="p">},</span>
-        <span class="na">photo_url</span><span class="p">:</span> <span class="s2">"url_Image_file"</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-<span class="p">})</span>
+<h2 id='update-attendee'>Update Attendee</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X PUT -d <span class="s1">'{
+    "data": {
+      "type": "attendees",
+      "attributes": {
+        "attendee_type_id": 34,
+        "first_name": "Mary",
+        "last_name": "perez ossa",
+        "email": "maryperez@email.com",
+        telephone": "+56912345678",
+        "updated_by_id": 192,
+        "archived": false,
+        "fields_data": {
+          "f281": "george",
+          "f282": "downtown"
+        },
+        "photo_url": "url_Image_file"
+      }
+    }
+}'</span>
+
+<span class="sb">```</span>javascript
+fetch<span class="o">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;'</span>, <span class="o">{</span>
+  method: <span class="s1">'PUT'</span>,
+  headers: <span class="o">{</span>
+    <span class="s1">'Authorization'</span>: <span class="s1">'Bearer &lt;your token&gt;'</span>,
+  <span class="o">}</span>,
+  body: <span class="o">{</span>
+    data: <span class="o">{</span>
+      <span class="nb">type</span>: <span class="s2">"attendees"</span>,
+      attributes: <span class="o">{</span>
+        attendee_type_id: 34,
+        first_name: <span class="s2">"Mary"</span>,
+        last_name: <span class="s2">"perez ossa"</span>,
+        email: <span class="s2">"maryperez@email.com"</span>,
+        telephone: <span class="s2">"+56912345678"</span>,
+        updated_by_id: 192,
+        archived: <span class="nb">false</span>,
+        fields_data: <span class="o">{</span>
+          <span class="s2">"f281"</span>: <span class="s2">"george"</span>,
+          <span class="s2">"f282"</span>: <span class="s2">"downtown"</span>
+        <span class="o">}</span>,
+        photo_url: <span class="s2">"url_Image_file"</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+<span class="o">})</span>
 </code></pre>
 <blockquote>
 <p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. </p>
@@ -1430,8 +1551,8 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">      "updated_by_id": "192",</span>
 <span class="s">      "archived": "false",</span>
 <span class="s">      "fields_data": {</span>
-<span class="s">        "281": "george",</span>
-<span class="s">        "282": "downtown"</span>
+<span class="s">        "f281": "george",</span>
+<span class="s">        "f282": "downtown"</span>
 <span class="s">      },</span>
 <span class="s">      "photo_url": "url_Image_file"</span>
 <span class="s">    }</span>
@@ -1516,10 +1637,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <td>photo for attendee</td>
 </tr>
 </tbody></table>
-<h2 id='destroy-attendee'>Destroy Attendee</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='destroy-attendee'>Destroy Attendee</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X DELETE <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
 <span class="p">})</span>
 </code></pre>
@@ -1545,10 +1669,10 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">      "updated_by_id": "192",</span>
 <span class="s">      "archived": "true",</span>
 <span class="s">      "fields_data": {</span>
-<span class="s">        "281": "george",</span>
-<span class="s">        "282": "downtown"</span>
+<span class="s">        "f281": "george",</span>
+<span class="s">        "f282": "downtown"</span>
 <span class="s">      },</span>
-<span class="s">      "photo_url": "url_Image_file"     </span>
+<span class="s">      "photo_url": "url_Image_file"</span>
 <span class="s">    }</span>
 <span class="s">  }</span>
 <span class="s">}</span>
@@ -1575,10 +1699,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <td>The id for the desired attendee</td>
 </tr>
 </tbody></table>
-<h1 id='attendee-types'>Attendee Types</h1><h2 id='list-attendee-types'>List Attendee Types</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/'</span><span class="p">,</span> <span class="p">{</span>
+<h1 id='attendee-types'>Attendee Types</h1><h2 id='list-attendee-types'>List Attendee Types</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -1598,7 +1725,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">      "attributes": {</span>
 <span class="s">        "name": "Attendee type name",</span>
 <span class="s">        "description": "attendee_type_description",</span>
-<span class="s">        "price": "34.2",</span>
+<span class="s">        "price": 34.2,</span>
 <span class="s">        "limit": 25,</span>
 <span class="s">        "confirmation_required": false,</span>
 <span class="s">        "allow_public_registration": false,</span>
@@ -1642,13 +1769,16 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <tr>
 <td>available_seats</td>
 <td>boolean</td>
-<td>activate an optional attribute (seats availability)</td>
+<td>Activate an optional attribute (seats availability)</td>
 </tr>
 </tbody></table>
-<h2 id='get-attendee-type'>Get Attendee Type</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='get-attendee-type'>Get Attendee Type</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -1669,7 +1799,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">    "attributes": {</span>
 <span class="s">      "name": "Attendee type name",</span>
 <span class="s">      "description": "Attendee type description",</span>
-<span class="s">      "price": "34.2",</span>
+<span class="s">      "price": 34.2,</span>
 <span class="s">      "limit": 25,</span>
 <span class="s">      "confirmation_required": false,</span>
 <span class="s">      "allow_public_registration": false,</span>
@@ -1695,7 +1825,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">}</span>
 </code></pre>
 <blockquote>
-<p>Example of Not Found (404) response: </p>
+<p>Example of Not Found (404) response:</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
 <span class="s">{</span>
@@ -1753,18 +1883,37 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <tr>
 <td>fields</td>
 <td>string</td>
-<td>include fields relationships</td>
+<td>Include fields relationships</td>
 </tr>
 <tr>
 <td>current_price</td>
 <td>string</td>
-<td>include current price</td>
+<td>Include current price</td>
 </tr>
 </tbody></table>
-<h2 id='create-attendee-type'>Create Attendee Type</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='create-attendee-type'>Create Attendee Type</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X POST -d <span class="s1">'{
+    "data": {
+      "id": 62527
+      "type": "attendee_type",
+      "attributes": {
+        "name": { es:"Attendee type name", en: "Attendee type name"},
+        "description": { es:"Attendee type description", en: "Attendee type description"},
+        "price": 34.2,
+        "limit": 25,
+        "confirmation_required": false,
+        "allow_public_registration": false,
+        "valid_if_no_payments": true,
+        "archived": false
+    }
+  }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
   <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -1799,7 +1948,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">    "attributes": {</span>
 <span class="s">      "name": {"es": "Attendee type name", "en": "Attendee type name"},</span>
 <span class="s">      "description": {"es": "Attendee type description", "en": "Attendee type description"},</span>
-<span class="s">      "price": "34.2",</span>
+<span class="s">      "price": 34.2,</span>
 <span class="s">      "limit": 25,</span>
 <span class="s">      "confirmation_required": false,</span>
 <span class="s">      "allow_public_registration": false,</span>
@@ -1817,7 +1966,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">      }</span>
 <span class="s">    }</span>
 <span class="s">  }</span>
-<span class="s">}</span>
 </code></pre>
 <blockquote>
 <p>Example of Unprocessable Entity (422) response: </p>
@@ -1845,43 +1993,62 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <tr>
 <td>name</td>
 <td>json</td>
-<td>keys belongs to available languages for attendee type&#39;s event and its value, Example: {es: &quot;Invitado&quot;, en: &quot;Guest&quot;}</td>
+<td>Keys belongs to available languages for attendee type&#39;s event and its value, Example: {es: &quot;Invitado&quot;, en: &quot;Guest&quot;}</td>
 </tr>
 <tr>
 <td>description</td>
 <td>json</td>
-<td>keys belongs to available languages for attendee type&#39;s event and its value, Example: {es: &quot;descripcion de invitado&quot;, en: &quot;Guest&#39;s description&quot;}</td>
+<td>Keys belongs to available languages for attendee type&#39;s event and its value, Example: {es: &quot;descripcion de invitado&quot;, en: &quot;Guest&#39;s description&quot;}</td>
 </tr>
 <tr>
 <td>price</td>
 <td>decimal</td>
-<td>price for attendee type</td>
+<td>Price for attendee type</td>
 </tr>
 <tr>
 <td>limit</td>
 <td>integer</td>
-<td>attendees limit for this attendee type</td>
+<td>Attendees limit for this attendee type</td>
 </tr>
 <tr>
 <td>confirmation_required</td>
 <td>boolean</td>
-<td>confirmation required for attendee type</td>
+<td>Confirmation required for attendee type</td>
 </tr>
 <tr>
 <td>allow_public_registration</td>
 <td>boolean</td>
-<td>allow public registration for this attendee type</td>
+<td>Allow public registration for this attendee type</td>
 </tr>
 <tr>
 <td>valid_if_no_payments</td>
 <td>boolean</td>
-<td>valid attendee type if no payments</td>
+<td>Valid attendee type if no payments</td>
 </tr>
 </tbody></table>
-<h2 id='update-attendee-type'>Update Attendee Type</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='update-attendee-type'>Update Attendee Type</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X PUT -d <span class="s1">'{
+    "data": {
+      "id": 62527
+      "type": "attendee_type",
+      "attributes": {
+        "name": { es:"Attendee type name", en: "Attendee type name"},
+        "description": { es:"Attendee type description", en: "Attendee type description"},
+        "price": 34.2,
+        "limit": 25,
+        "confirmation_required": false,
+        "allow_public_registration": false,
+        "valid_if_no_payments": true,
+        "archived": false
+    }
+  }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
   <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -1917,7 +2084,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">    "attributes": {</span>
 <span class="s">      "name": "Attendee type name",</span>
 <span class="s">      "description": "Attendee type description",</span>
-<span class="s">      "price": "34.2",</span>
+<span class="s">      "price": 34.2,</span>
 <span class="s">      "limit": 25,</span>
 <span class="s">      "confirmation_required": false,</span>
 <span class="s">      "allow_public_registration": false,</span>
@@ -1937,7 +2104,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">}</span>
 </code></pre>
 <blockquote>
-<p>Example of Unprocessable Entity (422) response: </p>
+<p>Example of Unprocessable Entity (422) response:</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
 <span class="s">{</span>
@@ -1981,43 +2148,46 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <tr>
 <td>name</td>
 <td>string</td>
-<td>name for attendee type</td>
+<td>Name for attendee type</td>
 </tr>
 <tr>
 <td>description</td>
 <td>string</td>
-<td>description for attendee type</td>
+<td>Description for attendee type</td>
 </tr>
 <tr>
 <td>price</td>
 <td>decimal</td>
-<td>price for attendee type</td>
+<td>Price for attendee type</td>
 </tr>
 <tr>
 <td>limit</td>
 <td>integer</td>
-<td>attendees limit for this attendee type</td>
+<td>Attendees limit for this attendee type</td>
 </tr>
 <tr>
 <td>confirmation_required</td>
 <td>boolean</td>
-<td>confirmation required for attendee type</td>
+<td>Confirmation required for attendee type</td>
 </tr>
 <tr>
 <td>allow_public_registration</td>
 <td>boolean</td>
-<td>allow public registration for this attendee type</td>
+<td>Allow public registration for this attendee type</td>
 </tr>
 <tr>
 <td>valid_if_no_payments</td>
 <td>boolean</td>
-<td>valid attendee type if no payments</td>
+<td>Valid attendee type if no payments</td>
 </tr>
 </tbody></table>
-<h2 id='destroy-attendee-type'>Destroy Attendee Type</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='destroy-attendee-type'>Destroy Attendee Type</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X DELETE <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
 <span class="p">})</span>
 </code></pre>
@@ -2038,7 +2208,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">    "attributes": {</span>
 <span class="s">      "name": "Attendee type name",</span>
 <span class="s">      "description": "Attendee type description",</span>
-<span class="s">      "price": "545.0",</span>
+<span class="s">      "price": 545.0,</span>
 <span class="s">      "limit": 500,</span>
 <span class="s">      "confirmation_required": true,</span>
 <span class="s">      "allow_public_registration": true,</span>
@@ -2078,10 +2248,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <td>The id for the desired attendee type</td>
 </tr>
 </tbody></table>
-<h2 id='available-seats'>Available Seats</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/&lt;id&gt;/available-seats'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='available-seats'>Available Seats</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/&lt;id&gt;/available-seats"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/&lt;id&gt;/available-seats'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -2103,7 +2276,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <span class="s">}</span>
 </code></pre>
 <blockquote>
-<p>Example of Not Found (404) response: </p>
+<p>Example of Not Found (404) response:</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
 <span class="s">{</span>
@@ -2134,10 +2307,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/accounts/activate"</span> <s
 <td>The id for the desired attendee type</td>
 </tr>
 </tbody></table>
-<h2 id='form-fields'>Form Fields</h2><h3 id='index-form-fields'>Index form fields</h3><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='form-fields'>Form Fields</h2><h3 id='index-form-fields'>Index form fields</h3><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -2242,7 +2418,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/attendee_t
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
     <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -2311,11 +2487,14 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/attendee_t
 <blockquote>
 <p>To update destroy, use this code:</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields/:id&lt;id&gt;"</span><span class="p">,</span> <span class="p">{</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X DELETE <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields/:id&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields/:id&lt;id&gt;"</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
     <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span>
   <span class="p">},</span>
 <span class="p">})</span>
 </code></pre>
@@ -2360,7 +2539,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/:entity_ty
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
     <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span>
   <span class="p">},</span>
   <span class="p">{</span>
     <span class="na">ordered_ids</span><span class="p">:</span> <span class="s1">'&lt;{"20":3,"44":2}&gt;'</span>
@@ -2421,10 +2600,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/:entity_ty
 <td>Send of key (field_id) and value (order), example {&quot;31&quot;:10, &quot;32&quot;:9}</td>
 </tr>
 </tbody></table>
-<h1 id='commercial-plans'>Commercial Plans</h1><h2 id='list-commercial-plans'>List Commercial Plans</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/commercial_plans/'</span><span class="p">,</span> <span class="p">{</span>
+<h1 id='commercial-plans'>Commercial Plans</h1><h2 id='list-commercial-plans'>List Commercial Plans</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/commercial_plans/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/commercial_plans/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -2469,10 +2651,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/:entity_ty
 <p>This endpoint return a list of commercial plans</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET /v1/commercial_plans/</code></p>
-<h2 id='get-commercial-plan'>Get Commercial Plan</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/commercial_plans/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='get-commercial-plan'>Get Commercial Plan</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/commercial_plans/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/commercial_plans/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -2533,10 +2718,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/:entity_ty
 <td>The id for the desired commercial plan.</td>
 </tr>
 </tbody></table>
-<h1 id='events'>Events</h1><h2 id='list-events'>List Events</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/'</span><span class="p">,</span> <span class="p">{</span>
+<h1 id='events'>Events</h1><h2 id='list-events'>List Events</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}})</span>
 </code></pre>
 <blockquote>
@@ -2658,10 +2846,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/:entity_ty
 <td>Send true if you want to get only active events.</td>
 </tr>
 </tbody></table>
-<h2 id='get-event'>Get Event</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='get-event'>Get Event</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}})</span>
 </code></pre>
 <blockquote>
@@ -2763,10 +2954,59 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/:entity_ty
 <td>the value settings gives informations for each relationships (settings or attendees)</td>
 </tr>
 </tbody></table>
-<h2 id='create-event'>Create Event</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='create-event'>Create Event</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X POST -d <span class="s1">'{
+   "data": {
+    "id": "21",
+    "type": "events",
+    "attributes": {
+      "name": "Event name",
+      "description": "description of an event",
+      "start_date": "2020-04-13 15:54:37 -0500",
+      "end_date": "2020-04-15 15:54:57 -0500",
+      "active_modules": "[0, 1]",
+      "fields_data": "{}",
+      "attendance_mode": "online",
+      "is_template": false,
+      "event_uri": "event_uri",
+      "timezone": "America/Bogota",
+      "settings": {
+        "time_format": "hours_24",
+        "date_format": "mm/dd/yyyy",
+        "available_languages": {
+            "available": ["en", "es"],
+            "default": "en"
+        }        },
+      "location": {
+        "coordinates": { "lat": 6.2518400, "lng": -75.5635900 },
+        "address": "Event address",
+        "country": "Colombia.",
+        "city": "Medellín",
+      },
+      "virtual_timezone": "America/Bogota",
+      "banner": {
+        "filename": "file_name",
+        "thumb": "url_image",
+        "small":  "url_image",
+        "medium": "url_image",
+        "large": "url_image",
+      },
+      "logo: {
+        "filename": "file_name",
+        "thumb": "url_image",
+        "small": "url_image",
+        "medium": "url_image",
+        "large": "url_image",
+      }
+    }
+  }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
   <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -2963,10 +3203,59 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/:entity_ty
 <td>includes available key ( array with availables languages for event ) and default key ( a string with a single required language, included in available languages array)</td>
 </tr>
 </tbody></table>
-<h2 id='update-event'>Update Event</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='update-event'>Update Event</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X PUT -d <span class="s1">'{
+   "data": {
+    "id": "21",
+    "type": "events",
+    "attributes": {
+      "name": "Event name",
+      "description": "description of an event",
+      "start_date": "2020-04-13 15:54:37 -0500",
+      "end_date": "2020-04-15 15:54:57 -0500",
+      "active_modules": "[0, 1]",
+      "fields_data": "{}",
+      "attendance_mode": "online",
+      "is_template": false,
+      "event_uri": "event_uri",
+      "timezone": "America/Bogota",
+      "settings": {
+        "time_format": "hours_24",
+        "date_format": "mm/dd/yyyy",
+        "available_languages": {
+            "available": ["en", "es"],
+            "default": "en"
+        }        },
+      "location": {
+        "coordinates": { "lat": 6.2518400, "lng": -75.5635900 },
+        "address": "Event address",
+        "country": "Colombia.",
+        "city": "Medellín",
+      },
+      "virtual_timezone": "America/Bogota",
+      "banner": {
+        "filename": "file_name",
+        "thumb": "url_image",
+        "small":  "url_image",
+        "medium": "url_image",
+        "large": "url_image",
+      },
+      "logo: {
+        "filename": "file_name",
+        "thumb": "url_image",
+        "small": "url_image",
+        "medium": "url_image",
+        "large": "url_image",
+      }
+    }
+  }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
   <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -3019,7 +3308,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/:entity_ty
           <span class="na">type</span><span class="p">:</span> <span class="s2">"settings"</span>
         <span class="p">}</span>
       <span class="p">}</span>
-    <span class="p">}</span>  
+    <span class="p">}</span>
   <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">})</span>
@@ -3187,10 +3476,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/:entity_ty
 <td>includes available key ( array with availables languages for event ) and default key ( a string with a single required language, included in available languages array)</td>
 </tr>
 </tbody></table>
-<h2 id='destroy-event'>Destroy Event</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='destroy-event'>Destroy Event</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X DELETE <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
 <span class="p">})</span>
 </code></pre>
@@ -3268,10 +3560,41 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/:entity_ty
 <td>The event_uri for the desired event</td>
 </tr>
 </tbody></table>
-<h2 id='settings'>Settings</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/settings'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='settings'>Settings</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/settings"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X PATCH -d <span class="s1">'{
+   "data": {
+      "type": "event_settings",
+      "attributes": {
+        "payment_method": "credit card",
+        "paypal_production_key": "12345ABCDE",
+        "paypal_sandbox_key": "ABCDEHGIKN",
+        "paypal_test_mode": false,
+        "stripe_secret_api_key": "1A2G3R4FTT",
+        "stripe_publishable_api_key": "LA778GHGD6",
+        "pay_u_api_key": "99IIOYNTRE",
+        "pay_u_merchant_id": "12",
+        "pay_u_account_id": "13",
+        "pay_u_api_login": "33445ABCDE",
+        "pay_u_test_mode": false,
+        "currency": 4,
+        "vat_alias": "Recaudo",
+        "vat_value": 19,
+        "date_format": "dd/mm/yyyy",
+        "time_format": "am_pm",
+        "google_analytics_tracking_code": "A78Y55ABCD",
+        "google_tag_manager_code": "11223ABCDE",
+        "available_languages": {
+                              "available": ["en", "es"],
+                              "default": "en"}
+      }
+    }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/settings'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PATCH'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -3460,10 +3783,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/:entity_ty
 <td>includes available key ( array with availables languages for event ) and default key ( a string with a single required language, included in available languages array)</td>
 </tr>
 </tbody></table>
-<h1 id='input-fields'>Input fields</h1><h2 id='list-fields'>List fields</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/event_uri/fields/'</span><span class="p">,</span> <span class="p">{</span>
+<h1 id='input-fields'>Input fields</h1><h2 id='list-fields'>List fields</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/event_uri/fields/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/event_uri/fields/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -3567,7 +3893,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/fields"</s
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
     <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -3584,7 +3910,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/fields"</s
     <span class="p">}</span>
   <span class="p">}</span>
   <span class="p">}</span>
-
 <span class="p">})</span>
 </code></pre>
 <blockquote>
@@ -4080,7 +4405,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/fields/:id
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
     <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -4153,11 +4478,14 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/fields/:id
 <blockquote>
 <p>To update destroy, use this code:</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://core.eventtia.com/v1/fields/:id&lt;id&gt;"</span><span class="p">,</span> <span class="p">{</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X DELETE <span class="s2">"https://core.eventtia.com/v1/fields/:id&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://core.eventtia.com/v1/fields/:id&lt;id&gt;"</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
     <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span>
   <span class="p">},</span>
 <span class="p">})</span>
 </code></pre>
@@ -4215,7 +4543,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/change-ord
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
     <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span>
   <span class="p">},</span>
   <span class="p">{</span>
     <span class="na">ordered_ids</span><span class="p">:</span> <span class="s1">'&lt;{"20":3,"44":2}&gt;'</span>
@@ -4271,10 +4599,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/change-ord
 <td>Send of key (field_id) and value (order), example {&quot;31&quot;:10, &quot;32&quot;:9}</td>
 </tr>
 </tbody></table>
-<h1 id='notifications'>Notifications</h1><h2 id='list-notifications'>List Notifications</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/'</span><span class="p">,</span> <span class="p">{</span>
+<h1 id='notifications'>Notifications</h1><h2 id='list-notifications'>List Notifications</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -4296,9 +4627,16 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/change-ord
 <span class="s">        "model": null,</span>
 <span class="s">        "entity_type": "User",</span>
 <span class="s">        "action": "account_created",</span>
-<span class="s">        "event_id": 54,</span>
 <span class="s">        "conditions": null</span>
+<span class="s">      },</span>
+<span class="s">    "relationships": {</span>
+<span class="s">      "events": {</span>
+<span class="s">        "data": {</span>
+<span class="s">            "id": "54",</span>
+<span class="s">            "type": "events"</span>
+<span class="s">          }</span>
 <span class="s">      }</span>
+<span class="s">    }</span>
 <span class="s">    }</span>
 <span class="s">  ]</span>
 <span class="s">}</span>
@@ -4325,10 +4663,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/change-ord
 <td>A page object as described <a href="#pagination">here</a></td>
 </tr>
 </tbody></table>
-<h2 id='get-notification'>Get Notification</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='get-notification'>Get Notification</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -4351,8 +4692,15 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/change-ord
 <span class="s">      "model": null,</span>
 <span class="s">      "entity_type": "User",</span>
 <span class="s">      "action": "account_created",</span>
-<span class="s">      "event_id": 54,</span>
 <span class="s">      "conditions": null</span>
+<span class="s">    },</span>
+<span class="s">    "relationships": {</span>
+<span class="s">      "events": {</span>
+<span class="s">        "data": {</span>
+<span class="s">            "id": "54",</span>
+<span class="s">            "type": "events"</span>
+<span class="s">          }</span>
+<span class="s">      }</span>
 <span class="s">    }</span>
 <span class="s">  }</span>
 <span class="s">}</span>
@@ -4389,10 +4737,23 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/change-ord
 <td>The id for the desired notification</td>
 </tr>
 </tbody></table>
-<h2 id='create-notification'>Create Notification</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='create-notification'>Create Notification</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X POST -d <span class="s1">'{
+   "data": {
+    "type": "notification",
+    "attributes": {
+      "name": "Welcome to Ticketing",
+      "entity_type": "User",
+      "action": "account_created"
+    }
+  }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
   <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -4423,8 +4784,15 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/change-ord
 <span class="s">      "model": null,</span>
 <span class="s">      "entity_type": "User",</span>
 <span class="s">      "action": "account_created",</span>
-<span class="s">      "event_id": 54,</span>
 <span class="s">      "conditions": null</span>
+<span class="s">    },</span>
+<span class="s">    "relationships": {</span>
+<span class="s">      "events": {</span>
+<span class="s">        "data": {</span>
+<span class="s">            "id": "54",</span>
+<span class="s">            "type": "events"</span>
+<span class="s">          }</span>
+<span class="s">      }</span>
 <span class="s">    }</span>
 <span class="s">  }</span>
 <span class="s">}</span>
@@ -4473,10 +4841,23 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/change-ord
 <td>Conditions for notifications</td>
 </tr>
 </tbody></table>
-<h2 id='update-notification'>Update Notification</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='update-notification'>Update Notification</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X PUT -d <span class="s1">'{
+   "data": {
+    "type": "notification",
+    "attributes": {
+      "name": "Welcome to Ticketing",
+      "entity_type": "User",
+      "action": "account_created"
+    }
+  }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
   <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -4509,8 +4890,15 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/change-ord
 <span class="s">      "model": null,</span>
 <span class="s">      "entity_type": "User",</span>
 <span class="s">      "action": "account_created",</span>
-<span class="s">      "event_id": 54,</span>
 <span class="s">      "conditions": null</span>
+<span class="s">    },</span>
+<span class="s">    "relationships": {</span>
+<span class="s">      "events": {</span>
+<span class="s">        "data": {</span>
+<span class="s">            "id": "54",</span>
+<span class="s">            "type": "events"</span>
+<span class="s">          }</span>
+<span class="s">      }</span>
 <span class="s">    }</span>
 <span class="s">  }</span>
 <span class="s">}</span>
@@ -4578,10 +4966,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/change-ord
 <td>Conditions for notifications</td>
 </tr>
 </tbody></table>
-<h2 id='destroy-notification'>Destroy Notification</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='destroy-notification'>Destroy Notification</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X DELETE <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
 <span class="p">})</span>
 </code></pre>
@@ -4604,8 +4995,15 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/change-ord
 <span class="s">      "model": null,</span>
 <span class="s">      "entity_type": "User",</span>
 <span class="s">      "action": "account_created",</span>
-<span class="s">      "event_id": 54,</span>
 <span class="s">      "conditions": null</span>
+<span class="s">    },</span>
+<span class="s">    "relationships": {</span>
+<span class="s">      "events": {</span>
+<span class="s">        "data": {</span>
+<span class="s">            "id": "54",</span>
+<span class="s">            "type": "events"</span>
+<span class="s">          }</span>
+<span class="s">      }</span>
 <span class="s">    }</span>
 <span class="s">  }</span>
 <span class="s">}</span>
@@ -4632,10 +5030,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/change-ord
 <td>The id for the desired notification</td>
 </tr>
 </tbody></table>
-<h2 id='notification-languages'>Notification Languages</h2><h2 id='index-notification-languages'>Index Notification Languages</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_languages'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='notification-languages'>Notification Languages</h2><h2 id='index-notification-languages'>Index Notification Languages</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_languages"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_languages'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -4697,10 +5098,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/change-ord
 <td>The id for the desired notification</td>
 </tr>
 </tbody></table>
-<h2 id='get-notification-languages'>Get Notification Languages</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_language/:id'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='get-notification-languages'>Get Notification Languages</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_language/:id"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_language/:id'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -4793,7 +5197,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notificati
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
     <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
@@ -4879,7 +5283,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notificati
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
     <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
@@ -4950,11 +5354,14 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notificati
 <blockquote>
 <p>To destroy notification language, use this code:</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_languages/:id"</span><span class="p">,</span> <span class="p">{</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X DELETE <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_languages/:id"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_languages/:id"</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
     <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span>
   <span class="p">},</span>
 <span class="p">})</span>
 </code></pre>
@@ -5009,7 +5416,289 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notificati
 <td>The id for the notification language</td>
 </tr>
 </tbody></table>
-<h1 id='passwords'>Passwords</h1><h2 id='request-recovery-password'>Request Recovery Password</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/en/v1/passwords'</span><span class="p">,</span> <span class="p">{</span>
+<h1 id='orders'>Orders</h1><h2 id='list-orders-by-events-or-entity'>List Orders by events or Entity</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/orders/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/orders/'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event.</p>
+
+<p>(Optional) Make sure you include &lt;entity_type&gt; and &lt;entity_id&gt; if you prefer get a list for orders by permitted entities (&#39;Attendee&#39;, &#39;Account&#39;, &#39;Member&#39;).</p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "51",</span>
+<span class="s">    "type": "orders",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">        "description": "Description for Order",</span>
+<span class="s">        "entity_type": "Member",</span>
+<span class="s">        "entity_id": 2,</span>
+<span class="s">        "total_tax": null,</span>
+<span class="s">        "total_amount": "155.0",</span>
+<span class="s">        "status": "completed",</span>
+<span class="s">        "archived": false,</span>
+<span class="s">        "log_info": null,</span>
+<span class="s">        "source": "external",</span>
+<span class="s">        "event_id": 94,</span>
+<span class="s">        "uuid": "8989528989",</span>
+<span class="s">        "locale": "en"</span>
+<span class="s">    }</span>
+<span class="s">        },</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint list orders belongs to event and return it</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /v1/events/:event_uri/orders/</code></p>
+<h3 id='path-parameters'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event.</td>
+</tr>
+<tr>
+<td>page</td>
+<td>json</td>
+<td>A page object as described <a href="#pagination">here</a></td>
+</tr>
+<tr>
+<td>entity_type</td>
+<td>string</td>
+<td>entity type from order, include this parameter if you prefer get a list of orders by entity</td>
+</tr>
+<tr>
+<td>entity_id</td>
+<td>string</td>
+<td>entity id from order, include this parameter if you prefer get a list of orders by entity</td>
+</tr>
+</tbody></table>
+<h2 id='create-order'>Create Order</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/orders/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X POST -d <span class="s1">'{
+  "data": {
+    "type": "orders",
+    "attributes": {
+      "member": {
+          "first_name": "Nombre",
+          "last_name": "Name",
+          "phone": 55898989,
+          "email": "email@eventtia.com"
+          },
+      "order_items": [
+          {
+              "description": "description for first item",
+              "quantity": 1,
+              "entity_type": "AttendeeType",
+              "entity_id": 94,
+              "unit_amount": 10.0
+          },
+          {
+              "description": "description for second item",
+              "quantity": 1,
+              "entity_type": "AttendeeType",
+              "entity_id": 57,
+              "unit_amount": 20.0
+          }
+      ]
+    }
+    }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/orders/'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"orders"</span><span class="p">,</span>
+    <span class="s2">"attributes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"member"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"first_name"</span><span class="p">:</span> <span class="s2">"Nombre"</span><span class="p">,</span>
+          <span class="s2">"last_name"</span><span class="p">:</span> <span class="s2">"Name"</span><span class="p">,</span>
+          <span class="s2">"phone"</span><span class="p">:</span> <span class="mi">55898989</span><span class="p">,</span>
+          <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"email@eventtia.com"</span>
+          <span class="p">},</span>
+      <span class="s2">"order_items"</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+              <span class="s2">"description"</span><span class="p">:</span> <span class="s2">"description for first item"</span><span class="p">,</span>
+              <span class="s2">"quantity"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+              <span class="s2">"entity_type"</span><span class="p">:</span> <span class="s2">"AttendeeType"</span><span class="p">,</span>
+              <span class="s2">"entity_id"</span><span class="p">:</span> <span class="mi">94</span><span class="p">,</span>
+              <span class="s2">"unit_amount"</span><span class="p">:</span> <span class="mf">10.0</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+              <span class="s2">"description"</span><span class="p">:</span> <span class="s2">"description for second item"</span><span class="p">,</span>
+              <span class="s2">"quantity"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+              <span class="s2">"entity_type"</span><span class="p">:</span> <span class="s2">"AttendeeType"</span><span class="p">,</span>
+              <span class="s2">"entity_id"</span><span class="p">:</span> <span class="mi">57</span><span class="p">,</span>
+              <span class="s2">"unit_amount"</span><span class="p">:</span> <span class="mf">20.0</span>
+          <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event .  </p>
+
+<p>Example of a successful (200) response if your total Amount on your order is 0:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">   "data": {</span>
+<span class="s">    "id": "51",</span>
+<span class="s">    "type": "orders",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">        "description": "Description for Order",</span>
+<span class="s">        "entity_type": "Member",</span>
+<span class="s">        "entity_id": 2,</span>
+<span class="s">        "total_tax": null,</span>
+<span class="s">        "total_amount": "155.0",</span>
+<span class="s">        "status": "completed",</span>
+<span class="s">        "archived": false,</span>
+<span class="s">        "log_info": null,</span>
+<span class="s">        "source": "external",</span>
+<span class="s">        "event_id": 94,</span>
+<span class="s">        "uuid": "8989528989",</span>
+<span class="s">        "locale": "en"</span>
+<span class="s">    }</span>
+<span class="s">    },</span>
+<span class="s">}</span>
+</code></pre>
+<p>Example of a successful (200) response if your order requires a payment:</p>
+
+<p>https://checkout.stripe.com/c/pay/9TjB9VUx0NTVtZjNfTUJiRicpJ2N3amhWYHdzY</p>
+
+<blockquote>
+<p>Example of Unprocessable Entity (400) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "error": [</span>
+<span class="s">            {</span>
+<span class="s">          "member": [ "Email code: 328"]</span>
+<span class="s">            }</span>
+<span class="s">        ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint create an order and return it unless your order requires a payment.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET /v1/events/:event_uri/orders/</code></p>
+<h3 id='path-parameters-2'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+</tbody></table>
+<h3 id='member-parameters'>Member Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>first_name</td>
+<td>string</td>
+<td>first name for member</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>last_name for member</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>integer</td>
+<td>phone for member</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>email for member</td>
+</tr>
+</tbody></table>
+<h3 id='order-items-parameters'>Order Items Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>description for order item</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>integer</td>
+<td>quantity for order item</td>
+</tr>
+<tr>
+<td>entity_type</td>
+<td>string</td>
+<td>entity type belongs to order item (Attendee, Account, Member)</td>
+</tr>
+<tr>
+<td>entity_id</td>
+<td>integer</td>
+<td>entity type belongs to order item</td>
+</tr>
+<tr>
+<td>unit_amount</td>
+<td>float</td>
+<td>prize for order item</td>
+</tr>
+</tbody></table>
+<h1 id='passwords'>Passwords</h1><h2 id='request-recovery-password'>Request Recovery Password</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/en/v1/passwords"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X POST -d <span class="s1">'{
+    "recaptcha_token": "",
+    "data": {
+      "type": "users",
+      "attributes": {
+        "email": '</span>&lt;your email&gt;<span class="s1">'
+        "locale": '</span>&lt;locale&gt;<span class="s1">'
+      }
+    }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/en/v1/passwords'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">recaptcha_token</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
@@ -5058,7 +5747,20 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notificati
 <td>desired language e.g. &quot;en&quot;, &quot;es&quot; or &quot;fr&quot;</td>
 </tr>
 </tbody></table>
-<h2 id='update-password'>Update Password</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/en/v1/passwords'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='update-password'>Update Password</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/en/v1/passwords"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X PUT -d <span class="s1">'{
+    "data": {
+      "type": '</span>users<span class="s1">',
+      "attributes": {
+        "reset_password_token": '</span>&lt;your token&gt;<span class="s1">',
+        "password": '</span>&lt;your new password&gt;<span class="s1">',
+        "password_confirmation": '</span>&lt;your new password&gt;<span class="s1">'
+      }
+    }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/en/v1/passwords'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -5123,7 +5825,20 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notificati
 <td>your new password</td>
 </tr>
 </tbody></table>
-<h2 id='activate-password'>Activate Password</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/en/v1/passwords/activate'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='activate-password'>Activate Password</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/en/v1/passwords/activate"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X PUT -d <span class="s1">'{
+    "data": {
+      "type": '</span>users<span class="s1">',
+      "attributes": {
+        "reset_password_token": '</span>&lt;your token&gt;<span class="s1">',
+        "password": '</span>&lt;your new password&gt;<span class="s1">',
+        "password_confirmation": '</span>&lt;your new password&gt;<span class="s1">'
+      }
+    }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/en/v1/passwords/activate'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -5188,7 +5903,20 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notificati
 <td>your new password</td>
 </tr>
 </tbody></table>
-<h2 id='change-password'>Change Password</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/en/v1/passwords/change'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='change-password'>Change Password</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/en/v1/passwords/change"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X PUT -d <span class="s1">'{
+    "data": {
+      "type": '</span>users<span class="s1">',
+      "attributes": {
+        "current_password": '</span>&lt;your token&gt;<span class="s1">',
+        "new_password": '</span>&lt;your new password&gt;<span class="s1">',
+        "new_password_confirmation": '</span>&lt;your new password&gt;<span class="s1">'
+      }
+    }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/en/v1/passwords/change'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -5253,10 +5981,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notificati
 <td>your new password</td>
 </tr>
 </tbody></table>
-<h1 id='permissions'>Permissions</h1><h2 id='list-permissions'>List Permissions</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/permissions/'</span><span class="p">,</span> <span class="p">{</span>
+<h1 id='permissions'>Permissions</h1><h2 id='list-permissions'>List Permissions</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/permissions/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/permissions/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -5296,10 +6027,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notificati
 <td>A page object as described <a href="#pagination">here</a></td>
 </tr>
 </tbody></table>
-<h1 id='pricing-tier'>Pricing Tier</h1><h2 id='list-pricing-tiers'>List Pricing Tiers</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/pricing_tiers/?entity_id=&lt;entity_id&gt;&amp;entity_type=&lt;entity_type&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h1 id='pricing-tier'>Pricing Tier</h1><h2 id='list-pricing-tiers'>List Pricing Tiers</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/pricing_tiers/?entity_id=&lt;entity_id&gt;&amp;entity_type=&lt;entity_type&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/pricing_tiers/?entity_id=&lt;entity_id&gt;&amp;entity_type=&lt;entity_type&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -5369,10 +6103,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notificati
 <td>entity type to which pricing tier belongs</td>
 </tr>
 </tbody></table>
-<h2 id='get-pricing-tier'>Get Pricing Tier</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/pricing_tiers/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='get-pricing-tier'>Get Pricing Tier</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/pricing_tiers/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/pricing_tiers/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -5435,10 +6172,25 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notificati
 <td>The id for the desired pricing tier</td>
 </tr>
 </tbody></table>
-<h2 id='create-pricing-tier'>Create Pricing Tier</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/pricing_tiers/'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='create-pricing-tier'>Create Pricing Tier</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/pricing_tiers/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X POST -d <span class="s1">'{
+    "data": {
+    "type": "pricing_tier",
+    "attributes": {
+      "entity_id": &lt;entity id&gt;,
+      "entity_type": &lt;entity type&gt;,
+      "start_date": "2013-03-03",
+      "end_date": "2013-03-23",
+      "price": 99
+    }
+  }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/pricing_tiers/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
   <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -5530,10 +6282,25 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notificati
 <td>price for pricing tier</td>
 </tr>
 </tbody></table>
-<h2 id='update-pricing-tier'>Update Pricing Tier</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/pricing_tiers/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='update-pricing-tier'>Update Pricing Tier</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/pricing_tiers/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X PUT -d <span class="s1">'{
+    "data": {
+    "type": "pricing_tier",
+    "attributes": {
+      "entity_id": &lt;entity id&gt;,
+      "entity_type": &lt;entity type&gt;,
+      "start_date": "2013-03-03",
+      "end_date": "2013-03-23",
+      "price": 99
+    }
+  }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/pricing_tiers/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
   <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -5579,7 +6346,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notificati
 <span class="s">}</span>
 </code></pre>
 <blockquote>
-<p>Example of Unprocessable Entity (422) response: </p>
+<p>Example of Unprocessable Entity (422) response:</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
 <span class="s">{</span>
@@ -5646,10 +6413,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notificati
 <td>price for pricing tier</td>
 </tr>
 </tbody></table>
-<h2 id='destroy-pricing-tier'>Destroy Pricing Tier</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/pricing_tiers/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='destroy-pricing-tier'>Destroy Pricing Tier</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X DELETE <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/pricing_tiers/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/pricing_tiers/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
 <span class="p">})</span>
 </code></pre>
@@ -5700,6 +6470,159 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notificati
 <td>The id for the desired pricing tier</td>
 </tr>
 </tbody></table>
+<h1 id='public-endpoints'>Public Endpoints</h1><h2 id='get-public-event'>Get Public Event</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/public/events/&lt;event_uri&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/public/events/&lt;event_uri&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event to get</p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    id: "21",</span>
+<span class="s">    "type": "events",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "name": "Event name",</span>
+<span class="s">      "description": "description of an event",</span>
+<span class="s">      "start_date": "2020-04-13 15:54:37 -0500",</span>
+<span class="s">      "end_date": "2020-04-15 15:54:57 -0500",</span>
+<span class="s">      "attendance_mode": "online",</span>
+<span class="s">      "event_uri": "event_uri",</span>
+<span class="s">      "timezone": "America/Bogota",</span>
+<span class="s">      "location": {</span>
+<span class="s">        "coordinates": { "lat": 6.2518400, "lng": -75.5635900 },</span>
+<span class="s">        "address": "Event address",</span>
+<span class="s">        "country": "Colombia.",</span>
+<span class="s">        "city": "Medellín",</span>
+<span class="s">      },</span>
+<span class="s">      "banner": {</span>
+<span class="s">        "filename": "file_name",</span>
+<span class="s">        "thumb": "url_image",</span>
+<span class="s">        "small":  "url_image",</span>
+<span class="s">        "medium": "url_image",</span>
+<span class="s">        "large": "url_image",</span>
+<span class="s">      },</span>
+<span class="s">      logo: {</span>
+<span class="s">       "filename": "file_name",</span>
+<span class="s">        "thumb": "url_image",</span>
+<span class="s">        "small":  "url_image",</span>
+<span class="s">        "medium": "url_image",</span>
+<span class="s">        "large": "url_image",</span>
+<span class="s">      }</span>
+<span class="s">    },</span>
+<span class="s">    "relationships": {</span>
+<span class="s">      "settings": {</span>
+<span class="s">        "data": {</span>
+<span class="s">          "id": "108",</span>
+<span class="s">          "type": "settings"</span>
+<span class="s">        }</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Event Not Found (404) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
+<span class="s">{</span>
+<span class="s">  "message": "Couldn't find Event"</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint return an event</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /v1/public/events/:event_uri</code></p>
+<h3 id='path-parameters'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+</tbody></table>
+<h3 id='http-request-for-optional-include-settings'>HTTP Request for optional include settings</h3>
+<p><code>GET /v1/events/:event_uri/include=settings</code></p>
+<h3 id='path-parameters-2'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>include</td>
+<td>string</td>
+<td>The value settings gives informations for each relationships (settings or attendees)</td>
+</tr>
+</tbody></table>
+<h2 id='list-public-attendee-types'>List Public Attendee Types</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/public/events/&lt;event_uri&gt;/attendee_types/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/public/events/&lt;event_uri&gt;/attendee_types/'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event.</p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": [</span>
+<span class="s">    {</span>
+<span class="s">      "id": "62527",</span>
+<span class="s">      "type": "attendee_types",</span>
+<span class="s">      "attributes": {</span>
+<span class="s">        "name": {"en": "Attendee type name"},</span>
+<span class="s">        "description": {"en": "attendee_type_description"},</span>
+<span class="s">        "price": 34.2,</span>
+<span class="s">        "limit": 25,</span>
+<span class="s">        "allow_public_registration": false,</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">  ]</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint list attendee types belongs to event and available for public registration.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET /v1/public/events/event_uri/attendee_types/</code></p>
+<h3 id='path-parameters-3'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>page</td>
+<td>json</td>
+<td>A page object as described <a href="#pagination">here</a></td>
+</tr>
+<tr>
+<td>available_seats</td>
+<td>boolean</td>
+<td>Activate an optional attribute (seats availability)</td>
+</tr>
+</tbody></table>
 <h1 id='registrations'>Registrations</h1><h2 id='create-new-user-and-account'>Create new user and account</h2>
 <blockquote>
 <p>To create a new user, use this code:</p>
@@ -5713,7 +6636,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
     <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">user</span><span class="p">:</span> <span class="p">{</span>
@@ -5812,10 +6735,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>The User&#39;s company website.</td>
 </tr>
 </tbody></table>
-<h1 id='roles'>Roles</h1><h2 id='list-roles'>List Roles</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/roles/'</span><span class="p">,</span> <span class="p">{</span>
+<h1 id='roles'>Roles</h1><h2 id='list-roles'>List Roles</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/roles/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/roles/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -5855,10 +6781,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>A page object as described <a href="#pagination">here</a></td>
 </tr>
 </tbody></table>
-<h2 id='get-role'>Get Role</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/roles/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='get-role'>Get Role</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/roles/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/roles/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}})</span>
 </code></pre>
 <blockquote>
@@ -5907,10 +6836,21 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>Id for the desired role</td>
 </tr>
 </tbody></table>
-<h2 id='create-role'>Create Role</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/roles/'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='create-role'>Create Role</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/roles/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X POST -d <span class="s1">'{
+   "data": {
+    "type": "roles",
+    "attributes": {
+          "name": "super admin"
+        }
+    }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/roles/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="p">{</span>
@@ -5963,10 +6903,29 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>Role&#39;s name.</td>
 </tr>
 </tbody></table>
-<h2 id='update-role'>Update Role</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/roles/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='update-role'>Update Role</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/roles/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X PUT -d <span class="s1">'{
+   "data": {
+    "type": "roles",
+    "attributes": {
+          "name": "super admin"
+        },
+    "relationships": {
+      "permissions": {
+      "data": [
+        {"type": "permissions", id: 1},
+        {"type": "permissions", id:2},
+        {"type": "permissions", id: 44}
+        ]
+      }
+    }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/roles/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -5975,10 +6934,10 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
       <span class="na">name</span><span class="p">:</span> <span class="s2">"admin"</span>
     <span class="p">},</span>
     <span class="na">relationships</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">permissions</span><span class="p">:</span> <span class="p">{</span>  
+      <span class="na">permissions</span><span class="p">:</span> <span class="p">{</span>
       <span class="na">data</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span><span class="na">type</span><span class="p">:</span> <span class="s2">"permissions"</span><span class="p">,</span> <span class="na">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
-        <span class="p">{</span><span class="na">type</span><span class="p">:</span> <span class="s2">"permissions"</span><span class="p">,</span> <span class="na">id</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span>                        
+        <span class="p">{</span><span class="na">type</span><span class="p">:</span> <span class="s2">"permissions"</span><span class="p">,</span> <span class="na">id</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span>
         <span class="p">{</span><span class="na">type</span><span class="p">:</span> <span class="s2">"permissions"</span><span class="p">,</span> <span class="na">id</span><span class="p">:</span> <span class="mi">44</span><span class="p">}</span>
         <span class="p">]</span>
       <span class="p">}</span>
@@ -6047,10 +7006,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>Permission</td>
 </tr>
 </tbody></table>
-<h2 id='destroy-role'>Destroy Role</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/roles/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='destroy-role'>Destroy Role</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X DELETE <span class="s2">"https://core.eventtia.com/v1/roles/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/roles/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
 <span class="p">})</span>
 </code></pre>
@@ -6090,10 +7052,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>The id for the desired role</td>
 </tr>
 </tbody></table>
-<h1 id='role-permissions'>Role Permissions</h1><h2 id='list-role-permissions'>List Role Permissions</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/roles/&lt;id&gt;/role_permissions/'</span><span class="p">,</span> <span class="p">{</span>
+<h1 id='role-permissions'>Role Permissions</h1><h2 id='list-role-permissions'>List Role Permissions</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/roles/&lt;id&gt;/role_permissions/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/roles/&lt;id&gt;/role_permissions/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -6157,10 +7122,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>A page object as described <a href="#pagination">here</a></td>
 </tr>
 </tbody></table>
-<h1 id='role-categories'>Role Categories</h1><h2 id='list-role-categories'>List Role Categories</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/role_categories/'</span><span class="p">,</span> <span class="p">{</span>
+<h1 id='role-categories'>Role Categories</h1><h2 id='list-role-categories'>List Role Categories</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/role_categories/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/role_categories/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -6201,10 +7169,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>A page object as described <a href="#pagination">here</a></td>
 </tr>
 </tbody></table>
-<h2 id='get-role-category'>Get Role Category</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/role_categories/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='get-role-category'>Get Role Category</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/role_categories/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/role_categories/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}})</span>
 </code></pre>
 <blockquote>
@@ -6253,10 +7224,21 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>Id for the desired role category</td>
 </tr>
 </tbody></table>
-<h2 id='create-role-category'>Create Role Category</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/role_categories/'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='create-role-category'>Create Role Category</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/account_subscriptions/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X POST -d <span class="s1">'{
+    "data": {
+        "type": "role_categories",
+        "attributes": {
+            "name": "grupo 5"
+        }
+    }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/role_categories/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
   <span class="p">{</span>
@@ -6310,10 +7292,21 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>Role category name.</td>
 </tr>
 </tbody></table>
-<h2 id='update-role-category'>Update Role Category</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/role_categories/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='update-role-category'>Update Role Category</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/role_categories/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X PUT -d <span class="s1">'{
+    "data": {
+        "type": "role_categories",
+        "attributes": {
+            "name": "grupo 5"
+        }
+    }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/role_categories/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
@@ -6346,7 +7339,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <span class="s">}</span>
 </code></pre>
 <blockquote>
-<p>Example Not Found (404) response: </p>
+<p>Example Not Found (404) response:</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
 <span class="s">{</span>
@@ -6386,10 +7379,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>Role category name.</td>
 </tr>
 </tbody></table>
-<h2 id='destroy-role-category'>Destroy Role Category</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/role_categories/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='destroy-role-category'>Destroy Role Category</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X DELETE <span class="s2">"https://core.eventtia.com/v1/role_categories/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/role_categories/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
 <span class="p">})</span>
 </code></pre>
@@ -6429,10 +7425,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>Id for the desired role category</td>
 </tr>
 </tbody></table>
-<h1 id='speakers'>Speakers</h1><h2 id='list-speaker'>List Speaker</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/speakers/'</span><span class="p">,</span> <span class="p">{</span>
+<h1 id='speakers'>Speakers</h1><h2 id='list-speaker'>List Speaker</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/speakers/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/speakers/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -6516,10 +7515,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>Filters results by the speaker match name ,last_name and email.</td>
 </tr>
 </tbody></table>
-<h2 id='get-speaker'>Get Speaker</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/speakers/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='get-speaker'>Get Speaker</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/speakers/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/speakers/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -6581,10 +7583,27 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>The id for the desired speaker</td>
 </tr>
 </tbody></table>
-<h2 id='create-speaker'>Create Speaker</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/speakers/'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='create-speaker'>Create Speaker</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/speakers/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X POST -d <span class="s1">'{
+   "data": {
+        "type": "speakers",
+        "attributes": {
+          "name": "Mary",
+          "last_name": "Perez Ossa",
+          "email": "mary@email.com",
+          "biography": "biography Mary",
+          "twitter": "Twitter Mary",
+          "website": "Website Mary",
+          "photo": "url_image_file"
+        }
+    }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/speakers/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -6627,7 +7646,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <span class="s">}</span>
 </code></pre>
 <blockquote>
-<p>Example of Unprocessable Entity (422) response: </p>
+<p>Example of Unprocessable Entity (422) response:</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
 <span class="s">{</span>
@@ -6702,10 +7721,27 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>image for this speaker.</td>
 </tr>
 </tbody></table>
-<h2 id='update-speaker'>Update Speaker</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/speakers/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='update-speaker'>Update Speaker</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/speakers/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X PUT -d <span class="s1">'{
+   "data": {
+        "type": "speakers",
+        "attributes": {
+          "name": "Mary",
+          "last_name": "Perez Ossa",
+          "email": "mary@email.com",
+          "biography": "biography Mary",
+          "twitter": "Twitter Mary",
+          "website": "Website Mary",
+          "photo": "url_image_file"
+        }
+    }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/speakers/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
@@ -6830,10 +7866,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>image for this speaker.</td>
 </tr>
 </tbody></table>
-<h2 id='destroy-speaker'>Destroy Speaker</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/speakers/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='destroy-speaker'>Destroy Speaker</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X DELETE <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/speakers/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/speakers/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
 <span class="p">})</span>
 </code></pre>
@@ -6885,10 +7924,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>The id for the desired speaker</td>
 </tr>
 </tbody></table>
-<h1 id='users'>Users</h1><h2 id='list-users'>List Users</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/users/'</span><span class="p">,</span> <span class="p">{</span>
+<h1 id='users'>Users</h1><h2 id='list-users'>List Users</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/users/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/users/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}})</span>
 </code></pre>
 <blockquote>
@@ -6946,10 +7988,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>A page object as described <a href="#pagination">here</a></td>
 </tr>
 </tbody></table>
-<h2 id='get-user'>Get User</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/users/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='get-user'>Get User</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/users/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/users/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}})</span>
 </code></pre>
 <blockquote>
@@ -7014,10 +8059,35 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>id for the desired user</td>
 </tr>
 </tbody></table>
-<h2 id='create-user'>Create User</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/users/'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='create-user'>Create User</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/users/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X POST -d <span class="s1">'{
+     "data": {
+      "type": "users",
+      "attributes":{
+          "first_name": "first Name",
+          "last_name": "last Name",
+          "phone": 788965455,
+          "password": "SecurePassword",
+          "email": "user@eventtia.com",
+          "is_admin": "false",
+          "role_category_ids": [1, 2]
+        },
+          "relationships": {
+          "role": {
+              "data": {
+                  "id": "1",
+                  "type": "roles"
+          }
+        }
+      }
+    }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/users/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="p">{</span>
@@ -7131,10 +8201,35 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>Specifies the categories the user is associated with. This is required in case your user isn&#39;t an administrator.</td>
 </tr>
 </tbody></table>
-<h2 id='update-user'>Update User</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/users/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='update-user'>Update User</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/users/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X PUT -d <span class="s1">'{
+     "data": {
+      "type": "users",
+      "attributes":{
+          "first_name": "first Name",
+          "last_name": "last Name",
+          "phone": 788965455,
+          "password": "SecurePassword",
+          "email": "user@eventtia.com",
+          "is_admin": "false",
+          "role_category_ids": [1, 2]
+        },
+          "relationships": {
+          "role": {
+              "data": {
+                  "id": "1",
+                  "type": "roles"
+          }
+        }
+      }
+    }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/users/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -7259,10 +8354,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>Specifies the categories the user is associated with. This is required in case your user isn&#39;t an administrator.</td>
 </tr>
 </tbody></table>
-<h2 id='destroy-user'>Destroy User</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/users/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='destroy-user'>Destroy User</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X DELETE <span class="s2">"https://core.eventtia.com/v1/users/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/users/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
 <span class="p">})</span>
 </code></pre>
@@ -7314,10 +8412,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>The id for the desired user</td>
 </tr>
 </tbody></table>
-<h1 id='workshops'>Workshops</h1><h2 id='list-workshops'>List Workshops</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/workshops/'</span><span class="p">,</span> <span class="p">{</span>
+<h1 id='workshops'>Workshops</h1><h2 id='list-workshops'>List Workshops</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/workshops/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/workshops/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -7416,10 +8517,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>A datetime in the following format &quot;14/08/2021&quot;</td>
 </tr>
 </tbody></table>
-<h2 id='get-workshop'>Get Workshop</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/Workshops/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='get-workshop'>Get Workshop</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/workshops/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/workshops/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -7496,10 +8600,40 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>The id for the desired workshop</td>
 </tr>
 </tbody></table>
-<h2 id='create-workshop'>Create Workshop</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/workshops/'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='create-workshop'>Create Workshop</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/workshops/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X POST -d <span class="s1">'{
+    "data": {
+      "type2: "workshops",
+      "attributes": {
+        "name": "Mary",
+        "start_date": "2021-12-02",
+        "end_date": "2021-12-20",
+        "limit": 0,
+        "location": "hotel",
+        "description": "business workshop",
+        "show_on_register": false,
+        "allow_blocking_workshops": false,
+        "price": {
+            "1": "300"
+        }
+      },
+      "relationships": {
+        "speakers": {
+          "data": [
+            {
+              "type": "speaker", id: 2
+            }
+          ]
+        }
+      }
+    }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/workshops/'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -7526,10 +8660,10 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
           <span class="p">]</span>
         <span class="p">}</span>
       <span class="p">}</span>
-    <span class="p">}</span>  
+    <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
-<span class="p">})</span>
+<span class="p">)</span>
 </code></pre>
 <blockquote>
 <p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. </p>
@@ -7652,10 +8786,40 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>allow block hours for this workshop</td>
 </tr>
 </tbody></table>
-<h2 id='update-workshop'>Update Workshop</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/workshops/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='update-workshop'>Update Workshop</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/workshops/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X POST -d <span class="s1">'{
+    "data": {
+      "type2: "workshops",
+      "attributes": {
+        "name": "Mary",
+        "start_date": "2021-12-02",
+        "end_date": "2021-12-20",
+        "limit": 0,
+        "location": "hotel",
+        "description": "business workshop",
+        "show_on_register": false,
+        "allow_blocking_workshops": false,
+        "price": {
+            "1": "300"
+        }
+      },
+      "relationships": {
+        "speakers": {
+          "data": [
+            {
+              "type": "speaker", id: 2
+            }
+          ]
+        }
+      }
+    }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/workshops/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -7682,10 +8846,10 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
           <span class="p">]</span>
         <span class="p">}</span>
       <span class="p">}</span>
-    <span class="p">}</span>  
+    <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
-<span class="p">})</span>
+<span class="p">)</span>
 </code></pre>
 <blockquote>
 <p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. </p>
@@ -7816,10 +8980,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/registrations"</span> <span 
 <td>allow block hours for this workshop</td>
 </tr>
 </tbody></table>
-<h2 id='destroy-workshop'>Destroy Workshop</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/workshops/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='destroy-workshop'>Destroy Workshop</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X DELETE <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/workshops/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/workshops/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'&lt;your token&gt;'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
   <span class="p">},</span>
 <span class="p">})</span>
 </code></pre>
