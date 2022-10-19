@@ -2,11 +2,17 @@
 
 ## List Events
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }})
 ```
 
@@ -91,11 +97,17 @@ active_status | boolean | Send true if you want to get only active events.
 
 ## Get Event
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }})
 ```
 
@@ -193,11 +205,63 @@ include   | string | the value settings gives informations for each relationship
 
 ## Create Event
 
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/events/" \
+  -H 'Content-Type: application/json'\
+   -X POST -d '{
+   "data": {
+    "id": "21",
+    "type": "events",
+    "attributes": {
+      "name": "Event name",
+      "description": "description of an event",
+      "start_date": "2020-04-13 15:54:37 -0500",
+      "end_date": "2020-04-15 15:54:57 -0500",
+      "active_modules": "[0, 1]",
+      "fields_data": "{}",
+      "attendance_mode": "online",
+      "is_template": false,
+      "event_uri": "event_uri",
+      "timezone": "America/Bogota",
+      "settings": {
+        "time_format": "hours_24",
+        "date_format": "mm/dd/yyyy",
+        "available_languages": {
+            "available": ["en", "es"],
+            "default": "en"
+        }        },
+      "location": {
+        "coordinates": { "lat": 6.2518400, "lng": -75.5635900 },
+        "address": "Event address",
+        "country": "Colombia.",
+        "city": "Medellín",
+      },
+      "virtual_timezone": "America/Bogota",
+      "banner": {
+        "filename": "file_name",
+        "thumb": "url_image",
+        "small":  "url_image",
+        "medium": "url_image",
+        "large": "url_image",
+      },
+      "logo: {
+        "filename": "file_name",
+        "thumb": "url_image",
+        "small": "url_image",
+        "medium": "url_image",
+        "large": "url_image",
+      }
+    }
+  }
+}'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/', {
   method: 'POST',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
   data: {
@@ -347,11 +411,63 @@ available_languages | json | includes available key ( array with availables lang
 
 ## Update Event
 
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/events/<event_uri>" \
+  -H 'Content-Type: application/json'\
+   -X PUT -d '{
+   "data": {
+    "id": "21",
+    "type": "events",
+    "attributes": {
+      "name": "Event name",
+      "description": "description of an event",
+      "start_date": "2020-04-13 15:54:37 -0500",
+      "end_date": "2020-04-15 15:54:57 -0500",
+      "active_modules": "[0, 1]",
+      "fields_data": "{}",
+      "attendance_mode": "online",
+      "is_template": false,
+      "event_uri": "event_uri",
+      "timezone": "America/Bogota",
+      "settings": {
+        "time_format": "hours_24",
+        "date_format": "mm/dd/yyyy",
+        "available_languages": {
+            "available": ["en", "es"],
+            "default": "en"
+        }        },
+      "location": {
+        "coordinates": { "lat": 6.2518400, "lng": -75.5635900 },
+        "address": "Event address",
+        "country": "Colombia.",
+        "city": "Medellín",
+      },
+      "virtual_timezone": "America/Bogota",
+      "banner": {
+        "filename": "file_name",
+        "thumb": "url_image",
+        "small":  "url_image",
+        "medium": "url_image",
+        "large": "url_image",
+      },
+      "logo: {
+        "filename": "file_name",
+        "thumb": "url_image",
+        "small": "url_image",
+        "medium": "url_image",
+        "large": "url_image",
+      }
+    }
+  }
+}'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>', {
   method: 'PUT',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
   data: {
@@ -404,7 +520,7 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>', {
           type: "settings"
         }
       }
-    }  
+    }
   }
   }
 })
@@ -515,11 +631,18 @@ time_format | string | event time format ['hours_24', 'am_pm'].
 available_languages | json | includes available key ( array with availables languages for event ) and default key ( a string with a single required language, included in available languages array)
 
 ## Destroy Event
+
+```shell
+# Get your token for further authorization
+curl -X DELETE "https://core.eventtia.com/v1/events/<event_uri>" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>', {
   method: 'DELETE',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
 })
 ```
@@ -597,11 +720,45 @@ event_uri | string | The event_uri for the desired event
 
 ## Settings
 
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/events/<event_uri>/settings" \
+  -H 'Content-Type: application/json'\
+   -X PATCH -d '{
+   "data": {
+      "type": "event_settings",
+      "attributes": {
+        "payment_method": "credit card",
+        "paypal_production_key": "12345ABCDE",
+        "paypal_sandbox_key": "ABCDEHGIKN",
+        "paypal_test_mode": false,
+        "stripe_secret_api_key": "1A2G3R4FTT",
+        "stripe_publishable_api_key": "LA778GHGD6",
+        "pay_u_api_key": "99IIOYNTRE",
+        "pay_u_merchant_id": "12",
+        "pay_u_account_id": "13",
+        "pay_u_api_login": "33445ABCDE",
+        "pay_u_test_mode": false,
+        "currency": 4,
+        "vat_alias": "Recaudo",
+        "vat_value": 19,
+        "date_format": "dd/mm/yyyy",
+        "time_format": "am_pm",
+        "google_analytics_tracking_code": "A78Y55ABCD",
+        "google_tag_manager_code": "11223ABCDE",
+        "available_languages": {
+                              "available": ["en", "es"],
+                              "default": "en"}
+      }
+    }
+}'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/settings', {
   method: 'PATCH',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
     data: {

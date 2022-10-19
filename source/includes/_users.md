@@ -2,11 +2,17 @@
 
 ## List Users
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/users/" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/users/', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }})
 ```
 
@@ -63,11 +69,17 @@ page | json | A page object as described <a href="#pagination">here</a>
 
 ## Get User
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/users/<id>" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/users/<id>', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }})
 ```
 
@@ -131,11 +143,39 @@ Parameter | Type | Description
 id | integer | id for the desired user
 ## Create User
 
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/users/" \
+  -H 'Content-Type: application/json'\
+   -X POST -d '{
+     "data": {
+      "type": "users",
+      "attributes":{
+          "first_name": "first Name",
+          "last_name": "last Name",
+          "phone": 788965455,
+          "password": "SecurePassword",
+          "email": "user@eventtia.com",
+          "is_admin": "false",
+          "role_category_ids": [1, 2]
+        },
+          "relationships": {
+          "role": {
+              "data": {
+                  "id": "1",
+                  "type": "roles"
+          }
+        }
+      }
+	}
+}'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/users/', {
   method: 'POST',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
     {
@@ -225,11 +265,39 @@ role_category_ids | array | Specifies the categories the user is associated with
 
 ## Update User
 
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/users/<id>" \
+  -H 'Content-Type: application/json'\
+   -X PUT -d '{
+     "data": {
+      "type": "users",
+      "attributes":{
+          "first_name": "first Name",
+          "last_name": "last Name",
+          "phone": 788965455,
+          "password": "SecurePassword",
+          "email": "user@eventtia.com",
+          "is_admin": "false",
+          "role_category_ids": [1, 2]
+        },
+          "relationships": {
+          "role": {
+              "data": {
+                  "id": "1",
+                  "type": "roles"
+          }
+        }
+      }
+	}
+}'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/users/<id>', {
   method: 'PUT',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
     data: {
@@ -325,11 +393,18 @@ is_admin | bolean | Specifies whether the user you are creating is an administra
 role_category_ids | array | Specifies the categories the user is associated with. This is required in case your user isn't an administrator.
 
 ## Destroy User
+
+```shell
+# Get your token for further authorization
+curl -X DELETE "https://core.eventtia.com/v1/users/<id>" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/users/<id>', {
   method: 'DELETE',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
 })
 ```

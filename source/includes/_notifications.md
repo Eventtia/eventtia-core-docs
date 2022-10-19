@@ -2,11 +2,17 @@
 
 ## List Notifications
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/notifications/" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/notifications/', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -29,9 +35,16 @@ HTTP/1.1 200 OK
         "model": null,
         "entity_type": "User",
         "action": "account_created",
-        "event_id": 54,
         "conditions": null
+      },
+    "relationships": {
+      "events": {
+        "data": {
+            "id": "54",
+            "type": "events"
+          }
       }
+    }
     }
   ]
 }
@@ -53,11 +66,17 @@ page | json | A page object as described <a href="#pagination">here</a>
 
 ## Get Notification
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/notifications/<id>" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/notifications/<id>', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -81,8 +100,15 @@ HTTP/1.1 200 OK
       "model": null,
       "entity_type": "User",
       "action": "account_created",
-      "event_id": 54,
       "conditions": null
+    },
+    "relationships": {
+      "events": {
+        "data": {
+            "id": "54",
+            "type": "events"
+          }
+      }
     }
   }
 }
@@ -115,11 +141,27 @@ event_uri | string  | The event_uri for the desired event
 
 ## Create Notification
 
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/events/<event_uri>/notifications/" \
+  -H 'Content-Type: application/json'\
+   -X POST -d '{
+   "data": {
+    "type": "notification",
+    "attributes": {
+      "name": "Welcome to Ticketing",
+      "entity_type": "User",
+      "action": "account_created"
+    }
+  }
+}'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/notifications/', {
   method: 'POST',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
   data: {
@@ -151,8 +193,15 @@ HTTP/1.1 200 OK
       "model": null,
       "entity_type": "User",
       "action": "account_created",
-      "event_id": 54,
       "conditions": null
+    },
+    "relationships": {
+      "events": {
+        "data": {
+            "id": "54",
+            "type": "events"
+          }
+      }
     }
   }
 }
@@ -188,11 +237,27 @@ conditions  | json | Conditions for notifications
 
 ## Update Notification
 
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/events/<event_uri>/notifications/<id>" \
+  -H 'Content-Type: application/json'\
+   -X PUT -d '{
+   "data": {
+    "type": "notification",
+    "attributes": {
+      "name": "Welcome to Ticketing",
+      "entity_type": "User",
+      "action": "account_created"
+    }
+  }
+}'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/notifications/<id>', {
   method: 'PUT',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
   data: {
@@ -226,8 +291,15 @@ HTTP/1.1 200 OK
       "model": null,
       "entity_type": "User",
       "action": "account_created",
-      "event_id": 54,
       "conditions": null
+    },
+    "relationships": {
+      "events": {
+        "data": {
+            "id": "54",
+            "type": "events"
+          }
+      }
     }
   }
 }
@@ -269,11 +341,18 @@ action      | string | Notification action [account_created, recover_password, a
 conditions  | json | Conditions for notifications
 
 ## Destroy Notification
+
+```shell
+# Get your token for further authorization
+curl -X DELETE "https://core.eventtia.com/v1/events/<event_uri>/notifications/<id>" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/notifications/<id>', {
   method: 'DELETE',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
 })
 ```
@@ -297,8 +376,15 @@ HTTP/1.1 200 OK
       "model": null,
       "entity_type": "User",
       "action": "account_created",
-      "event_id": 54,
       "conditions": null
+    },
+    "relationships": {
+      "events": {
+        "data": {
+            "id": "54",
+            "type": "events"
+          }
+      }
     }
   }
 }
@@ -321,11 +407,18 @@ event_uri | string  | The event_uri for the desired event
 
 ## Notification Languages
 ## Index Notification Languages
+
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_languages" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_languages', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -382,11 +475,18 @@ event_uri | string | The event_uri for the desired event.
 notification_id | integer  | The id for the desired notification
 
 ## Get Notification Languages
+
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_language/:id" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_language/:id', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -418,7 +518,7 @@ HTTP/1.1 200 OK
                 "body": "<div class= 'body'> Hello${name}</div>"
             }
         }
-    
+
 }
 ```
 
@@ -472,7 +572,7 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/notifications/:notificatio
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': '<your token>'
+    'Authorization': 'Bearer <your token>'
   },
   body: {
     "data": {
@@ -532,7 +632,7 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/notifications/:notificatio
   method: 'PUT',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': '<your token>'
+    'Authorization': 'Bearer <your token>'
   },
   body: {
     "data": {
@@ -571,12 +671,18 @@ body    | string | Body for notification.
 
 > To destroy notification language, use this code:
 
+```shell
+# Get your token for further authorization
+curl -X DELETE "https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_languages/:id" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch("https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_languages/:id", {
   method: 'DELETE',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': '<your token>'
+    'Authorization': 'Bearer <your token>'
   },
 })
 ```

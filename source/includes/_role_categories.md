@@ -1,11 +1,17 @@
 # Role Categories
 ## List Role Categories
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/role_categories/" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/role_categories/', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -43,11 +49,17 @@ page | json | A page object as described <a href="#pagination">here</a>
 
 ## Get Role Category
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/role_categories/<id>" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/role_categories/<id>', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }})
 ```
 
@@ -95,11 +107,25 @@ id | integer | Id for the desired role category
 
 ## Create Role Category
 
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/account_subscriptions/<id>" \
+  -H 'Content-Type: application/json'\
+   -X POST -d '{
+    "data": {
+        "type": "role_categories",
+        "attributes": {
+            "name": "grupo 5"
+        }
+    }
+}'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/role_categories/', {
   method: 'POST',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
   {
@@ -151,11 +177,25 @@ name | string | Role category name.
 
 ## Update Role Category
 
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/role_categories/<id>" \
+  -H 'Content-Type: application/json'\
+   -X PUT -d '{
+    "data": {
+        "type": "role_categories",
+        "attributes": {
+            "name": "grupo 5"
+        }
+    }
+}'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/role_categories/<id>', {
   method: 'PUT',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
     "data": {
@@ -188,7 +228,7 @@ HTTP/1.1 200 OK
   }
 }
 ```
->Example Not Found (404) response: 
+>Example Not Found (404) response:
 
 ```http
 HTTP/1.1 404 Not Found
@@ -218,11 +258,18 @@ Parameter | Type | Description
 name | string | Role category name.
 
 ## Destroy Role Category
+
+```shell
+# Get your token for further authorization
+curl -X DELETE "https://core.eventtia.com/v1/role_categories/<id>" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/role_categories/<id>', {
   method: 'DELETE',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
 })
 ```

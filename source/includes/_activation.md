@@ -18,7 +18,7 @@ fetch("https://core.eventtia.com/v1/accounts/activate", {
   method: 'PUT',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': '<your token>'
+    'Authorization': 'Bearer <your token>'
   },
   body: {
     activation_code: "abcdefghijk"

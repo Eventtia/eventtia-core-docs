@@ -2,11 +2,17 @@
 
 ## List Pricing Tiers
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/pricing_tiers/?entity_id=<entity_id>&entity_type=<entity_type>" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/pricing_tiers/?entity_id=<entity_id>&entity_type=<entity_type>', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -68,11 +74,17 @@ entity_type| string  | entity type to which pricing tier belongs
 
 ## Get Pricing Tier
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/pricing_tiers/<id>" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/pricing_tiers/<id>', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -131,11 +143,29 @@ event_uri | string  | The event_uri for the desired event
 
 ## Create Pricing Tier
 
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/events/<event_uri>/pricing_tiers/" \
+  -H 'Content-Type: application/json'\
+   -X POST -d '{
+    "data": {
+    "type": "pricing_tier",
+    "attributes": {
+      "entity_id": <entity id>,
+      "entity_type": <entity type>,
+      "start_date": "2013-03-03",
+      "end_date": "2013-03-23",
+      "price": 99
+    }
+  }
+}'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/pricing_tiers/', {
   method: 'POST',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
   data: {
@@ -211,11 +241,29 @@ price      | float   | price for pricing tier
 
 ## Update Pricing Tier
 
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/events/<event_uri>/pricing_tiers/<id>" \
+  -H 'Content-Type: application/json'\
+   -X PUT -d '{
+    "data": {
+    "type": "pricing_tier",
+    "attributes": {
+      "entity_id": <entity id>,
+      "entity_type": <entity type>,
+      "start_date": "2013-03-03",
+      "end_date": "2013-03-23",
+      "price": 99
+    }
+  }
+}'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/pricing_tiers/<id>', {
   method: 'PUT',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
   data: {
@@ -262,7 +310,7 @@ HTTP/1.1 200 OK
 }
 ```
 
->Example of Unprocessable Entity (422) response: 
+>Example of Unprocessable Entity (422) response:
 
 ```http
 HTTP/1.1 422 Unprocessable Entity
@@ -298,11 +346,18 @@ end_date   | date    | end date for pricing tier
 price      | float   | price for pricing tier
 
 ## Destroy Pricing Tier
+
+```shell
+# Get your token for further authorization
+curl -X DELETE "https://core.eventtia.com/v1/events/<event_uri>/pricing_tiers/<id>" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/pricing_tiers/<id>', {
   method: 'DELETE',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
 })
 ```

@@ -3,11 +3,17 @@
 
 ## List fields
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/event_uri/fields/" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/event_uri/fields/', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -67,9 +73,9 @@ HTTP/1.1 200 OK
 ```http
 HTTP/1.1 404 Not Found
 {
-    
+
     "message": "Couldn't find Event"
-        
+
 }
 ```
 
@@ -116,7 +122,7 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/fields", {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': '<your token>'
+    'Authorization': 'Bearer <your token>'
   },
   body: {
     data: {
@@ -133,7 +139,6 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/fields", {
     }
   }
   }
-  
 })
 ```
 
@@ -339,7 +344,7 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/fields/:id/<id>", {
   method: 'PUT',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': '<your token>'
+    'Authorization': 'Bearer <your token>'
   },
   body: {
     data: {
@@ -407,13 +412,18 @@ id | integer | The id for the field
 
 > To update destroy, use this code:
 
+```shell
+# Get your token for further authorization
+curl -X DELETE "https://core.eventtia.com/v1/fields/:id<id>" \
+  -H 'Content-Type: application/json'
+```
 
 ```javascript
 fetch("https://core.eventtia.com/v1/fields/:id<id>", {
   method: 'DELETE',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': '<your token>'
+    'Authorization': 'Bearer <your token>'
   },
 })
 ```
@@ -473,7 +483,7 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/fields/:id/<id>", {
   method: 'PUT',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': '<your token>'
+    'Authorization': 'Bearer <your token>'
   },
   {
     ordered_ids: '<{"20":3,"44":2}>'
@@ -495,9 +505,9 @@ HTTP/1.1 200 OK
 ```http
 HTTP/1.1 422 Unprocessable Entity
 {
-    
+
     "message": "ExceptionHandler::RecordInvalid"
-        
+
 }
 ```
 

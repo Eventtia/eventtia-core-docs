@@ -2,11 +2,17 @@
 
 ## List Attendees
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/attendees/" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -32,8 +38,8 @@ HTTP/1.1 200 OK
         "updated_by_id": "10461",
         "archived": "false",
         "fields_data": {
-          "281": "george",
-          "282": "downtown"
+          "f281": "george",
+          "f282": "downtown"
         },
         "photo_url": "url_Image_file"
       }
@@ -65,11 +71,17 @@ user_id | integer | Filters results by user
 
 ## Get Attendee
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -97,8 +109,8 @@ HTTP/1.1 200 OK
         "updated_by_id": "10461",
         "archived": "false",
         "fields_data": {
-          "281": "george",
-          "282": "downtown"
+          "f281": "george",
+          "f282": "downtown"
         },
         "photo_url": "url_Image_file"
       }
@@ -133,11 +145,36 @@ event_uri | string  | The event_uri for the desired event
 
 ## Create Attendee
 
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/events/<event_uri>/attendees/" \
+  -H 'Content-Type: application/json'\
+   -X POST -d '{
+    "data": {
+      "type": "attendees",
+      "attributes": {
+        "attendee_type_id": 34,
+        "first_name": "Mary",
+        "last_name": "perez ossa",
+        "email": "maryperez@email.com",
+        telephone": "+56912345678",
+        "updated_by_id": 192,
+        "archived": false,
+        "fields_data": {
+          "f281": "george",
+          "f282": "downtown"
+        },
+        "photo_url": "url_Image_file"
+      }
+    }
+}'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/', {
   method: 'POST',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
     data: {
@@ -151,8 +188,8 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/', {
         updated_by_id: 192,
         archived: false,
         fields_data: {
-          "281": "george",
-          "282": "downtown"
+          "f281": "george",
+          "f282": "downtown"
         },
         photo_url: "url_Image_file"
       }
@@ -181,8 +218,8 @@ HTTP/1.1 200 OK
       "updated_by_id": "10461",
       "archived": "false",
       "fields_data": {
-        "281": "george",
-        "282": "downtown"
+        "f281": "george",
+        "f282": "downtown"
       },
       "photo_url": "url_Image_file"
     }
@@ -228,11 +265,35 @@ photo      |  file   | photo for attendee
 
 ## Update Attendee
 
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>" \
+  -H 'Content-Type: application/json'\
+   -X PUT -d '{
+    "data": {
+      "type": "attendees",
+      "attributes": {
+        "attendee_type_id": 34,
+        "first_name": "Mary",
+        "last_name": "perez ossa",
+        "email": "maryperez@email.com",
+        telephone": "+56912345678",
+        "updated_by_id": 192,
+        "archived": false,
+        "fields_data": {
+          "f281": "george",
+          "f282": "downtown"
+        },
+        "photo_url": "url_Image_file"
+      }
+    }
+}'
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>', {
   method: 'PUT',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
     data: {
@@ -246,8 +307,8 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>', {
         updated_by_id: 192,
         archived: false,
         fields_data: {
-          "281": "george",
-          "282": "downtown"
+          "f281": "george",
+          "f282": "downtown"
         },
         photo_url: "url_Image_file"
       }
@@ -279,8 +340,8 @@ HTTP/1.1 200 OK
       "updated_by_id": "192",
       "archived": "false",
       "fields_data": {
-        "281": "george",
-        "282": "downtown"
+        "f281": "george",
+        "f282": "downtown"
       },
       "photo_url": "url_Image_file"
     }
@@ -327,11 +388,19 @@ fields_data | hash | key-value for custom fields data for created attendee
 photo      |  file   | photo for attendee
 
 ## Destroy Attendee
+
+```shell
+# Get your token for further authorization
+curl -X DELETE "https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>" \
+  -H 'Content-Type: application/json'
+```
+
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>', {
   method: 'DELETE',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
 })
 ```
@@ -358,10 +427,10 @@ HTTP/1.1 200 OK
       "updated_by_id": "192",
       "archived": "true",
       "fields_data": {
-        "281": "george",
-        "282": "downtown"
+        "f281": "george",
+        "f282": "downtown"
       },
-      "photo_url": "url_Image_file"     
+      "photo_url": "url_Image_file"
     }
   }
 }

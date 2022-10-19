@@ -2,11 +2,17 @@
 
 ## List Account Subscriptions
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/account_subscriptions/" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/account_subscriptions/', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -70,11 +76,17 @@ This endpoint return a list of account subscriptions
 
 ## Get Account Subscription
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/account_subscriptions/<id>" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/account_subscriptions/<id>', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -136,11 +148,33 @@ id | integer | The id for the desired account subscription
 
 ## Create Account Subscription
 
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/account_subscriptions/<id>" \
+  -H 'Content-Type: application/json'\
+   -X POST -d '{
+  "data": {
+      "type": "account_subscriptions",
+      "attributes": {
+        "price_id": "<price_id>"
+      }
+      "relationships": {
+        "plan": {
+          "data": {
+            "id": '<plan_id>',
+            "type": 'commercial_plans'
+          }
+        }
+      }
+    }
+}'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/account_subscriptions/', {
   method: 'POST',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
     data: {
@@ -216,11 +250,33 @@ price_id | string | price id for this account subscription.
 
 ## Update Account Subscription
 
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/account_subscriptions/<id>" \
+  -H 'Content-Type: application/json'\
+   -X PUT -d '{
+  "data": {
+      "type": "account_subscriptions",
+      "attributes": {
+        "price_id": "<price_id>"
+      }
+      "relationships": {
+        "plan": {
+          "data": {
+            "id": '<plan_id>',
+            "type": 'commercial_plans'
+          }
+        }
+      }
+    }
+}'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/account_subscriptions/<id>', {
   method: 'PUT',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
     data: {
@@ -302,11 +358,17 @@ price_id | string | price id for this account subscription.
 
 ## Destroy Account Subscriptions
 
+```shell
+# Get your token for further authorization
+curl -X DELETE "https://core.eventtia.com/v1/account_subscriptions/<id>" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/account_subscriptions/<id>', {
   method: 'DELETE',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```

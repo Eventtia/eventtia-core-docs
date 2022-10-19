@@ -1,11 +1,17 @@
 # Roles
 ## List Roles
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/roles/" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/roles/', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -44,11 +50,17 @@ page | json | A page object as described <a href="#pagination">here</a>
 
 ## Get Role
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/roles/<id>" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/roles/<id>', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }})
 ```
 
@@ -96,11 +108,25 @@ id | integer | Id for the desired role
 
 ## Create Role
 
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/roles/" \
+  -H 'Content-Type: application/json'\
+   -X POST -d '{
+   "data": {
+    "type": "roles",
+    "attributes": {
+          "name": "super admin"
+        }
+    }
+}'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/roles/', {
   method: 'POST',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
     {
@@ -151,11 +177,34 @@ name | string | Role's name.
 
 ## Update Role
 
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/roles/<id>" \
+  -H 'Content-Type: application/json'\
+   -X PUT -d '{
+   "data": {
+    "type": "roles",
+    "attributes": {
+          "name": "super admin"
+        },
+    "relationships": {
+      "permissions": {
+      "data": [
+        {"type": "permissions", id: 1},
+        {"type": "permissions", id:2},
+        {"type": "permissions", id: 44}
+        ]
+      }
+    }
+}'
+```
+
+
 ```javascript
 fetch('https://core.eventtia.com/v1/roles/<id>', {
   method: 'PUT',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
     data: {
@@ -164,10 +213,10 @@ fetch('https://core.eventtia.com/v1/roles/<id>', {
       name: "admin"
     },
     relationships: {
-      permissions: {  
+      permissions: {
       data: [
         {type: "permissions", id: 1},
-        {type: "permissions", id:2},                        
+        {type: "permissions", id:2},
         {type: "permissions", id: 44}
         ]
       }
@@ -222,11 +271,18 @@ name | string | Role's name.
 permission | string | Permission
 
 ## Destroy Role
+
+```shell
+# Get your token for further authorization
+curl -X DELETE "https://core.eventtia.com/v1/roles/<id>" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/roles/<id>', {
   method: 'DELETE',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
 })
 ```

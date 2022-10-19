@@ -2,11 +2,17 @@
 
 ## List Attendee Types
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/attendee_types/" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -27,7 +33,7 @@ HTTP/1.1 200 OK
       "attributes": {
         "name": "Attendee type name",
         "description": "attendee_type_description",
-        "price": "34.2",
+        "price": 34.2,
         "limit": 25,
         "confirmation_required": false,
         "allow_public_registration": false,
@@ -60,16 +66,22 @@ Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
 page | json | A page object as described <a href="#pagination">here</a>
-available_seats | boolean | activate an optional attribute (seats availability)
+available_seats | boolean | Activate an optional attribute (seats availability)
 
 
 ## Get Attendee Type
+
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>" \
+  -H 'Content-Type: application/json'
+```
 
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -91,7 +103,7 @@ HTTP/1.1 200 OK
     "attributes": {
       "name": "Attendee type name",
       "description": "Attendee type description",
-      "price": "34.2",
+      "price": 34.2,
       "limit": 25,
       "confirmation_required": false,
       "allow_public_registration": false,
@@ -117,7 +129,7 @@ HTTP/1.1 200 OK
 }
 ```
 
->Example of Not Found (404) response: 
+>Example of Not Found (404) response:
 
 ```http
 HTTP/1.1 404 Not Found
@@ -155,16 +167,38 @@ include   | string  | this value gives informations for each relationships
 
 Value |  Type   | Description
 ----- | ------- | -----------
-fields | string | include fields relationships
-current_price | string | include current price
+fields | string | Include fields relationships
+current_price | string | Include current price
 
 ## Create Attendee Type
+
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/events/<event_uri>/attendee_types/" \
+  -H 'Content-Type: application/json'\
+   -X POST -d '{
+    "data": {
+      "id": 62527
+      "type": "attendee_type",
+      "attributes": {
+        "name": { es:"Attendee type name", en: "Attendee type name"},
+        "description": { es:"Attendee type description", en: "Attendee type description"},
+        "price": 34.2,
+        "limit": 25,
+        "confirmation_required": false,
+        "allow_public_registration": false,
+        "valid_if_no_payments": true,
+        "archived": false
+    }
+  }
+}'
+```
 
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/', {
   method: 'POST',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
   data: {
@@ -200,7 +234,7 @@ HTTP/1.1 200 OK
     "attributes": {
       "name": {"es": "Attendee type name", "en": "Attendee type name"},
       "description": {"es": "Attendee type description", "en": "Attendee type description"},
-      "price": "34.2",
+      "price": 34.2,
       "limit": 25,
       "confirmation_required": false,
       "allow_public_registration": false,
@@ -218,7 +252,6 @@ HTTP/1.1 200 OK
       }
     }
   }
-}
 ```
 
 >Example of Unprocessable Entity (422) response: 
@@ -244,21 +277,43 @@ This endpoint create an attendee type and return it
 
 Parameter  |  Type   | Description
 ---------  | ------- | -----------
-name       | json  | keys belongs to available languages for attendee type's event and its value, Example: {es: "Invitado", en: "Guest"}
-description| json  | keys belongs to available languages for attendee type's event and its value, Example: {es: "descripcion de invitado", en: "Guest's description"}
-price      | decimal | price for attendee type
-limit      | integer | attendees limit for this attendee type
-confirmation_required | boolean | confirmation required for attendee type
-allow_public_registration | boolean | allow public registration for this attendee type
-valid_if_no_payments | boolean | valid attendee type if no payments
+name       | json  | Keys belongs to available languages for attendee type's event and its value, Example: {es: "Invitado", en: "Guest"}
+description| json  | Keys belongs to available languages for attendee type's event and its value, Example: {es: "descripcion de invitado", en: "Guest's description"}
+price      | decimal | Price for attendee type
+limit      | integer | Attendees limit for this attendee type
+confirmation_required | boolean | Confirmation required for attendee type
+allow_public_registration | boolean | Allow public registration for this attendee type
+valid_if_no_payments | boolean | Valid attendee type if no payments
 
 ## Update Attendee Type
+
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>" \
+  -H 'Content-Type: application/json'\
+   -X PUT -d '{
+    "data": {
+      "id": 62527
+      "type": "attendee_type",
+      "attributes": {
+        "name": { es:"Attendee type name", en: "Attendee type name"},
+        "description": { es:"Attendee type description", en: "Attendee type description"},
+        "price": 34.2,
+        "limit": 25,
+        "confirmation_required": false,
+        "allow_public_registration": false,
+        "valid_if_no_payments": true,
+        "archived": false
+    }
+  }
+}'
+```
 
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>', {
   method: 'PUT',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
   data: {
@@ -295,7 +350,7 @@ HTTP/1.1 200 OK
     "attributes": {
       "name": "Attendee type name",
       "description": "Attendee type description",
-      "price": "34.2",
+      "price": 34.2,
       "limit": 25,
       "confirmation_required": false,
       "allow_public_registration": false,
@@ -315,7 +370,7 @@ HTTP/1.1 200 OK
 }
 ```
 
->Example of Unprocessable Entity (422) response: 
+>Example of Unprocessable Entity (422) response:
 
 ```http
 HTTP/1.1 422 Unprocessable Entity
@@ -345,20 +400,27 @@ event_uri | string  | The event_uri for the desired event
 
 Parameter  |  Type   | Description
 ---------  | ------- | -----------
-name       | string  | name for attendee type
-description| string  | description for attendee type
-price      | decimal | price for attendee type
-limit      | integer | attendees limit for this attendee type
-confirmation_required | boolean | confirmation required for attendee type
-allow_public_registration | boolean | allow public registration for this attendee type
-valid_if_no_payments | boolean | valid attendee type if no payments
+name       | string  | Name for attendee type
+description| string  | Description for attendee type
+price      | decimal | Price for attendee type
+limit      | integer | Attendees limit for this attendee type
+confirmation_required | boolean | Confirmation required for attendee type
+allow_public_registration | boolean | Allow public registration for this attendee type
+valid_if_no_payments | boolean | Valid attendee type if no payments
 
 ## Destroy Attendee Type
+
+```shell
+# Get your token for further authorization
+curl -X DELETE "https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>', {
   method: 'DELETE',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
 })
 ```
@@ -380,7 +442,7 @@ HTTP/1.1 200 OK
     "attributes": {
       "name": "Attendee type name",
       "description": "Attendee type description",
-      "price": "545.0",
+      "price": 545.0,
       "limit": 500,
       "confirmation_required": true,
       "allow_public_registration": true,
@@ -415,11 +477,17 @@ event_uri | string  | The event_uri for the desired event
 
 ## Available Seats
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>/available-seats" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>/available-seats', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -442,7 +510,7 @@ HTTP/1.1 200 OK
 }
 ```
 
->Example of Not Found (404) response: 
+>Example of Not Found (404) response:
 
 ```http
 HTTP/1.1 404 Not Found
@@ -469,11 +537,18 @@ event_uri | string  | The event_uri for the desired event
 
 ## Form Fields
 ### Index form fields
+
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -524,9 +599,9 @@ HTTP/1.1 200 OK
 ```http
 HTTP/1.1 404 Not Found
 {
-    
+
   "message": "Couldn't find Event"
-        
+
 }
 ```
 This endpoint list all the available fields associated with the given attendee type.
@@ -575,7 +650,7 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': '<your token>'
+    'Authorization': 'Bearer <your token>'
   },
   body: {
     data: {
@@ -594,7 +669,7 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/
     }
   }
   }
-  
+
 })
 ```
 > Example of a successful (200) response:
@@ -620,13 +695,18 @@ entity_type | string | AttendeeType.
 
 > To update destroy, use this code:
 
+```shell
+# Get your token for further authorization
+curl -X DELETE "https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields/:id<id>" \
+  -H 'Content-Type: application/json'
+```
 
 ```javascript
 fetch("https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields/:id<id>", {
   method: 'DELETE',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': '<your token>'
+    'Authorization': 'Bearer <your token>'
   },
 })
 ```
@@ -662,7 +742,7 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/attendee_type/:entity_id/f
   method: 'PUT',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': '<your token>'
+    'Authorization': 'Bearer <your token>'
   },
   {
     ordered_ids: '<{"20":3,"44":2}>'
@@ -684,9 +764,9 @@ HTTP/1.1 200 OK
 ```http
 HTTP/1.1 422 Unprocessable Entity
 {
-    
+
     "message": "ExceptionHandler::RecordInvalid"
-        
+
 }
 ```
 This endpoint allows you to change the order in which the fields are displayed in the registration form.

@@ -2,11 +2,17 @@
 
 ## List Workshops
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/workshops/" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/workshops/', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -76,11 +82,17 @@ updated_at|  date   | A datetime in the following format "14/08/2021"
 
 ## Get Workshop
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/workshops/<id>" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
-fetch('https://core.eventtia.com/v1/events/<event_uri>/Workshops/<id>', {
+fetch('https://core.eventtia.com/v1/events/<event_uri>/workshops/<id>', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
@@ -153,11 +165,44 @@ event_uri | string  | The event_uri for the desired event
 
 ## Create Workshop
 
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/events/<event_uri>/workshops/" \
+  -H 'Content-Type: application/json'\
+   -X POST -d '{
+    "data": {
+      "type2: "workshops",
+      "attributes": {
+        "name": "Mary",
+        "start_date": "2021-12-02",
+        "end_date": "2021-12-20",
+        "limit": 0,
+        "location": "hotel",
+        "description": "business workshop",
+        "show_on_register": false,
+        "allow_blocking_workshops": false,
+        "price": {
+            "1": "300"
+        }
+      },
+      "relationships": {
+        "speakers": {
+          "data": [
+            {
+              "type": "speaker", id: 2
+            }
+          ]
+        }
+      }
+    }
+}'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/workshops/', {
   method: 'POST',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
     data: {
@@ -184,10 +229,10 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/workshops/', {
           ]
         }
       }
-    }  
+    }
   }
 }
-})
+)
 ```
 
 > Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
@@ -270,11 +315,44 @@ allow_blocking_workshops | boolean | allow block hours for this workshop
 
 ## Update Workshop
 
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/events/<event_uri>/workshops/<id>" \
+  -H 'Content-Type: application/json'\
+   -X POST -d '{
+    "data": {
+      "type2: "workshops",
+      "attributes": {
+        "name": "Mary",
+        "start_date": "2021-12-02",
+        "end_date": "2021-12-20",
+        "limit": 0,
+        "location": "hotel",
+        "description": "business workshop",
+        "show_on_register": false,
+        "allow_blocking_workshops": false,
+        "price": {
+            "1": "300"
+        }
+      },
+      "relationships": {
+        "speakers": {
+          "data": [
+            {
+              "type": "speaker", id: 2
+            }
+          ]
+        }
+      }
+    }
+}'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/workshops/<id>', {
   method: 'PUT',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
   body: {
     data: {
@@ -301,10 +379,10 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/workshops/<id>', {
           ]
         }
       }
-    }  
+    }
   }
 }
-})
+)
 ```
 
 > Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
@@ -390,11 +468,18 @@ show_on_register | boolean | show this workshop on registration page
 allow_blocking_workshops | boolean | allow block hours for this workshop
 
 ## Destroy Workshop
+
+```shell
+# Get your token for further authorization
+curl -X DELETE "https://core.eventtia.com/v1/events/<event_uri>/workshops/<id>" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/events/<event_uri>/workshops/<id>', {
   method: 'DELETE',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   },
 })
 ```

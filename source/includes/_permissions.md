@@ -2,11 +2,17 @@
 
 ## List Permissions
 
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/permissions/" \
+  -H 'Content-Type: application/json'
+```
+
 ```javascript
 fetch('https://core.eventtia.com/v1/permissions/', {
   method: 'GET',
   headers: {
-    'Authorization': '<your token>',
+    'Authorization': 'Bearer <your token>',
   }
 })
 ```
