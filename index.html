@@ -552,6 +552,20 @@
               </ul>
           </li>
           <li>
+            <a href="#tickets" class="toc-h1 toc-link" data-title="Tickets">Tickets</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-tickets" class="toc-h2 toc-link" data-title="List Tickets">List Tickets</a>
+                  </li>
+                  <li>
+                    <a href="#get-ticket" class="toc-h2 toc-link" data-title="Get Ticket">Get Ticket</a>
+                  </li>
+                  <li>
+                    <a href="#assign-ticket" class="toc-h2 toc-link" data-title="Assign Ticket">Assign Ticket</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
               <ul class="toc-list-h2">
                   <li>
@@ -7922,6 +7936,237 @@ curl -X DELETE <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_u
 <td>id</td>
 <td>integer</td>
 <td>The id for the desired speaker</td>
+</tr>
+</tbody></table>
+<h1 id='tickets'>Tickets</h1><h2 id='list-tickets'>List Tickets</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/orders/&lt;order_uuid&gt;/tickets"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/orders/&lt;order_uuid&gt;/tickets'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate.</p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event .</p>
+
+<p>Make sure you replace &lt;order uuid&gt; with the uuid for the order .</p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": [</span>
+<span class="s">    {</span>
+<span class="s">        "id": "45",</span>
+<span class="s">        "type": "tickets",</span>
+<span class="s">        "attributes": {</span>
+<span class="s">            "assigned_to": "email@eventtia.com",</span>
+<span class="s">            "uuid": "c0b042d63b",</span>
+<span class="s">            "assigned_date": "2022-10-20T14:53:52.000Z",</span>
+<span class="s">            "assigned_by_id": 1,</span>
+<span class="s">            "archived": false</span>
+<span class="s">        }</span>
+<span class="s">    }</span>
+<span class="s">  ]</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response: </p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "error": [</span>
+<span class="s">      "code: 128"</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint list tickets and return it</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /v1/events/&lt;event_uri&gt;/orders/&lt;order_uuid&gt;/tickets</code></p>
+<h3 id='path-parameters'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>order_uuid</td>
+<td>string</td>
+<td>order uuid to which order belongs</td>
+</tr>
+</tbody></table>
+<h2 id='get-ticket'>Get Ticket</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/orders/&lt;order_uuid&gt;/tickets/&lt;ticket_uuid&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/orders/&lt;order_uuid&gt;/tickets/&lt;ticket_uuid&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event .</p>
+
+<p>Make sure you replace &lt;order uuid&gt; with the uuid for the order .</p>
+
+<p>Make sure you replace &lt;ticket uuid&gt; with the uuid for the ticket .</p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">      "id": "45",</span>
+<span class="s">      "type": "tickets",</span>
+<span class="s">      "attributes": {</span>
+<span class="s">          "assigned_to": "email@eventtia.com",</span>
+<span class="s">          "uuid": "c0b042d63b",</span>
+<span class="s">          "assigned_date": "2022-10-20T14:53:52.000Z",</span>
+<span class="s">          "assigned_by_id": 1,</span>
+<span class="s">          "archived": false</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "error": [</span>
+<span class="s">      "code: 128"</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint get a ticket and return it</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET /v1/events/&lt;event_uri&gt;/orders/&lt;order_uuid&gt;/tickets/&lt;ticket_uuid&gt;</code></p>
+<h3 id='path-parameters-2'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>order_uuid</td>
+<td>string</td>
+<td>order uuid to which order belongs</td>
+</tr>
+<tr>
+<td>ticket_uuid</td>
+<td>string</td>
+<td>ticket uuid to which ticket belongs</td>
+</tr>
+</tbody></table>
+<h2 id='assign-ticket'>Assign Ticket</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/orders/&lt;order_uuid&gt;/tickets/assign"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X POST -d <span class="s1">'{
+    "data": {
+      "type": "tickets",
+          "attributes": {
+              "uuid": "c0b042d63b",
+              "assigned_to": "email@eventtia.com"
+          }
+    }
+  }'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/orders/&lt;order_uuid&gt;/tickets/assign'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="s2">"tickets"</span><span class="p">,</span>
+      <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">uuid</span><span class="p">:</span> <span class="s2">"c0b042d63b"</span><span class="p">,</span>
+        <span class="na">assigned_to</span><span class="p">:</span> <span class="s2">"pierre@eventtia.com"</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate.</p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event .</p>
+
+<p>Make sure you replace &lt;order uuid&gt; with the uuid for the order .</p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">   "data": {</span>
+<span class="s">      "id": "45",</span>
+<span class="s">      "type": "tickets",</span>
+<span class="s">      "attributes": {</span>
+<span class="s">          "assigned_to": "email@eventtia.com",</span>
+<span class="s">          "uuid": "c0b042d63b",</span>
+<span class="s">          "assigned_date": "2022-10-20T14:53:52.000Z",</span>
+<span class="s">          "assigned_by_id": 1,</span>
+<span class="s">          "archived": false</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "error": [</span>
+<span class="s">      {"error:code: 128"}</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint assign a ticket and return it,</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST /v1/events/:event_uri/pricing_tiers/</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>assigned_to</td>
+<td>string</td>
+<td>email to which ticket belongs</td>
+</tr>
+<tr>
+<td>uuid</td>
+<td>string</td>
+<td>uuid to which ticket belongs</td>
 </tr>
 </tbody></table>
 <h1 id='users'>Users</h1><h2 id='list-users'>List Users</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
