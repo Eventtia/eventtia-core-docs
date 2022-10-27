@@ -145,3 +145,66 @@ Parameter |  Type   | Description
 event_uri | string  | The event_uri for the desired event
 page | json | A page object as described <a href="#pagination">here</a>
 available_seats | boolean | Activate an optional attribute (seats availability)
+
+
+## List Public Widget Settings
+
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/widget_settings/<widget_setting_id>" \
+  -H 'Content-Type: application/json'
+```
+
+```javascript
+fetch('https://core.eventtia.com/v1/events/<event_uri>/widget_settings/<widget_setting_id>', {
+  method: 'GET'
+})
+```
+
+> Make sure you replace &lt;event uri&gt; with the event uri for the event.
+
+> Make sure you replace &lt;widget setting id&gt; with the widget id for the event.
+
+> Example of a successful (200) response:
+
+```http
+HTTP/1.1 200 OK
+{
+ "data": {
+        "id": "1",
+        "type": "widget_settings",
+        "attributes": {
+            "access_button": {
+                "en": "buy ticket"
+            },
+            "main_color": "#333333",
+            "secondary_color": "#EEEEEE",
+            "header_text_color": "#DDDDDD",
+            "css": "body: {passing-left: 10px}",
+            "logo": "url_file",
+            "header_image": "url_file"
+        },
+        "relationships": {
+            "event": {
+                "data": {
+                    "id": "54",
+                    "type": "events"
+                }
+            }
+        }
+    }
+}
+```
+
+This endpoint list widget settings belongs to event and return it
+
+### HTTP Request
+
+`GET /v1/events/:event_uri/widget_settings/:widget_setting_id`
+
+### Path Parameters
+
+Parameter |  Type   | Description
+--------- | ------- | -----------
+event_uri | string  | The event_uri for the desired event.
+widget_seting_id | integer  | The widget_setting_id for the desired widget_setting.

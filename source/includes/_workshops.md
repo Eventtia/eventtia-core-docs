@@ -319,9 +319,9 @@ allow_blocking_workshops | boolean | allow block hours for this workshop
 # Get your token for further authorization
 curl "https://core.eventtia.com/v1/events/<event_uri>/workshops/<id>" \
   -H 'Content-Type: application/json'\
-   -X POST -d '{
+   -X PUT -d '{
     "data": {
-      "type2: "workshops",
+      "type": "workshops",
       "attributes": {
         "name": "Mary",
         "start_date": "2021-12-02",
