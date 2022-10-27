@@ -29,6 +29,7 @@ includes:
   - role_permissions
   - role_categories
   - speakers
+  - tickets
   - users
   - workshops
 
