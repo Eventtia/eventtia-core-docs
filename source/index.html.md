@@ -31,6 +31,7 @@ includes:
   - speakers
   - tickets
   - users
+  - widget_settings
   - workshops
 
 search: true
