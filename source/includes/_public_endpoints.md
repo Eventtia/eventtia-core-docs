@@ -208,3 +208,58 @@ Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event.
 widget_seting_id | integer  | The widget_setting_id for the desired widget_setting.
+
+
+
+## Public Authentication
+
+> To authenticate, use this code:
+
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/public/events/<event_uri>/sessions" \
+  -H 'Content-Type: application/json' \
+  -X POST -d '{"email":"email@example.org", "uuid":"uuid"}'
+```
+
+```javascript
+// Get your token for further authorization
+fetch("https://core.eventtia.com/v1/public/events/<event_uri>/sessions", {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: {
+    email: "email@example.org",
+    uuid: "uuid"
+  }
+})
+```
+
+> Example of a successful (200) response:
+
+```http
+HTTP/1.1 200 OK
+{"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGFzcyI6IlVzZXIiLCJhdXRoZW50aWNhdGlvbl9rZXkiOiJ0ZXN0QGV2ZW50dGlhLmNvbSVyaSI6InRlc3QtZXZlbnQiLCJleHAiOjE1MjAzNTY1MDB9.s0m351gn4tuRe4sdF_qw3rTleleWh4TTTt35f1n4lLy"}
+```
+
+> Example of a 404 response:
+
+```http
+HTTP/1.1 404 Not Found
+{"message":"Incorrect email or uuid."}
+```
+
+You can get an authorization token for a Member or Attendee with this endpoint. Tokens issued by Eventtia are valid for 1 day.
+
+### HTTP Request
+
+`POST /v1/public/events/event_uri/sessions`
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+email | string | email for attendee or member.
+uuid | string | uuid for permitted entities (Orders, Tickets).
+
