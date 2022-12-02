@@ -90,7 +90,7 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>', {
 
 > Make sure you replace &lt;event uri&gt; with the event uri for the event.
 
-> Make sure you replace &lt;id&gt; with the id for the attendee type to obtain. 
+> Make sure you replace &lt;id&gt; with the id for the attendee type to obtain.
 
 > Example of a successful (200) response:
 
@@ -540,12 +540,12 @@ event_uri | string  | The event_uri for the desired event
 
 ```shell
 # Get your token for further authorization
-curl -X GET "https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields" \
+curl -X GET "https://core.eventtia.com/v1/events/:event_uri/attendee_type/:entity_id/fields" \
   -H 'Content-Type: application/json'
 ```
 
 ```javascript
-fetch('https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields', {
+fetch('https://core.eventtia.com/v1/events/:event_uri/attendee_type/:entity_id/fields', {
   method: 'GET',
   headers: {
     'Authorization': 'Bearer <your token>',
@@ -607,7 +607,7 @@ HTTP/1.1 404 Not Found
 This endpoint list all the available fields associated with the given attendee type.
 ### HTTP Request
 
-`GET v1/events/:event_uri/attendee_types/:entity_id/fields`
+`GET v1/events/:event_uri/attendee_type/:entity_id/fields`
 
 ### Path Parameters
 
@@ -623,7 +623,7 @@ This endpoint allows you to associate a new field to the given attendee type for
 
 ```shell
 # Get your token for further authorization
-curl "https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields" \
+curl "https://core.eventtia.com/v1/events/:event_uri/attendee_type/:entity_id/fields" \
   -H 'Content-Type: application/json' \
   -X POST -d '{
   "data": {
@@ -646,7 +646,7 @@ curl "https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/f
 
 ```javascript
 // Get your token for further authorization
-fetch("https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields", {
+fetch("https://core.eventtia.com/v1/events/:event_uri/attendee_type/:entity_id/fields", {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -675,7 +675,7 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/
 > Example of a successful (200) response:
 ### HTTP Request
 
-`POST /v1/events/:event_uri/attendee_types/:entity_id/fields`
+`POST /v1/events/:event_uri/attendee_type/:entity_id/fields`
 
 ### Path Parameters
 
@@ -697,12 +697,12 @@ entity_type | string | AttendeeType.
 
 ```shell
 # Get your token for further authorization
-curl -X DELETE "https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields/:id<id>" \
+curl -X DELETE "https://core.eventtia.com/v1/events/:event_uri/attendee_type/:entity_id/fields/:id<id>" \
   -H 'Content-Type: application/json'
 ```
 
 ```javascript
-fetch("https://core.eventtia.com/v1/events/:event_uri/attendee_types/:entity_id/fields/:id<id>", {
+fetch("https://core.eventtia.com/v1/events/:event_uri/attendee_type/:entity_id/fields/:id<id>", {
   method: 'DELETE',
   headers: {
     'Content-Type': 'application/json',
@@ -714,7 +714,7 @@ This endpoint allows you to unassociated a field to the given attendee type form
 
 ### HTTP Request
 
-`DELETE v1/events/:event_uri/attendee_types/:entity_id/fields/:id`
+`DELETE v1/events/:event_uri/attendee_type/:entity_id/fields/:id`
 
 ### Path Parameters
 

@@ -218,7 +218,7 @@ This endpoint assign a ticket and return it,
 
 ### HTTP Request
 
-`POST /v1/events/:event_uri/pricing_tiers/`
+`POST /v1/events/:event_uri/orders/:order_uuid/tickets/assign`
 
 ### Body Parameters
 

@@ -85,17 +85,6 @@ Parameter | Type | Description
 event_uri | string | The event_uri for the desired event
 
 
-### HTTP Request for optional include settings
-
-`GET /v1/events/:event_uri/include=settings`
-
-### Path Parameters
-
-Parameter | Type | Description
---------- | ---- | -----------
-include   | string | The value settings gives informations for each relationships (settings or attendees)
-
-
 ## List Public Attendee Types
 
 ```shell
@@ -136,7 +125,7 @@ This endpoint list attendee types belongs to event and available for public regi
 
 ### HTTP Request
 
-`GET /v1/public/events/event_uri/attendee_types/`
+`GET /v1/public/events/:event_uri/attendee_types/`
 
 ### Path Parameters
 
@@ -144,7 +133,6 @@ Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
 page | json | A page object as described <a href="#pagination">here</a>
-available_seats | boolean | Activate an optional attribute (seats availability)
 
 
 ## List Public Widget Settings
