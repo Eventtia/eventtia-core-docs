@@ -242,7 +242,7 @@ You can get an authorization token for a Member or Attendee with this endpoint. 
 
 ### HTTP Request
 
-`POST /v1/public/events/event_uri/sessions`
+`POST /v1/public/events/:event_uri/sessions`
 
 ### Query Parameters
 

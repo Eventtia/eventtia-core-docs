@@ -58,7 +58,7 @@ This endpoint list attendee types belongs to event and return it
 
 ### HTTP Request
 
-`GET /v1/events/event_uri/attendee_types/`
+`GET /v1/events/:event_uri/attendee_types/`
 
 ### Path Parameters
 
@@ -144,7 +144,7 @@ This endpoint get an attendee type and return it
 
 ### HTTP Request
 
-`GET /v1/events/event_uri/attendee_types/id`
+`GET /v1/events/:event_uri/attendee_types/:id`
 
 ### Path Parameters
 
@@ -525,7 +525,7 @@ This endpoint get an attendee type and return his available seats
 
 ### HTTP Request
 
-`GET /v1/events/event_uri/attendee_types/id/available_seats`
+`GET /v1/events/:event_uri/attendee_types/:id/available_seats`
 
 ### Path Parameters
 
