@@ -117,8 +117,17 @@ curl "https://core.eventtia.com/v1/roles/" \
     "type": "roles",
     "attributes": {
           "name": "super admin"
-        }
+        },
+    "relationships": {
+      "permissions": {
+      "data": [
+        {"type": "permissions", id: 1},
+        {"type": "permissions", id:2},
+        {"type": "permissions", id: 44}
+        ]
+      }
     }
+  }
 }'
 ```
 
@@ -134,7 +143,16 @@ fetch('https://core.eventtia.com/v1/roles/', {
     type: "roles",
     attributes: {
           name: "super admin"
-        }
+        },
+    relationships: {
+      permissions: {
+      data: [
+        { type: "permissions", id: 1},
+        { type: "permissions", id:2},
+        { type: "permissions", id: 44}
+        ]
+      }
+    }
     }
   }
 }
