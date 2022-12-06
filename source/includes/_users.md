@@ -66,6 +66,7 @@ This endpoint return a list of users
 Parameter |  Type   | Description
 --------- | ------- | -----------
 page | json | A page object as described <a href="#pagination">here</a>
+email | string | Filters results by the user's email.
 
 ## Get User
 
