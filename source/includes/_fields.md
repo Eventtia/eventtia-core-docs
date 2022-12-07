@@ -5,12 +5,12 @@
 
 ```shell
 # Get your token for further authorization
-curl -X GET "https://core.eventtia.com/v1/events/event_uri/fields/" \
+curl -X GET "https://core.eventtia.com/v1/events/:event_uri/fields/" \
   -H 'Content-Type: application/json'
 ```
 
 ```javascript
-fetch('https://core.eventtia.com/v1/events/event_uri/fields/', {
+fetch('https://core.eventtia.com/v1/events/:event_uri/fields/', {
   method: 'GET',
   headers: {
     'Authorization': 'Bearer <your token>',
