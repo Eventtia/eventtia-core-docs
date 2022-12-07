@@ -54,7 +54,7 @@ This endpoint list notifications belongs to event and return it
 
 ### HTTP Request
 
-`GET /v1/events/event_uri/notifications/`
+`GET /v1/events/:event_uri/notifications/`
 
 ### Path Parameters
 
@@ -129,7 +129,7 @@ This endpoint get an notification and return it
 
 ### HTTP Request
 
-`GET /v1/events/event_uri/notifications/id`
+`GET /v1/events/:event_uri/notifications/:id`
 
 ### Path Parameters
 
