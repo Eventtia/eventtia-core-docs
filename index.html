@@ -479,6 +479,21 @@
                   <li>
                     <a href="#public-authentication" class="toc-h2 toc-link" data-title="Public Authentication">Public Authentication</a>
                   </li>
+                  <li>
+                    <a href="#create-public-attendees" class="toc-h2 toc-link" data-title="Create Public Attendees">Create Public Attendees</a>
+                  </li>
+                  <li>
+                    <a href="#update-public-attendee" class="toc-h2 toc-link" data-title="Update Public Attendee">Update Public Attendee</a>
+                  </li>
+                  <li>
+                    <a href="#list-public-tickets" class="toc-h2 toc-link" data-title="List Public Tickets">List Public Tickets</a>
+                  </li>
+                  <li>
+                    <a href="#get-public-ticket" class="toc-h2 toc-link" data-title="Get Public Ticket">Get Public Ticket</a>
+                  </li>
+                  <li>
+                    <a href="#assign-public-ticket" class="toc-h2 toc-link" data-title="Assign Public Ticket">Assign Public Ticket</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -6748,6 +6763,529 @@ curl <span class="s2">"https://core.eventtia.com/v1/public/events/&lt;event_uri&
 <td>uuid</td>
 <td>string</td>
 <td>uuid for permitted entities (Orders, Tickets).</td>
+</tr>
+</tbody></table>
+<h2 id='create-public-attendees'>Create Public Attendees</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/public/events/&lt;event_uri&gt;/attendees/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X POST -d <span class="s1">'{
+    "data": {
+      "type": "attendees",
+      "attributes": {
+        "attendee_type_id": 34,
+        "first_name": "Mary",
+        "last_name": "perez ossa",
+        "email": "maryperez@email.com",
+        telephone": "+56912345678",
+        "updated_by_id": 192,
+        "archived": false,
+        "fields_data": {
+          "f281": "george",
+          "f282": "downtown"
+        },
+        "photo_url": "url_Image_file"
+      }
+    }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/public/events/&lt;event_uri&gt;/attendees/'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your public token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="s2">"attendees"</span><span class="p">,</span>
+      <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">attendee_type_id</span><span class="p">:</span> <span class="mi">34</span><span class="p">,</span>
+        <span class="na">first_name</span><span class="p">:</span> <span class="s2">"Mary"</span><span class="p">,</span>
+        <span class="na">last_name</span><span class="p">:</span> <span class="s2">"perez ossa"</span><span class="p">,</span>
+        <span class="na">email</span><span class="p">:</span> <span class="s2">"maryperez@email.com"</span><span class="p">,</span>
+        <span class="na">telephone</span><span class="p">:</span> <span class="s2">"+56912345678"</span><span class="p">,</span>
+        <span class="na">updated_by_id</span><span class="p">:</span> <span class="mi">192</span><span class="p">,</span>
+        <span class="na">archived</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">fields_data</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"f281"</span><span class="p">:</span> <span class="s2">"george"</span><span class="p">,</span>
+          <span class="s2">"f282"</span><span class="p">:</span> <span class="s2">"downtown"</span>
+        <span class="p">},</span>
+        <span class="na">photo_url</span><span class="p">:</span> <span class="s2">"url_Image_file"</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace &lt;your public token&gt; with the JWT you get when you authenticate.</p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event .</p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "6264284",</span>
+<span class="s">    "type": "attendees",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "first_name": "Rosa Maria",</span>
+<span class="s">      "last_name": "Rosales Rojas",</span>
+<span class="s">      "email": "rosales@email.com",</span>
+<span class="s">      "telephone": "+56912345678",</span>
+<span class="s">      "updated_by_id": "10461",</span>
+<span class="s">      "archived": "false",</span>
+<span class="s">      "fields_data": {</span>
+<span class="s">        "f281": "george",</span>
+<span class="s">        "f282": "downtown"</span>
+<span class="s">      },</span>
+<span class="s">      "photo_url": "url_Image_file"</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response: </p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "email": [</span>
+<span class="s">      "already taken"</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This public endpoint create an attendee and return it</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>POST /v1/public/events/:event_uri/attendees/</code></p>
+<h3 id='path-parameters-4'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>first_name</td>
+<td>string</td>
+<td>first name for attendee</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>last name for attendee</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>email for attendee</td>
+</tr>
+<tr>
+<td>telephone</td>
+<td>integer</td>
+<td>telephone for attendee</td>
+</tr>
+<tr>
+<td>attendee_type_id</td>
+<td>integer</td>
+<td>attendee type id who created attendee belongs</td>
+</tr>
+<tr>
+<td>fields_data</td>
+<td>hash</td>
+<td>key-value for custom fields data for created attendee</td>
+</tr>
+<tr>
+<td>photo</td>
+<td>file</td>
+<td>photo for attendee</td>
+</tr>
+</tbody></table>
+<h2 id='update-public-attendee'>Update Public Attendee</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/public/events/&lt;event_uri&gt;/attendees/&lt;id&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X PUT -d <span class="s1">'{
+    "data": {
+      "type": "attendees",
+      "attributes": {
+        "attendee_type_id": 34,
+        "first_name": "Mary",
+        "last_name": "perez ossa",
+        "email": "maryperez@email.com",
+        telephone": "+56912345678",
+        "updated_by_id": 192,
+        "archived": false,
+        "fields_data": {
+          "f281": "george",
+          "f282": "downtown"
+        },
+        "photo_url": "url_Image_file"
+      }
+    }
+}'</span>
+
+<span class="sb">```</span>javascript
+fetch<span class="o">(</span><span class="s1">'https://core.eventtia.com/v1/public/events/&lt;event_uri&gt;/attendees/&lt;id&gt;'</span>, <span class="o">{</span>
+  method: <span class="s1">'PUT'</span>,
+  headers: <span class="o">{</span>
+    <span class="s1">'Authorization'</span>: <span class="s1">'Bearer &lt;your public token&gt;'</span>,
+  <span class="o">}</span>,
+  body: <span class="o">{</span>
+    data: <span class="o">{</span>
+      <span class="nb">type</span>: <span class="s2">"attendees"</span>,
+      attributes: <span class="o">{</span>
+        attendee_type_id: 34,
+        first_name: <span class="s2">"Mary"</span>,
+        last_name: <span class="s2">"perez ossa"</span>,
+        email: <span class="s2">"maryperez@email.com"</span>,
+        telephone: <span class="s2">"+56912345678"</span>,
+        updated_by_id: 192,
+        archived: <span class="nb">false</span>,
+        fields_data: <span class="o">{</span>
+          <span class="s2">"f281"</span>: <span class="s2">"george"</span>,
+          <span class="s2">"f282"</span>: <span class="s2">"downtown"</span>
+        <span class="o">}</span>,
+        photo_url: <span class="s2">"url_Image_file"</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+<span class="o">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace &lt;your public token&gt; with the JWT you get when you authenticate.</p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event to update.</p>
+
+<p>Make sure you replace &lt;id&gt; with the id for the attendee to update.</p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "62527",</span>
+<span class="s">    "type": "attendees",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">     "first_name": "Mary",</span>
+<span class="s">      "last_name": "perez ossa",</span>
+<span class="s">      "email": "maryperez@email.com",</span>
+<span class="s">      "telephone": "+56912345678",</span>
+<span class="s">      "updated_by_id": "192",</span>
+<span class="s">      "archived": "false",</span>
+<span class="s">      "fields_data": {</span>
+<span class="s">        "f281": "george",</span>
+<span class="s">        "f282": "downtown"</span>
+<span class="s">      },</span>
+<span class="s">      "photo_url": "url_Image_file"</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "email": [</span>
+<span class="s">      "already taken"</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This public endpoint update an attendee and return it</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>PUT /v1/public/events/:event_uri/attendees/:id</code></p>
+<h3 id='path-parameters-5'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired attendee</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters-2'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>first_name</td>
+<td>string</td>
+<td>first name for attendee</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>last name for attendee</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>email for attendee</td>
+</tr>
+<tr>
+<td>telephone</td>
+<td>integer</td>
+<td>telephone for attendee</td>
+</tr>
+<tr>
+<td>attendee_type_id</td>
+<td>integer</td>
+<td>attendee type id who created attendee belongs</td>
+</tr>
+<tr>
+<td>fields_data</td>
+<td>hash</td>
+<td>key-value for custom fields data for created attendee</td>
+</tr>
+<tr>
+<td>photo</td>
+<td>file</td>
+<td>photo for attendee</td>
+</tr>
+</tbody></table>
+<h2 id='list-public-tickets'>List Public Tickets</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/public/events/&lt;event_uri&gt;/tickets"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/public/events/&lt;event_uri&gt;/tickets'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your public token&gt;'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace &lt;your public token&gt; with the JWT you get when you authenticate.</p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event .</p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": [</span>
+<span class="s">    {</span>
+<span class="s">        "id": "45",</span>
+<span class="s">        "type": "tickets",</span>
+<span class="s">        "attributes": {</span>
+<span class="s">            "assigned_to": "email@eventtia.com",</span>
+<span class="s">            "uuid": "c0b042d63b",</span>
+<span class="s">            "assigned_date": "2022-10-20T14:53:52.000Z",</span>
+<span class="s">            "assigned_by_id": 1,</span>
+<span class="s">            "archived": false</span>
+<span class="s">        }</span>
+<span class="s">    }</span>
+<span class="s">  ]</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "error": [</span>
+<span class="s">      "code: 128"</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint list public tickets and return it</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET /v1/public/events/&lt;event_uri&gt;/tickets</code></p>
+<h3 id='path-parameters-6'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+</tbody></table>
+<h2 id='get-public-ticket'>Get Public Ticket</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/public/events/&lt;event_uri&gt;/tickets/&lt;ticket_uuid&gt;"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/public/events/&lt;event_uri&gt;/tickets/&lt;ticket_uuid&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your public token&gt;'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace &lt;your public token&gt; with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event .</p>
+
+<p>Make sure you replace &lt;ticket uuid&gt; with the uuid for the ticket .</p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">      "id": "45",</span>
+<span class="s">      "type": "tickets",</span>
+<span class="s">      "attributes": {</span>
+<span class="s">          "assigned_to": "email@eventtia.com",</span>
+<span class="s">          "uuid": "c0b042d63b",</span>
+<span class="s">          "assigned_date": "2022-10-20T14:53:52.000Z",</span>
+<span class="s">          "assigned_by_id": 1,</span>
+<span class="s">          "archived": false</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "error": [</span>
+<span class="s">      "code: 128"</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint get a public ticket and return it</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>GET /v1/public/events/&lt;event_uri&gt;/tickets/&lt;ticket_uuid&gt;</code></p>
+<h3 id='path-parameters-7'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>ticket_uuid</td>
+<td>string</td>
+<td>ticket uuid to which ticket belongs</td>
+</tr>
+</tbody></table>
+<h2 id='assign-public-ticket'>Assign Public Ticket</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/public/events/&lt;event_uri&gt;/tickets/assign"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X POST -d <span class="s1">'{
+    "data": {
+      "type": "tickets",
+          "attributes": {
+              "uuid": "c0b042d63b",
+              "assigned_to": "email@eventtia.com"
+          }
+    }
+  }'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/public/events/&lt;event_uri&gt;/tickets/assign'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your public token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="s2">"tickets"</span><span class="p">,</span>
+      <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">uuid</span><span class="p">:</span> <span class="s2">"c0b042d63b"</span><span class="p">,</span>
+        <span class="na">assigned_to</span><span class="p">:</span> <span class="s2">"pierre@eventtia.com"</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace &lt;your public token&gt; with the JWT you get when you authenticate.</p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event .</p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">   "data": {</span>
+<span class="s">      "id": "45",</span>
+<span class="s">      "type": "tickets",</span>
+<span class="s">      "attributes": {</span>
+<span class="s">          "assigned_to": "email@eventtia.com",</span>
+<span class="s">          "uuid": "c0b042d63b",</span>
+<span class="s">          "assigned_date": "2022-10-20T14:53:52.000Z",</span>
+<span class="s">          "assigned_by_id": 1,</span>
+<span class="s">          "archived": false</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "error": [</span>
+<span class="s">      {"error:code: 128"}</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint assign a public ticket and return it,</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>POST /v1/public/events/:event_uri/tickets/assign</code></p>
+<h3 id='body-parameters-3'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>string</td>
+<td>uuid to which ticket belongs</td>
+</tr>
+<tr>
+<td>assigned_to</td>
+<td>string</td>
+<td>email to which ticket belongs</td>
 </tr>
 </tbody></table>
 <h1 id='registrations'>Registrations</h1><h2 id='create-new-user-and-account'>Create new user and account</h2>
