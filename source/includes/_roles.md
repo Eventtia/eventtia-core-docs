@@ -212,6 +212,18 @@ curl "https://core.eventtia.com/v1/roles/<id>" \
         {"type": "permissions", id:2},
         {"type": "permissions", id: 44}
         ]
+      },
+      "user": {
+        "data": [
+          {
+            "id": "2",
+            "type": "users"
+          },
+          {
+            "id": "3",
+            "type": "users"
+          }
+        ]
       }
     }
 }'
@@ -236,6 +248,18 @@ fetch('https://core.eventtia.com/v1/roles/<id>', {
         {type: "permissions", id: 1},
         {type: "permissions", id:2},
         {type: "permissions", id: 44}
+        ]
+      },
+      user: {
+        data: [
+          {
+            id: 2,
+            type: "users"
+          },
+          {
+            id: 3,
+            type: "users"
+          }
         ]
       }
     }
@@ -286,7 +310,8 @@ id | integer | Id of the desired role
 Parameter | Type | Description
 --------- | ---- | -----------
 name | string | Role's name.
-permission | string | Permission
+permissions | string | Permissions ids for this role
+user | string | users ids assigned to role
 
 ## Destroy Role
 
