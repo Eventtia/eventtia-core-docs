@@ -7905,7 +7905,14 @@ curl -X GET <span class="s2">"https://core.eventtia.com/v1/role_categories/&lt;i
 <span class="s">    "attributes": {</span>
 <span class="s">      "id": 4,</span>
 <span class="s">      "name": "grupo 1"</span>
-<span class="s">    }</span>
+<span class="s">    },</span>
+<span class="s">          "relationships": {</span>
+<span class="s">          "user": {</span>
+<span class="s">              "data": {</span>
+<span class="s">                  "id": "1",</span>
+<span class="s">                  "type": "users"</span>
+<span class="s">          }</span>
+<span class="s">        }}</span>
 <span class="s">  }</span>
 <span class="s">}</span>
 </code></pre>
@@ -7944,7 +7951,14 @@ curl <span class="s2">"https://core.eventtia.com/v1/account_subscriptions/&lt;id
         "type": "role_categories",
         "attributes": {
             "name": "grupo 5"
-        }
+        },
+          "relationships": {
+          "user": {
+              "data": {
+                  "id": "1",
+                  "type": "users"
+          }
+        }}
     }
 }'</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/role_categories/'</span><span class="p">,</span> <span class="p">{</span>
@@ -7958,7 +7972,14 @@ curl <span class="s2">"https://core.eventtia.com/v1/account_subscriptions/&lt;id
         <span class="na">type</span><span class="p">:</span> <span class="s2">"role_categories"</span><span class="p">,</span>
         <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
             <span class="na">name</span><span class="p">:</span> <span class="s2">"grupo 5"</span>
-        <span class="p">}</span>
+        <span class="p">},</span>
+          <span class="na">relationships</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">user</span><span class="p">:</span> <span class="p">{</span>
+              <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="na">id</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
+                  <span class="na">type</span><span class="p">:</span> <span class="s2">"users"</span>
+          <span class="p">}</span>
+        <span class="p">}}</span>
     <span class="p">}</span>
   <span class="p">}</span>
   <span class="p">}</span>
@@ -8012,7 +8033,14 @@ curl <span class="s2">"https://core.eventtia.com/v1/role_categories/&lt;id&gt;"<
         "type": "role_categories",
         "attributes": {
             "name": "grupo 5"
-        }
+        },
+          "relationships": {
+          "user": {
+              "data": {
+                  "id": "1",
+                  "type": "users"
+          }
+        }}
     }
 }'</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/role_categories/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
@@ -8025,7 +8053,14 @@ curl <span class="s2">"https://core.eventtia.com/v1/role_categories/&lt;id&gt;"<
         <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"roles"</span><span class="p">,</span>
         <span class="s2">"attributes"</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"grupo 10"</span>
-        <span class="p">}</span>
+        <span class="p">},</span>
+          <span class="s2">"relationships"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"user"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
+                  <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"users"</span>
+          <span class="p">}</span>
+        <span class="p">}}</span>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">})</span>
@@ -9019,8 +9054,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/users/"</span> <span class="
           "phone": 788965455,
           "password": "SecurePassword",
           "email": "user@eventtia.com",
-          "is_admin": "false",
-          "role_category_ids": [1, 2]
+          "is_admin": "false"
         },
           "relationships": {
           "role": {
@@ -9028,7 +9062,10 @@ curl <span class="s2">"https://core.eventtia.com/v1/users/"</span> <span class="
                   "id": "1",
                   "type": "roles"
           }
-        }
+        },
+            "role_category": {
+                "data": [{"type": "role_categories", "id": "1"}]
+            }
       }
     }
 }'</span>
@@ -9047,8 +9084,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/users/"</span> <span class="
         <span class="na">phone</span><span class="p">:</span> <span class="mi">788965455</span><span class="p">,</span>
         <span class="na">password</span><span class="p">:</span> <span class="s2">"SecurePassword"</span><span class="p">,</span>
         <span class="na">email</span><span class="p">:</span> <span class="s2">"user@eventtia.com"</span><span class="p">,</span>
-        <span class="na">is_admin</span><span class="p">:</span> <span class="s2">"false"</span><span class="p">,</span>
-        <span class="na">role_category_ids</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+        <span class="na">is_admin</span><span class="p">:</span> <span class="s2">"false"</span>
       <span class="p">},</span>
         <span class="na">relationships</span><span class="p">:</span> <span class="p">{</span>
         <span class="na">role</span><span class="p">:</span> <span class="p">{</span>
@@ -9057,7 +9093,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/users/"</span> <span class="
                 <span class="na">type</span><span class="p">:</span> <span class="s2">"roles"</span>
           <span class="p">}</span>
         <span class="p">}</span>
-      <span class="p">}</span>
+      <span class="p">},</span>
+            <span class="na">role_category</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">data</span><span class="p">:</span> <span class="p">[{</span>
+                        <span class="na">id</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
+                        <span class="na">type</span><span class="p">:</span> <span class="s2">"role_categories"</span>
+                        <span class="p">}]</span>
+            <span class="p">}</span>
     <span class="p">}}</span>
 <span class="p">}</span>
 <span class="p">}</span>
@@ -9143,11 +9185,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/users/"</span> <span class="
 <td>bolean</td>
 <td>Specifies whether the user you are creating is an administrator or not.</td>
 </tr>
-<tr>
-<td>role_category_ids</td>
-<td>array</td>
-<td>Specifies the categories the user is associated with. This is required in case your user isn&#39;t an administrator.</td>
-</tr>
 </tbody></table>
 <h2 id='update-user'>Update User</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
 curl <span class="s2">"https://core.eventtia.com/v1/users/&lt;id&gt;"</span> <span class="se">\</span>
@@ -9161,8 +9198,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/users/&lt;id&gt;"</span> <sp
           "phone": 788965455,
           "password": "SecurePassword",
           "email": "user@eventtia.com",
-          "is_admin": "false",
-          "role_category_ids": [1, 2]
+          "is_admin": "false"
         },
           "relationships": {
           "role": {
@@ -9170,7 +9206,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/users/&lt;id&gt;"</span> <sp
                   "id": "1",
                   "type": "roles"
           }
-        }
+        },
+            "role_category": {
+                "data": [{
+                  "id": "1",
+                  "type": "role_categories"
+                  }]
+            }
       }
     }
 }'</span>
@@ -9189,8 +9231,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/users/&lt;id&gt;"</span> <sp
         <span class="na">password</span><span class="p">:</span> <span class="s2">"SecurePassword"</span><span class="p">,</span>
         <span class="na">password_confirmation</span><span class="p">:</span> <span class="s2">"SecurePassword"</span><span class="p">,</span>
         <span class="na">email</span><span class="p">:</span> <span class="s2">"user@eventtia.com"</span><span class="p">,</span>
-        <span class="na">is_admin</span><span class="p">:</span> <span class="s2">"false"</span><span class="p">,</span>
-        <span class="na">role_category_ids</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+        <span class="na">is_admin</span><span class="p">:</span> <span class="s2">"false"</span>
       <span class="p">},</span>
         <span class="na">relationships</span><span class="p">:</span> <span class="p">{</span>
         <span class="na">role</span><span class="p">:</span> <span class="p">{</span>
@@ -9198,7 +9239,13 @@ curl <span class="s2">"https://core.eventtia.com/v1/users/&lt;id&gt;"</span> <sp
               <span class="na">id</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
               <span class="na">type</span><span class="p">:</span> <span class="s2">"roles"</span>
           <span class="p">}</span>
-        <span class="p">}</span>
+        <span class="p">},</span>
+            <span class="na">role_category</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">data</span><span class="p">:</span> <span class="p">[{</span>
+                  <span class="na">id</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
+                  <span class="na">type</span><span class="p">:</span> <span class="s2">"role_categories"</span>
+                  <span class="p">}]</span>
+            <span class="p">}</span>
       <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -9295,11 +9342,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/users/&lt;id&gt;"</span> <sp
 <td>is_admin</td>
 <td>bolean</td>
 <td>Specifies whether the user you are creating is an administrator or not.</td>
-</tr>
-<tr>
-<td>role_category_ids</td>
-<td>array</td>
-<td>Specifies the categories the user is associated with. This is required in case your user isn&#39;t an administrator.</td>
 </tr>
 </tbody></table>
 <h2 id='destroy-user'>Destroy User</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
