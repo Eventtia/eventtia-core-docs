@@ -157,8 +157,7 @@ curl "https://core.eventtia.com/v1/users/" \
           "phone": 788965455,
           "password": "SecurePassword",
           "email": "user@eventtia.com",
-          "is_admin": "false",
-          "role_category_ids": [1, 2]
+          "is_admin": "false"
         },
           "relationships": {
           "role": {
@@ -166,7 +165,10 @@ curl "https://core.eventtia.com/v1/users/" \
                   "id": "1",
                   "type": "roles"
           }
-        }
+        },
+            "role_category": {
+                "data": [{"type": "role_categories", "id": "1"}]
+            }
       }
 	}
 }'
@@ -188,8 +190,7 @@ fetch('https://core.eventtia.com/v1/users/', {
         phone: 788965455,
         password: "SecurePassword",
         email: "user@eventtia.com",
-        is_admin: "false",
-        role_category_ids: [1, 2]
+        is_admin: "false"
       },
         relationships: {
         role: {
@@ -198,7 +199,13 @@ fetch('https://core.eventtia.com/v1/users/', {
                 type: "roles"
           }
         }
-      }
+      },
+            role_category: {
+                data: [{
+                        id: "1",
+                        type: "role_categories"
+                        }]
+            }
 	}}
 }
 }
@@ -262,7 +269,6 @@ email | string | The User's corporate email.
 phone | string | The User's phone.
 password | string | The User's password.
 is_admin | bolean | Specifies whether the user you are creating is an administrator or not.
-role_category_ids | array | Specifies the categories the user is associated with. This is required in case your user isn't an administrator.
 
 ## Update User
 
@@ -279,8 +285,7 @@ curl "https://core.eventtia.com/v1/users/<id>" \
           "phone": 788965455,
           "password": "SecurePassword",
           "email": "user@eventtia.com",
-          "is_admin": "false",
-          "role_category_ids": [1, 2]
+          "is_admin": "false"
         },
           "relationships": {
           "role": {
@@ -288,7 +293,13 @@ curl "https://core.eventtia.com/v1/users/<id>" \
                   "id": "1",
                   "type": "roles"
           }
-        }
+        },
+            "role_category": {
+                "data": [{
+                  "id": "1",
+                  "type": "role_categories"
+                  }]
+            }
       }
 	}
 }'
@@ -310,8 +321,7 @@ fetch('https://core.eventtia.com/v1/users/<id>', {
         password: "SecurePassword",
         password_confirmation: "SecurePassword",
         email: "user@eventtia.com",
-        is_admin: "false",
-        role_category_ids: [1, 2]
+        is_admin: "false"
       },
         relationships: {
         role: {
@@ -319,7 +329,13 @@ fetch('https://core.eventtia.com/v1/users/<id>', {
               id: "2",
               type: "roles"
           }
-        }
+        },
+            role_category: {
+                data: [{
+                  id: "1",
+                  type: "role_categories"
+                  }]
+            }
       }
 	}
 }
@@ -391,7 +407,6 @@ email | string | The User's corporate email.
 phone | string | The User's phone.
 password | string | The User's password.
 is_admin | bolean | Specifies whether the user you are creating is an administrator or not.
-role_category_ids | array | Specifies the categories the user is associated with. This is required in case your user isn't an administrator.
 
 ## Destroy User
 
