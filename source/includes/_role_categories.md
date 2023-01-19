@@ -78,7 +78,14 @@ HTTP/1.1 200 OK
     "attributes": {
       "id": 4,
       "name": "grupo 1"
-    }
+    },
+          "relationships": {
+          "user": {
+              "data": {
+                  "id": "1",
+                  "type": "users"
+          }
+        }}
   }
 }
 ```
@@ -116,7 +123,14 @@ curl "https://core.eventtia.com/v1/account_subscriptions/<id>" \
         "type": "role_categories",
         "attributes": {
             "name": "grupo 5"
-        }
+        },
+          "relationships": {
+          "user": {
+              "data": {
+                  "id": "1",
+                  "type": "users"
+          }
+        }}
     }
 }'
 ```
@@ -133,7 +147,14 @@ fetch('https://core.eventtia.com/v1/role_categories/', {
         type: "role_categories",
         attributes: {
             name: "grupo 5"
-        }
+        },
+          relationships: {
+          user: {
+              data: {
+                  id: "1",
+                  type: "users"
+          }
+        }}
     }
   }
   }
@@ -186,7 +207,14 @@ curl "https://core.eventtia.com/v1/role_categories/<id>" \
         "type": "role_categories",
         "attributes": {
             "name": "grupo 5"
-        }
+        },
+          "relationships": {
+          "user": {
+              "data": {
+                  "id": "1",
+                  "type": "users"
+          }
+        }}
     }
 }'
 ```
@@ -202,7 +230,14 @@ fetch('https://core.eventtia.com/v1/role_categories/<id>', {
         "type": "roles",
         "attributes": {
             "name": "grupo 10"
-        }
+        },
+          "relationships": {
+          "user": {
+              "data": {
+                  "id": "1",
+                  "type": "users"
+          }
+        }}
     }
   }
 })
