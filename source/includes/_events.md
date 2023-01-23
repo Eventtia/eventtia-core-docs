@@ -252,7 +252,15 @@ curl "https://core.eventtia.com/v1/events/" \
         "medium": "url_image",
         "large": "url_image",
       }
-    }
+    },
+      "relationships": {
+          "role_category": {
+              "data": {
+                  "id": "1",
+                  "type": "role_categories"
+          }
+        }
+      }
   }
 }'
 ```
@@ -307,7 +315,15 @@ fetch('https://core.eventtia.com/v1/events/', {
         large: "url_image",
       }
     }
-  }
+  },
+      relationships: {
+          role_category: {
+              data: {
+                  id: "1",
+                  type: "role_categories"
+          }
+        }
+      }
   }
 })
 ```
@@ -458,7 +474,15 @@ curl "https://core.eventtia.com/v1/events/<event_uri>" \
         "medium": "url_image",
         "large": "url_image",
       }
-    }
+    },
+      "relationships": {
+          "role_category": {
+              "data": {
+                  "id": "1",
+                  "type": "role_categories"
+          }
+        }
+      }
   }
 }'
 ```
@@ -520,7 +544,15 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>', {
           type: "settings"
         }
       }
-    }
+    },
+      relationships: {
+          role_category: {
+              data: {
+                  id: "1",
+                  type: "role_categories"
+          }
+        }
+      }
   }
   }
 })
