@@ -3046,7 +3046,15 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/"</span> <span class=
         "medium": "url_image",
         "large": "url_image",
       }
-    }
+    },
+      "relationships": {
+          "role_category": {
+              "data": {
+                  "id": "1",
+                  "type": "role_categories"
+          }
+        }
+      }
   }
 }'</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/'</span><span class="p">,</span> <span class="p">{</span>
@@ -3098,7 +3106,15 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/"</span> <span class=
         <span class="na">large</span><span class="p">:</span> <span class="s2">"url_image"</span><span class="p">,</span>
       <span class="p">}</span>
     <span class="p">}</span>
-  <span class="p">}</span>
+  <span class="p">},</span>
+      <span class="na">relationships</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">role_category</span><span class="p">:</span> <span class="p">{</span>
+              <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="na">id</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
+                  <span class="na">type</span><span class="p">:</span> <span class="s2">"role_categories"</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre>
@@ -3295,7 +3311,15 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;"</s
         "medium": "url_image",
         "large": "url_image",
       }
-    }
+    },
+      "relationships": {
+          "role_category": {
+              "data": {
+                  "id": "1",
+                  "type": "role_categories"
+          }
+        }
+      }
   }
 }'</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;'</span><span class="p">,</span> <span class="p">{</span>
@@ -3354,7 +3378,15 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;"</s
           <span class="na">type</span><span class="p">:</span> <span class="s2">"settings"</span>
         <span class="p">}</span>
       <span class="p">}</span>
-    <span class="p">}</span>
+    <span class="p">},</span>
+      <span class="na">relationships</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">role_category</span><span class="p">:</span> <span class="p">{</span>
+              <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="na">id</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
+                  <span class="na">type</span><span class="p">:</span> <span class="s2">"role_categories"</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
   <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">})</span>
