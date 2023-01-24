@@ -207,7 +207,7 @@ widget_seting_id | integer  | The widget_setting_id for the desired widget_setti
 # Get your token for further authorization
 curl "https://core.eventtia.com/v1/public/events/<event_uri>/sessions" \
   -H 'Content-Type: application/json' \
-  -X POST -d '{"email":"email@example.org", "uuid":"uuid"}'
+  -X POST -d '{"recaptcha_token": "","email":"email@example.org", "uuid":"uuid"}'
 ```
 
 ```javascript
@@ -218,6 +218,7 @@ fetch("https://core.eventtia.com/v1/public/events/<event_uri>/sessions", {
     'Content-Type': 'application/json',
   },
   body: {
+    recaptcha_token: "",
     email: "email@example.org",
     uuid: "uuid"
   }
