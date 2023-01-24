@@ -470,3 +470,130 @@ Parameter | Type | Description
 id | integer | The id for the desired user
 
 
+## Current-User
+
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/users/retrieve" \
+  -H 'Content-Type: application/json'
+```
+
+```javascript
+fetch('https://core.eventtia.com/v1/users/retrieve', {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer <your token>',
+  }})
+```
+
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
+
+> Example of a successful (200) response:
+
+```http
+HTTP/1.1 200 OK
+{
+"data": 
+    {
+      "id": 1,
+      "type": "users",
+      "attributes": {
+          "first_name": "first Name",
+          "last_name": "last Name",
+          "email": "user@eventtia.com",
+          "phone": "777777777",
+          "active": true,
+          "account_name": "account"
+      },
+      "relationships": {
+          "account": {
+              "data": {
+                  "id": "1",
+                  "type": "users"
+              }
+          },
+          "role": {
+              "data": {
+                  "id": "1",
+                  "type": "roles"
+              }
+            }
+        }
+    }
+  
+}
+
+```
+
+This endpoint return a current user
+
+### HTTP Request
+
+`GET /v1/users/retrieve`
+
+### Path Parameters
+
+Parameter |  Type   | Description
+--------- | ------- | -----------
+page | json | A page object as described <a href="#pagination">here</a>
+
+## Get User Categories
+
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/users/<id>/categories" \
+  -H 'Content-Type: application/json'
+```
+
+```javascript
+fetch('https://core.eventtia.com/v1/users/<id>/categories', {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer <your token>',
+  }})
+```
+
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate.
+
+> Make sure you replace &lt;id&gt; for the user to get. 
+
+> Example of a successful (200) response:
+
+```http
+HTTP/1.1 200 OK
+{
+  "data": [
+    {
+      "id": "4",
+      "type": "role_categories",
+      "attributes": {
+        "id": 4,
+        "name": "grupo 1"
+      }
+    }
+  ]
+}
+```
+
+>Example of User Not Found (404) response:
+
+```http
+HTTP/1.1 404 Not Found
+{
+  "message": "Couldn't find User"
+}
+```
+
+This endpoint return user's categories
+
+### HTTP Request
+
+`GET /v1/users/:id/categories`
+
+### Path Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+id | integer | id for the desired user
+
+
