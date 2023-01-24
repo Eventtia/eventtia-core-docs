@@ -525,7 +525,7 @@ HTTP/1.1 200 OK
 
 ```
 
-This endpoint return a list of users
+This endpoint return a current user
 
 ### HTTP Request
 
@@ -584,7 +584,7 @@ HTTP/1.1 404 Not Found
 }
 ```
 
-This endpoint return an user
+This endpoint return user's categories
 
 ### HTTP Request
 
