@@ -455,7 +455,7 @@ HTTP/1.1 404 Not Found
 }
 ```
 
-This endpoint changes payment method and returns stripe link to make the change
+This endpoint creates and returns a stripe session URL which allows the user to change his payment method.
 
 ### HTTP Request
 
