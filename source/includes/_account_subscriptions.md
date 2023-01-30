@@ -36,7 +36,8 @@ HTTP/1.1 200 OK
         "stripe_url": null,
         "cancel_at": null,
         "updated_by_id": 1,
-        "archived": false
+        "archived": false,
+        "card_number": "8001"
       },
       "relationships": {
         "commercial_plan": {
@@ -111,7 +112,8 @@ HTTP/1.1 200 OK
       "stripe_url": null,
       "cancel_at": null,
       "updated_by_id": 1,
-      "archived": false
+      "archived": false,
+      "card_number": "8001"
     },
     "relationships": {
       "commercial_plan": {
@@ -411,3 +413,56 @@ This endpoint destroy a account subscription and return it
 Parameter | Type | Description
 --------- | ---- | -----------
 id | integer | The id for the desired account subscription.
+
+## Change Payment Method
+
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/account_subscriptions/<id>/change_payment_method" \
+  -H 'Content-Type: application/json'\
+```
+
+```javascript
+fetch('https://core.eventtia.com/v1/account_subscriptions/<id>/change_payment_method', {
+  method: 'PUT',
+  headers: {
+    'Authorization': 'Bearer <your token>',
+  },
+})
+```
+
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate.
+> Make sure you replace &lt;id&gt; with the id for the account subscription to change payment method.
+
+
+> Example of a successful (200) response:
+
+```http
+HTTP/1.1 200 OK
+{
+  "session_url": "https://checkout.stripe.com/c/pay/cs_test_c1aP9uiu3067CGjrH0fOfM6UZeMTWzQukO1VY8Wfo9B3Er77oTWVVleudS#fidkdWxOYHwnPyd1blpxYHZxWjA0SUxgRE1GZGZpbndIfzxTYktJYFRdamczPHE3bG9QU3ZAdF1xT1VQM3EyPWxhZ0BdQFRySkk9QnVkMmd2V0pmN21vV0Z0dGdBSlFUUVFnST1VZElnbHxSNTUxX1xOM0NOMycpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBaZmppcGhrJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl"
+}
+```
+
+> Example of Not Found (404) response:
+
+```http
+HTTP/1.1 404 Not Found
+{
+  "message": {
+      "error": "code: 128"
+  }
+}
+```
+
+This endpoint changes payment method and returns stripe link to make the change
+
+### HTTP Request
+
+`PUT /v1/account_subscriptions/:id/change_payment_method`
+
+### Path Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+id | integer | The id for the desired account subscription
