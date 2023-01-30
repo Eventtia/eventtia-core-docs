@@ -565,6 +565,12 @@ Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
 
+### Include Options
+
+Value |  Type   | Description
+----- | ------- | -----------
+attendee| string | Include attendee relationships
+
 ## Get Public Ticket
 
 ```shell
@@ -632,6 +638,12 @@ Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
 ticket_uuid  | string | ticket uuid to which ticket belongs
+
+### Include Options
+
+Value |  Type   | Description
+----- | ------- | -----------
+attendee| string | Include attendee relationships
 
 ## Assign Public Ticket
 
