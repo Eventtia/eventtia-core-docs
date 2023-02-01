@@ -418,12 +418,12 @@ id | integer | The id for the desired account subscription.
 
 ```shell
 # Get your token for further authorization
-curl "https://core.eventtia.com/v1/account_subscriptions/<id>/change_payment_method" \
+curl "https://core.eventtia.com/v1/account_subscriptions/<id>/change-payment-method" \
   -H 'Content-Type: application/json'\
 ```
 
 ```javascript
-fetch('https://core.eventtia.com/v1/account_subscriptions/<id>/change_payment_method', {
+fetch('https://core.eventtia.com/v1/account_subscriptions/<id>/change-payment-method', {
   method: 'PUT',
   headers: {
     'Authorization': 'Bearer <your token>',
@@ -459,7 +459,7 @@ This endpoint creates and returns a stripe session URL which allows the user to 
 
 ### HTTP Request
 
-`PUT /v1/account_subscriptions/:id/change_payment_method`
+`PUT /v1/account_subscriptions/:id/change-payment-method`
 
 ### Path Parameters
 
