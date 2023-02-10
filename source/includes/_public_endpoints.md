@@ -252,6 +252,56 @@ Parameter | Type | Description
 email | string | email for attendee or member.
 uuid | string | uuid for permitted entities (Orders, Tickets).
 
+
+## Public Token Validation
+
+> To validate your token, use this code:
+
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/public/events/<event_uri>/sessions/validate" \
+  -H 'Content-Type: application/json' \
+```
+
+```javascript
+// Get your token for further authorization
+fetch("https://core.eventtia.com/v1/public/events/<event_uri>/sessions/validate", {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer <your public token>',
+  }
+})
+```
+
+> Example of a successful (200) response:
+
+```http
+HTTP/1.1 200 OK
+{
+        "id": "45",
+        "attributes": {
+            "assigned_to": "email@eventtia.com",
+            "uuid": "c0b042d63b",
+            "assigned_date": "2022-10-20T14:53:52.000Z",
+            "assigned_by_id": 1,
+            "archived": false
+        }
+    }
+```
+
+> Example of a 404 response:
+
+```http
+HTTP/1.1 401 Unauthorized
+{"message":"Invalid Token."}
+```
+
+You can get a validation for your token for a Member, User  or Attendee with this endpoint.
+
+### HTTP Request
+
+`GET /v1/public/events/:event_uri/sessions/validate`
+
 ## Create Public Attendees
 
 ```shell
