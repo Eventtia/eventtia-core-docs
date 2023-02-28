@@ -29,6 +29,10 @@ includes:
   - role_permissions
   - role_categories
   - speakers
+  - stats/account/account_endpoints
+  - stats/event/event_endpoints
+  - stats/role_category/role_category_endpoints
+  - stats/role/role_endpoints
   - tickets
   - users
   - widget_settings
