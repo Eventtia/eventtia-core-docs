@@ -44,18 +44,18 @@ HTTP/1.1 200 OK
 
 This endpoint list speakers belongs to event and return it
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/events/:event_uri/speakers/`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
 page | json | A page object as described <a href="#pagination">here</a>
 
-### Body Parameters
+***Body Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -123,11 +123,11 @@ HTTP/1.1 404 Not Found
 
 This endpoint get a speaker and return it
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/events/:event_uri/speaker/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -223,17 +223,17 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint create a speaker and return it
 
-### HTTP Request
+***HTTP Request***
 
 `POST /v1/events/:event_uri/speakers`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
 
-### Body Parameters
+***Body Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -335,18 +335,18 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint update a speaker and return it
 
-### HTTP Request
+***HTTP Request***
 
 `PUT /v1/events/:event_uri/speakers/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
    id     | integer | The id for the desired speaker
 
-### Body Parameters
+***Body Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -404,11 +404,11 @@ HTTP/1.1 200 OK
 
 This endpoint destroy a speaker and return it
 
-### HTTP Request
+***HTTP Request***
 
 `DELETE /v1/events/:event_uri/speakers/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------

@@ -50,12 +50,12 @@ HTTP/1.1 200 OK
 
 This endpoint request the reset password token and return it
 
-### HTTP Request
+***HTTP Request***
 
 `POST en/v1/passwords`
 
 
-### Body Parameters
+***Body Parameters***
 
 Parameter  |  Type   | Description
 ---------  | ------- | -----------
@@ -124,11 +124,11 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint updates the password of the user
 
-### HTTP Request
+***HTTP Request***
 
 `PUT en/v1/passwords`
 
-### Body Parameters
+***Body Parameters***
 
 Parameter  |  Type   | Description
 ---------  | ------- | -----------
@@ -198,11 +198,11 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint updates the password of the user
 
-### HTTP Request
+***HTTP Request***
 
 `PUT en/v1/passwords/activate`
 
-### Body Parameters
+***Body Parameters***
 
 Parameter  |  Type   | Description
 ---------  | ------- | -----------
@@ -272,11 +272,11 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint changes the password of the user
 
-### HTTP Request
+***HTTP Request***
 
 `PUT en/v1/passwords/change`
 
-### Body Parameters
+***Body Parameters***
 
 Parameter  |  Type   | Description
 ---------  | ------- | -----------

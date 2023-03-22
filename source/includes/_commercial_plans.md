@@ -59,7 +59,7 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint return a list of commercial plans
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/commercial_plans/`
 
@@ -124,11 +124,11 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint return a commercial plan
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/commercial_plans/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------

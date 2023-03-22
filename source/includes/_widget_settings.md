@@ -54,11 +54,11 @@ HTTP/1.1 200 OK
 
 This endpoint list widget settings belongs to event and return it
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/events/:event_uri/widget_settings/`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -166,18 +166,18 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint update an widget setting and return it
 
-### HTTP Request
+***HTTP Request***
 
 `PUT /v1/events/:event_uri/workshops/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
    id     | integer | The id for the desired widget setting
 
-### Body Parameters
+***Body Parameters***
 
 Parameter  |  Type  | Description
 ---------  | -------| -----------

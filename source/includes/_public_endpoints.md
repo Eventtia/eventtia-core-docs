@@ -74,11 +74,11 @@ HTTP/1.1 404 Not Found
 
 This endpoint return an event
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/public/events/:event_uri`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -123,11 +123,11 @@ HTTP/1.1 200 OK
 
 This endpoint list attendee types belongs to event and available for public registration.
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/public/events/:event_uri/attendee_types/`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -186,11 +186,11 @@ HTTP/1.1 200 OK
 
 This endpoint list widget settings belongs to event and return it
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/events/:event_uri/widget_settings/:widget_setting_id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -241,7 +241,7 @@ HTTP/1.1 404 Not Found
 
 You can get an authorization token for a Member or Attendee with this endpoint. Tokens issued by Eventtia are valid for 1 day.
 
-### HTTP Request
+***HTTP Request***
 
 `POST /v1/public/events/:event_uri/sessions`
 
@@ -298,7 +298,7 @@ HTTP/1.1 401 Unauthorized
 
 You can get a validation for your token for a Member, User  or Attendee with this endpoint.
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/public/events/:event_uri/sessions/validate`
 
@@ -400,17 +400,17 @@ HTTP/1.1 422 Unprocessable Entity
 ```
 
 This public endpoint create an attendee and return it
-### HTTP Request
+***HTTP Request***
 
 `POST /v1/public/events/:event_uri/attendees/`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
 
-### Body Parameters
+***Body Parameters***
 
 Parameter  |  Type   | Description
 ---------  | ------- | -----------
@@ -523,18 +523,18 @@ HTTP/1.1 422 Unprocessable Entity
 
 This public endpoint update an attendee and return it
 
-### HTTP Request
+***HTTP Request***
 
 `PUT /v1/public/events/:event_uri/attendees/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
    id     | integer | The id for the desired attendee
 
-### Body Parameters
+***Body Parameters***
 
 Parameter  |  Type   | Description
 ---------  | ------- | -----------
@@ -605,11 +605,11 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint list public tickets and return it
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/public/events/<event_uri>/tickets`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -678,11 +678,11 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint get a public ticket and return it
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/public/events/<event_uri>/tickets/<ticket_uuid>`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -768,11 +768,11 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint assign a public ticket and return it,
 
-### HTTP Request
+***HTTP Request***
 
 `POST /v1/public/events/:event_uri/tickets/assign`
 
-### Body Parameters
+***Body Parameters***
 
 Parameter  |  Type   | Description
 ---------  | ------- | -----------

@@ -37,11 +37,11 @@ HTTP/1.1 200 OK
 
 This endpoint returns a list of roles that your account have configured
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/roles/`
 
-### Path Parameters
+***Path Parameters***
 
 
 Parameter |  Type   | Description
@@ -96,11 +96,11 @@ HTTP/1.1 404 Not Found
 
 This endpoint returns a role given an id
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/roles/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -183,11 +183,11 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint creates a role and return it
 
-### HTTP Request
+***HTTP Request***
 
 `POST /v1/roles/`
 
-### Body Parameters
+***Body Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -295,17 +295,17 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint allows you to update a role information and associate or revoke permissions to the users that have associated it.
 
-### HTTP Request
+***HTTP Request***
 
 `PUT /v1/roles/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
 id | integer | Id of the desired role
 
-### Body Parameters
+***Body Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -352,11 +352,11 @@ HTTP/1.1 200 OK
 
 This endpoint destroys a role and return it
 
-### HTTP Request
+***HTTP Request***
 
 `DELETE /v1/roles/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------

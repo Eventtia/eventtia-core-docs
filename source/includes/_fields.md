@@ -81,7 +81,7 @@ HTTP/1.1 404 Not Found
 
 This endpoint allows you a list field info.
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/events/:event_uri/fields`
 
@@ -194,7 +194,7 @@ HTTP/1.1 422 Unprocessable Entity
 This endpoint allows you create a new input field. 
 You may provide field names and options in multiple languages. Currently, English, Spanish and French are supported. 
 
-### HTTP Request
+***HTTP Request***
 
 `POST /v1/events/:event_uri/fields`
 
@@ -396,11 +396,11 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint allows you update a field info.
 
-### HTTP Request
+***HTTP Request***
 
 `PUT /v1/events/:event_uri/fields/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -453,11 +453,11 @@ HTTP/1.1 200 OK
 
 This endpoint allows you destroy a field info.
 
-### HTTP Request
+***HTTP Request***
 
 `DELETE /v1/fields/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -513,17 +513,17 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint allows you update a Change Order info.
 
-### HTTP Request
+***HTTP Request***
 
 `PUT /v1/events/:event_uri/fields/change-order`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
 event_uri | string | The event_uri for the desired event.
 
-### Body Parameters
+***Body Parameters***
 Parameter | Type | Description
 --------- | ---- | -----------
 ordered_ids | json | Send of key (field_id) and value (order), example {"31":10, "32":9}

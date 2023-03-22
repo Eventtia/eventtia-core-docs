@@ -55,11 +55,11 @@ HTTP/1.1 200 OK
 ```
 This endpoint list all role permissions related to a given role
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/roles/:id/role_permissions/`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------

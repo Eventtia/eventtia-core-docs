@@ -80,7 +80,7 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint allows you create a new user and account
 
-### HTTP Request
+***HTTP Request***
 
 `POST /v1/registrations`
 

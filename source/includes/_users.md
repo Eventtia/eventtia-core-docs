@@ -57,11 +57,11 @@ HTTP/1.1 200 OK
 
 This endpoint return a list of users
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/users/`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -133,11 +133,11 @@ HTTP/1.1 404 Not Found
 
 This endpoint return an user
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/users/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -255,7 +255,7 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint create an user and return it
 
-### HTTP Request
+***HTTP Request***
 
 `POST /v1/users/`
 
@@ -388,11 +388,11 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint update an user and return it
 
-### HTTP Request
+***HTTP Request***
 
 `PUT /v1/users/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -459,11 +459,11 @@ HTTP/1.1 200 OK
 
 This endpoint destroy a user and return it
 
-### HTTP Request
+***HTTP Request***
 
 `DELETE /v1/users/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -527,11 +527,11 @@ HTTP/1.1 200 OK
 
 This endpoint return a current user
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/users/retrieve`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -586,11 +586,11 @@ HTTP/1.1 404 Not Found
 
 This endpoint return user's categories
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/users/:id/categories`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------

@@ -51,11 +51,11 @@ HTTP/1.1 200 OK
 
 This endpoint list orders belongs to event and return it
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/events/:event_uri/orders/`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -192,11 +192,11 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint create an order and return it unless your order requires a payment.
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/events/:event_uri/orders/`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------

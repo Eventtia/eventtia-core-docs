@@ -37,11 +37,11 @@ HTTP/1.1 200 OK
 ```
 list of permissions supported by the system and return it
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/permissions/`
 
-### Path Parameters
+***Path Parameters***
 
 
 Parameter |  Type   | Description

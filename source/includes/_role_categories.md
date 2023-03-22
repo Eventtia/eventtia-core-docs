@@ -37,11 +37,11 @@ HTTP/1.1 200 OK
 ```
 This endpoint allows you to list the role categories you have associated with your account.
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/role_categories/`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -102,11 +102,11 @@ HTTP/1.1 404 Not Found
 
 This endpoint returns a role category given an id
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/role_categories/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -186,11 +186,11 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint creates a role category and returns it
 
-### HTTP Request
+***HTTP Request***
 
 `POST /v1/role_categories/`
 
-### Body Parameters
+***Body Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -276,17 +276,17 @@ HTTP/1.1 404 Not Found
 
 This endpoint updates a role category and return it
 
-### HTTP Request
+***HTTP Request***
 
 `PUT /v1/role_categories/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
 id | integer | Id for the desired role category
 
-### Body Parameters
+***Body Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -331,11 +331,11 @@ HTTP/1.1 200 OK
 
 This endpoint destroys a role category and returns it
 
-### HTTP Request
+***HTTP Request***
 
 `DELETE /v1/role_categories/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------

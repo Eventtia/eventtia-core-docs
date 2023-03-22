@@ -59,11 +59,11 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint list tickets and return it
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/events/<event_uri>/orders/<order_uuid>/tickets`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -129,11 +129,11 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint get a ticket and return it
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/events/<event_uri>/orders/<order_uuid>/tickets/<ticket_uuid>`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
