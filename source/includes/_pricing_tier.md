@@ -60,11 +60,11 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint list pricing tiers and return it
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/events/:event_uri/pricing_tiers/?entity_id=:entity_id&entity_type=:entity_type`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -130,11 +130,11 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint get a pricing tier and return it
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/events/:event_uri/pricing_tiers/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -225,11 +225,11 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint create a pricing tier and return it, , Entities supported : AttendeeType.
 
-### HTTP Request
+***HTTP Request***
 
 `POST /v1/events/:event_uri/pricing_tiers/`
 
-### Body Parameters
+***Body Parameters***
 
 Parameter  |  Type   | Description
 ---------  | ------- | -----------
@@ -325,17 +325,17 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint update a pricing tier and return it, Entities supported : AttendeeType.
 
-### HTTP Request
+***HTTP Request***
 
 `PUT /v1/events/:event_uri/pricing_tiers/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
    id     | integer | The id for the desired pricing tier
-### Body Parameters
+***Body Parameters***
 
 Parameter  |  Type   | Description
 ---------  | ------- | -----------
@@ -390,11 +390,11 @@ HTTP/1.1 200 OK
 
 This endpoint destroy a pricing tier and return it
 
-### HTTP Request
+***HTTP Request***
 
 `DELETE /v1/events/:event_uri/pricing_tiers/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------

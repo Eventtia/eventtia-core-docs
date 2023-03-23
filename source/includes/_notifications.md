@@ -52,11 +52,11 @@ HTTP/1.1 200 OK
 
 This endpoint list notifications belongs to event and return it
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/events/:event_uri/notifications/`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -127,11 +127,11 @@ HTTP/1.1 404 Not Found
 
 This endpoint get an notification and return it
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/events/:event_uri/notifications/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -222,11 +222,11 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint create an notification and return it
 
-### HTTP Request
+***HTTP Request***
 
 `POST /v1/events/:event_uri/notifications/`
 
-### Body Parameters
+***Body Parameters***
 
 Parameter  |  Type   | Description
 ---------  | ------- | -----------
@@ -320,18 +320,18 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint update an notification and return it
 
-### HTTP Request
+***HTTP Request***
 
 `PUT /v1/events/:event_uri/notifications/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
    id     | integer | The id for the desired notification
 
-### Body Parameters
+***Body Parameters***
 
 Parameter  |  Type   | Description
 ---------  | ------- | -----------
@@ -392,11 +392,11 @@ HTTP/1.1 200 OK
 
 This endpoint destroy an notification and return it
 
-### HTTP Request
+***HTTP Request***
 
 `DELETE /v1/events/:event_uri/notifications/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -463,11 +463,11 @@ HTTP/1.1 404 Not Found
 }
 ```
 This endpoint list all the available notification language associated with the given notification.
-### HTTP Request
+***HTTP Request***
 
 `GET v1/events/:event_uri/notifications/:notification_id/notification_languages`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -533,11 +533,11 @@ HTTP/1.1 404 Not Found
 }
 ```
 This endpoint get the available notification language associated with the given notification.
-### HTTP Request
+***HTTP Request***
 
 `GET v1/events/:event_uri/notifications/:notification_id/notification_language/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -587,18 +587,18 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/notifications/:notificatio
 })
 ```
 > Example of a successful (200) response:
-### HTTP Request
+***HTTP Request***
 
 `POST /v1/events/:event_uri/notifications/:notification_id/notification_languages`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
 event_uri | string | The event_uri for the desired event.
 notification_id | integer | The id for the desired notification
 
-### Body Parameters
+***Body Parameters***
 Parameter | Type | Description
 --------- | ---- | -----------
 locale | string | Supported locales ['es', 'en', 'fr', 'it', 'de', 'ru']
@@ -647,11 +647,11 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/notifications/:notificatio
 })
 ```
 > Example of a successful (200) response:
-### HTTP Request
+***HTTP Request***
 
 `PUT /v1/events/:event_uri/notifications/:notification_id/notification_languages/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -659,7 +659,7 @@ event_uri | string | The event_uri for the desired event.
 notification_id | integer | The id for the desired notification
 id | integer  | The id for the desired notification language
 
-### Body Parameters
+***Body Parameters***
 Parameter | Type | Description
 --------- | ---- | -----------
 locale | string | Supported locales ['es', 'en', 'fr', 'it', 'de', 'ru']
@@ -714,11 +714,11 @@ HTTP/1.1 200 OK
 }
 ```
 
-### HTTP Request
+***HTTP Request***
 
 `DELETE v1/events/:event_uri/notifications/:notification_id/notification_languages/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------

@@ -71,7 +71,7 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint return a list of account subscriptions
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/account_subscriptions/`
 
@@ -138,11 +138,11 @@ HTTP/1.1 404 Not Found
 
 This endpoint return an account subscription
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/account_subscriptions/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -239,11 +239,11 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint create an account subscription and return it
 
-### HTTP Request
+***HTTP Request***
 
 `POST /v1/account_subscriptions/`
 
-### Body Parameters
+***Body Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -341,17 +341,17 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint update an account subscription and return it
 
-### HTTP Request
+***HTTP Request***
 
 `PUT /v1/account_subscriptions/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
 id | integer | The id for the desired account subscription
 
-### Body Parameters
+***Body Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -404,11 +404,11 @@ HTTP/1.1 200 OK
 
 This endpoint destroy a account subscription and return it
 
-### HTTP Request
+***HTTP Request***
 
 `DELETE /v1/account_subscriptions/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -457,11 +457,11 @@ HTTP/1.1 404 Not Found
 
 This endpoint creates and returns a stripe session URL which allows the user to change his payment method.
 
-### HTTP Request
+***HTTP Request***
 
 `PUT /v1/account_subscriptions/:id/change-payment-method`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------

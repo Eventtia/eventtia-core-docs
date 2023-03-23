@@ -56,11 +56,11 @@ HTTP/1.1 200 OK
 
 This endpoint list attendee types belongs to event and return it
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/events/:event_uri/attendee_types/`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -142,22 +142,22 @@ HTTP/1.1 404 Not Found
 
 This endpoint get an attendee type and return it
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/events/:event_uri/attendee_types/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
    id     | integer | The id for the desired attendee type
 
-### HTTP Request for optional include fields
+***HTTP Request*** for optional include fields
 
 `GET /v1/events/:event_uri/attendee_types/:id?include=value`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -269,11 +269,11 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint create an attendee type and return it
 
-### HTTP Request
+***HTTP Request***
 
 `POST /v1/events/:event_uri/attendee_types/`
 
-### Body Parameters
+***Body Parameters***
 
 Parameter  |  Type   | Description
 ---------  | ------- | -----------
@@ -385,18 +385,18 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint update an attendee type and return it
 
-### HTTP Request
+***HTTP Request***
 
 `PUT /v1/events/:event_uri/attendee_types/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
    id     | integer | The id for the desired attendee type
 
-### Body Parameters
+***Body Parameters***
 
 Parameter  |  Type   | Description
 ---------  | ------- | -----------
@@ -463,11 +463,11 @@ HTTP/1.1 200 OK
 
 This endpoint destroy an attendee type and return it
 
-### HTTP Request
+***HTTP Request***
 
 `DELETE /v1/events/:event_uri/attendee_types/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -523,11 +523,11 @@ HTTP/1.1 404 Not Found
 
 This endpoint get an attendee type and return his available seats
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/events/:event_uri/attendee_types/:id/available_seats`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -605,11 +605,11 @@ HTTP/1.1 404 Not Found
 }
 ```
 This endpoint list all the available fields associated with the given attendee type.
-### HTTP Request
+***HTTP Request***
 
 `GET v1/events/:event_uri/attendee_type/:entity_id/fields`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -673,18 +673,18 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/attendee_type/:entity_id/f
 })
 ```
 > Example of a successful (200) response:
-### HTTP Request
+***HTTP Request***
 
 `POST /v1/events/:event_uri/attendee_type/:entity_id/fields`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
 event_uri | string | The event_uri for the desired event.
 entity_id | integer | The id for the desired attendee type
 
-### Body Parameters
+***Body Parameters***
 Parameter | Type | Description
 --------- | ---- | -----------
 order | integer | Field order in the form.
@@ -712,11 +712,11 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/attendee_type/:entity_id/f
 ```
 This endpoint allows you to unassociated a field to the given attendee type form.
 
-### HTTP Request
+***HTTP Request***
 
 `DELETE v1/events/:event_uri/attendee_type/:entity_id/fields/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -771,18 +771,18 @@ HTTP/1.1 422 Unprocessable Entity
 ```
 This endpoint allows you to change the order in which the fields are displayed in the registration form.
 
-### HTTP Request
+***HTTP Request***
 
 `PUT /v1/events/:event_uri/attendee_types/:entity_id/fields/change-order`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter | Type | Description
 --------- | ---- | -----------
 event_uri | string | The event_uri for the desired event.
 entity_id | string | The id for the desired attendee type
 
-### Body Parameters
+***Body Parameters***
 Parameter | Type | Description
 --------- | ---- | -----------
 ordered_ids | json | Send of key (field_id) and value (order), example {"31":10, "32":9}

@@ -59,11 +59,11 @@ HTTP/1.1 200 OK
 
 This endpoint list workshops belongs to event and return it
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/events/:event_uri/workshops/`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -152,11 +152,11 @@ HTTP/1.1 404 Not Found
 
 This endpoint get an workshop and return it
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/events/:event_uri/workshops/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
@@ -289,17 +289,17 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint create an workshop and return it
 
-### HTTP Request
+***HTTP Request***
 
 `GET /v1/events/:event_uri/workshops/`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
 
-### Body Parameters
+***Body Parameters***
 
 Parameter  |  Type  | Description
 ---------  | -------| -----------
@@ -442,18 +442,18 @@ HTTP/1.1 422 Unprocessable Entity
 
 This endpoint update an workshop and return it
 
-### HTTP Request
+***HTTP Request***
 
 `PUT /v1/events/:event_uri/workshops/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | The event_uri for the desired event
    id     | integer | The id for the desired workshop
 
-### Body Parameters
+***Body Parameters***
 
 Parameter  |  Type  | Description
 ---------  | -------| -----------
@@ -539,11 +539,11 @@ HTTP/1.1 404 Not Found
 
 This endpoint destroy an workshop and return it
 
-### HTTP Request
+***HTTP Request***
 
 `DELETE /v1/events/:event_uri/workshops/:id`
 
-### Path Parameters
+***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
