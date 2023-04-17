@@ -445,7 +445,8 @@ HTTP/1.1 200 OK
             "attributes": {
                 "locale": "en",
                 "subject": "Email created",
-                "body": "<div class= 'body'> Hello${name}</div>"
+                "body": "<div class= 'body'> Hello${name}</div>",
+                "design": "{\"padding\":\"0px\"}"
             }
         }
     ]
@@ -515,7 +516,8 @@ HTTP/1.1 200 OK
             "attributes": {
                 "locale": "en",
                 "subject": "Email created",
-                "body": "<div class= 'body'> Hello${name}</div>"
+                "body": "<div class= 'body'> Hello${name}</div>",
+                "design": "{\"padding\":\"0px\"}"
             }
         }
 
@@ -560,7 +562,8 @@ curl "https://core.eventtia.com/v1/events/:event_uri/notifications/:notification
     "attributes": {
           "locale": "en",
           "subject": "Email created",
-          "body": "<div class='body'> Hello ${name}</div>"
+          "body": "<div class='body'> Hello ${name}</div>",
+          "design": "{\"padding\":\"0px\"}"
         }
   }
 }'
@@ -580,7 +583,8 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/notifications/:notificatio
     "attributes": {
           "locale": "en",
           "subject": "Email created",
-          "body": "<div class='body'> Hello ${name}</div>"
+          "body": "<div class='body'> Hello ${name}</div>",
+          "design": "{\"padding\":\"0px\"}"
         }
   }
   }
@@ -604,6 +608,7 @@ Parameter | Type | Description
 locale | string | Supported locales ['es', 'en', 'fr', 'it', 'de', 'ru']
 subject | string | Subject for notification.
 body    | string | Body for notification.
+design | json | json object with notifications data
 
 ## Update Notification Language
 This endpoint allows you to update a new notification language to the given notification.
@@ -620,7 +625,8 @@ curl "https://core.eventtia.com/v1/events/:event_uri/notifications/:notification
     "attributes": {
           "locale": "en",
           "subject": "Email created",
-          "body": "<div class='body'> Hello ${name}</div>"
+          "body": "<div class='body'> Hello ${name}</div>",
+          "design": "{\"padding\":\"0px\"}"
         }
   }
 }'
@@ -640,7 +646,8 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/notifications/:notificatio
     "attributes": {
           "locale": "en",
           "subject": "Email created",
-          "body": "<div class='body'> Hello ${name}</div>"
+          "body": "<div class='body'> Hello ${name}</div>",
+          "design": "{\"padding\":\"0px\"}"
         }
   }
   }
@@ -665,6 +672,7 @@ Parameter | Type | Description
 locale | string | Supported locales ['es', 'en', 'fr', 'it', 'de', 'ru']
 subject | string | Subject for notification.
 body    | string | Body for notification.
+design  | json | json object for notifications data
 
 
 ## Delete Notification Language
@@ -707,7 +715,8 @@ HTTP/1.1 200 OK
     "attributes": {
         "locale": "en",
         "subject": "Email created",
-        "body": "<div class= 'body'> Hello${name}</div>"
+        "body": "<div class= 'body'> Hello${name}</div>",
+        "design": "{\"padding\":\"0px\"}"
     }
     }
   }

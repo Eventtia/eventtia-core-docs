@@ -772,8 +772,8 @@ curl "https://core.eventtia.com/v1/events/<event_uri>/settings" \
         "pay_u_api_login": "33445ABCDE",
         "pay_u_test_mode": false,
         "currency": 4,
-        "vat_alias": "Recaudo",
-        "vat_value": 19,
+        "tax_alias": "Recaudo",
+        "tax_value": 19.0,
         "date_format": "dd/mm/yyyy",
         "time_format": "am_pm",
         "google_analytics_tracking_code": "A78Y55ABCD",
@@ -808,8 +808,8 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/settings', {
         pay_u_api_login: "33445ABCDE",
         pay_u_test_mode: false,
         currency: 4,
-        vat_alias: "Recaudo",
-        vat_value: 19,
+        tax_alias: "Recaudo",
+        tax_value: 19.0,
         date_format: "dd/mm/yyyy",
         time_format: "am_pm",
         google_analytics_tracking_code: "A78Y55ABCD",
@@ -846,8 +846,8 @@ HTTP/1.1 200 OK
       "pay_u_api_login": "33445ABCDE",
       "pay_u_test_mode": false,
       "currency": 4,
-      "vat_alias": "Recaudo",
-      "vat_value": 19,
+      "tax_alias": "Recaudo",
+      "tax_value": 19.0,
       "date_format": "dd/mm/yyyy",
       "time_format": "am_pm",
       "google_analytics_tracking_code": "33445ABCDE",
@@ -909,8 +909,8 @@ pay_u_account_id | string | pay u account id obtained from pay u dashboard
 pay_u_api_login | string | pay u api login obtained from pay u dashboard
 pay_u_test_mode | boolean | when testing your payments won't be any charge to your cards
 currency | string | your event currency for payments and invoices ['COP', 'USD', 'EUR', 'ARS', 'BRL', 'CLP', 'MXN', 'PEN', 'GBP', 'JOD', 'UYU', 'PYG', 'AED', 'CAD', 'VND', 'PHP', 'AUD', 'BOB', 'TND', 'SGD', 'CHF', 'CFA', 'ZAR', 'INR']
-vat_alias | string | how do you want to call your vat value
-vat_value | integer/float | Your event vat value
+tax_alias | string | how do you want to call your vat value
+tax_value | integer/float | Your event tax value
 available_languages | json | includes available key ( array with availables languages for event ) and default key ( a string with a single required language, included in available languages array)
 
 
