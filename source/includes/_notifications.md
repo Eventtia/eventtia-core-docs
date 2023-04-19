@@ -254,7 +254,7 @@ This endpoint create an notification and return it
 Parameter  |  Type   | Description
 ---------  | ------- | -----------
 name       | string  | Name for notification
-description | string | description for notification
+description | string | Description for notification
 entity_type| string  | Entity type for notification
 action     | string | Notification action [account_created, recover_password, attendee_created, attendee_rejected, attendee_confirmed, welcome_email]
 conditions  | json | Conditions for notifications
