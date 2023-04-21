@@ -237,7 +237,7 @@ name       | string  | Name for notification
 entity_type| string  | Entity type for notification
 action     | string | Notification action [account_created, recover_password, attendee_created, attendee_rejected, attendee_confirmed, welcome_email]
 conditions  | json | Conditions for notifications
-mass_notification  | booleand | Flag to identify mass notification
+mass_notification  | boolean | Flag to identify if the notification that is going to be created is massive
 
 ## Update Notification
 
@@ -346,7 +346,7 @@ name       | string  | Name for notification
 entity_type| string  | Entity type for notification
 action      | string | Notification action [account_created, recover_password, attendee_created, attendee_rejected, attendee_confirmed, welcome_email]
 conditions  | json | Conditions for notifications
-mass_notification  | booleand | Flag to identify mass notification
+mass_notification  | boolean | Flag to identify if the notification that is going to be created is massive
 
 ## Destroy Notification
 
@@ -524,7 +524,7 @@ HTTP/1.1 404 Not Found
   }
 }
 ```
-This endpoint get the mass notifications stats and return it
+This endpoint allows you to obtain the progress and stats of a massive notification after the user sent it.
 
 ***HTTP Request***
 
