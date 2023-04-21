@@ -534,7 +534,7 @@ This endpoint allows you to obtain the progress and stats of a massive notificat
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
-event_uri | string  | The event_uri for the desired event
+event_uri | string  | event_uri for the desired event
    id     | integer | The id for the desired notification
 
 
@@ -857,4 +857,4 @@ Parameter | Type | Description
 --------- | ---- | -----------
 event_uri | string | The event_uri for the desired event.
 notification_id | integer | The id for the desired notification
-id | integer | The id for the notification language
+id | integer | Id for the desired notification language
