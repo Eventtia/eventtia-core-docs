@@ -166,6 +166,7 @@ curl "https://core.eventtia.com/v1/events/<event_uri>/notifications/" \
       "name": "Welcome to Ticketing",
       "description": "description for a notification",
       "entity_type": "User",
+      "mass_notification": false,
       "action": "account_created"
     }
   }
@@ -185,6 +186,7 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/notifications/', {
       name: "Welcome to Ticketing",
       description: "description for a notification",
       entity_type: "User",
+      mass_notification: false,
       action: "account_created"
     }
   }
@@ -210,7 +212,8 @@ HTTP/1.1 200 OK
       "model": null,
       "entity_type": "User",
       "action": "account_created",
-      "conditions": null
+      "conditions": null,
+      "type": "SingleNotification"
     },
     "relationships": {
       "events": {
@@ -258,6 +261,7 @@ description | string | Description for notification
 entity_type| string  | Entity type for notification
 action     | string | Notification action [account_created, recover_password, attendee_created, attendee_rejected, attendee_confirmed, welcome_email]
 conditions  | json | Conditions for notifications
+mass_notification  | boolean | Flag to identify if the notification that is going to be created is massive
 
 ## Update Notification
 
@@ -272,6 +276,7 @@ curl "https://core.eventtia.com/v1/events/<event_uri>/notifications/<id>" \
       "name": "Welcome to Ticketing",
       "description": "description for a notification",
       "entity_type": "User",
+      "mass_notification": false,
       "action": "account_created"
     }
   }
@@ -291,6 +296,7 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/notifications/<id>', {
       name: "Welcome to Ticketing",
       description: "description for a notification",
       entity_type: "User",
+      "mass_notification": false,
       action: "account_created"
     }
   }
@@ -318,7 +324,8 @@ HTTP/1.1 200 OK
       "model": null,
       "entity_type": "User",
       "action": "account_created",
-      "conditions": null
+      "conditions": null,
+      "type": "SingleNotification"
     },
     "relationships": {
       "events": {
@@ -373,6 +380,7 @@ description | string | Description for notification
 entity_type| string  | Entity type for notification
 action      | string | Notification action [account_created, recover_password, attendee_created, attendee_rejected, attendee_confirmed, welcome_email]
 conditions  | json | Conditions for notifications
+mass_notification  | boolean | Flag to identify if the notification that is going to be created is massive
 
 ## Destroy Notification
 
@@ -411,7 +419,8 @@ HTTP/1.1 200 OK
       "model": null,
       "entity_type": "User",
       "action": "account_created",
-      "conditions": null
+      "conditions": null,
+      "type": "SingleNotification"
     },
     "relationships": {
       "events": {
@@ -444,6 +453,130 @@ Parameter |  Type   | Description
 event_uri | string  | The event_uri for the desired event
    id     | integer | The id for the desired notification
 
+
+
+## Send Notification
+
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/notifications/<id>/deliver" \
+  -H 'Content-Type: application/json'
+```
+
+```javascript
+fetch('https://core.eventtia.com/v1/events/<event_uri>/notifications/<id>/deliver', {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer <your token>',
+  }
+})
+```
+
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
+
+> Make sure you replace &lt;event uri&gt; with the event uri for the event.
+
+> Make sure you replace &lt;id&gt; with the id for the notification to obtain. 
+
+> Example of a successful (200) response:
+
+```http
+HTTP/1.1 200 OK
+{
+  "status": 200
+}
+```
+
+>Example of Not Found (404) response: 
+
+```http
+HTTP/1.1 404 Not Found
+{
+  {
+    "message": "Couldn't find Notification"
+  }
+}
+```
+
+This endpoint sends mass notification and return it
+
+***HTTP Request***
+
+`GET /v1/events/:event_uri/notifications/:id/deliver`
+
+***Path Parameters***
+
+Parameter |  Type   | Description
+--------- | ------- | -----------
+event_uri | string  | The event_uri for the desired event
+   id     | integer | The id for the desired notification
+
+
+## Stats Notification
+
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/notifications/<id>/stats" \
+  -H 'Content-Type: application/json'
+```
+
+```javascript
+fetch('https://core.eventtia.com/v1/events/<event_uri>/notifications/<id>/stats', {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer <your token>',
+  }
+})
+```
+
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
+
+> Make sure you replace &lt;event uri&gt; with the event uri for the event.
+
+> Make sure you replace &lt;id&gt; with the id for the notification to obtain. 
+
+> Example of a successful (200) response:
+
+```http
+HTTP/1.1 200 OK
+{
+  "meta": {
+    "status": "sent",
+    "stats": {
+        "sent": 1,
+        "error_logs": 0,
+        "total_recipients": null
+    },
+    "error_logs": [
+        "error proccessing recipient: 1, error SMTP To address may not be blank: []",
+        "error proccessing recipient: 2, error SMTP To address may not be blank: []"
+    ]
+  }
+}
+```
+
+>Example of Not Found (404) response: 
+
+```http
+HTTP/1.1 404 Not Found
+{
+  {
+    "message": "Couldn't find Notification"
+  }
+}
+```
+This endpoint allows you to obtain the progress and stats of a massive notification after the user sent it.
+
+***HTTP Request***
+
+`GET /v1/events/:event_uri/notifications/:id/stats`
+
+***Path Parameters***
+
+Parameter |  Type   | Description
+--------- | ------- | -----------
+event_uri | string  | event_uri for the desired event
+   id     | integer | The id for the desired notification
 
 
 ## Notification Languages
@@ -774,4 +907,4 @@ Parameter | Type | Description
 --------- | ---- | -----------
 event_uri | string | The event_uri for the desired event.
 notification_id | integer | The id for the desired notification
-id | integer | The id for the notification language
+id | integer | Id for the desired notification language
