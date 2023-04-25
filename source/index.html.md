@@ -17,6 +17,7 @@ includes:
   - attendee_types
   - commercial_plans
   - events
+  - email_settings
   - fields
   - notifications
   - orders
