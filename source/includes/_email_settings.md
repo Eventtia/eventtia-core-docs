@@ -99,7 +99,7 @@ HTTP/1.1 200 OK
     }
 }
 ```
->Example of Role Not Found (404) response:
+>Example of Email Setting Not Found (404) response:
 
 ```http
 HTTP/1.1 404 Not Found
