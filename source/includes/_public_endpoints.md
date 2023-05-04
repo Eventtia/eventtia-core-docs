@@ -302,7 +302,7 @@ You can get a validation for your token for a Member, User  or Attendee with thi
 
 `GET /v1/public/events/:event_uri/sessions/validate`
 
-## Create Public Attendees
+## Create Public Attendees with Ticket
 
 ```shell
 # Get your token for further authorization
@@ -386,7 +386,7 @@ HTTP/1.1 200 OK
 }
 ```
 
->Example of Unprocessable Entity (422) response: 
+>Example of Unprocessable Entity (422) response:
 
 ```http
 HTTP/1.1 422 Unprocessable Entity
@@ -421,6 +421,135 @@ telephone  | integer | telephone for attendee
 attendee_type_id | integer | attendee type id who created attendee belongs
 fields_data | hash | key-value for custom fields data for created attendee
 photo      |  file   | photo for attendee
+
+
+## Create Public Attendees with Order
+
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/public/events/<event_uri>/attendees/" \
+  -H 'Content-Type: application/json'\
+   -X POST -d '{
+    "data": {
+      "type": "attendees",
+      "attributes": {
+        "attendee_type_id": 34,
+        "first_name": "Mary",
+        "last_name": "perez ossa",
+        "email": "maryperez@email.com",
+        telephone": "+56912345678",
+        "updated_by_id": 192,
+        "archived": false,
+        "fields_data": {
+          "f281": "george",
+          "f282": "downtown"
+        },
+        "photo_url": "url_Image_file"
+      },
+      "ticket":{
+        "uuid": "ti_12345"
+      }
+    }
+}'
+```
+
+```javascript
+fetch('https://core.eventtia.com/v1/public/events/<event_uri>/attendees/', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer <your public token>',
+  },
+  body: {
+    data: {
+      type: "attendees",
+      attributes: {
+        attendee_type_id: 34,
+        first_name: "Mary",
+        last_name: "perez ossa",
+        email: "maryperez@email.com",
+        telephone: "+56912345678",
+        updated_by_id: 192,
+        archived: false,
+        fields_data: {
+          "f281": "george",
+          "f282": "downtown"
+        },
+        photo_url: "url_Image_file"
+      }
+    },
+      ticket:{
+        uuid: "ti_12345"
+      }
+  }
+})
+```
+
+> Make sure you replace &lt;your public token&gt; with the JWT you get when you authenticate.
+
+> Make sure you replace &lt;event uri&gt; with the event uri for the event .
+
+> Example of a successful (200) response:
+
+```http
+HTTP/1.1 200 OK
+{
+  "data": {
+    "id": "6264284",
+    "type": "attendees",
+    "attributes": {
+      "first_name": "Rosa Maria",
+      "last_name": "Rosales Rojas",
+      "email": "rosales@email.com",
+      "telephone": "+56912345678",
+      "updated_by_id": "10461",
+      "archived": "false",
+      "fields_data": {
+        "f281": "george",
+        "f282": "downtown"
+      },
+      "photo_url": "url_Image_file"
+    }
+  }
+}
+```
+
+>Example of Unprocessable Entity (422) response:
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+{
+  "message": {
+    "email": [
+      "already taken"
+    ]
+  }
+}
+```
+
+This public endpoint create an attendee and return it
+***HTTP Request***
+
+`POST /v1/public/events/:event_uri/attendees/`
+
+***Path Parameters***
+
+Parameter |  Type   | Description
+--------- | ------- | -----------
+event_uri | string  | The event_uri for the desired event
+
+***Body Parameters***
+
+Parameter  |  Type   | Description
+---------  | ------- | -----------
+first_name | string  | first name for attendee
+last_name  | string  | last name for attendee
+email      | string  | email for attendee
+telephone  | integer | telephone for attendee
+attendee_type_id | integer | attendee type id who created attendee belongs
+fields_data | hash | key-value for custom fields data for created attendee
+photo      |  file   | photo for attendee
+ticket uuid | string | uuid for ticket who will be assigned to attendee created.
+
 
 ## Update Public Attendee
 
