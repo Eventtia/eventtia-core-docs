@@ -599,7 +599,10 @@
                     <a href="#public-token-validation" class="toc-h2 toc-link" data-title="Public Token Validation">Public Token Validation</a>
                   </li>
                   <li>
-                    <a href="#create-public-attendees" class="toc-h2 toc-link" data-title="Create Public Attendees">Create Public Attendees</a>
+                    <a href="#create-public-attendees-with-ticket" class="toc-h2 toc-link" data-title="Create Public Attendees with Ticket">Create Public Attendees with Ticket</a>
+                  </li>
+                  <li>
+                    <a href="#create-public-attendees-with-order" class="toc-h2 toc-link" data-title="Create Public Attendees with Order">Create Public Attendees with Order</a>
                   </li>
                   <li>
                     <a href="#update-public-attendee" class="toc-h2 toc-link" data-title="Update Public Attendee">Update Public Attendee</a>
@@ -7805,7 +7808,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/public/events/&lt;event_uri&
 <p><strong><em>HTTP Request</em></strong></p>
 
 <p><code>GET /v1/public/events/:event_uri/sessions/validate</code></p>
-<h2 id='create-public-attendees'>Create Public Attendees</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+<h2 id='create-public-attendees-with-ticket'>Create Public Attendees with Ticket</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
 curl <span class="s2">"https://core.eventtia.com/v1/public/events/&lt;event_uri&gt;/attendees/"</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
    -X POST -d <span class="s1">'{
@@ -7882,7 +7885,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/public/events/&lt;event_uri&
 <span class="s">}</span>
 </code></pre>
 <blockquote>
-<p>Example of Unprocessable Entity (422) response: </p>
+<p>Example of Unprocessable Entity (422) response:</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
 <span class="s">{</span>
@@ -7957,6 +7960,171 @@ curl <span class="s2">"https://core.eventtia.com/v1/public/events/&lt;event_uri&
 <td>photo</td>
 <td>file</td>
 <td>photo for attendee</td>
+</tr>
+</tbody></table>
+<h2 id='create-public-attendees-with-order'>Create Public Attendees with Order</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/public/events/&lt;event_uri&gt;/attendees/"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X POST -d <span class="s1">'{
+    "data": {
+      "type": "attendees",
+      "attributes": {
+        "attendee_type_id": 34,
+        "first_name": "Mary",
+        "last_name": "perez ossa",
+        "email": "maryperez@email.com",
+        telephone": "+56912345678",
+        "updated_by_id": 192,
+        "archived": false,
+        "fields_data": {
+          "f281": "george",
+          "f282": "downtown"
+        },
+        "photo_url": "url_Image_file"
+      },
+      "ticket":{
+        "uuid": "ti_12345"
+      }
+    }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/public/events/&lt;event_uri&gt;/attendees/'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your public token&gt;'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="s2">"attendees"</span><span class="p">,</span>
+      <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">attendee_type_id</span><span class="p">:</span> <span class="mi">34</span><span class="p">,</span>
+        <span class="na">first_name</span><span class="p">:</span> <span class="s2">"Mary"</span><span class="p">,</span>
+        <span class="na">last_name</span><span class="p">:</span> <span class="s2">"perez ossa"</span><span class="p">,</span>
+        <span class="na">email</span><span class="p">:</span> <span class="s2">"maryperez@email.com"</span><span class="p">,</span>
+        <span class="na">telephone</span><span class="p">:</span> <span class="s2">"+56912345678"</span><span class="p">,</span>
+        <span class="na">updated_by_id</span><span class="p">:</span> <span class="mi">192</span><span class="p">,</span>
+        <span class="na">archived</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">fields_data</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"f281"</span><span class="p">:</span> <span class="s2">"george"</span><span class="p">,</span>
+          <span class="s2">"f282"</span><span class="p">:</span> <span class="s2">"downtown"</span>
+        <span class="p">},</span>
+        <span class="na">photo_url</span><span class="p">:</span> <span class="s2">"url_Image_file"</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+      <span class="na">ticket</span><span class="p">:{</span>
+        <span class="na">uuid</span><span class="p">:</span> <span class="s2">"ti_12345"</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace &lt;your public token&gt; with the JWT you get when you authenticate.</p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event .</p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "6264284",</span>
+<span class="s">    "type": "attendees",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "first_name": "Rosa Maria",</span>
+<span class="s">      "last_name": "Rosales Rojas",</span>
+<span class="s">      "email": "rosales@email.com",</span>
+<span class="s">      "telephone": "+56912345678",</span>
+<span class="s">      "updated_by_id": "10461",</span>
+<span class="s">      "archived": "false",</span>
+<span class="s">      "fields_data": {</span>
+<span class="s">        "f281": "george",</span>
+<span class="s">        "f282": "downtown"</span>
+<span class="s">      },</span>
+<span class="s">      "photo_url": "url_Image_file"</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "email": [</span>
+<span class="s">      "already taken"</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This public endpoint create an attendee and return it
+<strong><em>HTTP Request</em></strong></p>
+
+<p><code>POST /v1/public/events/:event_uri/attendees/</code></p>
+
+<p><strong><em>Path Parameters</em></strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+</tbody></table>
+
+<p><strong><em>Body Parameters</em></strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>first_name</td>
+<td>string</td>
+<td>first name for attendee</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>last name for attendee</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>email for attendee</td>
+</tr>
+<tr>
+<td>telephone</td>
+<td>integer</td>
+<td>telephone for attendee</td>
+</tr>
+<tr>
+<td>attendee_type_id</td>
+<td>integer</td>
+<td>attendee type id who created attendee belongs</td>
+</tr>
+<tr>
+<td>fields_data</td>
+<td>hash</td>
+<td>key-value for custom fields data for created attendee</td>
+</tr>
+<tr>
+<td>photo</td>
+<td>file</td>
+<td>photo for attendee</td>
+</tr>
+<tr>
+<td>ticket uuid</td>
+<td>string</td>
+<td>uuid for ticket who will be assigned to attendee created.</td>
 </tr>
 </tbody></table>
 <h2 id='update-public-attendee'>Update Public Attendee</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
