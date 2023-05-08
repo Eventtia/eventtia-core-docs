@@ -42,13 +42,9 @@ HTTP/1.1 200 OK
                     "es": "326 name, locale: es"
                 },
                 "values": null,
-                "settings": {
-                    "available_public_listings": true
-                },
-                "validations": {
-                    "validation_type": "letters"
-                },
                 "type": "Fields::TextField",
+                "available_public_listings": true,
+                "validation_type": "letters",
                 "order": 1,
                 "entity_id": 4,
                 "default": true,
@@ -158,16 +154,11 @@ HTTP/1.1 200 OK
           "fr": "326 name, locale: fr"
         },
         "values": null,
-        "settings": {
-          "available_public_listings": true
-        },
         "type": "Fields::TextField",
-        "validations": {
-          "letters": true
-        },
         "order": 1,
         "entity_id": 62374,
         "maximum_characters": "10",
+        "available_public_listings": true
         "validation_type": "numbers",
         "repeat_value": "10",
         "allowed_values": ["one","one"],
