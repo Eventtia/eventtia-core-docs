@@ -492,6 +492,9 @@
                     <a href="#stats-notification" class="toc-h2 toc-link" data-title="Stats Notification">Stats Notification</a>
                   </li>
                   <li>
+                    <a href="#tags-notification" class="toc-h2 toc-link" data-title="Tags Notification">Tags Notification</a>
+                  </li>
+                  <li>
                     <a href="#notification-languages" class="toc-h2 toc-link" data-title="Notification Languages">Notification Languages</a>
                   </li>
                   <li>
@@ -6011,6 +6014,100 @@ curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&
 <td>id</td>
 <td>integer</td>
 <td>The id for the desired notification</td>
+</tr>
+</tbody></table>
+<h2 id='tags-notification'>Tags Notification</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/tags"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/tags'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event.</p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">    "data": {</span>
+<span class="s">        "id": "tags for notifications event id",</span>
+<span class="s">        "type": "tags",</span>
+<span class="s">        "attributes": {</span>
+<span class="s">            "event_tags": {</span>
+<span class="s">                "default": [</span>
+<span class="s">                    "event-name",</span>
+<span class="s">                    "event-description",</span>
+<span class="s">                    "event-start_date",</span>
+<span class="s">                    "event-end_date",</span>
+<span class="s">                    "event-timezone",</span>
+<span class="s">                    "event-location"</span>
+<span class="s">                ],</span>
+<span class="s">                "fields": []</span>
+<span class="s">            },</span>
+<span class="s">            "attendee_type_tags": {</span>
+<span class="s">                "default": [</span>
+<span class="s">                    "attendee_type-name",</span>
+<span class="s">                    "attendee_type-description"</span>
+<span class="s">                ],</span>
+<span class="s">                "fields": []</span>
+<span class="s">            },</span>
+<span class="s">            "attendee_tags": {</span>
+<span class="s">                "default": [</span>
+<span class="s">                    "attendee-first_name",</span>
+<span class="s">                    "attendee-last_name",</span>
+<span class="s">                    "attendee-email",</span>
+<span class="s">                    "attendee-alternative_email",</span>
+<span class="s">                    "attendee-telephone",</span>
+<span class="s">                    "attendee-company",</span>
+<span class="s">                    "attendee-birthdate"</span>
+<span class="s">                ],</span>
+<span class="s">                "fields": [</span>
+<span class="s">                    "attendee-f653",</span>
+<span class="s">                    "attendee-f654",</span>
+<span class="s">                    "attendee-f655"</span>
+<span class="s">                ]</span>
+<span class="s">            }</span>
+<span class="s">        }</span>
+<span class="s">    }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "error": [</span>
+<span class="s">      "code: 128"</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint allows you to obtain the available tags for notification</p>
+
+<p><strong><em>HTTP Request</em></strong></p>
+
+<p><code>GET /v1/events/:event_uri/notifications/stats</code></p>
+
+<p><strong><em>Path Parameters</em></strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>event_uri for the desired event</td>
 </tr>
 </tbody></table>
 <h2 id='notification-languages'>Notification Languages</h2><h2 id='index-notification-languages'>Index Notification Languages</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
