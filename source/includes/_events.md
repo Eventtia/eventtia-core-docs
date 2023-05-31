@@ -95,6 +95,7 @@ start_date_lower_bound | datetime | Filters results by event's start_date after 
 end_date_upper_bound | datetime | Filters results by event's end_date before this bound date ej 2020-07-16 23:00.
 end_date_lower_bound | datetime | Filters results by event's end_date after this bound date ej 2020-07-16 23:00.
 active_status | boolean | Send true if you want to get only active events.
+order | string | order to filtered elements, attributes permitted: [ start_date, end_date, created_at ], example: 'start_date desc'.
 
 ## Get Event
 
