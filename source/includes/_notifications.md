@@ -578,6 +578,100 @@ Parameter |  Type   | Description
 event_uri | string  | event_uri for the desired event
    id     | integer | The id for the desired notification
 
+## Tags Notification
+
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/notifications/tags" \
+  -H 'Content-Type: application/json'
+```
+
+```javascript
+fetch('https://core.eventtia.com/v1/events/<event_uri>/notifications/tags', {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer <your token>',
+  }
+})
+```
+
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
+
+> Make sure you replace &lt;event uri&gt; with the event uri for the event.
+
+> Example of a successful (200) response:
+
+```http
+HTTP/1.1 200 OK
+{
+    "data": {
+        "id": "tags for notifications event id",
+        "type": "tags",
+        "attributes": {
+            "event_tags": {
+                "default": [
+                    "event-name",
+                    "event-description",
+                    "event-start_date",
+                    "event-end_date",
+                    "event-timezone",
+                    "event-location"
+                ],
+                "fields": []
+            },
+            "attendee_type_tags": {
+                "default": [
+                    "attendee_type-name",
+                    "attendee_type-description"
+                ],
+                "fields": []
+            },
+            "attendee_tags": {
+                "default": [
+                    "attendee-first_name",
+                    "attendee-last_name",
+                    "attendee-email",
+                    "attendee-alternative_email",
+                    "attendee-telephone",
+                    "attendee-company",
+                    "attendee-birthdate"
+                ],
+                "fields": [
+                    "attendee-f653",
+                    "attendee-f654",
+                    "attendee-f655"
+                ]
+            }
+        }
+    }
+}
+```
+
+>Example of Unprocessable Entity (422) response:
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+{
+  "message": {
+    "error": [
+      "code: 128"
+    ]
+  }
+}
+```
+This endpoint allows you to obtain the available tags for notification
+
+***HTTP Request***
+
+`GET /v1/events/:event_uri/notifications/stats`
+
+***Path Parameters***
+
+Parameter |  Type   | Description
+--------- | ------- | -----------
+event_uri | string  | event_uri for the desired event
+
+
 
 ## Notification Languages
 ## Index Notification Languages
