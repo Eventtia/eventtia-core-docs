@@ -95,6 +95,7 @@ start_date_lower_bound | datetime | Filters results by event's start_date after 
 end_date_upper_bound | datetime | Filters results by event's end_date before this bound date ej 2020-07-16 23:00.
 end_date_lower_bound | datetime | Filters results by event's end_date after this bound date ej 2020-07-16 23:00.
 active_status | boolean | Send true if you want to get only active events.
+order | string | order to filtered elements, attributes permitted: [ start_date, end_date, created_at ], example: 'start_date desc'.
 
 ## Get Event
 
@@ -809,6 +810,7 @@ curl "https://core.eventtia.com/v1/events/<event_uri>/settings" \
         "tax_value": 19.0,
         "date_format": "dd/mm/yyyy",
         "time_format": "am_pm",
+        "sender_name": Sender Custom Name ,
         "google_analytics_tracking_code": "A78Y55ABCD",
         "google_tag_manager_code": "11223ABCDE",
         "available_languages": {
@@ -845,6 +847,7 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/settings', {
         tax_value: 19.0,
         date_format: "dd/mm/yyyy",
         time_format: "am_pm",
+        sender_name: "Sender Custom Name" ,
         google_analytics_tracking_code: "A78Y55ABCD",
         google_tag_manager_code: "11223ABCDE",
         available_languages: {
@@ -883,6 +886,7 @@ HTTP/1.1 200 OK
       "tax_value": 19.0,
       "date_format": "dd/mm/yyyy",
       "time_format": "am_pm",
+      "sender_name": Sender Custom Name ,
       "google_analytics_tracking_code": "33445ABCDE",
       "google_tag_manager_code": "11223ABCDE",
       "available_languages": {
@@ -945,5 +949,6 @@ currency | string | your event currency for payments and invoices ['COP', 'USD',
 tax_alias | string | how do you want to call your vat value
 tax_value | integer/float | Your event tax value
 available_languages | json | includes available key ( array with availables languages for event ) and default key ( a string with a single required language, included in available languages array)
+sender_name | string | Sender Name for event notifications
 
 
