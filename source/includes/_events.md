@@ -810,6 +810,7 @@ curl "https://core.eventtia.com/v1/events/<event_uri>/settings" \
         "tax_value": 19.0,
         "date_format": "dd/mm/yyyy",
         "time_format": "am_pm",
+        "sender_name": Sender Custom Name ,
         "google_analytics_tracking_code": "A78Y55ABCD",
         "google_tag_manager_code": "11223ABCDE",
         "available_languages": {
@@ -846,6 +847,7 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/settings', {
         tax_value: 19.0,
         date_format: "dd/mm/yyyy",
         time_format: "am_pm",
+        sender_name: "Sender Custom Name" ,
         google_analytics_tracking_code: "A78Y55ABCD",
         google_tag_manager_code: "11223ABCDE",
         available_languages: {
@@ -884,6 +886,7 @@ HTTP/1.1 200 OK
       "tax_value": 19.0,
       "date_format": "dd/mm/yyyy",
       "time_format": "am_pm",
+      "sender_name": Sender Custom Name ,
       "google_analytics_tracking_code": "33445ABCDE",
       "google_tag_manager_code": "11223ABCDE",
       "available_languages": {
@@ -946,5 +949,6 @@ currency | string | your event currency for payments and invoices ['COP', 'USD',
 tax_alias | string | how do you want to call your vat value
 tax_value | integer/float | Your event tax value
 available_languages | json | includes available key ( array with availables languages for event ) and default key ( a string with a single required language, included in available languages array)
+sender_name | string | Sender Name for event notifications
 
 
