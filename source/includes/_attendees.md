@@ -36,6 +36,9 @@ HTTP/1.1 200 OK
         "email": "rosales@email.com",
         "telephone": "+56912345678",
         "updated_by_id": "10461",
+        "status": "created",
+        "checked": false,
+        "checked_date": "2023-05-05 09:00",
         "archived": "false",
         "fields_data": {
           "f281": "george",
@@ -64,6 +67,9 @@ first_name | string | Filters results by the attendee's first name.
 last_name | string | Filters results by the attendee's last name.
 email | string | Filters results by the attendee's email.
 telephone | string | Filters results by the attendee's telephone.
+status | string | attendee status ['pending', 'cancelled', 'rejected', 'confirmed']. 
+checked | boolean | attendee has been checked
+checked_date | date | date for last checking
 attendee_type_id | integer | Filters results by attendee type.
 event_id | integer | Filters results by event
 user_id | integer | Filters results by user
@@ -106,6 +112,9 @@ HTTP/1.1 200 OK
         "last_name": "Rosales Rojas",
         "email": "rosales@email.com",
         "telephone": "+56912345678",
+        "status": "created",
+        "checked": false,
+        "checked_date": "2023-05-05 09:00", 
         "updated_by_id": "10461",
         "archived": "false",
         "fields_data": {
@@ -157,7 +166,10 @@ curl "https://core.eventtia.com/v1/events/<event_uri>/attendees/" \
         "first_name": "Mary",
         "last_name": "perez ossa",
         "email": "maryperez@email.com",
-        telephone": "+56912345678",
+        "telephone": "+56912345678",
+        "status": "created",
+        "checked": false,
+        "checked_date": "2023-05-05 09:00",
         "updated_by_id": 192,
         "archived": false,
         "fields_data": {
@@ -185,6 +197,9 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/', {
         last_name: "perez ossa",
         email: "maryperez@email.com",
         telephone: "+56912345678",
+        status: "created",
+        checked: false,
+        checked_date: "2023-05-05 09:00",
         updated_by_id: 192,
         archived: false,
         fields_data: {
@@ -215,6 +230,9 @@ HTTP/1.1 200 OK
       "last_name": "Rosales Rojas",
       "email": "rosales@email.com",
       "telephone": "+56912345678",
+      "status": "created",
+      "checked": false,
+      "checked_date": null, 
       "updated_by_id": "10461",
       "archived": "false",
       "fields_data": {
@@ -277,7 +295,10 @@ curl "https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>" \
         "first_name": "Mary",
         "last_name": "perez ossa",
         "email": "maryperez@email.com",
-        telephone": "+56912345678",
+        "telephone": "+56912345678",
+        "status": "created",
+        "checked": false,
+        "checked_date": null,
         "updated_by_id": 192,
         "archived": false,
         "fields_data": {
@@ -304,6 +325,9 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>', {
         last_name: "perez ossa",
         email: "maryperez@email.com",
         telephone: "+56912345678",
+        status: "created",
+        checked: false,
+        checked_date: "2023-05-05 09:00",
         updated_by_id: 192,
         archived: false,
         fields_data: {
@@ -337,6 +361,9 @@ HTTP/1.1 200 OK
       "last_name": "perez ossa",
       "email": "maryperez@email.com",
       "telephone": "+56912345678",
+      "status": "created",
+      "checked": false,
+      "checked_date": "2023-05-05 09:00",
       "updated_by_id": "192",
       "archived": "false",
       "fields_data": {
@@ -386,6 +413,7 @@ telephone  | integer | telephone for attendee
 attendee_type_id | integer | attendee type id who created attendee belongs
 fields_data | hash | key-value for custom fields data for created attendee
 photo      |  file   | photo for attendee
+status | string | attendee status ['pending', 'cancelled', 'rejected', 'confirmed']. 
 
 ## Destroy Attendee
 
@@ -424,6 +452,9 @@ HTTP/1.1 200 OK
       "last_name": "perez ossa",
       "email": "maryperez@email.com",
       "telephone": "+56912345678",
+      "status": "created",
+      "checked": false,
+      "checked_date": "2023-05-05 09:00",
       "updated_by_id": "192",
       "archived": "true",
       "fields_data": {
