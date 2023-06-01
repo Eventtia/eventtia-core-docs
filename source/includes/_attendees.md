@@ -480,3 +480,84 @@ Parameter |  Type   | Description
 event_uri | string  | The event_uri for the desired event
    id     | integer | The id for the desired attendee
 
+
+## Confirm Attendee
+
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>/confirming" \
+  -H 'Content-Type: application/json'\
+   -X POST -d
+```
+
+```javascript
+fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>/confirming', {
+  method: 'POST',
+})
+```
+> Example of successful (200) response:
+
+```http
+HTTP/1.1 200 OK
+
+```
+
+> Example of Unprocessable Entity (422) response:
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+{
+  "message": {
+    "error": [
+      128
+    ]
+  }
+}
+```
+
+This endpoint to confirm attendee
+
+***HTTP Request***
+
+`POST en/v1/events/:event_uri/attendees/:id/confirming`
+
+## Checking Attendee
+
+```shell
+# Get your token for further authorization
+curl "https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>/checking" \
+  -H 'Content-Type: application/json'\
+   -X POST -d
+```
+
+```javascript
+fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>/cchecking', {
+  method: 'POST',
+})
+```
+> Example of successful (200) response:
+
+```http
+HTTP/1.1 200 OK
+
+```
+
+> Example of Unprocessable Entity (422) response:
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+{
+  "message": {
+    "error": [
+      128
+    ]
+  }
+}
+```
+
+This endpoint to checking attendee
+
+***HTTP Request***
+
+`POST en/v1/events/:event_uri/attendees/:id/checking`
+
