@@ -287,6 +287,12 @@
                   <li>
                     <a href="#destroy-attendee" class="toc-h2 toc-link" data-title="Destroy Attendee">Destroy Attendee</a>
                   </li>
+                  <li>
+                    <a href="#confirm-attendee" class="toc-h2 toc-link" data-title="Confirm Attendee">Confirm Attendee</a>
+                  </li>
+                  <li>
+                    <a href="#checking-attendee" class="toc-h2 toc-link" data-title="Checking Attendee">Checking Attendee</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -390,23 +396,6 @@
                             <a href="#available-settings-3" class="toc-h3 toc-link" data-title="Available settings">Available settings</a>
                           </li>
                       </ul>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#email-settings" class="toc-h1 toc-link" data-title="Email Settings">Email Settings</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#list-email-settings" class="toc-h2 toc-link" data-title="List Email Settings">List Email Settings</a>
-                  </li>
-                  <li>
-                    <a href="#get-email-settings" class="toc-h2 toc-link" data-title="Get Email Settings">Get Email Settings</a>
-                  </li>
-                  <li>
-                    <a href="#create-email-setting" class="toc-h2 toc-link" data-title="Create Email Setting">Create Email Setting</a>
-                  </li>
-                  <li>
-                    <a href="#destroy-email-setting" class="toc-h2 toc-link" data-title="Destroy Email Setting">Destroy Email Setting</a>
                   </li>
               </ul>
           </li>
@@ -1526,6 +1515,9 @@ curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&
 <span class="s">        "email": "rosales@email.com",</span>
 <span class="s">        "telephone": "+56912345678",</span>
 <span class="s">        "updated_by_id": "10461",</span>
+<span class="s">        "status": "created",</span>
+<span class="s">        "checked": false,</span>
+<span class="s">        "checked_date": "2023-05-05 09:00",</span>
 <span class="s">        "archived": "false",</span>
 <span class="s">        "fields_data": {</span>
 <span class="s">          "f281": "george",</span>
@@ -1583,6 +1575,21 @@ curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&
 <td>Filters results by the attendee&#39;s telephone.</td>
 </tr>
 <tr>
+<td>status</td>
+<td>string</td>
+<td>attendee status [&#39;pending&#39;, &#39;cancelled&#39;, &#39;rejected&#39;, &#39;confirmed&#39;].</td>
+</tr>
+<tr>
+<td>checked</td>
+<td>boolean</td>
+<td>attendee has been checked</td>
+</tr>
+<tr>
+<td>checked_date</td>
+<td>date</td>
+<td>date for last checking</td>
+</tr>
+<tr>
 <td>attendee_type_id</td>
 <td>integer</td>
 <td>Filters results by attendee type.</td>
@@ -1628,6 +1635,9 @@ curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&
 <span class="s">        "last_name": "Rosales Rojas",</span>
 <span class="s">        "email": "rosales@email.com",</span>
 <span class="s">        "telephone": "+56912345678",</span>
+<span class="s">        "status": "created",</span>
+<span class="s">        "checked": false,</span>
+<span class="s">        "checked_date": "2023-05-05 09:00", </span>
 <span class="s">        "updated_by_id": "10461",</span>
 <span class="s">        "archived": "false",</span>
 <span class="s">        "fields_data": {</span>
@@ -1687,7 +1697,10 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/att
         "first_name": "Mary",
         "last_name": "perez ossa",
         "email": "maryperez@email.com",
-        telephone": "+56912345678",
+        "telephone": "+56912345678",
+        "status": "created",
+        "checked": false,
+        "checked_date": "2023-05-05 09:00",
         "updated_by_id": 192,
         "archived": false,
         "fields_data": {
@@ -1712,6 +1725,9 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/att
         <span class="na">last_name</span><span class="p">:</span> <span class="s2">"perez ossa"</span><span class="p">,</span>
         <span class="na">email</span><span class="p">:</span> <span class="s2">"maryperez@email.com"</span><span class="p">,</span>
         <span class="na">telephone</span><span class="p">:</span> <span class="s2">"+56912345678"</span><span class="p">,</span>
+        <span class="na">status</span><span class="p">:</span> <span class="s2">"created"</span><span class="p">,</span>
+        <span class="na">checked</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">checked_date</span><span class="p">:</span> <span class="s2">"2023-05-05 09:00"</span><span class="p">,</span>
         <span class="na">updated_by_id</span><span class="p">:</span> <span class="mi">192</span><span class="p">,</span>
         <span class="na">archived</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="na">fields_data</span><span class="p">:</span> <span class="p">{</span>
@@ -1741,6 +1757,9 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/att
 <span class="s">      "last_name": "Rosales Rojas",</span>
 <span class="s">      "email": "rosales@email.com",</span>
 <span class="s">      "telephone": "+56912345678",</span>
+<span class="s">      "status": "created",</span>
+<span class="s">      "checked": false,</span>
+<span class="s">      "checked_date": null, </span>
 <span class="s">      "updated_by_id": "10461",</span>
 <span class="s">      "archived": "false",</span>
 <span class="s">      "fields_data": {</span>
@@ -1841,7 +1860,10 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/att
         "first_name": "Mary",
         "last_name": "perez ossa",
         "email": "maryperez@email.com",
-        telephone": "+56912345678",
+        "telephone": "+56912345678",
+        "status": "created",
+        "checked": false,
+        "checked_date": null,
         "updated_by_id": 192,
         "archived": false,
         "fields_data": {
@@ -1868,6 +1890,9 @@ fetch<span class="o">(</span><span class="s1">'https://core.eventtia.com/v1/even
         last_name: <span class="s2">"perez ossa"</span>,
         email: <span class="s2">"maryperez@email.com"</span>,
         telephone: <span class="s2">"+56912345678"</span>,
+        status: <span class="s2">"created"</span>,
+        checked: <span class="nb">false</span>,
+        checked_date: <span class="s2">"2023-05-05 09:00"</span>,
         updated_by_id: 192,
         archived: <span class="nb">false</span>,
         fields_data: <span class="o">{</span>
@@ -1900,6 +1925,9 @@ fetch<span class="o">(</span><span class="s1">'https://core.eventtia.com/v1/even
 <span class="s">      "last_name": "perez ossa",</span>
 <span class="s">      "email": "maryperez@email.com",</span>
 <span class="s">      "telephone": "+56912345678",</span>
+<span class="s">      "status": "created",</span>
+<span class="s">      "checked": false,</span>
+<span class="s">      "checked_date": "2023-05-05 09:00",</span>
 <span class="s">      "updated_by_id": "192",</span>
 <span class="s">      "archived": "false",</span>
 <span class="s">      "fields_data": {</span>
@@ -1994,6 +2022,11 @@ fetch<span class="o">(</span><span class="s1">'https://core.eventtia.com/v1/even
 <td>file</td>
 <td>photo for attendee</td>
 </tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>attendee status [&#39;pending&#39;, &#39;cancelled&#39;, &#39;rejected&#39;, &#39;confirmed&#39;].</td>
+</tr>
 </tbody></table>
 <h2 id='destroy-attendee'>Destroy Attendee</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
 curl -X DELETE <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;"</span> <span class="se">\</span>
@@ -2024,6 +2057,9 @@ curl -X DELETE <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_u
 <span class="s">      "last_name": "perez ossa",</span>
 <span class="s">      "email": "maryperez@email.com",</span>
 <span class="s">      "telephone": "+56912345678",</span>
+<span class="s">      "status": "created",</span>
+<span class="s">      "checked": false,</span>
+<span class="s">      "checked_date": "2023-05-05 09:00",</span>
 <span class="s">      "updated_by_id": "192",</span>
 <span class="s">      "archived": "true",</span>
 <span class="s">      "fields_data": {</span>
@@ -2061,6 +2097,68 @@ curl -X DELETE <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_u
 <td>The id for the desired attendee</td>
 </tr>
 </tbody></table>
+<h2 id='confirm-attendee'>Confirm Attendee</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;/confirming"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X POST -d
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;/confirming'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Example of successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "error": [</span>
+<span class="s">      128</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint to confirm attendee</p>
+
+<p><strong><em>HTTP Request</em></strong></p>
+
+<p><code>POST en/v1/events/:event_uri/attendees/:id/confirming</code></p>
+<h2 id='checking-attendee'>Checking Attendee</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;/checking"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   -X POST -d
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;/cchecking'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Example of successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "error": [</span>
+<span class="s">      128</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint to checking attendee</p>
+
+<p><strong><em>HTTP Request</em></strong></p>
+
+<p><code>POST en/v1/events/:event_uri/attendees/:id/checking</code></p>
 <h1 id='attendee-types'>Attendee Types</h1><h2 id='list-attendee-types'>List Attendee Types</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
 curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/"</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span>
@@ -3240,6 +3338,11 @@ curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/"</span> <span
 <td>boolean</td>
 <td>Send true if you want to get only active events.</td>
 </tr>
+<tr>
+<td>order</td>
+<td>string</td>
+<td>order to filtered elements, attributes permitted: [ start_date, end_date, created_at ], example: &#39;start_date desc&#39;.</td>
+</tr>
 </tbody></table>
 <h2 id='get-event'>Get Event</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
 curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;"</span> <span class="se">\</span>
@@ -4068,6 +4171,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/set
         "tax_value": 19.0,
         "date_format": "dd/mm/yyyy",
         "time_format": "am_pm",
+        "sender_name": Sender Custom Name ,
         "google_analytics_tracking_code": "A78Y55ABCD",
         "google_tag_manager_code": "11223ABCDE",
         "available_languages": {
@@ -4101,6 +4205,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/set
         <span class="na">tax_value</span><span class="p">:</span> <span class="mf">19.0</span><span class="p">,</span>
         <span class="na">date_format</span><span class="p">:</span> <span class="s2">"dd/mm/yyyy"</span><span class="p">,</span>
         <span class="na">time_format</span><span class="p">:</span> <span class="s2">"am_pm"</span><span class="p">,</span>
+        <span class="na">sender_name</span><span class="p">:</span> <span class="s2">"Sender Custom Name"</span> <span class="p">,</span>
         <span class="na">google_analytics_tracking_code</span><span class="p">:</span> <span class="s2">"A78Y55ABCD"</span><span class="p">,</span>
         <span class="na">google_tag_manager_code</span><span class="p">:</span> <span class="s2">"11223ABCDE"</span><span class="p">,</span>
         <span class="na">available_languages</span><span class="p">:</span> <span class="p">{</span>
@@ -4138,6 +4243,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/set
 <span class="s">      "tax_value": 19.0,</span>
 <span class="s">      "date_format": "dd/mm/yyyy",</span>
 <span class="s">      "time_format": "am_pm",</span>
+<span class="s">      "sender_name": Sender Custom Name ,</span>
 <span class="s">      "google_analytics_tracking_code": "33445ABCDE",</span>
 <span class="s">      "google_tag_manager_code": "11223ABCDE",</span>
 <span class="s">      "available_languages": {</span>
@@ -4271,285 +4377,10 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/set
 <td>json</td>
 <td>includes available key ( array with availables languages for event ) and default key ( a string with a single required language, included in available languages array)</td>
 </tr>
-</tbody></table>
-<h1 id='email-settings'>Email Settings</h1><h2 id='list-email-settings'>List Email Settings</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
-curl -X GET <span class="s2">"https://core.eventtia.com/v1/email_settings/"</span> <span class="se">\</span>
-  -H <span class="s1">'Content-Type: application/json'</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/email_settings/'</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
-  <span class="p">}</span>
-<span class="p">})</span>
-</code></pre>
-<blockquote>
-<p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. </p>
-
-<p>Example of a successful (200) response:</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="s">{</span>
-<span class="s">   "data": [</span>
-<span class="s">        {</span>
-<span class="s">            "id": "1",</span>
-<span class="s">            "type": "email_settings",</span>
-<span class="s">            "attributes": {</span>
-<span class="s">                "sender_name": "pedro",</span>
-<span class="s">                "sender_email": "sender_test@eventtia.com"</span>
-<span class="s">            },</span>
-<span class="s">            "relationships": {</span>
-<span class="s">                "role_category": {</span>
-<span class="s">                    "data": {</span>
-<span class="s">                        "id": "1",</span>
-<span class="s">                        "type": "role_categories"</span>
-<span class="s">                    }</span>
-<span class="s">                }</span>
-<span class="s">            }</span>
-<span class="s">        }</span>
-<span class="s">    ],</span>
-<span class="s">}</span>
-</code></pre>
-<p>This endpoint returns a list of email_settings that your account have configured</p>
-
-<p><strong><em>HTTP Request</em></strong></p>
-
-<p><code>GET /v1/email_settings/</code></p>
-
-<p><strong><em>Path Parameters</em></strong></p>
-
-<table><thead>
 <tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>page</td>
-<td>json</td>
-<td>A page object as described <a href="#pagination">here</a></td>
-</tr>
-</tbody></table>
-<h2 id='get-email-settings'>Get Email Settings</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
-curl -X GET <span class="s2">"https://core.eventtia.com/v1/email_settings/&lt;id&gt;"</span> <span class="se">\</span>
-  -H <span class="s1">'Content-Type: application/json'</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/email_settings/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
-  <span class="p">}})</span>
-</code></pre>
-<blockquote>
-<p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. </p>
-
-<p>Make sure you replace &lt;id&gt; for the email_setting to get. </p>
-
-<p>Example of a successful (200) response:</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="s">{</span>
-<span class="s">  "data": {</span>
-<span class="s">        "id": "1",</span>
-<span class="s">        "type": "email_settings",</span>
-<span class="s">        "attributes": {</span>
-<span class="s">            "sender_name": "pedrito",</span>
-<span class="s">            "sender_email": "pierre@eventtia.com"</span>
-<span class="s">        },</span>
-<span class="s">        "relationships": {</span>
-<span class="s">            "role_category": {</span>
-<span class="s">                "data": {</span>
-<span class="s">                    "id": "1",</span>
-<span class="s">                    "type": "role_categories"</span>
-<span class="s">                }</span>
-<span class="s">            }</span>
-<span class="s">        }</span>
-<span class="s">    }</span>
-<span class="s">}</span>
-</code></pre>
-<blockquote>
-<p>Example of Email Setting Not Found (404) response:</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
-<span class="s">{</span>
-<span class="s">  "message": {</span>
-<span class="s">    "error": "code: 128"</span>
-<span class="s">  }</span>
-<span class="s">}</span>
-</code></pre>
-<p>This endpoint returns a email_setting given an id</p>
-
-<p><strong><em>HTTP Request</em></strong></p>
-
-<p><code>GET /v1/email_settings/:id</code></p>
-
-<p><strong><em>Path Parameters</em></strong></p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>integer</td>
-<td>Id for the desired email_setting</td>
-</tr>
-</tbody></table>
-<h2 id='create-email-setting'>Create Email Setting</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
-curl <span class="s2">"https://core.eventtia.com/v1/email_settings/"</span> <span class="se">\</span>
-  -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
-   -X POST -d <span class="s1">'{
-   "data": {
-        "type": "email_settings",
-        "attributes": {
-            "sender_name": "Juan Bolivar",
-            "sender_email": "sender_test@email.com"
-        },
-        "relationships": {
-            "role_category": {
-                "data": {
-                    "id": "1",
-                    "type": "role_categories"
-                }
-            }
-        }
-    }
-}'</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/email_settings/'</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
-    <span class="p">{</span>
-    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">type</span><span class="p">:</span> <span class="s2">"email_settings"</span><span class="p">,</span>
-        <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
-            <span class="na">sender_name</span><span class="p">:</span> <span class="s2">"Juan Bolivar"</span><span class="p">,</span>
-            <span class="na">sender_email</span><span class="p">:</span> <span class="s2">"sender_test@email.com"</span>
-        <span class="p">},</span>
-        <span class="na">relationships</span><span class="p">:</span> <span class="p">{</span>
-            <span class="na">role_category</span><span class="p">:</span> <span class="p">{</span>
-                <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="na">id</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
-                    <span class="na">type</span><span class="p">:</span> <span class="s2">"role_categories"</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-<blockquote>
-<p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. </p>
-
-<p>Example of a successful (200) response:</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="err">
-</span><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="s">{</span>
-<span class="s">  "data": {</span>
-<span class="s">        "id": "1",</span>
-<span class="s">        "type": "email_settings",</span>
-<span class="s">        "attributes": {</span>
-<span class="s">            "sender_name": "pedrito",</span>
-<span class="s">            "sender_email": "pierre@eventtia.com"</span>
-<span class="s">        },</span>
-<span class="s">        "relationships": {</span>
-<span class="s">            "role_category": {</span>
-<span class="s">                "data": {</span>
-<span class="s">                    "id": "1",</span>
-<span class="s">                    "type": "role_categories"</span>
-<span class="s">                }</span>
-<span class="s">            }</span>
-<span class="s">        }</span>
-<span class="s">    }</span>
-<span class="s">}</span>
-</code></pre>
-<blockquote>
-<p>Example of Unprocessable Entity (422) response:</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
-</code></pre>
-<p>This endpoint creates a email_settings and return it</p>
-
-<p><strong><em>HTTP Request</em></strong></p>
-
-<p><code>POST /v1/email_settings/</code></p>
-
-<p><strong><em>Body Parameters</em></strong></p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>name</td>
+<td>sender_name</td>
 <td>string</td>
-<td>Email setting&#39;s name.</td>
-</tr>
-</tbody></table>
-<h2 id='destroy-email-setting'>Destroy Email Setting</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
-curl -X DELETE <span class="s2">"https://core.eventtia.com/v1/email_settings/&lt;id&gt;"</span> <span class="se">\</span>
-  -H <span class="s1">'Content-Type: application/json'</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/email_settings/&lt;id&gt;'</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
-  <span class="p">},</span>
-<span class="p">})</span>
-</code></pre>
-<blockquote>
-<p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. </p>
-
-<p>Make sure you replace &lt;id&gt; for the email_setting to destroy. </p>
-
-<p>Example of a successful (200) response:</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="s">{</span>
-<span class="s">  "data": {</span>
-<span class="s">        "id": "1",</span>
-<span class="s">        "type": "email_settings",</span>
-<span class="s">        "attributes": {</span>
-<span class="s">            "sender_name": "pedro",</span>
-<span class="s">            "sender_email": "senter_test@eventtia.com"</span>
-<span class="s">        },</span>
-<span class="s">        "relationships": {</span>
-<span class="s">            "role_category": {</span>
-<span class="s">                "data": {</span>
-<span class="s">                    "id": "1",</span>
-<span class="s">                    "type": "role_categories"</span>
-<span class="s">                }</span>
-<span class="s">            }</span>
-<span class="s">        }</span>
-<span class="s">    }</span>
-<span class="s">}</span>
-</code></pre>
-<p>This endpoint destroys a email setting and return it</p>
-
-<p><strong><em>HTTP Request</em></strong></p>
-
-<p><code>DELETE /v1/email_settings/:id</code></p>
-
-<p><strong><em>Path Parameters</em></strong></p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>integer</td>
-<td>The id for the desired email_setting</td>
+<td>Sender Name for event notifications</td>
 </tr>
 </tbody></table>
 <h1 id='input-fields'>Input fields</h1><h2 id='list-fields'>List fields</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
