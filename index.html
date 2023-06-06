@@ -2098,10 +2098,10 @@ curl -X DELETE <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_u
 </tr>
 </tbody></table>
 <h2 id='confirm-attendee'>Confirm Attendee</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
-curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;/confirming"</span> <span class="se">\</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;/confirm"</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
    -X POST -d
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;/confirming'</span><span class="p">,</span> <span class="p">{</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;/confirm'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
 <span class="p">})</span>
 </code></pre>
@@ -2127,12 +2127,12 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/att
 
 <p><strong><em>HTTP Request</em></strong></p>
 
-<p><code>POST en/v1/events/:event_uri/attendees/:id/confirming</code></p>
+<p><code>POST en/v1/events/:event_uri/attendees/:id/confirm</code></p>
 <h2 id='checking-attendee'>Checking Attendee</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
 curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;/checking"</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
    -X POST -d
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;/cchecking'</span><span class="p">,</span> <span class="p">{</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;/checking'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
 <span class="p">})</span>
 </code></pre>
