@@ -485,13 +485,13 @@ event_uri | string  | The event_uri for the desired event
 
 ```shell
 # Get your token for further authorization
-curl "https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>/confirming" \
+curl "https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>/confirm" \
   -H 'Content-Type: application/json'\
    -X POST -d
 ```
 
 ```javascript
-fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>/confirming', {
+fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>/confirm', {
   method: 'POST',
 })
 ```
@@ -519,7 +519,7 @@ This endpoint to confirm attendee
 
 ***HTTP Request***
 
-`POST en/v1/events/:event_uri/attendees/:id/confirming`
+`POST en/v1/events/:event_uri/attendees/:id/confirm`
 
 ## Checking Attendee
 
@@ -531,7 +531,7 @@ curl "https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>/checking" \
 ```
 
 ```javascript
-fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>/cchecking', {
+fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/<id>/checking', {
   method: 'POST',
 })
 ```
