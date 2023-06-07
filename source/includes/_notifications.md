@@ -278,6 +278,14 @@ curl "https://core.eventtia.com/v1/events/<event_uri>/notifications/<id>" \
       "entity_type": "User",
       "mass_notification": false,
       "action": "account_created"
+    },    
+    "relationships": {
+      "user": {
+      "data": [
+        {"type": "User", id: 1},
+        {"type": "User", id: 2}
+        ]
+      }
     }
   }
 }'
@@ -296,8 +304,16 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/notifications/<id>', {
       name: "Welcome to Ticketing",
       description: "description for a notification",
       entity_type: "User",
-      "mass_notification": false,
+      mass_notification: false,
       action: "account_created"
+    },
+    relationships: {
+      user: {
+      data: [
+        {type: "User", id: 1},
+        {type: "User", id: 2}
+        ]
+      }
     }
   }
 }
@@ -381,6 +397,10 @@ entity_type| string  | Entity type for notification
 action      | string | Notification action [account_created, recover_password, attendee_created, attendee_rejected, attendee_confirmed, welcome_email]
 conditions  | json | Conditions for notifications
 mass_notification  | boolean | Flag to identify if the notification that is going to be created is massive
+attendee_types  | hash | Attendee_types ids for this notification
+users  | hash | User ids ids for this notification
+members  | hash | Member ids for this role
+
 
 ## Destroy Notification
 
