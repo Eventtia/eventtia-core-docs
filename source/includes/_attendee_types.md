@@ -420,7 +420,7 @@ limit      | integer | Attendees limit for this attendee type
 confirmation_required | boolean | Confirmation required for attendee type
 allow_public_registration | boolean | Allow public registration for this attendee type
 valid_if_no_payments | boolean | Valid attendee type if no payments
-notifications  | string | Notification ids for this notification
+notifications  | hash | Notification ids for this notification
 
 ## Destroy Attendee Type
 
