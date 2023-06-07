@@ -304,7 +304,14 @@ curl "https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>" \
         "allow_public_registration": false,
         "valid_if_no_payments": true,
         "archived": false
-    }
+      },    
+      "relationships": {
+        "notification": {
+        "data": [
+          {"type": "AttendeeType", id: 1}
+          ]
+        }
+      }
   }
 }'
 ```
@@ -327,6 +334,12 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>', {
       allow_public_registration: false,
       valid_if_no_payments: true,
 			allow_printing_without_payment: false
+    },relationships: {
+      notification: {
+      data: [
+        {type: "Notification", id: 1}
+        ]
+      }
     }
   }
 }
@@ -407,6 +420,7 @@ limit      | integer | Attendees limit for this attendee type
 confirmation_required | boolean | Confirmation required for attendee type
 allow_public_registration | boolean | Allow public registration for this attendee type
 valid_if_no_payments | boolean | Valid attendee type if no payments
+notifications  | string | Notification ids for this notification
 
 ## Destroy Attendee Type
 

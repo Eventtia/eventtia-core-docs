@@ -101,7 +101,6 @@ curl "https://core.eventtia.com/v1/events/:event_uri/fields" \
     "attributes": {
       "name": {"es": "Nombre", "en": "Name"},
       "required": true,
-      "order": 0,
       "available_public_listings": true,
       "display": true,
       "filterable": true,
@@ -126,7 +125,6 @@ fetch("https://core.eventtia.com/v1/events/:event_uri/fields", {
     attributes: {
       name: {es: "Nombre", en: "Name"},
       required: true,
-      order: 0,
       available_public_listings: true,
       display: true,
       filterable: true,
@@ -195,7 +193,6 @@ Parameter | Type | Description
 --------- | ---- | -----------
 name | Hash | Field name e.g  {en: 'name', 'es': 'nombre'}.
 required | boolean | Specify if the field is required.
-order | integer | Field order in the form.
 available_public_listings | boolean | Field info visible on public sections.
 display | boolean | Show field on public form´s.
 filterable | boolean | Allow users search records by this field
@@ -210,7 +207,6 @@ allowed_values | Array | You may provide allowed values for this field if you wa
 Parameter | Type | Description
 --------- | ---- | -----------
 name | Hash | Field name e.g  {en: 'name', 'es': 'nombre'}.
-order | integer | Field order in the form.
 display | boolean | Show field on public form´s.
 submitted_type | string | 'Attendee' entity that will be answering this field.
 type | string | Fields::TextAreaField
@@ -221,7 +217,6 @@ maximum_characters | integer | Maximum of allowed characters for this field
 Parameter | Type | Description
 --------- | ---- | -----------
 name | Hash | Field name e.g  {en: 'name', 'es': 'nombre'}.
-order | integer | Field order in the form.
 display | boolean | Show field on public form´s.
 submitted_type | string | 'Attendee' entity that will be answering this field.
 type | string | Fields::LabelField
@@ -232,7 +227,6 @@ Parameter | Type | Description
 --------- | ---- | -----------
 name | Hash | Field name e.g  {en: 'Favorite sport', 'es': 'Deporte favorito'}.
 values | Array of Obejcts | options for this field eg [{en: 'Automotive', es: 'Automotores', uuid: 'uuide'}, {en: 'Computers', es: 'Computadores', uuid: 'uuidop'}]. You must provide an unique uuid for each option.
-order | integer | Field order in the form.
 display | boolean | Show field on public form´s.
 submitted_type | string | 'Attendee' entity that will be answering this field.
 type | string | Fields::SingleSelectionField
@@ -244,7 +238,6 @@ Parameter | Type | Description
 --------- | ---- | -----------
 name | Hash | Field name e.g  {en: 'Products and services', 'es': 'Productos y servicios'}.
 values | Array of Obejcts | options for this field eg [{en: '', es: 'Futbol', uuid: 'uuide'}, {en: 'Golf', es: 'Golf', uuid: 'uuidop'}]. You must provide an unique uuid for each option.
-order | integer | Field order in the form.
 display | boolean | Show field on public form´s.
 submitted_type | string | 'Attendee' entity that will be answering this field.
 type | string | Fields::MultipleSelectionField
@@ -255,7 +248,6 @@ control_type | string | check_boxes or dropdown_list
 Parameter | Type | Description
 --------- | ---- | -----------
 name | Hash | Field name e.g  {en: 'date', 'es': 'fecha'}.
-order | integer | Field order in the form.
 display | boolean | Show field on public form´s.
 submitted_type | string | 'Attendee' entity that will be answering this field.
 type | string | Fields::DateTimeField
@@ -266,7 +258,6 @@ include_time | boolean | Include time picker element
 Parameter | Type | Description
 --------- | ---- | -----------
 name | Hash | Field name e.g  {en: 'city', 'es': 'ciudad'}.
-order | integer | Field order in the form.
 display | boolean | Show field on public form´s.
 submitted_type | string | 'Attendee' entity that will be answering this field.
 type | string | Fields::CityField
@@ -276,7 +267,6 @@ type | string | Fields::CityField
 Parameter | Type | Description
 --------- | ---- | -----------
 name | Hash | Field name e.g  {en: 'Image', 'es': 'imagen'}.
-order | integer | Field order in the form.
 display | boolean | Show field on public form´s.
 submitted_type | string | 'Attendee' entity that will be answering this field.
 type | string | Fields::ImageField
@@ -286,7 +276,6 @@ type | string | Fields::ImageField
 Parameter | Type | Description
 --------- | ---- | -----------
 name | Hash | Field name e.g  {en: 'File', 'es': 'Archivo'}.
-order | integer | Field order in the form.
 display | boolean | Show field on public form´s.
 submitted_type | string | 'Attendee' entity that will be answering this field.
 type | string | Fields::FileField
@@ -296,7 +285,6 @@ type | string | Fields::FileField
 Parameter | Type | Description
 --------- | ---- | -----------
 name | Hash | Field name e.g  {en: 'Terms and conditions', 'es': 'Terminos y condiciones'}.
-order | integer | Field order in the form.
 display | boolean | Show field on public form´s.
 submitted_type | string | 'Attendee' entity that will be answering this field.
 type | string | Fields::TermsField
