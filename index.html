@@ -298,6 +298,12 @@
                   <li>
                     <a href="#destroy-attendee" class="toc-h2 toc-link" data-title="Destroy Attendee">Destroy Attendee</a>
                   </li>
+                  <li>
+                    <a href="#confirm-attendee" class="toc-h2 toc-link" data-title="Confirm Attendee">Confirm Attendee</a>
+                  </li>
+                  <li>
+                    <a href="#checking-attendee" class="toc-h2 toc-link" data-title="Checking Attendee">Checking Attendee</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -325,6 +331,9 @@
                   </li>
                   <li>
                     <a href="#available-seats" class="toc-h2 toc-link" data-title="Available Seats">Available Seats</a>
+                  </li>
+                  <li>
+                    <a href="#entity-notifications" class="toc-h2 toc-link" data-title="Entity Notifications">Entity Notifications</a>
                   </li>
                   <li>
                     <a href="#form-fields" class="toc-h2 toc-link" data-title="Form Fields">Form Fields</a>
@@ -486,6 +495,9 @@
                     <a href="#stats-notification" class="toc-h2 toc-link" data-title="Stats Notification">Stats Notification</a>
                   </li>
                   <li>
+                    <a href="#tags-notification" class="toc-h2 toc-link" data-title="Tags Notification">Tags Notification</a>
+                  </li>
+                  <li>
                     <a href="#notification-languages" class="toc-h2 toc-link" data-title="Notification Languages">Notification Languages</a>
                   </li>
                   <li>
@@ -593,7 +605,10 @@
                     <a href="#public-token-validation" class="toc-h2 toc-link" data-title="Public Token Validation">Public Token Validation</a>
                   </li>
                   <li>
-                    <a href="#create-public-attendees" class="toc-h2 toc-link" data-title="Create Public Attendees">Create Public Attendees</a>
+                    <a href="#create-public-attendees-with-ticket" class="toc-h2 toc-link" data-title="Create Public Attendees with Ticket">Create Public Attendees with Ticket</a>
+                  </li>
+                  <li>
+                    <a href="#create-public-attendees-with-order" class="toc-h2 toc-link" data-title="Create Public Attendees with Order">Create Public Attendees with Order</a>
                   </li>
                   <li>
                     <a href="#update-public-attendee" class="toc-h2 toc-link" data-title="Update Public Attendee">Update Public Attendee</a>
@@ -1514,6 +1529,9 @@ curl <span class="nt">-X</span> GET <span class="s2">"https://core.eventtia.com/
 <span class="s">        "email": "rosales@email.com",</span>
 <span class="s">        "telephone": "+56912345678",</span>
 <span class="s">        "updated_by_id": "10461",</span>
+<span class="s">        "status": "created",</span>
+<span class="s">        "checked": false,</span>
+<span class="s">        "checked_date": "2023-05-05 09:00",</span>
 <span class="s">        "archived": "false",</span>
 <span class="s">        "fields_data": {</span>
 <span class="s">          "f281": "george",</span>
@@ -1571,6 +1589,21 @@ curl <span class="nt">-X</span> GET <span class="s2">"https://core.eventtia.com/
 <td>Filters results by the attendee&#39;s telephone.</td>
 </tr>
 <tr>
+<td>status</td>
+<td>string</td>
+<td>attendee status [&#39;pending&#39;, &#39;cancelled&#39;, &#39;rejected&#39;, &#39;confirmed&#39;].</td>
+</tr>
+<tr>
+<td>checked</td>
+<td>boolean</td>
+<td>attendee has been checked</td>
+</tr>
+<tr>
+<td>checked_date</td>
+<td>date</td>
+<td>date for last checking</td>
+</tr>
+<tr>
 <td>attendee_type_id</td>
 <td>integer</td>
 <td>Filters results by attendee type.</td>
@@ -1616,6 +1649,9 @@ curl <span class="nt">-X</span> GET <span class="s2">"https://core.eventtia.com/
 <span class="s">        "last_name": "Rosales Rojas",</span>
 <span class="s">        "email": "rosales@email.com",</span>
 <span class="s">        "telephone": "+56912345678",</span>
+<span class="s">        "status": "created",</span>
+<span class="s">        "checked": false,</span>
+<span class="s">        "checked_date": "2023-05-05 09:00", </span>
 <span class="s">        "updated_by_id": "10461",</span>
 <span class="s">        "archived": "false",</span>
 <span class="s">        "fields_data": {</span>
@@ -1675,7 +1711,10 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/att
         "first_name": "Mary",
         "last_name": "perez ossa",
         "email": "maryperez@email.com",
-        telephone": "+56912345678",
+        "telephone": "+56912345678",
+        "status": "created",
+        "checked": false,
+        "checked_date": "2023-05-05 09:00",
         "updated_by_id": 192,
         "archived": false,
         "fields_data": {
@@ -1700,6 +1739,9 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/att
         <span class="na">last_name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">perez ossa</span><span class="dl">"</span><span class="p">,</span>
         <span class="na">email</span><span class="p">:</span> <span class="dl">"</span><span class="s2">maryperez@email.com</span><span class="dl">"</span><span class="p">,</span>
         <span class="na">telephone</span><span class="p">:</span> <span class="dl">"</span><span class="s2">+56912345678</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">status</span><span class="p">:</span> <span class="dl">"</span><span class="s2">created</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">checked</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">checked_date</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2023-05-05 09:00</span><span class="dl">"</span><span class="p">,</span>
         <span class="na">updated_by_id</span><span class="p">:</span> <span class="mi">192</span><span class="p">,</span>
         <span class="na">archived</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="na">fields_data</span><span class="p">:</span> <span class="p">{</span>
@@ -1729,6 +1771,9 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/att
 <span class="s">      "last_name": "Rosales Rojas",</span>
 <span class="s">      "email": "rosales@email.com",</span>
 <span class="s">      "telephone": "+56912345678",</span>
+<span class="s">      "status": "created",</span>
+<span class="s">      "checked": false,</span>
+<span class="s">      "checked_date": null, </span>
 <span class="s">      "updated_by_id": "10461",</span>
 <span class="s">      "archived": "false",</span>
 <span class="s">      "fields_data": {</span>
@@ -1829,7 +1874,10 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/att
         "first_name": "Mary",
         "last_name": "perez ossa",
         "email": "maryperez@email.com",
-        telephone": "+56912345678",
+        "telephone": "+56912345678",
+        "status": "created",
+        "checked": false,
+        "checked_date": null,
         "updated_by_id": 192,
         "archived": false,
         "fields_data": {
@@ -1856,6 +1904,9 @@ fetch<span class="o">(</span><span class="s1">'https://core.eventtia.com/v1/even
         last_name: <span class="s2">"perez ossa"</span>,
         email: <span class="s2">"maryperez@email.com"</span>,
         telephone: <span class="s2">"+56912345678"</span>,
+        status: <span class="s2">"created"</span>,
+        checked: <span class="nb">false</span>,
+        checked_date: <span class="s2">"2023-05-05 09:00"</span>,
         updated_by_id: 192,
         archived: <span class="nb">false</span>,
         fields_data: <span class="o">{</span>
@@ -1888,6 +1939,9 @@ fetch<span class="o">(</span><span class="s1">'https://core.eventtia.com/v1/even
 <span class="s">      "last_name": "perez ossa",</span>
 <span class="s">      "email": "maryperez@email.com",</span>
 <span class="s">      "telephone": "+56912345678",</span>
+<span class="s">      "status": "created",</span>
+<span class="s">      "checked": false,</span>
+<span class="s">      "checked_date": "2023-05-05 09:00",</span>
 <span class="s">      "updated_by_id": "192",</span>
 <span class="s">      "archived": "false",</span>
 <span class="s">      "fields_data": {</span>
@@ -1982,6 +2036,11 @@ fetch<span class="o">(</span><span class="s1">'https://core.eventtia.com/v1/even
 <td>file</td>
 <td>photo for attendee</td>
 </tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>attendee status [&#39;pending&#39;, &#39;cancelled&#39;, &#39;rejected&#39;, &#39;confirmed&#39;].</td>
+</tr>
 </tbody></table>
 <h2 id='destroy-attendee'>Destroy Attendee</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
 curl <span class="nt">-X</span> DELETE <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;"</span> <span class="se">\</span>
@@ -2012,6 +2071,9 @@ curl <span class="nt">-X</span> DELETE <span class="s2">"https://core.eventtia.c
 <span class="s">      "last_name": "perez ossa",</span>
 <span class="s">      "email": "maryperez@email.com",</span>
 <span class="s">      "telephone": "+56912345678",</span>
+<span class="s">      "status": "created",</span>
+<span class="s">      "checked": false,</span>
+<span class="s">      "checked_date": "2023-05-05 09:00",</span>
 <span class="s">      "updated_by_id": "192",</span>
 <span class="s">      "archived": "true",</span>
 <span class="s">      "fields_data": {</span>
@@ -2049,6 +2111,68 @@ curl <span class="nt">-X</span> DELETE <span class="s2">"https://core.eventtia.c
 <td>The id for the desired attendee</td>
 </tr>
 </tbody></table>
+<h2 id='confirm-attendee'>Confirm Attendee</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;/confirm"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   <span class="nt">-X</span> POST <span class="nt">-d</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;/confirm</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre></div>
+<blockquote>
+<p>Example of successful (200) response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+
+</code></pre></div>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "error": [</span>
+<span class="s">      128</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre></div>
+<p>This endpoint to confirm attendee</p>
+
+<p><strong><em>HTTP Request</em></strong></p>
+
+<p><code>POST en/v1/events/:event_uri/attendees/:id/confirm</code></p>
+<h2 id='checking-attendee'>Checking Attendee</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;/checking"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   <span class="nt">-X</span> POST <span class="nt">-d</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendees/&lt;id&gt;/checking</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre></div>
+<blockquote>
+<p>Example of successful (200) response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+
+</code></pre></div>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "error": [</span>
+<span class="s">      128</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre></div>
+<p>This endpoint to checking attendee</p>
+
+<p><strong><em>HTTP Request</em></strong></p>
+
+<p><code>POST en/v1/events/:event_uri/attendees/:id/checking</code></p>
 <h1 id='attendee-types'>Attendee Types</h1><h2 id='list-attendee-types'>List Attendee Types</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
 curl <span class="nt">-X</span> GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span>
@@ -2408,7 +2532,14 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/att
         "allow_public_registration": false,
         "valid_if_no_payments": true,
         "archived": false
-    }
+      },    
+      "relationships": {
+        "notification": {
+        "data": [
+          {"type": "AttendeeType", id: 1}
+          ]
+        }
+      }
   }
 }'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/&lt;id&gt;</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
@@ -2428,6 +2559,12 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/att
       <span class="na">allow_public_registration</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
       <span class="na">valid_if_no_payments</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
             <span class="na">allow_printing_without_payment</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span><span class="na">relationships</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">notification</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">data</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Notification</span><span class="dl">"</span><span class="p">,</span> <span class="na">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
@@ -2552,6 +2689,11 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/att
 <td>boolean</td>
 <td>Valid attendee type if no payments</td>
 </tr>
+<tr>
+<td>notifications</td>
+<td>hash</td>
+<td>Notification ids for this notification</td>
+</tr>
 </tbody></table>
 <h2 id='destroy-attendee-type'>Destroy Attendee Type</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
 curl <span class="nt">-X</span> DELETE <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/&lt;id&gt;"</span> <span class="se">\</span>
@@ -2666,6 +2808,85 @@ curl <span class="nt">-X</span> GET <span class="s2">"https://core.eventtia.com/
 <p><strong><em>HTTP Request</em></strong></p>
 
 <p><code>GET /v1/events/:event_uri/attendee_types/:id/available_seats</code></p>
+
+<p><strong><em>Path Parameters</em></strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired attendee type</td>
+</tr>
+</tbody></table>
+<h2 id='entity-notifications'>Entity Notifications</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="nt">-X</span> GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/&lt;id&gt;/entity-notifications"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://core.eventtia.com/v1/events/&lt;event_uri&gt;/attendee_types/&lt;id&gt;/entity-notifications</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer &lt;your token&gt;</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div>
+<blockquote>
+<p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event.</p>
+
+<p>Make sure you replace &lt;id&gt; with the id for the attendee type to obtain.</p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="na">"data"</span><span class="p">:</span> <span class="s">[</span>
+<span class="s">  {</span>
+<span class="s">    "id": "42",</span>
+<span class="s">    "type": "entity_notifications",</span>
+<span class="s">    "relationships": {</span>
+<span class="s">      "notification": {</span>
+<span class="s">        "data": {</span>
+<span class="s">          "id": "114",</span>
+<span class="s">          "type": "notifications"</span>
+<span class="s">        }</span>
+<span class="s">      },</span>
+<span class="s">      "entity": {</span>
+<span class="s">        "data": {</span>
+<span class="s">          "id": "9",</span>
+<span class="s">          "type": "attendee_types"</span>
+<span class="s">        }</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">]</span>
+<span class="s">}</span>
+</code></pre></div>
+<blockquote>
+<p>Example of Not Found (404) response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
+<span class="s">{</span>
+<span class="s">  {</span>
+<span class="s">    "message": "Couldn't find AttendeeType"</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre></div>
+<p>This endpoint get the attendee type notifications relations and return it</p>
+
+<p><strong><em>HTTP Request</em></strong></p>
+
+<p><code>GET /v1/events/:event_uri/attendee_types/:id/entity-notifications</code></p>
 
 <p><strong><em>Path Parameters</em></strong></p>
 
@@ -3125,6 +3346,7 @@ curl <span class="nt">-X</span> GET <span class="s2">"https://core.eventtia.com/
 <span class="s">        "fields_data": "{}",</span>
 <span class="s">        "attendance_mode": "online",</span>
 <span class="s">        "is_template": false,</span>
+<span class="s">        "paid": true,</span>
 <span class="s">        "event_uri": "event_uri",</span>
 <span class="s">        "timezone": "America/Bogota",</span>
 <span class="s">        "location": {</span>
@@ -3148,7 +3370,7 @@ curl <span class="nt">-X</span> GET <span class="s2">"https://core.eventtia.com/
 <span class="s">          "small":  "url_image",</span>
 <span class="s">          "medium": "url_image",</span>
 <span class="s">          "large": "url_image",</span>
-<span class="s">        } </span>
+<span class="s">        }</span>
 <span class="s">      },</span>
 <span class="s">      "relationships": {</span>
 <span class="s">        "settings": {</span>
@@ -3227,6 +3449,11 @@ curl <span class="nt">-X</span> GET <span class="s2">"https://core.eventtia.com/
 <td>boolean</td>
 <td>Send true if you want to get only active events.</td>
 </tr>
+<tr>
+<td>order</td>
+<td>string</td>
+<td>order to filtered elements, attributes permitted: [ start_date, end_date, created_at ], example: &#39;start_date desc&#39;.</td>
+</tr>
 </tbody></table>
 <h2 id='get-event'>Get Event</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
 curl <span class="nt">-X</span> GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;"</span> <span class="se">\</span>
@@ -3258,6 +3485,7 @@ curl <span class="nt">-X</span> GET <span class="s2">"https://core.eventtia.com/
 <span class="s">      "fields_data": "{}",</span>
 <span class="s">      "attendance_mode": "online",</span>
 <span class="s">      "is_template": false,</span>
+<span class="s">      "paid": true,</span>
 <span class="s">      "event_uri": "event_uri",</span>
 <span class="s">      "timezone": "America/Bogota",</span>
 <span class="s">      "location": {</span>
@@ -3360,6 +3588,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/"</span> <span class=
       "fields_data": "{}",
       "attendance_mode": "online",
       "is_template": false,
+      "paid": true,
       "event_uri": "event_uri",
       "timezone": "America/Bogota",
       "settings": {
@@ -3397,6 +3626,12 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/"</span> <span class=
                   "id": "1",
                   "type": "role_categories"
           }
+        },
+        "email_settings": {
+              "data": {
+                  "id": "1",
+                  "type": "email_settings"
+          }
         }
       }
   }
@@ -3419,6 +3654,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/"</span> <span class=
       <span class="na">fields_data</span><span class="p">:</span> <span class="dl">"</span><span class="s2">{}</span><span class="dl">"</span><span class="p">,</span>
       <span class="na">attendance_mode</span><span class="p">:</span> <span class="dl">"</span><span class="s2">online</span><span class="dl">"</span><span class="p">,</span>
       <span class="na">is_template</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">paid</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
       <span class="na">event_uri</span><span class="p">:</span> <span class="dl">"</span><span class="s2">event_uri</span><span class="dl">"</span><span class="p">,</span>
       <span class="na">timezone</span><span class="p">:</span> <span class="dl">"</span><span class="s2">America/Bogota</span><span class="dl">"</span><span class="p">,</span>
       <span class="na">settings</span><span class="p">:</span> <span class="p">{</span>
@@ -3457,6 +3693,12 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/"</span> <span class=
                   <span class="na">id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span>
                   <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">role_categories</span><span class="dl">"</span>
           <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="na">email_settings</span><span class="p">:</span> <span class="p">{</span>
+              <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="na">id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span>
+                  <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">email_settings</span><span class="dl">"</span>
+          <span class="p">}</span>
         <span class="p">}</span>
       <span class="p">}</span>
   <span class="p">}</span>
@@ -3481,6 +3723,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/"</span> <span class=
 <span class="s">      "fields_data": "{}",</span>
 <span class="s">      "attendance_mode": "online",</span>
 <span class="s">      "is_template": false,</span>
+<span class="s">      "paid": true,</span>
 <span class="s">      "event_uri": "event_uri",</span>
 <span class="s">      "timezone": "America/Bogota",</span>
 <span class="s">      "location": {</span>
@@ -3606,6 +3849,11 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/"</span> <span class=
 <td>event time format [&#39;hours_24&#39;, &#39;am_pm&#39;].</td>
 </tr>
 <tr>
+<td>paid</td>
+<td>boolean</td>
+<td>this event is a paid event</td>
+</tr>
+<tr>
 <td>available_languages</td>
 <td>json</td>
 <td>includes available key ( array with availables languages for event ) and default key ( a string with a single required language, included in available languages array)</td>
@@ -3627,6 +3875,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;"</s
       "fields_data": "{}",
       "attendance_mode": "online",
       "is_template": false,
+      "paid": true,
       "event_uri": "event_uri",
       "timezone": "America/Bogota",
       "settings": {
@@ -3664,6 +3913,12 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;"</s
                   "id": "1",
                   "type": "role_categories"
           }
+        },
+        "email_settings": {
+              "data": {
+                  "id": "1",
+                  "type": "email_settings"
+          }
         }
       }
   }
@@ -3685,6 +3940,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;"</s
       <span class="na">fields_data</span><span class="p">:</span> <span class="dl">"</span><span class="s2">{}</span><span class="dl">"</span><span class="p">,</span>
       <span class="na">attendance_mode</span><span class="p">:</span> <span class="dl">"</span><span class="s2">online</span><span class="dl">"</span><span class="p">,</span>
       <span class="na">is_template</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">paid</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
       <span class="na">event_uri</span><span class="p">:</span> <span class="dl">"</span><span class="s2">event_uri</span><span class="dl">"</span><span class="p">,</span>
       <span class="na">timezone</span><span class="p">:</span> <span class="dl">"</span><span class="s2">America/Bogota</span><span class="dl">"</span><span class="p">,</span>
       <span class="na">settings</span><span class="p">:</span> <span class="p">{</span>
@@ -3723,16 +3979,20 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;"</s
           <span class="na">id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">108</span><span class="dl">"</span><span class="p">,</span>
           <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">settings</span><span class="dl">"</span>
         <span class="p">}</span>
-      <span class="p">}</span>
-    <span class="p">},</span>
-      <span class="na">relationships</span><span class="p">:</span> <span class="p">{</span>
-          <span class="na">role_category</span><span class="p">:</span> <span class="p">{</span>
+      <span class="p">},</span>
+        <span class="na">role_category</span><span class="p">:</span> <span class="p">{</span>
               <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
                   <span class="na">id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span>
                   <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">role_categories</span><span class="dl">"</span>
           <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="na">email_settings</span><span class="p">:</span> <span class="p">{</span>
+              <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="na">id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span>
+                  <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">email_settings</span><span class="dl">"</span>
+          <span class="p">}</span>
         <span class="p">}</span>
-      <span class="p">}</span>
+    <span class="p">}</span>
   <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">})</span>
@@ -3757,6 +4017,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;"</s
 <span class="s">      "fields_data": "{}",</span>
 <span class="s">      "attendance_mode": "virtual",</span>
 <span class="s">      "is_template": "false",</span>
+<span class="s">      "paid": true,</span>
 <span class="s">      "event_uri": "event_uri",</span>
 <span class="s">      "timezone": "America/Bogota",</span>
 <span class="s">      "location": {</span>
@@ -3899,6 +4160,11 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;"</s
 <td>event time format [&#39;hours_24&#39;, &#39;am_pm&#39;].</td>
 </tr>
 <tr>
+<td>paid</td>
+<td>boolean</td>
+<td>this event is a paid event.</td>
+</tr>
+<tr>
 <td>available_languages</td>
 <td>json</td>
 <td>includes available key ( array with availables languages for event ) and default key ( a string with a single required language, included in available languages array)</td>
@@ -3935,6 +4201,7 @@ curl <span class="nt">-X</span> DELETE <span class="s2">"https://core.eventtia.c
 <span class="s">      "fields_data": "{}",</span>
 <span class="s">      "attendance_mode": "virtual",</span>
 <span class="s">      "is_template": false,</span>
+<span class="s">      "paid": true,</span>
 <span class="s">      "event_uri": "event_uri",</span>
 <span class="s">      "timezone": "America/Bogota",</span>
 <span class="s">      "location": {</span>
@@ -4011,10 +4278,11 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/set
         "pay_u_api_login": "33445ABCDE",
         "pay_u_test_mode": false,
         "currency": 4,
-        "vat_alias": "Recaudo",
-        "vat_value": 19,
+        "tax_alias": "Recaudo",
+        "tax_value": 19.0,
         "date_format": "dd/mm/yyyy",
         "time_format": "am_pm",
+        "sender_name": Sender Custom Name ,
         "google_analytics_tracking_code": "A78Y55ABCD",
         "google_tag_manager_code": "11223ABCDE",
         "available_languages": {
@@ -4044,10 +4312,11 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/set
         <span class="na">pay_u_api_login</span><span class="p">:</span> <span class="dl">"</span><span class="s2">33445ABCDE</span><span class="dl">"</span><span class="p">,</span>
         <span class="na">pay_u_test_mode</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="na">currency</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-        <span class="na">vat_alias</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Recaudo</span><span class="dl">"</span><span class="p">,</span>
-        <span class="na">vat_value</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span>
+        <span class="na">tax_alias</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Recaudo</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">tax_value</span><span class="p">:</span> <span class="mf">19.0</span><span class="p">,</span>
         <span class="na">date_format</span><span class="p">:</span> <span class="dl">"</span><span class="s2">dd/mm/yyyy</span><span class="dl">"</span><span class="p">,</span>
         <span class="na">time_format</span><span class="p">:</span> <span class="dl">"</span><span class="s2">am_pm</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">sender_name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Sender Custom Name</span><span class="dl">"</span> <span class="p">,</span>
         <span class="na">google_analytics_tracking_code</span><span class="p">:</span> <span class="dl">"</span><span class="s2">A78Y55ABCD</span><span class="dl">"</span><span class="p">,</span>
         <span class="na">google_tag_manager_code</span><span class="p">:</span> <span class="dl">"</span><span class="s2">11223ABCDE</span><span class="dl">"</span><span class="p">,</span>
         <span class="na">available_languages</span><span class="p">:</span> <span class="p">{</span>
@@ -4081,10 +4350,11 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/set
 <span class="s">      "pay_u_api_login": "33445ABCDE",</span>
 <span class="s">      "pay_u_test_mode": false,</span>
 <span class="s">      "currency": 4,</span>
-<span class="s">      "vat_alias": "Recaudo",</span>
-<span class="s">      "vat_value": 19,</span>
+<span class="s">      "tax_alias": "Recaudo",</span>
+<span class="s">      "tax_value": 19.0,</span>
 <span class="s">      "date_format": "dd/mm/yyyy",</span>
 <span class="s">      "time_format": "am_pm",</span>
+<span class="s">      "sender_name": Sender Custom Name ,</span>
 <span class="s">      "google_analytics_tracking_code": "33445ABCDE",</span>
 <span class="s">      "google_tag_manager_code": "11223ABCDE",</span>
 <span class="s">      "available_languages": {</span>
@@ -4204,19 +4474,24 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/set
 <td>your event currency for payments and invoices [&#39;COP&#39;, &#39;USD&#39;, &#39;EUR&#39;, &#39;ARS&#39;, &#39;BRL&#39;, &#39;CLP&#39;, &#39;MXN&#39;, &#39;PEN&#39;, &#39;GBP&#39;, &#39;JOD&#39;, &#39;UYU&#39;, &#39;PYG&#39;, &#39;AED&#39;, &#39;CAD&#39;, &#39;VND&#39;, &#39;PHP&#39;, &#39;AUD&#39;, &#39;BOB&#39;, &#39;TND&#39;, &#39;SGD&#39;, &#39;CHF&#39;, &#39;CFA&#39;, &#39;ZAR&#39;, &#39;INR&#39;]</td>
 </tr>
 <tr>
-<td>vat_alias</td>
+<td>tax_alias</td>
 <td>string</td>
 <td>how do you want to call your vat value</td>
 </tr>
 <tr>
-<td>vat_value</td>
+<td>tax_value</td>
 <td>integer/float</td>
-<td>Your event vat value</td>
+<td>Your event tax value</td>
 </tr>
 <tr>
 <td>available_languages</td>
 <td>json</td>
 <td>includes available key ( array with availables languages for event ) and default key ( a string with a single required language, included in available languages array)</td>
+</tr>
+<tr>
+<td>sender_name</td>
+<td>string</td>
+<td>Sender Name for event notifications</td>
 </tr>
 </tbody></table>
 <h1 id='input-fields'>Input fields</h1><h2 id='list-fields'>List fields</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
@@ -4250,13 +4525,9 @@ curl <span class="nt">-X</span> GET <span class="s2">"https://core.eventtia.com/
 <span class="s">                    "es": "326 name, locale: es"</span>
 <span class="s">                },</span>
 <span class="s">                "values": null,</span>
-<span class="s">                "settings": {</span>
-<span class="s">                    "available_public_listings": true</span>
-<span class="s">                },</span>
-<span class="s">                "validations": {</span>
-<span class="s">                    "validation_type": "letters"</span>
-<span class="s">                },</span>
 <span class="s">                "type": "Fields::TextField",</span>
+<span class="s">                "available_public_listings": true,</span>
+<span class="s">                "validation_type": "letters",</span>
 <span class="s">                "order": 1,</span>
 <span class="s">                "entity_id": 4,</span>
 <span class="s">                "default": true,</span>
@@ -4317,7 +4588,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/fields"</s
     "attributes": {
       "name": {"es": "Nombre", "en": "Name"},
       "required": true,
-      "order": 0,
       "available_public_listings": true,
       "display": true,
       "filterable": true,
@@ -4339,7 +4609,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/fields"</s
     <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
       <span class="na">name</span><span class="p">:</span> <span class="p">{</span><span class="na">es</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Nombre</span><span class="dl">"</span><span class="p">,</span> <span class="na">en</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Name</span><span class="dl">"</span><span class="p">},</span>
       <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-      <span class="na">order</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
       <span class="na">available_public_listings</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
       <span class="na">display</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
       <span class="na">filterable</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -4366,16 +4635,11 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/fields"</s
 <span class="s">          "fr": "326 name, locale: fr"</span>
 <span class="s">        },</span>
 <span class="s">        "values": null,</span>
-<span class="s">        "settings": {</span>
-<span class="s">          "available_public_listings": true</span>
-<span class="s">        },</span>
 <span class="s">        "type": "Fields::TextField",</span>
-<span class="s">        "validations": {</span>
-<span class="s">          "letters": true</span>
-<span class="s">        },</span>
 <span class="s">        "order": 1,</span>
 <span class="s">        "entity_id": 62374,</span>
 <span class="s">        "maximum_characters": "10",</span>
+<span class="s">        "available_public_listings": true</span>
 <span class="s">        "validation_type": "numbers",</span>
 <span class="s">        "repeat_value": "10",</span>
 <span class="s">        "allowed_values": ["one","one"],</span>
@@ -4420,11 +4684,6 @@ You may provide field names and options in multiple languages. Currently, Englis
 <td>required</td>
 <td>boolean</td>
 <td>Specify if the field is required.</td>
-</tr>
-<tr>
-<td>order</td>
-<td>integer</td>
-<td>Field order in the form.</td>
 </tr>
 <tr>
 <td>available_public_listings</td>
@@ -4481,11 +4740,6 @@ You may provide field names and options in multiple languages. Currently, Englis
 <td>Field name e.g  {en: &#39;name&#39;, &#39;es&#39;: &#39;nombre&#39;}.</td>
 </tr>
 <tr>
-<td>order</td>
-<td>integer</td>
-<td>Field order in the form.</td>
-</tr>
-<tr>
 <td>display</td>
 <td>boolean</td>
 <td>Show field on public form´s.</td>
@@ -4520,11 +4774,6 @@ You may provide field names and options in multiple languages. Currently, Englis
 <td>Field name e.g  {en: &#39;name&#39;, &#39;es&#39;: &#39;nombre&#39;}.</td>
 </tr>
 <tr>
-<td>order</td>
-<td>integer</td>
-<td>Field order in the form.</td>
-</tr>
-<tr>
 <td>display</td>
 <td>boolean</td>
 <td>Show field on public form´s.</td>
@@ -4557,11 +4806,6 @@ You may provide field names and options in multiple languages. Currently, Englis
 <td>values</td>
 <td>Array of Obejcts</td>
 <td>options for this field eg [{en: &#39;Automotive&#39;, es: &#39;Automotores&#39;, uuid: &#39;uuide&#39;}, {en: &#39;Computers&#39;, es: &#39;Computadores&#39;, uuid: &#39;uuidop&#39;}]. You must provide an unique uuid for each option.</td>
-</tr>
-<tr>
-<td>order</td>
-<td>integer</td>
-<td>Field order in the form.</td>
 </tr>
 <tr>
 <td>display</td>
@@ -4603,11 +4847,6 @@ You may provide field names and options in multiple languages. Currently, Englis
 <td>options for this field eg [{en: &#39;&#39;, es: &#39;Futbol&#39;, uuid: &#39;uuide&#39;}, {en: &#39;Golf&#39;, es: &#39;Golf&#39;, uuid: &#39;uuidop&#39;}]. You must provide an unique uuid for each option.</td>
 </tr>
 <tr>
-<td>order</td>
-<td>integer</td>
-<td>Field order in the form.</td>
-</tr>
-<tr>
 <td>display</td>
 <td>boolean</td>
 <td>Show field on public form´s.</td>
@@ -4640,11 +4879,6 @@ You may provide field names and options in multiple languages. Currently, Englis
 <td>name</td>
 <td>Hash</td>
 <td>Field name e.g  {en: &#39;date&#39;, &#39;es&#39;: &#39;fecha&#39;}.</td>
-</tr>
-<tr>
-<td>order</td>
-<td>integer</td>
-<td>Field order in the form.</td>
 </tr>
 <tr>
 <td>display</td>
@@ -4681,11 +4915,6 @@ You may provide field names and options in multiple languages. Currently, Englis
 <td>Field name e.g  {en: &#39;city&#39;, &#39;es&#39;: &#39;ciudad&#39;}.</td>
 </tr>
 <tr>
-<td>order</td>
-<td>integer</td>
-<td>Field order in the form.</td>
-</tr>
-<tr>
 <td>display</td>
 <td>boolean</td>
 <td>Show field on public form´s.</td>
@@ -4713,11 +4942,6 @@ You may provide field names and options in multiple languages. Currently, Englis
 <td>name</td>
 <td>Hash</td>
 <td>Field name e.g  {en: &#39;Image&#39;, &#39;es&#39;: &#39;imagen&#39;}.</td>
-</tr>
-<tr>
-<td>order</td>
-<td>integer</td>
-<td>Field order in the form.</td>
 </tr>
 <tr>
 <td>display</td>
@@ -4749,11 +4973,6 @@ You may provide field names and options in multiple languages. Currently, Englis
 <td>Field name e.g  {en: &#39;File&#39;, &#39;es&#39;: &#39;Archivo&#39;}.</td>
 </tr>
 <tr>
-<td>order</td>
-<td>integer</td>
-<td>Field order in the form.</td>
-</tr>
-<tr>
 <td>display</td>
 <td>boolean</td>
 <td>Show field on public form´s.</td>
@@ -4781,11 +5000,6 @@ You may provide field names and options in multiple languages. Currently, Englis
 <td>name</td>
 <td>Hash</td>
 <td>Field name e.g  {en: &#39;Terms and conditions&#39;, &#39;es&#39;: &#39;Terminos y condiciones&#39;}.</td>
-</tr>
-<tr>
-<td>order</td>
-<td>integer</td>
-<td>Field order in the form.</td>
 </tr>
 <tr>
 <td>display</td>
@@ -5067,6 +5281,7 @@ curl <span class="nt">-X</span> GET <span class="s2">"https://core.eventtia.com/
 <span class="s">      "type": "notifications",</span>
 <span class="s">      "attributes": {</span>
 <span class="s">        "name": "Welcome to Ticketing",</span>
+<span class="s">        "description": "description for a notification",</span>
 <span class="s">        "model": null,</span>
 <span class="s">        "entity_type": "User",</span>
 <span class="s">        "action": "account_created",</span>
@@ -5077,6 +5292,12 @@ curl <span class="nt">-X</span> GET <span class="s2">"https://core.eventtia.com/
 <span class="s">        "data": {</span>
 <span class="s">            "id": "54",</span>
 <span class="s">            "type": "events"</span>
+<span class="s">          }</span>
+<span class="s">      },</span>
+<span class="s">      "created_by": {</span>
+<span class="s">        "data": {</span>
+<span class="s">            "id": "2",</span>
+<span class="s">            "type": "users"</span>
 <span class="s">          }</span>
 <span class="s">      }</span>
 <span class="s">    }</span>
@@ -5136,6 +5357,7 @@ curl <span class="nt">-X</span> GET <span class="s2">"https://core.eventtia.com/
 <span class="s">    "type": "notifications",</span>
 <span class="s">    "attributes": {</span>
 <span class="s">      "name": "Welcome to Ticketing",</span>
+<span class="s">      "description": "description for a notification",</span>
 <span class="s">      "model": null,</span>
 <span class="s">      "entity_type": "User",</span>
 <span class="s">      "action": "account_created",</span>
@@ -5146,6 +5368,12 @@ curl <span class="nt">-X</span> GET <span class="s2">"https://core.eventtia.com/
 <span class="s">        "data": {</span>
 <span class="s">            "id": "54",</span>
 <span class="s">            "type": "events"</span>
+<span class="s">          }</span>
+<span class="s">      },</span>
+<span class="s">      "created_by": {</span>
+<span class="s">        "data": {</span>
+<span class="s">            "id": "2",</span>
+<span class="s">            "type": "users"</span>
 <span class="s">          }</span>
 <span class="s">      }</span>
 <span class="s">    }</span>
@@ -5196,6 +5424,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/not
     "type": "notification",
     "attributes": {
       "name": "Welcome to Ticketing",
+      "description": "description for a notification",
       "entity_type": "User",
       "mass_notification": false,
       "action": "account_created"
@@ -5212,6 +5441,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/not
     <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">notification</span><span class="dl">"</span><span class="p">,</span>
     <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
       <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Welcome to Ticketing</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">description</span><span class="p">:</span> <span class="dl">"</span><span class="s2">description for a notification</span><span class="dl">"</span><span class="p">,</span>
       <span class="na">entity_type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">User</span><span class="dl">"</span><span class="p">,</span>
       <span class="na">mass_notification</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
       <span class="na">action</span><span class="p">:</span> <span class="dl">"</span><span class="s2">account_created</span><span class="dl">"</span>
@@ -5234,6 +5464,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/not
 <span class="s">    "type": "notifications",</span>
 <span class="s">    "attributes": {</span>
 <span class="s">      "name": "Welcome to Ticketing",</span>
+<span class="s">      "description": "description for a notification",</span>
 <span class="s">      "model": null,</span>
 <span class="s">      "entity_type": "User",</span>
 <span class="s">      "action": "account_created",</span>
@@ -5245,6 +5476,12 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/not
 <span class="s">        "data": {</span>
 <span class="s">            "id": "54",</span>
 <span class="s">            "type": "events"</span>
+<span class="s">          }</span>
+<span class="s">      },</span>
+<span class="s">      "created_by": {</span>
+<span class="s">        "data": {</span>
+<span class="s">            "id": "2",</span>
+<span class="s">            "type": "users"</span>
 <span class="s">          }</span>
 <span class="s">      }</span>
 <span class="s">    }</span>
@@ -5284,6 +5521,11 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/not
 <td>Name for notification</td>
 </tr>
 <tr>
+<td>description</td>
+<td>string</td>
+<td>Description for notification</td>
+</tr>
+<tr>
 <td>entity_type</td>
 <td>string</td>
 <td>Entity type for notification</td>
@@ -5312,9 +5554,18 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/not
     "type": "notification",
     "attributes": {
       "name": "Welcome to Ticketing",
+      "description": "description for a notification",
       "entity_type": "User",
       "mass_notification": false,
       "action": "account_created"
+    },    
+    "relationships": {
+      "user": {
+      "data": [
+        {"type": "User", id: 1},
+        {"type": "User", id: 2}
+        ]
+      }
     }
   }
 }'</span>
@@ -5328,9 +5579,18 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/not
     <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">notification</span><span class="dl">"</span><span class="p">,</span>
     <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
       <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Welcome to Ticketing</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">description</span><span class="p">:</span> <span class="dl">"</span><span class="s2">description for a notification</span><span class="dl">"</span><span class="p">,</span>
       <span class="na">entity_type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">User</span><span class="dl">"</span><span class="p">,</span>
-      <span class="dl">"</span><span class="s2">mass_notification</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">mass_notification</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
       <span class="na">action</span><span class="p">:</span> <span class="dl">"</span><span class="s2">account_created</span><span class="dl">"</span>
+    <span class="p">},</span>
+    <span class="na">relationships</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">user</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">data</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">User</span><span class="dl">"</span><span class="p">,</span> <span class="na">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+        <span class="p">{</span><span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">User</span><span class="dl">"</span><span class="p">,</span> <span class="na">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
@@ -5352,6 +5612,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/not
 <span class="s">    "type": "notifications",</span>
 <span class="s">    "attributes": {</span>
 <span class="s">      "name": "Welcome to Ticketing",</span>
+<span class="s">      "description": "description for a notification",</span>
 <span class="s">      "model": null,</span>
 <span class="s">      "entity_type": "User",</span>
 <span class="s">      "action": "account_created",</span>
@@ -5363,6 +5624,12 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/not
 <span class="s">        "data": {</span>
 <span class="s">            "id": "54",</span>
 <span class="s">            "type": "events"</span>
+<span class="s">          }</span>
+<span class="s">      },</span>
+<span class="s">      "created_by": {</span>
+<span class="s">        "data": {</span>
+<span class="s">            "id": "2",</span>
+<span class="s">            "type": "users"</span>
 <span class="s">          }</span>
 <span class="s">      }</span>
 <span class="s">    }</span>
@@ -5423,6 +5690,11 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/not
 <td>Name for notification</td>
 </tr>
 <tr>
+<td>description</td>
+<td>string</td>
+<td>Description for notification</td>
+</tr>
+<tr>
 <td>entity_type</td>
 <td>string</td>
 <td>Entity type for notification</td>
@@ -5441,6 +5713,21 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/not
 <td>mass_notification</td>
 <td>boolean</td>
 <td>Flag to identify if the notification that is going to be created is massive</td>
+</tr>
+<tr>
+<td>attendee_types</td>
+<td>hash</td>
+<td>Attendee_types ids for this notification</td>
+</tr>
+<tr>
+<td>users</td>
+<td>hash</td>
+<td>User ids ids for this notification</td>
+</tr>
+<tr>
+<td>members</td>
+<td>hash</td>
+<td>Member ids for this role</td>
 </tr>
 </tbody></table>
 <h2 id='destroy-notification'>Destroy Notification</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
@@ -5469,6 +5756,7 @@ curl <span class="nt">-X</span> DELETE <span class="s2">"https://core.eventtia.c
 <span class="s">    "type": "notifications",</span>
 <span class="s">    "attributes": {</span>
 <span class="s">      "name": "Welcome to Ticketing",</span>
+<span class="s">      "description": "description for a notification",</span>
 <span class="s">      "model": null,</span>
 <span class="s">      "entity_type": "User",</span>
 <span class="s">      "action": "account_created",</span>
@@ -5480,6 +5768,12 @@ curl <span class="nt">-X</span> DELETE <span class="s2">"https://core.eventtia.c
 <span class="s">        "data": {</span>
 <span class="s">            "id": "54",</span>
 <span class="s">            "type": "events"</span>
+<span class="s">          }</span>
+<span class="s">      },</span>
+<span class="s">      "created_by": {</span>
+<span class="s">        "data": {</span>
+<span class="s">            "id": "2",</span>
+<span class="s">            "type": "users"</span>
 <span class="s">          }</span>
 <span class="s">      }</span>
 <span class="s">    }</span>
@@ -5643,6 +5937,100 @@ curl <span class="nt">-X</span> GET <span class="s2">"https://core.eventtia.com/
 <td>The id for the desired notification</td>
 </tr>
 </tbody></table>
+<h2 id='tags-notification'>Tags Notification</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="nt">-X</span> GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/tags"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/tags</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer &lt;your token&gt;</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div>
+<blockquote>
+<p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event.</p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">    "data": {</span>
+<span class="s">        "id": "tags for notifications event id",</span>
+<span class="s">        "type": "tags",</span>
+<span class="s">        "attributes": {</span>
+<span class="s">            "event_tags": {</span>
+<span class="s">                "default": [</span>
+<span class="s">                    "event-name",</span>
+<span class="s">                    "event-description",</span>
+<span class="s">                    "event-start_date",</span>
+<span class="s">                    "event-end_date",</span>
+<span class="s">                    "event-timezone",</span>
+<span class="s">                    "event-location"</span>
+<span class="s">                ],</span>
+<span class="s">                "fields": []</span>
+<span class="s">            },</span>
+<span class="s">            "attendee_type_tags": {</span>
+<span class="s">                "default": [</span>
+<span class="s">                    "attendee_type-name",</span>
+<span class="s">                    "attendee_type-description"</span>
+<span class="s">                ],</span>
+<span class="s">                "fields": []</span>
+<span class="s">            },</span>
+<span class="s">            "attendee_tags": {</span>
+<span class="s">                "default": [</span>
+<span class="s">                    "attendee-first_name",</span>
+<span class="s">                    "attendee-last_name",</span>
+<span class="s">                    "attendee-email",</span>
+<span class="s">                    "attendee-alternative_email",</span>
+<span class="s">                    "attendee-telephone",</span>
+<span class="s">                    "attendee-company",</span>
+<span class="s">                    "attendee-birthdate"</span>
+<span class="s">                ],</span>
+<span class="s">                "fields": [</span>
+<span class="s">                    "attendee-f653",</span>
+<span class="s">                    "attendee-f654",</span>
+<span class="s">                    "attendee-f655"</span>
+<span class="s">                ]</span>
+<span class="s">            }</span>
+<span class="s">        }</span>
+<span class="s">    }</span>
+<span class="s">}</span>
+</code></pre></div>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "error": [</span>
+<span class="s">      "code: 128"</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre></div>
+<p>This endpoint allows you to obtain the available tags for notification</p>
+
+<p><strong><em>HTTP Request</em></strong></p>
+
+<p><code>GET /v1/events/:event_uri/notifications/stats</code></p>
+
+<p><strong><em>Path Parameters</em></strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>event_uri for the desired event</td>
+</tr>
+</tbody></table>
 <h2 id='notification-languages'>Notification Languages</h2><h2 id='index-notification-languages'>Index Notification Languages</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
 curl <span class="nt">-X</span> GET <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notifications/:notification_id/notification_languages"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span>
@@ -5673,7 +6061,8 @@ curl <span class="nt">-X</span> GET <span class="s2">"https://core.eventtia.com/
 <span class="s">            "attributes": {</span>
 <span class="s">                "locale": "en",</span>
 <span class="s">                "subject": "Email created",</span>
-<span class="s">                "body": "&lt;div class= 'body'&gt; Hello${name}&lt;/div&gt;"</span>
+<span class="s">                "body": "&lt;div class= 'body'&gt; Hello${name}&lt;/div&gt;",</span>
+<span class="s">                "design": "{\"padding\":\"0px\"}"</span>
 <span class="s">            }</span>
 <span class="s">        }</span>
 <span class="s">    ]</span>
@@ -5746,7 +6135,8 @@ curl <span class="nt">-X</span> GET <span class="s2">"https://core.eventtia.com/
 <span class="s">            "attributes": {</span>
 <span class="s">                "locale": "en",</span>
 <span class="s">                "subject": "Email created",</span>
-<span class="s">                "body": "&lt;div class= 'body'&gt; Hello${name}&lt;/div&gt;"</span>
+<span class="s">                "body": "&lt;div class= 'body'&gt; Hello${name}&lt;/div&gt;",</span>
+<span class="s">                "design": "{\"padding\":\"0px\"}"</span>
 <span class="s">            }</span>
 <span class="s">        }</span>
 
@@ -5807,7 +6197,8 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notificati
     "attributes": {
           "locale": "en",
           "subject": "Email created",
-          "body": "&lt;div class='</span>body<span class="s1">'&gt; Hello ${name}&lt;/div&gt;"
+          "body": "&lt;div class='</span>body<span class="s1">'&gt; Hello ${name}&lt;/div&gt;",
+          "design": "{\"padding\":\"0px\"}"
         }
   }
 }'</span>
@@ -5824,7 +6215,8 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notificati
     <span class="dl">"</span><span class="s2">attributes</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
           <span class="dl">"</span><span class="s2">locale</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">en</span><span class="dl">"</span><span class="p">,</span>
           <span class="dl">"</span><span class="s2">subject</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Email created</span><span class="dl">"</span><span class="p">,</span>
-          <span class="dl">"</span><span class="s2">body</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">&lt;div class='body'&gt; Hello ${name}&lt;/div&gt;</span><span class="dl">"</span>
+          <span class="dl">"</span><span class="s2">body</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">&lt;div class='body'&gt; Hello ${name}&lt;/div&gt;</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">design</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">{</span><span class="se">\"</span><span class="s2">padding</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">0px</span><span class="se">\"</span><span class="s2">}</span><span class="dl">"</span>
         <span class="p">}</span>
   <span class="p">}</span>
   <span class="p">}</span>
@@ -5863,7 +6255,8 @@ Parameter | Type | Description
 --------- | ---- | -----------
 locale | string | Supported locales [&#39;es&#39;, &#39;en&#39;, &#39;fr&#39;, &#39;it&#39;, &#39;de&#39;, &#39;ru&#39;]
 subject | string | Subject for notification.
-body    | string | Body for notification.</p>
+body    | string | Body for notification.
+design | json | json object with notifications data</p>
 <h2 id='update-notification-language'>Update Notification Language</h2>
 <p>This endpoint allows you to update a new notification language to the given notification.</p>
 
@@ -5879,7 +6272,8 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notificati
     "attributes": {
           "locale": "en",
           "subject": "Email created",
-          "body": "&lt;div class='</span>body<span class="s1">'&gt; Hello ${name}&lt;/div&gt;"
+          "body": "&lt;div class='</span>body<span class="s1">'&gt; Hello ${name}&lt;/div&gt;",
+          "design": "{\"padding\":\"0px\"}"
         }
   }
 }'</span>
@@ -5896,7 +6290,8 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/:event_uri/notificati
     <span class="dl">"</span><span class="s2">attributes</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
           <span class="dl">"</span><span class="s2">locale</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">en</span><span class="dl">"</span><span class="p">,</span>
           <span class="dl">"</span><span class="s2">subject</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Email created</span><span class="dl">"</span><span class="p">,</span>
-          <span class="dl">"</span><span class="s2">body</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">&lt;div class='body'&gt; Hello ${name}&lt;/div&gt;</span><span class="dl">"</span>
+          <span class="dl">"</span><span class="s2">body</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">&lt;div class='body'&gt; Hello ${name}&lt;/div&gt;</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">design</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">{</span><span class="se">\"</span><span class="s2">padding</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">0px</span><span class="se">\"</span><span class="s2">}</span><span class="dl">"</span>
         <span class="p">}</span>
   <span class="p">}</span>
   <span class="p">}</span>
@@ -5940,7 +6335,8 @@ Parameter | Type | Description
 --------- | ---- | -----------
 locale | string | Supported locales [&#39;es&#39;, &#39;en&#39;, &#39;fr&#39;, &#39;it&#39;, &#39;de&#39;, &#39;ru&#39;]
 subject | string | Subject for notification.
-body    | string | Body for notification.</p>
+body    | string | Body for notification.
+design  | json | json object for notifications data</p>
 <h2 id='delete-notification-language'>Delete Notification Language</h2>
 <blockquote>
 <p>To destroy notification language, use this code:</p>
@@ -5976,7 +6372,8 @@ curl <span class="nt">-X</span> DELETE <span class="s2">"https://core.eventtia.c
 <span class="s">    "attributes": {</span>
 <span class="s">        "locale": "en",</span>
 <span class="s">        "subject": "Email created",</span>
-<span class="s">        "body": "&lt;div class= 'body'&gt; Hello${name}&lt;/div&gt;"</span>
+<span class="s">        "body": "&lt;div class= 'body'&gt; Hello${name}&lt;/div&gt;",</span>
+<span class="s">        "design": "{\"padding\":\"0px\"}"</span>
 <span class="s">    }</span>
 <span class="s">    }</span>
 <span class="s">  }</span>
@@ -7420,7 +7817,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/public/events/&lt;event_uri&
 <p><strong><em>HTTP Request</em></strong></p>
 
 <p><code>GET /v1/public/events/:event_uri/sessions/validate</code></p>
-<h2 id='create-public-attendees'>Create Public Attendees</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+<h2 id='create-public-attendees-with-ticket'>Create Public Attendees with Ticket</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
 curl <span class="s2">"https://core.eventtia.com/v1/public/events/&lt;event_uri&gt;/attendees/"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
    <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="s1">'{
@@ -7497,7 +7894,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/public/events/&lt;event_uri&
 <span class="s">}</span>
 </code></pre></div>
 <blockquote>
-<p>Example of Unprocessable Entity (422) response: </p>
+<p>Example of Unprocessable Entity (422) response:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
 <span class="s">{</span>
@@ -7572,6 +7969,171 @@ curl <span class="s2">"https://core.eventtia.com/v1/public/events/&lt;event_uri&
 <td>photo</td>
 <td>file</td>
 <td>photo for attendee</td>
+</tr>
+</tbody></table>
+<h2 id='create-public-attendees-with-order'>Create Public Attendees with Order</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl <span class="s2">"https://core.eventtia.com/v1/public/events/&lt;event_uri&gt;/attendees/"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span><span class="se">\</span>
+   <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="s1">'{
+    "data": {
+      "type": "attendees",
+      "attributes": {
+        "attendee_type_id": 34,
+        "first_name": "Mary",
+        "last_name": "perez ossa",
+        "email": "maryperez@email.com",
+        telephone": "+56912345678",
+        "updated_by_id": 192,
+        "archived": false,
+        "fields_data": {
+          "f281": "george",
+          "f282": "downtown"
+        },
+        "photo_url": "url_Image_file"
+      },
+      "ticket":{
+        "uuid": "ti_12345"
+      }
+    }
+}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://core.eventtia.com/v1/public/events/&lt;event_uri&gt;/attendees/</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer &lt;your public token&gt;</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">attendees</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">attendee_type_id</span><span class="p">:</span> <span class="mi">34</span><span class="p">,</span>
+        <span class="na">first_name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Mary</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">last_name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">perez ossa</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">email</span><span class="p">:</span> <span class="dl">"</span><span class="s2">maryperez@email.com</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">telephone</span><span class="p">:</span> <span class="dl">"</span><span class="s2">+56912345678</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">updated_by_id</span><span class="p">:</span> <span class="mi">192</span><span class="p">,</span>
+        <span class="na">archived</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">fields_data</span><span class="p">:</span> <span class="p">{</span>
+          <span class="dl">"</span><span class="s2">f281</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">george</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">f282</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">downtown</span><span class="dl">"</span>
+        <span class="p">},</span>
+        <span class="na">photo_url</span><span class="p">:</span> <span class="dl">"</span><span class="s2">url_Image_file</span><span class="dl">"</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+      <span class="na">ticket</span><span class="p">:{</span>
+        <span class="na">uuid</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ti_12345</span><span class="dl">"</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div>
+<blockquote>
+<p>Make sure you replace &lt;your public token&gt; with the JWT you get when you authenticate.</p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event .</p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">  "data": {</span>
+<span class="s">    "id": "6264284",</span>
+<span class="s">    "type": "attendees",</span>
+<span class="s">    "attributes": {</span>
+<span class="s">      "first_name": "Rosa Maria",</span>
+<span class="s">      "last_name": "Rosales Rojas",</span>
+<span class="s">      "email": "rosales@email.com",</span>
+<span class="s">      "telephone": "+56912345678",</span>
+<span class="s">      "updated_by_id": "10461",</span>
+<span class="s">      "archived": "false",</span>
+<span class="s">      "fields_data": {</span>
+<span class="s">        "f281": "george",</span>
+<span class="s">        "f282": "downtown"</span>
+<span class="s">      },</span>
+<span class="s">      "photo_url": "url_Image_file"</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre></div>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "email": [</span>
+<span class="s">      "already taken"</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre></div>
+<p>This public endpoint create an attendee and return it
+<strong><em>HTTP Request</em></strong></p>
+
+<p><code>POST /v1/public/events/:event_uri/attendees/</code></p>
+
+<p><strong><em>Path Parameters</em></strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>The event_uri for the desired event</td>
+</tr>
+</tbody></table>
+
+<p><strong><em>Body Parameters</em></strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>first_name</td>
+<td>string</td>
+<td>first name for attendee</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>last name for attendee</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>email for attendee</td>
+</tr>
+<tr>
+<td>telephone</td>
+<td>integer</td>
+<td>telephone for attendee</td>
+</tr>
+<tr>
+<td>attendee_type_id</td>
+<td>integer</td>
+<td>attendee type id who created attendee belongs</td>
+</tr>
+<tr>
+<td>fields_data</td>
+<td>hash</td>
+<td>key-value for custom fields data for created attendee</td>
+</tr>
+<tr>
+<td>photo</td>
+<td>file</td>
+<td>photo for attendee</td>
+</tr>
+<tr>
+<td>ticket uuid</td>
+<td>string</td>
+<td>uuid for ticket who will be assigned to attendee created.</td>
 </tr>
 </tbody></table>
 <h2 id='update-public-attendee'>Update Public Attendee</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
