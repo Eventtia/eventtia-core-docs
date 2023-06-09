@@ -549,6 +549,82 @@ event_uri | string  | The event_uri for the desired event
    id     | integer | The id for the desired attendee type
 
 
+## Entity Notifications
+
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>/entity-notifications" \
+  -H 'Content-Type: application/json'
+```
+
+```javascript
+fetch('https://core.eventtia.com/v1/events/<event_uri>/attendee_types/<id>/entity-notifications', {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer <your token>',
+  }
+})
+```
+
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
+
+> Make sure you replace &lt;event uri&gt; with the event uri for the event.
+
+> Make sure you replace &lt;id&gt; with the id for the attendee type to obtain.
+
+> Example of a successful (200) response:
+
+```http
+HTTP/1.1 200 OK
+{
+"data": [
+  {
+    "id": "42",
+    "type": "entity_notifications",
+    "relationships": {
+      "notification": {
+        "data": {
+          "id": "114",
+          "type": "notifications"
+        }
+      },
+      "entity": {
+        "data": {
+          "id": "9",
+          "type": "attendee_types"
+        }
+      }
+    }
+  }
+]
+}
+```
+
+>Example of Not Found (404) response:
+
+```http
+HTTP/1.1 404 Not Found
+{
+  {
+    "message": "Couldn't find AttendeeType"
+  }
+}
+```
+
+This endpoint get the attendee type notifications relations and return it
+
+***HTTP Request***
+
+`GET /v1/events/:event_uri/attendee_types/:id/entity-notifications`
+
+***Path Parameters***
+
+Parameter |  Type   | Description
+--------- | ------- | -----------
+event_uri | string  | The event_uri for the desired event
+   id     | integer | The id for the desired attendee type
+
+
 ## Form Fields
 ### Index form fields
 
