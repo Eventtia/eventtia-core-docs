@@ -67,11 +67,10 @@ first_name | string | Filters results by the attendee's first name.
 last_name | string | Filters results by the attendee's last name.
 email | string | Filters results by the attendee's email.
 telephone | string | Filters results by the attendee's telephone.
-status | string | attendee status ['pending', 'cancelled', 'rejected', 'confirmed']. 
+status | string | attendee status ['pending', 'cancelled', 'rejected', 'confirmed'].
 checked | boolean | attendee has been checked
 checked_date | date | date for last checking
 attendee_type_id | integer | Filters results by attendee type.
-event_id | integer | Filters results by event
 user_id | integer | Filters results by user
 
 
