@@ -260,7 +260,11 @@ curl "https://core.eventtia.com/v1/account_subscriptions/<id>" \
   "data": {
       "type": "account_subscriptions",
       "attributes": {
-        "price_id": "<price_id>"
+        "price_id": "<price_id>",
+        "callbacks_urls": {
+          "success_url": "www.success_url.com",
+          "cancel_url": "www.cancel_url.com"
+        }
       }
       "relationships": {
         "plan": {
@@ -284,7 +288,11 @@ fetch('https://core.eventtia.com/v1/account_subscriptions/<id>', {
     data: {
       type: "account_subscriptions",
       attributes: {
-        price_id: "<price_id>"
+        price_id: "<price_id>",
+        callbacks_urls: {
+          success_url: "www.success_url.com",
+          cancel_url: "www.cancel_url.com"
+        }
       }
       relationships: {
         plan: {
@@ -357,6 +365,7 @@ Parameter | Type | Description
 --------- | ---- | -----------
 plan_id | string | commercial plan id for this account subscription.
 price_id | string | price id for this account subscription.
+callbacks_urls | json | The stripe success and cancel URL.
 
 ## Destroy Account Subscriptions
 
@@ -420,6 +429,17 @@ id | integer | The id for the desired account subscription.
 # Get your token for further authorization
 curl "https://core.eventtia.com/v1/account_subscriptions/<id>/change-payment-method" \
   -H 'Content-Type: application/json'\
+  -X PUT -d '{
+  "data": {
+      "type": "account_subscriptions",
+      "attributes": {
+        "callbacks_urls": {
+          "success_url": "www.success_url.com",
+          "cancel_url": "www.cancel_url.com"
+        }
+      }
+    }
+}'  
 ```
 
 ```javascript
@@ -428,6 +448,17 @@ fetch('https://core.eventtia.com/v1/account_subscriptions/<id>/change-payment-me
   headers: {
     'Authorization': 'Bearer <your token>',
   },
+  body: {
+    data: {
+      type: "account_subscriptions",
+      attributes: {
+        callbacks_urls: {
+          success_url: "www.success_url.com",
+          cancel_url: "www.cancel_url.com"
+        }
+      }
+    }
+  }
 })
 ```
 
@@ -466,3 +497,9 @@ This endpoint creates and returns a stripe session URL which allows the user to 
 Parameter | Type | Description
 --------- | ---- | -----------
 id | integer | The id for the desired account subscription
+
+***Body Parameters***
+
+Parameter | Type | Description
+--------- | ---- | -----------
+callbacks_urls | json | The stripe success and cancel URL.

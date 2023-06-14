@@ -80,6 +80,10 @@ curl "https://core.eventtia.com/v1/events/<event_uri>/orders/" \
           "phone": 55898989,
           "email": "email@eventtia.com"
           },
+      "callbacks_urls": {
+          "success_url": "www.success_url.com",
+          "cancel_url": "www.cancel_url.com"
+        },    
       "order_items": [
           {
               "description": "description for first item",
@@ -117,6 +121,10 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/orders/', {
           "phone": 55898989,
           "email": "email@eventtia.com"
           },
+      "callbacks_urls": {
+          "success_url": "www.success_url.com",
+          "cancel_url": "www.cancel_url.com"
+        },    
       "order_items": [
           {
               "description": "description for first item",
