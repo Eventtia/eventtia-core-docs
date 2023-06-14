@@ -3348,7 +3348,6 @@ curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/"</span> <span
 <span class="s">          "country": "Colombia.",</span>
 <span class="s">          "city": "Medellín",</span>
 <span class="s">        },</span>
-<span class="s">        "virtual_timezone": "America/Bogota",</span>
 <span class="s">        "total_attendees": 0,</span>
 <span class="s">        "banner": {</span>
 <span class="s">          "filename": "file_name",</span>
@@ -3487,7 +3486,6 @@ curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&
 <span class="s">        "country": "Colombia.",</span>
 <span class="s">        "city": "Medellín",</span>
 <span class="s">      },</span>
-<span class="s">      "virtual_timezone": "America/Bogota",</span>
 <span class="s">      "total_attendees": 0,</span>
 <span class="s">      "cloned_from_id": "2",</span>
 <span class="s">      "banner": {</span>
@@ -3597,7 +3595,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/"</span> <span class=
         "country": "Colombia.",
         "city": "Medellín",
       },
-      "virtual_timezone": "America/Bogota",
       "banner": {
         "filename": "file_name",
         "thumb": "url_image",
@@ -3663,7 +3660,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/"</span> <span class=
         <span class="s2">"country"</span><span class="p">:</span> <span class="s2">"Colombia."</span><span class="p">,</span>
         <span class="s2">"city"</span><span class="p">:</span> <span class="s2">"Medellín"</span><span class="p">,</span>
       <span class="p">},</span>
-      <span class="na">virtual_timezone</span><span class="p">:</span> <span class="s2">"America/Bogota"</span><span class="p">,</span>
       <span class="na">banner</span><span class="p">:</span> <span class="p">{</span>
         <span class="na">filename</span><span class="p">:</span> <span class="s2">"file_name"</span><span class="p">,</span>
         <span class="na">thumb</span><span class="p">:</span> <span class="s2">"url_image"</span><span class="p">,</span>
@@ -3725,7 +3721,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/"</span> <span class=
 <span class="s">        "country": "Colombia.",</span>
 <span class="s">        "city": "Medellín",</span>
 <span class="s">      },</span>
-<span class="s">      "virtual_timezone": "America/Bogota",</span>
 <span class="s">      "total_attendees": 0,</span>
 <span class="s">      "banner": {</span>
 <span class="s">        "filename": "file_name",</span>
@@ -3812,6 +3807,31 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/"</span> <span class=
 <td>event attendance mode [&#39;offline&#39;, &#39;mixed&#39;, &#39;online&#39;].</td>
 </tr>
 <tr>
+<td>timezone</td>
+<td>string</td>
+<td>valid timezone for online events is required.</td>
+</tr>
+<tr>
+<td>location - coordinates</td>
+<td>string</td>
+<td>latitude and longitude coordinates for offline and mixed events.</td>
+</tr>
+<tr>
+<td>location - address</td>
+<td>string</td>
+<td>physical address for offline and mixed events.</td>
+</tr>
+<tr>
+<td>location - country</td>
+<td>string</td>
+<td>country for offline and mixed events.</td>
+</tr>
+<tr>
+<td>location - city</td>
+<td>string</td>
+<td>city for offline and mixed events.</td>
+</tr>
+<tr>
 <td>event_uri</td>
 <td>string</td>
 <td>event uri must be an unique name.</td>
@@ -3884,7 +3904,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;"</s
         "country": "Colombia.",
         "city": "Medellín",
       },
-      "virtual_timezone": "America/Bogota",
       "banner": {
         "filename": "file_name",
         "thumb": "url_image",
@@ -3949,7 +3968,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;"</s
         <span class="s2">"country"</span><span class="p">:</span> <span class="s2">"Colombia."</span><span class="p">,</span>
         <span class="s2">"city"</span><span class="p">:</span> <span class="s2">"Medellín"</span><span class="p">,</span>
       <span class="p">},</span>
-      <span class="na">virtual_timezone</span><span class="p">:</span> <span class="s2">"America/Bogota"</span><span class="p">,</span>
       <span class="na">cloned_from_id</span><span class="p">:</span> <span class="s2">"12"</span><span class="p">,</span>
       <span class="na">banner</span><span class="p">:</span> <span class="p">{</span>
         <span class="na">filename</span><span class="p">:</span> <span class="s2">"file_name"</span><span class="p">,</span>
@@ -4008,7 +4026,7 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;"</s
 <span class="s">      "end_date": "2020-04-15 15:54:57 -0500",</span>
 <span class="s">      "active_modules": "[0, 1]",</span>
 <span class="s">      "fields_data": "{}",</span>
-<span class="s">      "attendance_mode": "virtual",</span>
+<span class="s">      "attendance_mode": "online",</span>
 <span class="s">      "is_template": "false",</span>
 <span class="s">      "paid": true,</span>
 <span class="s">      "event_uri": "event_uri",</span>
@@ -4019,7 +4037,6 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;"</s
 <span class="s">        "country": "Colombia.",</span>
 <span class="s">        "city": "Medellín",</span>
 <span class="s">      },</span>
-<span class="s">      "virtual_timezone": "America/Bogota",</span>
 <span class="s">      "total_attendees": 0,</span>
 <span class="s">      "cloned_from_id": "1",</span>
 <span class="s">      "banner": {</span>
@@ -4128,6 +4145,31 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;"</s
 <td>event uri must be an unique name.</td>
 </tr>
 <tr>
+<td>timezone</td>
+<td>string</td>
+<td>valid timezone for online events is required.</td>
+</tr>
+<tr>
+<td>location - coordinates</td>
+<td>string</td>
+<td>latitude and longitude coordinates for offline and mixed events.</td>
+</tr>
+<tr>
+<td>location - address</td>
+<td>string</td>
+<td>physical address for offline and mixed events.</td>
+</tr>
+<tr>
+<td>location - country</td>
+<td>string</td>
+<td>country for offline and mixed events.</td>
+</tr>
+<tr>
+<td>location - city</td>
+<td>string</td>
+<td>city for offline and mixed events.</td>
+</tr>
+<tr>
 <td>logo</td>
 <td>file</td>
 <td>logo for this event.</td>
@@ -4192,7 +4234,7 @@ curl -X DELETE <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_u
 <span class="s">      "end_date": "2020-04-15 15:54:57 -0500",</span>
 <span class="s">      "active_modules": "[8]",</span>
 <span class="s">      "fields_data": "{}",</span>
-<span class="s">      "attendance_mode": "virtual",</span>
+<span class="s">      "attendance_mode": "online",</span>
 <span class="s">      "is_template": false,</span>
 <span class="s">      "paid": true,</span>
 <span class="s">      "event_uri": "event_uri",</span>
@@ -4203,7 +4245,6 @@ curl -X DELETE <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_u
 <span class="s">        "country": "Colombia.",</span>
 <span class="s">        "city": "Medellín",</span>
 <span class="s">      },</span>
-<span class="s">      "virtual_timezone": "America/Bogota",</span>
 <span class="s">      "total_attendees": 0,</span>
 <span class="s">      "banner": {</span>
 <span class="s">        "filename": "file_name",</span>
