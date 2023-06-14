@@ -733,7 +733,7 @@ HTTP/1.1 200 OK
       "end_date": "2020-04-15 15:54:57 -0500",
       "active_modules": "[8]",
       "fields_data": "{}",
-      "attendance_mode": "virtual",
+      "attendance_mode": "online",
       "is_template": false,
       "paid": true,
       "event_uri": "event_uri",
