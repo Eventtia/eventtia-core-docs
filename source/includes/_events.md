@@ -45,7 +45,6 @@ HTTP/1.1 200 OK
           "country": "Colombia.",
           "city": "Medellín",
         },
-        "virtual_timezone": "America/Bogota",
         "total_attendees": 0,
         "banner": {
           "filename": "file_name",
@@ -143,7 +142,6 @@ HTTP/1.1 200 OK
         "country": "Colombia.",
         "city": "Medellín",
       },
-      "virtual_timezone": "America/Bogota",
       "total_attendees": 0,
       "cloned_from_id": "2",
       "banner": {
@@ -241,7 +239,6 @@ curl "https://core.eventtia.com/v1/events/" \
         "country": "Colombia.",
         "city": "Medellín",
       },
-      "virtual_timezone": "America/Bogota",
       "banner": {
         "filename": "file_name",
         "thumb": "url_image",
@@ -310,7 +307,6 @@ fetch('https://core.eventtia.com/v1/events/', {
         "country": "Colombia.",
         "city": "Medellín",
       },
-      virtual_timezone: "America/Bogota",
       banner: {
         filename: "file_name",
         thumb: "url_image",
@@ -373,7 +369,6 @@ HTTP/1.1 200 OK
         "country": "Colombia.",
         "city": "Medellín",
       },
-      "virtual_timezone": "America/Bogota",
       "total_attendees": 0,
       "banner": {
         "filename": "file_name",
@@ -434,6 +429,11 @@ start_date | date | starting date for event, must be before end date of event.
 is_template | boolean | this event is a template.
 cloned_from_id | integer | event id from this event was cloned
 attendance_mode | string | event attendance mode ['offline', 'mixed', 'online']. 
+timezone | string | valid timezone for online events is required.
+location - coordinates| string | latitude and longitude coordinates for offline and mixed events.
+location - address| string | physical address for offline and mixed events.
+location - country| string | country for offline and mixed events.
+location - city| string | city for offline and mixed events.
 event_uri| string | event uri must be an unique name.
 logo | file | logo for this event.
 banner_image | file | banner image for this event.
@@ -479,7 +479,6 @@ curl "https://core.eventtia.com/v1/events/<event_uri>" \
         "country": "Colombia.",
         "city": "Medellín",
       },
-      "virtual_timezone": "America/Bogota",
       "banner": {
         "filename": "file_name",
         "thumb": "url_image",
@@ -547,7 +546,6 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>', {
         "country": "Colombia.",
         "city": "Medellín",
       },
-      virtual_timezone: "America/Bogota",
       cloned_from_id: "12",
       banner: {
         filename: "file_name",
@@ -607,7 +605,7 @@ HTTP/1.1 200 OK
       "end_date": "2020-04-15 15:54:57 -0500",
       "active_modules": "[0, 1]",
       "fields_data": "{}",
-      "attendance_mode": "virtual",
+      "attendance_mode": "online",
       "is_template": "false",
       "paid": true,
       "event_uri": "event_uri",
@@ -618,7 +616,6 @@ HTTP/1.1 200 OK
         "country": "Colombia.",
         "city": "Medellín",
       },
-      "virtual_timezone": "America/Bogota",
       "total_attendees": 0,
       "cloned_from_id": "1",
       "banner": {
@@ -687,6 +684,11 @@ is_template | boolean | this event is a template.
 cloned_from_id | integer | event id from this event was cloned
 attendance_mode | string | event type ['offline', 'mixed', 'online']. 
 event_uri| string | event uri must be an unique name.
+timezone | string | valid timezone for online events is required.
+location - coordinates| string | latitude and longitude coordinates for offline and mixed events.
+location - address| string | physical address for offline and mixed events.
+location - country| string | country for offline and mixed events.
+location - city| string | city for offline and mixed events.
 logo | file | logo for this event.
 banner_image | file | banner image for this event.
 currency | string | your event currency for payments and invoices ['COP', 'USD', 'EUR', 'ARS', 'BRL', 'CLP', 'MXN', 'PEN', 'GBP', 'JOD', 'UYU', 'PYG', 'AED', 'CAD', 'VND', 'PHP', 'AUD', 'BOB', 'TND', 'SGD', 'CHF', 'CFA', 'ZAR', 'INR']
@@ -742,7 +744,6 @@ HTTP/1.1 200 OK
         "country": "Colombia.",
         "city": "Medellín",
       },
-      "virtual_timezone": "America/Bogota",
       "total_attendees": 0,
       "banner": {
         "filename": "file_name",
