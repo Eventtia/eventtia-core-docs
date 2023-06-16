@@ -9,7 +9,7 @@
 # Get your token for further authorization
 curl "https://core.eventtia.com/v1/registrations" \
   -H 'Content-Type: application/json' \
-  -X POST -d '{"user": {"name": "Your name", "email": "companyemail@mycompany.com", "phone": "your phone number", "password": "your password", "password_confirmation": "your password confirmation"}, "account": {"name": "Your company name", "website": "www.yourcompany.com"}}'
+  -X POST -d '{"user": {"name": "Your name", "email": "companyemail@mycompany.com", "phone": "your phone number", "password": "your password", "password_confirmation": "your password confirmation"}, "account": {"name": "Your company name", "website": "www.yourcompany.com"}, "callbacks_urls": { "success_url": "www.success_url.com", "cancel_url": "www.cancel_url.com" }}'
 ```
 
 ```javascript
@@ -31,6 +31,10 @@ fetch("https://core.eventtia.com/v1/registrations", {
     account: {
       name: "Your company name", 
       website: "www.yourcompany.com"
+    },
+    callbacks_urls: {
+      success_url: "www.success_url.com",
+      cancel_url: "www.cancel_url.com"
     }
   }
   
@@ -94,4 +98,4 @@ user[phone] | string | The User's phone.
 user[password] | string | The User's password.
 account[name] | string | The Uers's company name.
 account[website] | string | The User's company website.
-
+callbacks_urls | json | The stripe success and cancel URL.
