@@ -1,4 +1,4 @@
-# Account
+# Accounts
 
 ## Stripe Onboarding
 
@@ -53,7 +53,7 @@ Parameter | Type | Description
 callbacks_urls[success_url] | json | Send of key (success_url) and value (refresh_url)
 callbacks_urls[cancel_url] | json | Send of key (cancel_url) and value (return_url)
 
-## details
+## Details
 
 ```shell
 # Get your token for further authorization

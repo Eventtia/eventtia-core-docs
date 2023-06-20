@@ -13,7 +13,7 @@ includes:
   - introduction
   - activation
   - account_subscriptions
-  - account
+  - accounts
   - attendees
   - attendee_types
   - commercial_plans
