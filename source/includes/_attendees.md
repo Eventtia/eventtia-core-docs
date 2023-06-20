@@ -177,7 +177,8 @@ curl "https://core.eventtia.com/v1/events/<event_uri>/attendees/" \
         },
         "photo_url": "url_Image_file"
       }
-    }
+    },
+    "send_email": true
 }'
 ```
 
@@ -209,6 +210,7 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>/attendees/', {
       }
     }
   }
+  send_email: true
 })
 ```
 
@@ -279,6 +281,7 @@ telephone  | integer | telephone for attendee
 attendee_type_id | integer | attendee type id who created attendee belongs
 fields_data | hash | key-value for custom fields data for created attendee
 photo      |  file   | photo for attendee
+send_email | boolean | send welcome attendee notification after create it.
 
 ## Update Attendee
 
