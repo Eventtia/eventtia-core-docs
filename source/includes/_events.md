@@ -260,12 +260,6 @@ curl "https://core.eventtia.com/v1/events/" \
                   "id": "1",
                   "type": "role_categories"
           }
-        },
-        "email_settings": {
-              "data": {
-                  "id": "1",
-                  "type": "email_settings"
-          }
         }
       }
   }
@@ -328,12 +322,6 @@ fetch('https://core.eventtia.com/v1/events/', {
               data: {
                   id: "1",
                   type: "role_categories"
-          }
-        },
-        email_settings: {
-              data: {
-                  id: "1",
-                  type: "email_settings"
           }
         }
       }
@@ -500,12 +488,6 @@ curl "https://core.eventtia.com/v1/events/<event_uri>" \
                   "id": "1",
                   "type": "role_categories"
           }
-        },
-        "email_settings": {
-              "data": {
-                  "id": "1",
-                  "type": "email_settings"
-          }
         }
       }
   }
@@ -573,12 +555,6 @@ fetch('https://core.eventtia.com/v1/events/<event_uri>', {
               data: {
                   id: "1",
                   type: "role_categories"
-          }
-        },
-        email_settings: {
-              data: {
-                  id: "1",
-                  type: "email_settings"
           }
         }
     }
