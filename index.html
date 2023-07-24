@@ -498,6 +498,9 @@
                     <a href="#tags-notification" class="toc-h2 toc-link" data-title="Tags Notification">Tags Notification</a>
                   </li>
                   <li>
+                    <a href="#associated-entities-notification" class="toc-h2 toc-link" data-title="Associated Entities Notification">Associated Entities Notification</a>
+                  </li>
+                  <li>
                     <a href="#notification-languages" class="toc-h2 toc-link" data-title="Notification Languages">Notification Languages</a>
                   </li>
                   <li>
@@ -4028,6 +4031,11 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/"</span> <span class=
 <td>json</td>
 <td>includes available key ( array with availables languages for event ) and default key ( a string with a single required language, included in available languages array)</td>
 </tr>
+<tr>
+<td>sender_name</td>
+<td>string</td>
+<td>Sender Name for event notifications</td>
+</tr>
 </tbody></table>
 <h2 id='update-event'>Update Event</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
 curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;"</span> <span class="se">\</span>
@@ -4348,6 +4356,11 @@ curl <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;"</s
 <td>available_languages</td>
 <td>json</td>
 <td>includes available key ( array with availables languages for event ) and default key ( a string with a single required language, included in available languages array)</td>
+</tr>
+<tr>
+<td>sender_name</td>
+<td>string</td>
+<td>Sender Name for event notifications</td>
 </tr>
 </tbody></table>
 <h2 id='destroy-event'>Destroy Event</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
@@ -6193,7 +6206,7 @@ curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&
 
 <p><strong><em>HTTP Request</em></strong></p>
 
-<p><code>GET /v1/events/:event_uri/notifications/stats</code></p>
+<p><code>GET /v1/events/:event_uri/notifications/tags</code></p>
 
 <p><strong><em>Path Parameters</em></strong></p>
 
@@ -6208,6 +6221,94 @@ curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&
 <td>event_uri</td>
 <td>string</td>
 <td>event_uri for the desired event</td>
+</tr>
+</tbody></table>
+<h2 id='associated-entities-notification'>Associated Entities Notification</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
+curl -X GET <span class="s2">"https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/&lt;id&gt;/associated-entities"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://core.eventtia.com/v1/events/&lt;event_uri&gt;/notifications/&lt;id&gt;/associated-entities'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Bearer &lt;your token&gt;'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. </p>
+
+<p>Make sure you replace &lt;event uri&gt; with the event uri for the event.</p>
+
+<p>Make sure you replace &lt;id&gt; with the id for the notification to obtain.</p>
+
+<p>Example of a successful (200) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">{</span>
+<span class="s">    "data": [</span>
+<span class="s">        {</span>
+<span class="s">            "id": "44",</span>
+<span class="s">            "type": "attendee_types",</span>
+<span class="s">            "attributes": {</span>
+<span class="s">                "name": {</span>
+<span class="s">                    "en": "name for notification"</span>
+<span class="s">                },</span>
+<span class="s">                "description": {</span>
+<span class="s">                    "en": "this is a description"</span>
+<span class="s">                },</span>
+<span class="s">                "limit": 200,</span>
+<span class="s">                "confirmation_required": false,</span>
+<span class="s">                "allow_public_registration": false,</span>
+<span class="s">                "updated_by_id": 1,</span>
+<span class="s">                "archived": false,</span>
+<span class="s">                "event_id": 77,</span>
+<span class="s">                "price": 633.0</span>
+<span class="s">            }</span>
+<span class="s">        }</span>
+<span class="s">    ],</span>
+<span class="s">    "links": {</span>
+<span class="s">        "first": "base_url/es/v1/events/5b48f36330/notifications/44/associated-entities?page[number]=1",</span>
+<span class="s">        "last": "base_url/es/v1/events/5b48f36330/notifications/44/associated-entities?page[number]=1",</span>
+<span class="s">        "prev": null,</span>
+<span class="s">        "next": null</span>
+<span class="s">    }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Example of Unprocessable Entity (422) response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="s">{</span>
+<span class="s">  "message": {</span>
+<span class="s">    "error": [</span>
+<span class="s">      "code: 128"</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<p>This endpoint allows you to obtain the associated entities for notification</p>
+
+<p><strong><em>HTTP Request</em></strong></p>
+
+<p><code>GET /v1/events/:event_uri/notifications/:id/associated_entities</code></p>
+
+<p><strong><em>Path Parameters</em></strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_uri</td>
+<td>string</td>
+<td>event_uri for the desired event</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id for the desired notification</td>
 </tr>
 </tbody></table>
 <h2 id='notification-languages'>Notification Languages</h2><h2 id='index-notification-languages'>Index Notification Languages</h2><pre class="highlight shell tab-shell"><code><span class="c"># Get your token for further authorization</span>
