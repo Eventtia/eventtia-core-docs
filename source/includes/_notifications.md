@@ -683,13 +683,97 @@ This endpoint allows you to obtain the available tags for notification
 
 ***HTTP Request***
 
-`GET /v1/events/:event_uri/notifications/stats`
+`GET /v1/events/:event_uri/notifications/tags`
 
 ***Path Parameters***
 
 Parameter |  Type   | Description
 --------- | ------- | -----------
 event_uri | string  | event_uri for the desired event
+
+
+## Associated Entities Notification
+
+```shell
+# Get your token for further authorization
+curl -X GET "https://core.eventtia.com/v1/events/<event_uri>/notifications/<id>/associated-entities" \
+  -H 'Content-Type: application/json'
+```
+
+```javascript
+fetch('https://core.eventtia.com/v1/events/<event_uri>/notifications/<id>/associated-entities', {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer <your token>',
+  }
+})
+```
+
+> Make sure you replace &lt;your token&gt; with the JWT you get when you authenticate. 
+
+> Make sure you replace &lt;event uri&gt; with the event uri for the event.
+
+> Make sure you replace &lt;id&gt; with the id for the notification to obtain.
+
+> Example of a successful (200) response:
+
+```http
+HTTP/1.1 200 OK
+{
+    "data": [
+        {
+            "id": "44",
+            "type": "attendee_types",
+            "attributes": {
+                "name": {
+                    "en": "name for notification"
+                },
+                "description": {
+                    "en": "this is a description"
+                },
+                "limit": 200,
+                "confirmation_required": false,
+                "allow_public_registration": false,
+                "updated_by_id": 1,
+                "archived": false,
+                "event_id": 77,
+                "price": 633.0
+            }
+        }
+    ],
+    "links": {
+        "first": "base_url/es/v1/events/5b48f36330/notifications/44/associated-entities?page[number]=1",
+        "last": "base_url/es/v1/events/5b48f36330/notifications/44/associated-entities?page[number]=1",
+        "prev": null,
+        "next": null
+    }
+}
+```
+
+>Example of Unprocessable Entity (422) response:
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+{
+  "message": {
+    "error": [
+      "code: 128"
+    ]
+  }
+}
+```
+This endpoint allows you to obtain the associated entities for notification
+
+***HTTP Request***
+
+`GET /v1/events/:event_uri/notifications/:id/associated_entities`
+
+***Path Parameters***
+
+Parameter |  Type   | Description
+--------- | ------- | -----------
+event_uri | string  | event_uri for the desired event
+   id     | integer | The id for the desired notification
 
 
 

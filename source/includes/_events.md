@@ -416,7 +416,7 @@ description | string | description of event.
 start_date | date | starting date for event, must be before end date of event.
 is_template | boolean | this event is a template.
 cloned_from_id | integer | event id from this event was cloned
-attendance_mode | string | event attendance mode ['offline', 'mixed', 'online']. 
+attendance_mode | string | event attendance mode ['offline', 'mixed', 'online'].
 timezone | string | valid timezone for online events is required.
 location - coordinates| string | latitude and longitude coordinates for offline and mixed events.
 location - address| string | physical address for offline and mixed events.
@@ -426,10 +426,11 @@ event_uri| string | event uri must be an unique name.
 logo | file | logo for this event.
 banner_image | file | banner image for this event.
 currency | string | your event currency for payments and invoices ['COP', 'USD', 'EUR', 'ARS', 'BRL', 'CLP', 'MXN', 'PEN', 'GBP', 'JOD', 'UYU', 'PYG', 'AED', 'CAD', 'VND', 'PHP', 'AUD', 'BOB', 'TND', 'SGD', 'CHF', 'CFA', 'ZAR', 'INR']
-date_format | string | event date format ['dd/mm/yyyy', 'mm/dd/yyyy']. 
+date_format | string | event date format ['dd/mm/yyyy', 'mm/dd/yyyy'].
 time_format | string | event time format ['hours_24', 'am_pm'].
 paid | boolean | this event is a paid event
 available_languages | json | includes available key ( array with availables languages for event ) and default key ( a string with a single required language, included in available languages array)
+sender_name | string | Sender Name for event notifications
 
 
 ## Update Event
@@ -672,6 +673,7 @@ date_format | string | event date format ['dd/mm/yyyy', 'mm/dd/yyyy'].
 time_format | string | event time format ['hours_24', 'am_pm'].
 paid | boolean | this event is a paid event.
 available_languages | json | includes available key ( array with availables languages for event ) and default key ( a string with a single required language, included in available languages array)
+sender_name | string | Sender Name for event notifications
 
 ## Destroy Event
 
